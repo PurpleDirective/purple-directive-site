@@ -1,0 +1,33 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<Base title="Blog" activePage="blog" description="Writing about sovereign AI, agent architectures, and building in public.">
+  <section class="section">
+    <div class="section-header">
+      <h1>Blog</h1>
+      <p>Notes on building sovereign AI systems, agent architectures, and lessons learned.</p>
+    </div>
+
+    {posts.length > 0 ? (
+      <ul class="post-list">
+        {posts.map((post) => (
+          <li>
+            <span class="date">{post.data.date.toISOString().split('T')[0]}</span>
+            <h3><a href={`/blog/${post.id}`}>{post.data.title}</a></h3>
+            <p class="summary">{post.data.summary}</p>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <div class="card" style="text-align: center; padding: 3rem;">
+        <p style="color: var(--text-muted); margin-bottom: 0;">First post coming soon.</p>
+      </div>
+    )}
+  </section>
+</Base>
