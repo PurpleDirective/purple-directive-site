@@ -1,0 +1,76 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="About" activePage="about" description="The story behind PurpleDirective — building a sovereign AI system from scratch.">
+  <section class="section prose">
+    <h1>About</h1>
+
+    <p>
+      PurpleDirective started with a simple question: what would happen if you treated AI agents
+      not as disposable chat sessions, but as an organization that learns and improves over time?
+    </p>
+
+    <p>
+      The answer turned into a multi-agent system where a COO agent triages every task, an advisory
+      council deliberates on complex questions from structurally different perspectives, operational
+      agents execute domain-specific work within defined guardrails, and a closed-loop learning
+      system transfers knowledge from cloud inference to local models running on sovereign hardware.
+    </p>
+
+    <h2>The Stack</h2>
+
+    <p>
+      <strong>Cloud runtime:</strong> Claude via Claude Code. This is where complex analysis,
+      multi-agent deliberation, and knowledge generation happen. Full agent identities with
+      rich context.
+    </p>
+
+    <p>
+      <strong>Local runtime:</strong> Ollama via Purple-Directive: CLI. Condensed agent identities
+      under 2K tokens, MCP tool integration, session persistence. Runs on a homelab server with
+      an RTX 5090 for inference and fine-tuning.
+    </p>
+
+    <p>
+      <strong>Memory:</strong> SQLite with FTS5 keyword search and sqlite-vec semantic embeddings.
+      Hybrid retrieval using Reciprocal Rank Fusion. Knowledge persists across sessions and
+      transfers between runtimes.
+    </p>
+
+    <p>
+      <strong>Infrastructure:</strong> Raspberry Pi network appliance (DNS sinkhole, VPN gateway,
+      access point), homelab server (inference, training, services), Cloudflare for DNS and tunnels.
+    </p>
+
+    <h2>Principles</h2>
+
+    <ul>
+      <li><strong>Sovereignty first.</strong> Your AI should run on your hardware, keep your data local, and work offline. Cloud is a tool, not a dependency.</li>
+      <li><strong>Compound learning.</strong> Every session should make the system smarter. Knowledge fragments, corrections, and patterns accumulate. The same mistake doesn't happen twice.</li>
+      <li><strong>Structured disagreement.</strong> Three advisory agents with different cognitive styles produce better analysis than one agent trying to be balanced. Deliberation has a hard stop to prevent drift.</li>
+      <li><strong>Audit everything.</strong> Every agent output is reviewed before it reaches the human. Every decision is logged with rationale. Trust is built through transparency.</li>
+      <li><strong>Details matter.</strong> The difference between a system that works and a system that works well is in the edge cases, the error handling, and the things nobody checks.</li>
+    </ul>
+
+    <h2>Open Source</h2>
+
+    <p>
+      The framework, protocols, memory kernel, and CLI tool are all public on GitHub. The goal
+      is to demonstrate that a single person can build and operate a sophisticated AI agent system
+      without enterprise infrastructure or a team of engineers.
+    </p>
+
+    <p>
+      If you're building something similar, the <a href="https://github.com/PurpleDirective/purple-directive-violet">Violet repository</a>
+      has the full architecture — agent definitions, protocols, memory schemas, and operational templates.
+    </p>
+
+    <h2>Connect</h2>
+
+    <ul>
+      <li><a href="https://github.com/PurpleDirective" target="_blank" rel="noopener">GitHub</a> — All repositories</li>
+      <li><a href="https://reddit.com/u/PurpleDirective" target="_blank" rel="noopener">Reddit</a> — Discussion and updates</li>
+    </ul>
+  </section>
+</Base>
