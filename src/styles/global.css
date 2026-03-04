@@ -179,9 +179,17 @@ nav .nav-tool {
   border-radius: 4px;
   padding: 0.15rem 0.5rem !important;
   transition: border-color 0.2s, color 0.2s !important;
+  background: none;
+  cursor: pointer;
+  line-height: inherit;
 }
 
 nav .nav-tool:hover {
+  border-color: var(--purple-primary) !important;
+  color: var(--purple-primary) !important;
+}
+
+nav .bionic-btn.active {
   border-color: var(--purple-primary) !important;
   color: var(--purple-primary) !important;
 }
@@ -612,10 +620,16 @@ footer .links a:hover {
     padding: 0.5rem 0 !important;
     font-size: 0.9rem !important;
     color: var(--text-secondary) !important;
+    width: 100%;
+    text-align: left;
   }
 
   nav .nav-tool:hover {
     background: none !important;
+    color: var(--purple-primary) !important;
+  }
+
+  nav .bionic-btn.active {
     color: var(--purple-primary) !important;
   }
 }
