@@ -23,7 +23,8 @@ const fullTitle = title === "Home" ? "PurpleDirective" : `${title} — PurpleDir
   <nav>
     <div class="container">
       <a href="/" class="logo">purple<span>directive</span></a>
-      <ul class="links">
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+      <ul class="links" id="nav-links">
         <li><a href="/projects" class:list={[{ active: activePage === "projects" }]}>Projects</a></li>
         <li><a href="/blog" class:list={[{ active: activePage === "blog" }]}>Blog</a></li>
         <li><a href="/about" class:list={[{ active: activePage === "about" }]}>About</a></li>
@@ -48,6 +49,19 @@ const fullTitle = title === "Home" ? "PurpleDirective" : `${title} — PurpleDir
       </ul>
     </div>
   </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const links = document.getElementById('nav-links');
+    toggle?.addEventListener('click', () => {
+      const open = links?.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(!!open));
+    });
+    // Close menu when any link is clicked (navigation or external)
+    links?.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => links.classList.remove('open'));
+    });
+  </script>
 </body>
 </html>
 
