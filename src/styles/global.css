@@ -419,15 +419,69 @@ footer .links a:hover {
   color: var(--purple-light);
 }
 
-/* Responsive */
+/* ============================================================
+   Responsive — Mobile-first breakpoints
+   xs: < 480px  (phones)
+   sm: < 768px  (large phones, small tablets)
+   md: < 1024px (tablets, iPads)
+   lg: 1024px+  (desktop)
+   ============================================================ */
 
-@media (max-width: 640px) {
-  .hero h1 {
-    font-size: 1.75rem;
+/* Hamburger menu button — hidden on desktop */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.35rem 0.6rem;
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: border-color 0.2s, color 0.2s;
+}
+.nav-toggle:hover {
+  border-color: var(--purple-primary);
+  color: var(--purple-primary);
+}
+
+/* Tablet (768px and below) */
+@media (max-width: 768px) {
+  :root {
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
   }
 
-  nav .links {
-    gap: var(--spacing-md);
+  .container {
+    padding: 0 var(--spacing-md);
+  }
+
+  h1 { font-size: 1.875rem; }
+  h2 { font-size: 1.25rem; }
+
+  .hero {
+    padding: var(--spacing-xl) 0;
+  }
+
+  .hero h1 {
+    font-size: 2.25rem;
+  }
+
+  .hero .subtitle {
+    font-size: 1rem;
+  }
+
+  .section {
+    padding: var(--spacing-lg) 0;
+  }
+
+  .arch-diagram {
+    font-size: 0.7rem;
+    padding: var(--spacing-md);
+  }
+
+  footer {
+    margin-top: var(--spacing-xl);
   }
 
   footer .container {
@@ -436,7 +490,132 @@ footer .links a:hover {
     text-align: center;
   }
 
+  footer .links {
+    justify-content: center;
+  }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+  :root {
+    --spacing-lg: 1.25rem;
+    --spacing-xl: 1.75rem;
+    --spacing-2xl: 2.5rem;
+  }
+
+  html { font-size: 15px; }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.15rem; }
+  h3 { font-size: 1rem; }
+
+  .hero {
+    padding: 2rem 0;
+  }
+
+  .hero h1 {
+    font-size: 1.875rem;
+  }
+
+  .hero .subtitle {
+    font-size: 0.95rem;
+  }
+
   .card-grid {
     grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .card {
+    padding: var(--spacing-md);
+    border-radius: 8px;
+  }
+
+  /* Disable hover lift on touch devices */
+  .card:hover {
+    transform: none;
+  }
+
+  .arch-diagram {
+    font-size: 0.65rem;
+    padding: 0.75rem;
+  }
+
+  pre code {
+    font-size: 0.75rem;
+  }
+
+  .post-list li {
+    padding: var(--spacing-md) 0;
+  }
+
+  footer {
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-lg) 0;
+  }
+}
+
+/* Nav mobile collapse — applies at 768px and below */
+@media (max-width: 768px) {
+  nav {
+    padding: 0.75rem 0;
+  }
+
+  nav .container {
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  /* Show hamburger button */
+  .nav-toggle {
+    display: block;
+  }
+
+  /* Hide links by default, shown when .open is toggled */
+  nav .links {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    padding: 0.5rem 0 0.75rem;
+    border-top: 1px solid var(--border);
+    margin-top: 0.75rem;
+  }
+
+  nav .links.open {
+    display: flex;
+  }
+
+  nav .links li {
+    width: 100%;
+  }
+
+  nav .links a {
+    display: block;
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+
+  /* Hide the vertical divider in mobile stack */
+  nav .nav-divider {
+    display: none;
+  }
+
+  /* Tool pills become normal links in mobile */
+  nav .nav-tool {
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0.5rem 0 !important;
+    font-size: 0.9rem !important;
+    color: var(--text-secondary) !important;
+  }
+
+  nav .nav-tool:hover {
+    background: none !important;
+    color: var(--purple-primary) !important;
   }
 }
