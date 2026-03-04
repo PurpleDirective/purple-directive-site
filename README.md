@@ -1,43 +1,50 @@
-# Astro Starter Kit: Minimal
+# Purple-Directive: Site
 
-```sh
-npm create astro@latest -- --template minimal
+Source for [purpledirective.com](https://purpledirective.com) — the public-facing home of the Purple Directive project.
+
+## Stack
+
+- **Astro 5** — static site generator
+- **Vanilla CSS** — no frameworks, no Tailwind
+- **Cloudflare Pages** — hosting and CDN ($0/month)
+- Auto-deploys on push to `main`
+
+## Pages
+
+- **/** — Landing page
+- **/projects** — Project showcase
+- **/about** — Background and philosophy
+- **/blog** — Technical writing (Markdown with YAML frontmatter)
+
+## Local Development
+
+```bash
+npm install
+npm run dev        # localhost:4321
+npm run build      # production build to ./dist/
+npm run preview    # preview production build
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Blog Posts
 
-## 🚀 Project Structure
+Add new posts to `src/content/blog/`:
 
-Inside of your Astro project, you'll see the following folders and files:
+```markdown
+---
+title: "Post Title"
+date: 2026-03-04
+summary: "One-line summary"
+tags: ["ai", "agents"]
+---
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+Post content here.
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Related
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- [Purple-Directive: Violet](https://github.com/PurpleDirective/purple-directive-violet) — Multi-agent AI framework
+- [Purple-Directive: CLI](https://github.com/PurpleDirective/purple-directive-cli) — Local AI agent with Ollama + MCP
 
-Any static assets, like images, can be placed in the `public/` directory.
+## License
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+MIT
