@@ -1,80 +1,274 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const updates = [
+  {
+    date: "2026-03-04",
+    tag: "Infrastructure",
+    tagColor: "green",
+    title: "purpledesk online — dedicated 24/7 server",
+    desc: "Lenovo i3 720s repurposed as always-on hardware. Proxmox VE installed, purplecore LXC container running cloudflared (4 HA connections), webui, and landing page. Services migrated off purpleroom.",
+  },
+  {
+    date: "2026-03-03",
+    tag: "Infrastructure",
+    tagColor: "green",
+    title: "Tunnel redundancy: 12 edge connections",
+    desc: "cloudflared now runs on three independent nodes — purpleroom, purplepi-1, and purplecore. Each holds 4 Cloudflare edge connections. The site stays up even if two nodes go down simultaneously.",
+  },
+  {
+    date: "2026-03-03",
+    tag: "AI",
+    tagColor: "purple",
+    title: "Violet unified workspace",
+    desc: "Merged Project Amethyst (business ops) and Project Sapphire (personal AI) into a single Violet workspace. One COO. All domains. Unified memory, shared agent council, single source of truth.",
+  },
+  {
+    date: "2026-02-25",
+    tag: "AI",
+    tagColor: "purple",
+    title: "Dashboard v2: live service status + STATE.md",
+    desc: "Private dashboard rebuilt with HTMX partials — service grid refreshes every 15s, STATE.md renders as collapsible sections, teaching fragment review queue now has a web UI.",
+  },
+  {
+    date: "2026-02-20",
+    tag: "AI",
+    tagColor: "purple",
+    title: "Chat webui: thinking traces + MCP tools",
+    desc: "New chat interface with real-time WebSocket streaming, collapsible thinking trace rendering (Qwen3 <think> blocks), code copy buttons, 15 MCP tools connected, conversation history in SQLite.",
+  },
+];
+
+const roadmap = [
+  { status: "live",       label: "purpledesk 24/7 server",           desc: "Dedicated always-on hardware running all web services" },
+  { status: "active",     label: "PD logo — bubbly P/D monogram",    desc: "Custom mark where the outer curve reads P, inner hook reads D" },
+  { status: "active",     label: "Public demo: try Violet",           desc: "Restricted local model letting visitors experience the agent personality" },
+  { status: "planned",    label: "Purple Directive CLI v2",           desc: "Rewrite with native tool calling, faster plan/build cycle" },
+  { status: "planned",    label: "Automated knowledge pipeline",      desc: "Overnight pipeline fully integrated — zero manual processing" },
+  { status: "planned",    label: "Multi-domain memory consolidation", desc: "Single unified memory kernel across all operational domains" },
+];
 ---
 
-<Base title="Home" activePage="home" description="A sovereign, self-improving multi-agent AI system with hierarchical orchestration, structured deliberation, and closed-loop learning.">
+<Base title="Home" activePage="home" description="Purple Directive — Violet is a sovereign, self-improving AI COO with hierarchical orchestration, structured deliberation, and closed-loop learning.">
+
+  <!-- Hero -->
   <section class="hero">
     <p class="tagline">Sovereign Intelligence</p>
     <h1>Purple<span class="accent">Directive</span></h1>
+    <p class="violet-badge">Powered by <span>Violet</span></p>
     <p class="subtitle">
-      A self-improving multi-agent AI system built for one human operator.
-      Hierarchical orchestration, structured deliberation, dual-runtime deployment,
-      and closed-loop learning.
+      An AI operations system built for a single human operator.
+      One COO agent — Violet — receives every task, triages it, delegates it,
+      and synthesizes the result. The system learns from every session.
     </p>
   </section>
 
-  <section class="section">
-    <div class="arch-diagram"><span class="highlight">Human</span> (Final Authority)
-  |
-  +-- <span class="highlight">Violet</span> (COO — Triage, Delegation, Audit, Synthesis)
-        |
-        +-- <span class="highlight">E.I.K. Advisory Council</span> (2-round deliberation)
-        |     +-- Evolution    — forward motion, innovation
-        |     +-- Improvement  — verification, quality assurance
-        |     +-- Keenness     — edge-watching, blind spots
-        |
-        +-- <span class="highlight">Operational Staff</span> (domain-specific execution)
-              +-- Domain agents scaffolded from template
-              +-- Each with: directives, tools, identity, data</div>
-  </section>
-
+  <!-- Meet Violet -->
   <section class="section">
     <div class="section-header">
-      <h2>How It Works</h2>
+      <h2>Meet Violet</h2>
+      <p>Violet is the COO. She is not a chatbot — she is an operations system with a hierarchy beneath her.</p>
     </div>
-    <div class="card-grid">
-      <div class="card">
-        <h3>Triage</h3>
-        <p>Every task is classified before any agent touches it. Simple tasks go to operational staff. Complex questions route through the advisory council first.</p>
-        <span class="tag">Routing</span>
+    <div class="arch-diagram"><span class="highlight">Human</span>  (final authority — you)
+  │
+  └── <span class="highlight">Violet</span>  (COO — receives tasks, triages, delegates, audits, synthesizes)
+        │
+        ├── <span class="highlight">E.I.K. Advisory Council</span>  (3 agents, 2-round deliberation, hard stop)
+        │     ├── Evolution    — forward motion, innovation, "what should we build?"
+        │     ├── Improvement  — verification, accuracy, "is this actually right?"
+        │     └── Keenness     — blind spots, edge cases, "what are we not seeing?"
+        │
+        └── <span class="highlight">Operational Staff</span>  (domain execution agents)
+              ├── A1 Clinical         — CRO digital infrastructure &amp; business ops
+              ├── Research Coord.     — clinical trial protocol operations
+              ├── Book-to-Brain       — training data generation pipeline
+              └── Purpleroom          — homelab infrastructure &amp; monitoring</div>
+  </section>
+
+  <!-- Workflow -->
+  <section class="section">
+    <div class="section-header">
+      <h2>How a Task Moves Through the System</h2>
+    </div>
+    <div class="workflow">
+      <div class="workflow-step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <h3>Task Arrives</h3>
+          <p>Human sends a request. Violet receives it and immediately classifies it — simple, complex, or administrative.</p>
+        </div>
       </div>
-      <div class="card">
-        <h3>Deliberation</h3>
-        <p>Three advisory agents with structurally differentiated perspectives analyze complex questions in parallel. Round 1: independent analysis. Round 2: cross-response. Hard stop.</p>
-        <span class="tag">E.I.K. Protocol</span>
+      <div class="workflow-arrow">↓</div>
+      <div class="workflow-step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <h3>Triage</h3>
+          <p><strong>Simple</strong> — routed directly to the relevant domain agent with context and expected output format.<br/>
+          <strong>Complex</strong> — escalated to the E.I.K. Advisory Council.<br/>
+          <strong>Admin</strong> — handled by Violet directly.</p>
+        </div>
       </div>
-      <div class="card">
-        <h3>Execution</h3>
-        <p>Operational agents follow the DOE framework — Directive (what to do), Orchestration (how to decide), Execution (deterministic scripts). Every output is audited.</p>
-        <span class="tag">DOE Framework</span>
+      <div class="workflow-arrow">↓</div>
+      <div class="workflow-step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <h3>Deliberation <span class="step-tag">Complex tasks only</span></h3>
+          <p><strong>Round 1:</strong> All three advisory agents analyze independently — no coordination, no groupthink.<br/>
+          <strong>Round 2:</strong> Each agent reads the others' work and responds. Hard stop after Round 2.</p>
+        </div>
       </div>
-      <div class="card">
-        <h3>Self-Improvement</h3>
-        <p>Cloud sessions compile knowledge into local memory. Errors are corrected and logged. The governing protocols evolve. The system gets measurably smarter with every session.</p>
-        <span class="tag">Closed Loop</span>
+      <div class="workflow-arrow">↓</div>
+      <div class="workflow-step">
+        <div class="step-num">04</div>
+        <div class="step-body">
+          <h3>Synthesis + Audit</h3>
+          <p>Violet synthesizes the result. Every output is audited against a 6-point checklist before it reaches the human. No unreviewed AI output goes out.</p>
+        </div>
+      </div>
+      <div class="workflow-arrow">↓</div>
+      <div class="workflow-step step-final">
+        <div class="step-num">05</div>
+        <div class="step-body">
+          <h3>Learn</h3>
+          <p>New corrections, decisions, and insights are written to shared memory. Valuable knowledge fragments are queued for human review and compiled into the local model's memory kernel.</p>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Dual Runtime -->
   <section class="section">
     <div class="section-header">
       <h2>Dual Runtime</h2>
-      <p>The same agents run on both cloud and local inference. Knowledge transfers between runtimes automatically.</p>
+      <p>Violet runs on both cloud and local inference. The same agent identity, memory, and protocols — different compute.</p>
     </div>
     <div class="card-grid">
       <div class="card">
-        <h3>Cloud</h3>
-        <p>Claude via Claude Code. Full identity profiles, multi-agent deliberation, complex analysis. The power of frontier models with structured orchestration.</p>
-        <span class="tag">Claude Code</span>
+        <div class="card-label">Cloud</div>
+        <h3>Claude via Claude Code</h3>
+        <p>Full agent identities, multi-agent deliberation, complex analysis, MCP tool integration. Frontier-model reasoning with structured orchestration on top.</p>
+        <span class="tag">Anthropic Claude</span>
       </div>
       <div class="card">
-        <h3>Local</h3>
-        <p>Ollama via Purple-Directive: CLI. Condensed identities under 2K tokens, MCP tool support, offline-capable. Sovereign inference on your own hardware.</p>
-        <span class="tag">Purple CLI</span>
+        <div class="card-label">Local</div>
+        <h3>Ollama via Purple CLI</h3>
+        <p>Condensed identities (&lt;2K tokens), MCP tool support, offline-capable sovereign inference. Learns from cloud sessions without retraining — through the memory kernel.</p>
+        <span class="tag">Purple-Directive: CLI</span>
       </div>
     </div>
   </section>
 
+  <!-- Infrastructure -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Infrastructure</h2>
+      <p>Sovereign hardware. No cloud vendor lock-in for compute. Everything connected over Tailscale mesh, exposed via Cloudflare Tunnel.</p>
+    </div>
+    <div class="infra-grid">
+      <div class="infra-node">
+        <div class="infra-header">
+          <span class="status-dot"></span>
+          <span class="infra-name">purpleroom</span>
+          <span class="infra-role">Compute</span>
+        </div>
+        <ul class="infra-services">
+          <li>Ollama — 27B model (Qwen3)</li>
+          <li>Private dashboard</li>
+          <li>SearXNG search</li>
+          <li>cloudflared (4 connections)</li>
+        </ul>
+        <span class="infra-hw">64GB RAM · Ubuntu Server</span>
+      </div>
+      <div class="infra-node">
+        <div class="infra-header">
+          <span class="status-dot"></span>
+          <span class="infra-name">purplecore</span>
+          <span class="infra-role">24/7 Always-On</span>
+        </div>
+        <ul class="infra-services">
+          <li>Chat webui (port 3000)</li>
+          <li>Landing page (port 8088)</li>
+          <li>cloudflared (4 connections)</li>
+          <li>Self-healing watchdog</li>
+        </ul>
+        <span class="infra-hw">i3 · Proxmox LXC · Ubuntu 24.04</span>
+      </div>
+      <div class="infra-node">
+        <div class="infra-header">
+          <span class="status-dot"></span>
+          <span class="infra-name">purplepi-1</span>
+          <span class="infra-role">Redundant Tunnel</span>
+        </div>
+        <ul class="infra-services">
+          <li>cloudflared (4 connections)</li>
+          <li>External uptime monitor</li>
+          <li>Watchdog — heals purpleroom</li>
+        </ul>
+        <span class="infra-hw">Raspberry Pi 4 · Raspberry Pi OS</span>
+      </div>
+      <div class="infra-node infra-cloud">
+        <div class="infra-header">
+          <span class="status-dot"></span>
+          <span class="infra-name">Cloudflare</span>
+          <span class="infra-role">Edge</span>
+        </div>
+        <ul class="infra-services">
+          <li>12 tunnel HA connections</li>
+          <li>Zero Trust Access (SSO)</li>
+          <li>Pages — purpledirective.com</li>
+          <li>SSL everywhere</li>
+        </ul>
+        <span class="infra-hw">Managed edge — $0/mo</span>
+      </div>
+    </div>
+    <p class="infra-note">All nodes connected via <strong>Tailscale</strong> mesh VPN. cloudflared runs on 3 independent nodes — the site stays live even if two fail simultaneously.</p>
+  </section>
+
+  <!-- Updates Feed -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Recent Updates</h2>
+      <p>What's actually been built, in order. Not a roadmap — a log.</p>
+    </div>
+    <div class="updates-feed">
+      {updates.map((u) => (
+        <div class="update-entry">
+          <div class="update-meta">
+            <span class="update-date">{u.date}</span>
+            <span class={`update-tag tag-${u.tagColor}`}>{u.tag}</span>
+          </div>
+          <div class="update-body">
+            <h3 class="update-title">{u.title}</h3>
+            <p class="update-desc">{u.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+    <a href="/blog" class="updates-more">All posts and updates &rarr;</a>
+  </section>
+
+  <!-- Roadmap -->
+  <section class="section">
+    <div class="section-header">
+      <h2>What's Next</h2>
+      <p>Active work and planned improvements.</p>
+    </div>
+    <div class="roadmap">
+      {roadmap.map((item) => (
+        <div class="roadmap-item">
+          <span class={`roadmap-status status-${item.status}`}>
+            {item.status === "live" ? "live" : item.status === "active" ? "in progress" : "planned"}
+          </span>
+          <div class="roadmap-body">
+            <span class="roadmap-label">{item.label}</span>
+            <span class="roadmap-desc">{item.desc}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Open Source -->
   <section class="section">
     <div class="section-header">
       <h2>Open Source</h2>
@@ -82,15 +276,18 @@ import Base from '../layouts/Base.astro';
     </div>
     <div class="card-grid">
       <div class="card">
-        <h3>Violet</h3>
-        <p>The COO agent framework. Advisory council, operational agents, memory kernel, teaching protocol, audit system.</p>
+        <div class="card-label">Framework</div>
+        <h3>Purple Directive: Violet</h3>
+        <p>The full COO agent framework. E.I.K. advisory council, domain agents, memory kernel, teaching protocol, audit system, and all governing protocols.</p>
         <a href="https://github.com/PurpleDirective/purple-directive-violet" class="project-link" target="_blank" rel="noopener">View on GitHub &rarr;</a>
       </div>
       <div class="card">
-        <h3>Purple CLI</h3>
-        <p>Local AI runtime. Python application connecting to Ollama with MCP tools, agent identities, and plan/build modes.</p>
+        <div class="card-label">Runtime</div>
+        <h3>Purple Directive: CLI</h3>
+        <p>Local AI runtime. Python app connecting to Ollama with MCP tools, condensed agent identities, plan/build modes. Offline-capable sovereign inference.</p>
         <a href="https://github.com/PurpleDirective/purple-directive-cli" class="project-link" target="_blank" rel="noopener">View on GitHub &rarr;</a>
       </div>
     </div>
   </section>
+
 </Base>
