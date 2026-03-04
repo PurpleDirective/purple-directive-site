@@ -1,4 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <rect width="32" height="32" rx="6" fill="#0a0a0f"/>
-  <text x="16" y="22" text-anchor="middle" font-family="monospace" font-size="18" font-weight="bold" fill="#9b72cf">P</text>
+  <defs>
+    <linearGradient id="fg" x1="30%" y1="0%" x2="70%" y2="100%">
+      <stop offset="0%" stop-color="#b07ce8"/>
+      <stop offset="100%" stop-color="#7a4db5"/>
+    </linearGradient>
+  </defs>
+  <path
+    d="M 10,26 L 10,7 C 10,3.5 24,3.5 24,15.5 C 24,23 19,27 15,24 C 12,22 11.5,19 13.5,17 C 15,15.5 17.5,15 19,15"
+    fill="none"
+    stroke="url(#fg)"
+    stroke-width="3.2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
 </svg>
