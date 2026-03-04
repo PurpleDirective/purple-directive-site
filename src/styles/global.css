@@ -528,7 +528,7 @@ footer .links a:hover {
 
 .infra-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--spacing-md);
   margin: var(--spacing-lg) 0;
 }
@@ -585,28 +585,22 @@ footer .links a:hover {
   50% { opacity: 0.5; }
 }
 
-.infra-services {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.infra-chips {
   display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
+  flex-wrap: wrap;
+  gap: 0.35rem;
   flex: 1;
 }
 
-.infra-services li {
-  font-size: 0.8rem;
+.infra-chip {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
   color: var(--text-secondary);
-  padding-left: 0.75rem;
-  position: relative;
-}
-
-.infra-services li::before {
-  content: '·';
-  position: absolute;
-  left: 0;
-  color: var(--text-muted);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  white-space: nowrap;
 }
 
 .infra-hw {
@@ -769,7 +763,6 @@ footer .links a:hover {
 }
 
 .status-active {
-  color: var(--cfb072, #cfb072);
   color: var(--accent-amber);
   border-color: rgba(207, 176, 114, 0.4);
   background: rgba(207, 176, 114, 0.08);
@@ -878,10 +871,6 @@ footer .links a:hover {
     flex-direction: row;
     align-items: center;
     min-width: auto;
-  }
-
-  .infra-grid {
-    grid-template-columns: repeat(2, 1fr);
   }
 
   .roadmap-item {
