@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120">
+  <!--
+    PurpleDirective PD monogram
+    A single continuous stroke: outer curve reads as P,
+    inner hook creates the D counter-space.
+    Faithful to the hand-sketched embossed concept.
+  -->
+  <defs>
+    <linearGradient id="strokeGrad" x1="30%" y1="0%" x2="70%" y2="100%">
+      <stop offset="0%" stop-color="#1a0a2e"/>
+      <stop offset="100%" stop-color="#2d1554"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer stroke — dark base -->
+  <path
+    d="
+      M 26,96
+      L 26,16
+      C 26,6 76,6 76,50
+      C 76,80 58,94 44,87
+      C 33,80 30,70 36,62
+      C 40,55 50,53 56,53
+    "
+    fill="none"
+    stroke="url(#strokeGrad)"
+    stroke-width="13"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Inner stroke — purple overlay, slightly thinner -->
+  <path
+    d="
+      M 26,96
+      L 26,16
+      C 26,6 76,6 76,50
+      C 76,80 58,94 44,87
+      C 33,80 30,70 36,62
+      C 40,55 50,53 56,53
+    "
+    fill="none"
+    stroke="#7a4db5"
+    stroke-width="5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.7"
+  />
+</svg>

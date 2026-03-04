@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <radialGradient id="gemBase" cx="42%" cy="34%" r="60%" fx="38%" fy="30%">
+      <stop offset="0%" style="stop-color:#B8A8D0;stop-opacity:0.95"/>
+      <stop offset="18%" style="stop-color:#9B8ABF;stop-opacity:0.97"/>
+      <stop offset="45%" style="stop-color:#7A68A5"/>
+      <stop offset="75%" style="stop-color:#5A4888"/>
+      <stop offset="100%" style="stop-color:#3A2860"/>
+    </radialGradient>
+    <linearGradient id="faceTopL" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#C8B8E0;stop-opacity:0.35"/>
+      <stop offset="100%" style="stop-color:#8A78B0;stop-opacity:0.05"/>
+    </linearGradient>
+    <linearGradient id="faceTopR" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#A090C0;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#6A58A0;stop-opacity:0.05"/>
+    </linearGradient>
+    <linearGradient id="faceBotL" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2A1B48;stop-opacity:0.4"/>
+      <stop offset="100%" style="stop-color:#5A4888;stop-opacity:0.05"/>
+    </linearGradient>
+    <linearGradient id="faceBotR" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#1E1238;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#4A3878;stop-opacity:0.08"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="22%">
+      <stop offset="0%" style="stop-color:#5A4580;stop-opacity:0.07"/>
+      <stop offset="100%" style="stop-color:#5A4580;stop-opacity:0"/>
+    </radialGradient>
+    <filter id="gemSoft">
+      <feGaussianBlur stdDeviation="0.4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="gemDrop">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0A0612" flood-opacity="0.5"/>
+    </filter>
+
+    <!-- Y shape mask -->
+    <mask id="yMask">
+      <rect width="512" height="512" fill="black"/>
+      <path d="
+        M 238,126 L 274,126
+        L 274,247
+        L 372,316 L 352,346
+        L 256,278
+        L 160,346 L 140,316
+        L 238,247
+        Z" fill="white"/>
+    </mask>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" fill="#06040C"/>
+  <circle cx="256" cy="256" r="80" fill="url(#glow)"/>
+
+  <!-- ═══ HEXAGON RING (behind Y) ═══ -->
+  <!-- Lavender band between two silver outlines -->
+  <!-- Outer hex R=126, lavender fill, dull silver stroke -->
+  <polygon points="256,130 365,193 365,319 256,382 147,319 147,193"
+    fill="#4A3870" stroke="#706880" stroke-width="1" opacity="0.45"/>
+  <!-- Inner hex R=114, background fill, dull silver stroke (cuts out center) -->
+  <polygon points="256,142 355,199 355,313 256,370 157,313 157,199"
+    fill="#06040C" stroke="#706880" stroke-width="1" opacity="0.45"/>
+
+  <!-- ═══ Y BODY (shorter legs, matching hex) ═══ -->
+  <!-- L=130, width=36, 3 equal legs 120deg apart, sharp edges -->
+
+  <!-- Edge outline -->
+  <path d="
+    M 237,125 L 275,125
+    L 275,247
+    L 373,315 L 353,347
+    L 256,279
+    L 159,347 L 139,315
+    L 237,247
+    Z"
+    fill="none" stroke="#000000" stroke-width="1.5" opacity="0.7" stroke-linejoin="miter"/>
+
+  <!-- Fill -->
+  <path d="
+    M 238,126 L 274,126
+    L 274,247
+    L 372,316 L 352,346
+    L 256,278
+    L 160,346 L 140,316
+    L 238,247
+    Z"
+    fill="#28194A"/>
+
+  <!-- ═══ CALLIGRAPHIC INTERIOR (masked to Y) ═══ -->
+  <g mask="url(#yMask)">
+
+    <!-- ── Stem (y=134 to y=215) ── -->
+    <path d="M 250,134 Q 266,148 248,168 Q 240,182 264,196 Q 268,206 256,214"
+      fill="none" stroke="#6B5A90" stroke-width="1.8" stroke-linecap="round" opacity="0.2"/>
+    <path d="M 262,138 Q 248,155 264,175 Q 270,186 250,200 Q 248,208 260,214"
+      fill="none" stroke="#5A4A80" stroke-width="0.8" stroke-linecap="round" opacity="0.15"/>
+    <path d="M 245,148 Q 234,154 236,164 Q 238,172 248,170"
+      fill="none" stroke="#7060A0" stroke-width="0.6" opacity="0.18"/>
+    <path d="M 267,178 Q 278,183 277,192 Q 275,200 264,198"
+      fill="none" stroke="#7060A0" stroke-width="0.6" opacity="0.18"/>
+    <circle cx="237" cy="158" r="1.8" fill="#6B5A90" opacity="0.12"/>
+    <circle cx="277" cy="186" r="1.8" fill="#6B5A90" opacity="0.12"/>
+    <circle cx="244" cy="202" r="1.5" fill="#6B5A90" opacity="0.1"/>
+
+    <!-- ── Left arm ── -->
+    <path d="M 230,278 Q 218,292 208,298 Q 194,306 186,316 Q 176,324 166,330 Q 156,338 148,344"
+      fill="none" stroke="#6B5A90" stroke-width="1.8" stroke-linecap="round" opacity="0.2"/>
+    <path d="M 224,284 Q 212,296 202,304 Q 190,312 180,320 Q 168,330 158,338"
+      fill="none" stroke="#5A4A80" stroke-width="0.8" stroke-linecap="round" opacity="0.15"/>
+    <path d="M 210,294 Q 198,288 196,300 Q 196,308 206,306"
+      fill="none" stroke="#7060A0" stroke-width="0.6" opacity="0.18"/>
+    <path d="M 174,322 Q 162,316 160,328 Q 161,336 170,334"
+      fill="none" stroke="#7060A0" stroke-width="0.6" opacity="0.18"/>
+    <circle cx="196" cy="298" r="1.8" fill="#6B5A90" opacity="0.12"/>
+    <circle cx="160" cy="326" r="1.8" fill="#6B5A90" opacity="0.12"/>
+    <circle cx="180" cy="314" r="1.5" fill="#6B5A90" opacity="0.1"/>
+
+    <!-- الله أكبر woven into left arm calligraphy -->
+    <text x="178" y="318"
+      font-family="'Noto Naskh Arabic', 'Geeza Pro', 'Traditional Arabic', serif"
+      font-size="4" fill="#6B5A90" opacity="0.14"
+      text-anchor="middle"
+      transform="rotate(-35 178 318)"
+      direction="rtl" xml:lang="ar"
+      letter-spacing="0.4">الله أكبر</text>
+
+    <!-- ── Right arm (mirror) ── -->
+    <path d="M 282,278 Q 294,292 304,298 Q 318,306 326,316 Q 336,324 346,330 Q 356,338 364,344"
+      fill="none" stroke="#6B5A90" stroke-width="1.8" stroke-linecap="round" opacity="0.2"/>
+    <path d="M 288,284 Q 300,296 310,304 Q 322,312 332,320 Q 344,330 354,338"
+      fill="none" stroke="#5A4A80" stroke-width="0.8" stroke-linecap="round" opacity="0.15"/>
+    <path d="M 302,294 Q 314,288 316,300 Q 316,308 306,306"
+      fill="none" stroke="#7060A0" stroke-width="0.6" opacity="0.18"/>
+    <path d="M 338,322 Q 350,316 352,328 Q 351,336 342,334"
+      fill="none" stroke="#7060A0" stroke-width="0.6" opacity="0.18"/>
+    <circle cx="316" cy="298" r="1.8" fill="#6B5A90" opacity="0.12"/>
+    <circle cx="352" cy="326" r="1.8" fill="#6B5A90" opacity="0.12"/>
+    <circle cx="332" cy="314" r="1.5" fill="#6B5A90" opacity="0.1"/>
+
+    <!-- Decorative curves beneath gem -->
+    <path d="M 234,280 Q 244,286 256,283 Q 268,280 278,285"
+      fill="none" stroke="#5A4A80" stroke-width="0.7" stroke-linecap="round" opacity="0.1"/>
+  </g>
+
+  <!-- ═══ 3D LAVENDER DIAMOND GEM (centered at 256,256) ═══ -->
+  <polygon points="256,221 291,256 256,291 221,256"
+    fill="#1A1028" filter="url(#gemDrop)" opacity="0.6"/>
+  <polygon points="256,221 291,256 256,291 221,256"
+    fill="url(#gemBase)" filter="url(#gemSoft)"/>
+
+  <!-- 4 quadrant faces -->
+  <polygon points="256,221 221,256 256,256" fill="url(#faceTopL)"/>
+  <polygon points="256,221 291,256 256,256" fill="url(#faceTopR)"/>
+  <polygon points="221,256 256,291 256,256" fill="url(#faceBotL)"/>
+  <polygon points="291,256 256,291 256,256" fill="url(#faceBotR)"/>
+
+  <!-- Straight facet lines -->
+  <line x1="256" y1="221" x2="256" y2="291" stroke="#3A2860" stroke-width="0.6" opacity="0.3"/>
+  <line x1="221" y1="256" x2="291" y2="256" stroke="#3A2860" stroke-width="0.6" opacity="0.3"/>
+  <line x1="239" y1="238" x2="273" y2="238" stroke="#4A3878" stroke-width="0.35" opacity="0.18"/>
+  <line x1="246" y1="247" x2="266" y2="247" stroke="#4A3878" stroke-width="0.3" opacity="0.14"/>
+  <line x1="246" y1="265" x2="266" y2="265" stroke="#2A1B48" stroke-width="0.3" opacity="0.16"/>
+  <line x1="239" y1="274" x2="273" y2="274" stroke="#2A1B48" stroke-width="0.35" opacity="0.2"/>
+  <line x1="238" y1="239" x2="238" y2="273" stroke="#4A3878" stroke-width="0.3" opacity="0.14"/>
+  <line x1="247" y1="246" x2="247" y2="266" stroke="#4A3878" stroke-width="0.25" opacity="0.1"/>
+  <line x1="274" y1="239" x2="274" y2="273" stroke="#3A2860" stroke-width="0.3" opacity="0.16"/>
+  <line x1="265" y1="246" x2="265" y2="266" stroke="#3A2860" stroke-width="0.25" opacity="0.12"/>
+
+  <!-- 3D highlights -->
+  <line x1="256" y1="222" x2="222" y2="256" stroke="#C8B8E0" stroke-width="0.7" opacity="0.14"/>
+  <line x1="257" y1="222" x2="290" y2="255" stroke="#A898C0" stroke-width="0.4" opacity="0.07"/>
+  <line x1="222" y1="257" x2="255" y2="290" stroke="#1A1028" stroke-width="0.5" opacity="0.15"/>
+  <line x1="257" y1="290" x2="290" y2="257" stroke="#1A1028" stroke-width="0.5" opacity="0.2"/>
+  <path d="M 240,238 L 254,238 L 254,254 L 240,254 Z" fill="#B8A8D0" opacity="0.05"/>
+  <circle cx="246" cy="240" r="1.5" fill="#D0C4E2" opacity="0.1"/>
+
+</svg>
