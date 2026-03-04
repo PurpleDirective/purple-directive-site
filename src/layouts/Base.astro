@@ -32,6 +32,7 @@ const fullTitle = title === "Home" ? "PurpleDirective" : `${title} — PurpleDir
         <li class="nav-divider"></li>
         <li><a href="https://chat.purpledirective.com" target="_blank" rel="noopener" class="nav-tool" title="AI Chat">Chat</a></li>
         <li><a href="https://dash.purpledirective.com" target="_blank" rel="noopener" class="nav-tool" title="Private Dashboard">Dash</a></li>
+        <li><button class="nav-tool bionic-btn" id="bionic-toggle" title="Bionic Reading: ON" aria-pressed="true">Aa</button></li>
       </ul>
     </div>
   </nav>
@@ -51,15 +52,92 @@ const fullTitle = title === "Home" ? "PurpleDirective" : `${title} — PurpleDir
   </footer>
 
   <script>
+    // Nav toggle
     const toggle = document.getElementById('nav-toggle');
     const links = document.getElementById('nav-links');
     toggle?.addEventListener('click', () => {
       const open = links?.classList.toggle('open');
       toggle.setAttribute('aria-expanded', String(!!open));
     });
-    // Close menu when any link is clicked (navigation or external)
     links?.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => links.classList.remove('open'));
+    });
+
+    // Bionic reading
+    const BIONIC_KEY = 'pd-bionic';
+    const SKIP_TAGS = new Set(['CODE', 'PRE', 'SCRIPT', 'STYLE', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'A', 'BUTTON']);
+    let originalHTML: string | null = null;
+
+    function bionicWord(word: string): string {
+      if (word.length <= 1) return word;
+      const mid = Math.ceil(word.length / 2);
+      return `<b>${word.slice(0, mid)}</b>${word.slice(mid)}`;
+    }
+
+    function hasSkipAncestor(node: Node, root: Node): boolean {
+      let el = node.parentElement;
+      while (el && el !== root) {
+        if (SKIP_TAGS.has(el.tagName)) return true;
+        el = el.parentElement;
+      }
+      return false;
+    }
+
+    function applyBionic(root: HTMLElement) {
+      if (!originalHTML) originalHTML = root.innerHTML;
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+      const textNodes: Text[] = [];
+      let n: Text | null;
+      while ((n = walker.nextNode() as Text | null)) {
+        if (n.textContent?.trim() && !hasSkipAncestor(n, root)) {
+          textNodes.push(n);
+        }
+      }
+      textNodes.forEach(node => {
+        const frag = document.createDocumentFragment();
+        node.textContent!.split(/(\s+)/).forEach(part => {
+          if (/^\s+$/.test(part)) {
+            frag.appendChild(document.createTextNode(part));
+          } else if (part) {
+            const span = document.createElement('span');
+            span.innerHTML = bionicWord(part);
+            frag.appendChild(span);
+          }
+        });
+        node.parentNode?.replaceChild(frag, node);
+      });
+    }
+
+    function removeBionic(root: HTMLElement) {
+      if (originalHTML !== null) root.innerHTML = originalHTML;
+    }
+
+    function setBionic(enabled: boolean) {
+      const main = document.querySelector('main') as HTMLElement | null;
+      const btn = document.getElementById('bionic-toggle') as HTMLButtonElement | null;
+      if (!main || !btn) return;
+      if (enabled) {
+        applyBionic(main);
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+        btn.title = 'Bionic Reading: ON';
+      } else {
+        removeBionic(main);
+        btn.classList.remove('active');
+        btn.setAttribute('aria-pressed', 'false');
+        btn.title = 'Bionic Reading: OFF';
+      }
+      localStorage.setItem(BIONIC_KEY, enabled ? '1' : '0');
+    }
+
+    // Init: default ON unless user explicitly turned it off
+    const saved = localStorage.getItem(BIONIC_KEY);
+    const startEnabled = saved !== '0';
+    setBionic(startEnabled);
+
+    document.getElementById('bionic-toggle')?.addEventListener('click', () => {
+      const current = localStorage.getItem(BIONIC_KEY) !== '0';
+      setBionic(!current);
     });
   </script>
 </body>
