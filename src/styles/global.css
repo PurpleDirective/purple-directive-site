@@ -139,6 +139,15 @@ nav .logo {
   font-weight: 700;
   color: var(--purple-primary);
   letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+nav .logo-mark {
+  width: 1.6rem;
+  height: auto;
+  flex-shrink: 0;
 }
 
 nav .logo span {

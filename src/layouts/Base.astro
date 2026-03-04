@@ -22,7 +22,18 @@ const fullTitle = title === "Home" ? "PurpleDirective" : `${title} — PurpleDir
 <body>
   <nav>
     <div class="container">
-      <a href="/" class="logo">purple<span>directive</span><em>violet</em></a>
+      <a href="/" class="logo">
+        <svg class="logo-mark" viewBox="0 0 100 120" aria-hidden="true">
+          <defs>
+            <linearGradient id="navGrad" x1="30%" y1="0%" x2="70%" y2="100%">
+              <stop offset="0%" stop-color="#b07ce8"/>
+              <stop offset="100%" stop-color="#7a4db5"/>
+            </linearGradient>
+          </defs>
+          <path d="M 26,96 L 26,16 C 26,6 76,6 76,50 C 76,80 58,94 44,87 C 33,80 30,70 36,62 C 40,55 50,53 56,53" fill="none" stroke="url(#navGrad)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        purple<span>directive</span><em>violet</em>
+      </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
       <ul class="links" id="nav-links">
         <li><a href="/projects" class:list={[{ active: activePage === "projects" }]}>Projects</a></li>
