@@ -7,7 +7,7 @@ const updateEntries = (await getCollection('updates')).sort(
 );
 
 const roadmap = [
-  { status: "live",       label: "purpledesk 24/7 server",           desc: "Dedicated always-on hardware running all web services" },
+  { status: "live",       label: "24/7 always-on node",               desc: "Dedicated always-on hardware running all web services" },
   { status: "active",     label: "PD logo — bubbly P/D monogram",    desc: "Custom mark where the outer curve reads P, inner hook reads D" },
   { status: "active",     label: "Public demo: try Violet",           desc: "Restricted local model letting visitors experience the agent personality" },
   { status: "planned",    label: "Purple Directive CLI v2",           desc: "Rewrite with native tool calling, faster plan/build cycle" },
@@ -127,49 +127,48 @@ const roadmap = [
   <section class="section">
     <div class="section-header">
       <h2>Infrastructure</h2>
-      <p>Sovereign hardware. No cloud vendor lock-in for compute. Everything connected over Tailscale mesh, exposed via Cloudflare Tunnel.</p>
+      <p>Sovereign hardware. No cloud vendor lock-in for compute. Encrypted mesh network, redundant edge tunnels.</p>
     </div>
     <div class="infra-grid">
       <div class="infra-node">
         <div class="infra-header">
           <span class="status-dot"></span>
-          <span class="infra-name">purpleroom</span>
-          <span class="infra-role">Compute</span>
+          <span class="infra-name">Compute Node</span>
+          <span class="infra-role">Inference + Training</span>
         </div>
         <div class="infra-chips">
-          <span class="infra-chip">Ollama 27B</span>
-          <span class="infra-chip">Dashboard</span>
-          <span class="infra-chip">SearXNG</span>
-          <span class="infra-chip">cloudflared ×4</span>
+          <span class="infra-chip">Local inference</span>
+          <span class="infra-chip">Fine-tuning</span>
+          <span class="infra-chip">Private search</span>
+          <span class="infra-chip">Tunnel endpoint</span>
         </div>
-        <span class="infra-hw">64GB RAM · Ubuntu Server</span>
+        <span class="infra-hw">Linux server · GPU accelerated</span>
       </div>
       <div class="infra-node">
         <div class="infra-header">
           <span class="status-dot"></span>
-          <span class="infra-name">purplecore</span>
-          <span class="infra-role">24/7 Always-On</span>
+          <span class="infra-name">Always-On Node</span>
+          <span class="infra-role">24/7 Services</span>
         </div>
         <div class="infra-chips">
-          <span class="infra-chip">Chat webui</span>
-          <span class="infra-chip">Landing page</span>
-          <span class="infra-chip">cloudflared ×4</span>
-          <span class="infra-chip">Watchdog</span>
+          <span class="infra-chip">Web services</span>
+          <span class="infra-chip">Tunnel endpoint</span>
+          <span class="infra-chip">Monitoring</span>
         </div>
-        <span class="infra-hw">i3 · Proxmox LXC · Ubuntu 24.04</span>
+        <span class="infra-hw">Low-power · always-on</span>
       </div>
       <div class="infra-node">
         <div class="infra-header">
           <span class="status-dot"></span>
-          <span class="infra-name">purplepi-1</span>
-          <span class="infra-role">Redundant Tunnel</span>
+          <span class="infra-name">Network Appliance</span>
+          <span class="infra-role">Edge + Redundancy</span>
         </div>
         <div class="infra-chips">
-          <span class="infra-chip">cloudflared ×4</span>
-          <span class="infra-chip">Uptime monitor</span>
-          <span class="infra-chip">Heals purpleroom</span>
+          <span class="infra-chip">DNS filtering</span>
+          <span class="infra-chip">VPN gateway</span>
+          <span class="infra-chip">Self-healing</span>
         </div>
-        <span class="infra-hw">Raspberry Pi 5 · Raspberry Pi OS</span>
+        <span class="infra-hw">ARM SBC · minimal footprint</span>
       </div>
       <div class="infra-node infra-cloud">
         <div class="infra-header">
@@ -178,7 +177,7 @@ const roadmap = [
           <span class="infra-role">Edge</span>
         </div>
         <div class="infra-chips">
-          <span class="infra-chip">12 HA connections</span>
+          <span class="infra-chip">HA tunnels</span>
           <span class="infra-chip">Zero Trust</span>
           <span class="infra-chip">Pages</span>
           <span class="infra-chip">SSL</span>
@@ -186,7 +185,7 @@ const roadmap = [
         <span class="infra-hw">Managed edge — $0/mo</span>
       </div>
     </div>
-    <p class="infra-note">All nodes connected via <strong>Tailscale</strong> mesh VPN. cloudflared runs on 3 independent nodes — the site stays live even if two fail simultaneously.</p>
+    <p class="infra-note">All nodes connected via encrypted mesh VPN. Redundant tunnel endpoints across multiple independent nodes ensure high availability.</p>
   </section>
 
   <!-- Updates Feed -->
