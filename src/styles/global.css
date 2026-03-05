@@ -800,6 +800,60 @@ footer .links a:hover {
   color: var(--text-secondary);
 }
 
+/* Bento grid — workflow (2/3) + dual runtime (1/3) side by side */
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--spacing-lg);
+  align-items: start;
+  margin: var(--spacing-lg) 0;
+}
+
+.bento-grid .section {
+  padding: 0;
+}
+
+.bento-grid .section-header {
+  margin-bottom: var(--spacing-md);
+}
+
+.bento-grid .workflow {
+  margin: 0;
+}
+
+.bento-grid .card-grid {
+  margin: 0;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+
+.bento-side {
+  position: sticky;
+  top: 5rem;
+}
+
+/* Split section — updates + roadmap side by side */
+
+.split-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  align-items: start;
+}
+
+.split-section .section {
+  padding: var(--spacing-xl) 0;
+}
+
+.split-section .updates-feed {
+  margin-bottom: var(--spacing-sm);
+}
+
+.split-section .roadmap {
+  margin-bottom: 0;
+}
+
 /* ============================================================
    Responsive — Mobile-first breakpoints
    xs: < 480px  (phones)
@@ -885,6 +939,18 @@ footer .links a:hover {
   .roadmap-item {
     flex-direction: column;
     gap: var(--spacing-sm);
+  }
+
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-side {
+    position: static;
+  }
+
+  .split-section {
+    grid-template-columns: 1fr;
   }
 
   footer {
