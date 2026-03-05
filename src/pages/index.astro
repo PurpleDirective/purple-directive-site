@@ -50,78 +50,81 @@ const roadmap = [
               └── Each with: directives, tools, identity, memory</div>
   </section>
 
-  <!-- Workflow -->
-  <section class="section">
-    <div class="section-header">
-      <h2>How a Task Moves Through the System</h2>
-    </div>
-    <div class="workflow">
-      <div class="workflow-step">
-        <div class="step-num">01</div>
-        <div class="step-body">
-          <h3>Task Arrives</h3>
-          <p>Human sends a request. Violet receives it and immediately classifies it — simple, complex, or administrative.</p>
+  <!-- Workflow + Dual Runtime (bento grid) -->
+  <div class="bento-grid">
+    <section class="section">
+      <div class="section-header">
+        <h2>How a Task Moves Through the System</h2>
+      </div>
+      <div class="workflow">
+        <div class="workflow-step">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <h3>Task Arrives</h3>
+            <p>Human sends a request. Violet receives it and immediately classifies it — simple, complex, or administrative.</p>
+          </div>
+        </div>
+        <div class="workflow-arrow">↓</div>
+        <div class="workflow-step">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <h3>Triage</h3>
+            <p><strong>Simple</strong> — routed directly to the relevant domain agent with context and expected output format.<br/>
+            <strong>Complex</strong> — escalated to the E.I.K. Advisory Council.<br/>
+            <strong>Admin</strong> — handled by Violet directly.</p>
+          </div>
+        </div>
+        <div class="workflow-arrow">↓</div>
+        <div class="workflow-step">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <h3>Deliberation <span class="step-tag">Complex tasks only</span></h3>
+            <p><strong>Round 1:</strong> All three advisory agents analyze independently — no coordination, no groupthink.<br/>
+            <strong>Round 2:</strong> Each agent reads the others' work and responds. Hard stop after Round 2.</p>
+          </div>
+        </div>
+        <div class="workflow-arrow">↓</div>
+        <div class="workflow-step">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <h3>Synthesis + Audit</h3>
+            <p>Violet synthesizes the result. Every output is audited against a 6-point checklist before it reaches the human. No unreviewed AI output goes out.</p>
+          </div>
+        </div>
+        <div class="workflow-arrow">↓</div>
+        <div class="workflow-step step-final">
+          <div class="step-num">05</div>
+          <div class="step-body">
+            <h3>Learn</h3>
+            <p>New corrections, decisions, and insights are written to shared memory. Valuable knowledge fragments are queued for human review and compiled into the local model's memory kernel.</p>
+          </div>
         </div>
       </div>
-      <div class="workflow-arrow">↓</div>
-      <div class="workflow-step">
-        <div class="step-num">02</div>
-        <div class="step-body">
-          <h3>Triage</h3>
-          <p><strong>Simple</strong> — routed directly to the relevant domain agent with context and expected output format.<br/>
-          <strong>Complex</strong> — escalated to the E.I.K. Advisory Council.<br/>
-          <strong>Admin</strong> — handled by Violet directly.</p>
-        </div>
-      </div>
-      <div class="workflow-arrow">↓</div>
-      <div class="workflow-step">
-        <div class="step-num">03</div>
-        <div class="step-body">
-          <h3>Deliberation <span class="step-tag">Complex tasks only</span></h3>
-          <p><strong>Round 1:</strong> All three advisory agents analyze independently — no coordination, no groupthink.<br/>
-          <strong>Round 2:</strong> Each agent reads the others' work and responds. Hard stop after Round 2.</p>
-        </div>
-      </div>
-      <div class="workflow-arrow">↓</div>
-      <div class="workflow-step">
-        <div class="step-num">04</div>
-        <div class="step-body">
-          <h3>Synthesis + Audit</h3>
-          <p>Violet synthesizes the result. Every output is audited against a 6-point checklist before it reaches the human. No unreviewed AI output goes out.</p>
-        </div>
-      </div>
-      <div class="workflow-arrow">↓</div>
-      <div class="workflow-step step-final">
-        <div class="step-num">05</div>
-        <div class="step-body">
-          <h3>Learn</h3>
-          <p>New corrections, decisions, and insights are written to shared memory. Valuable knowledge fragments are queued for human review and compiled into the local model's memory kernel.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Dual Runtime -->
-  <section class="section">
-    <div class="section-header">
-      <h2>Dual Runtime</h2>
-      <p>Violet runs on both cloud and local inference. The same agent identity, memory, and protocols — different compute.</p>
+    <div class="bento-side">
+      <section class="section">
+        <div class="section-header">
+          <h2>Dual Runtime</h2>
+          <p>Same identity, memory, and protocols — different compute.</p>
+        </div>
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-label">Cloud</div>
+            <h3>Claude via Claude Code</h3>
+            <p>Full agent identities, multi-agent deliberation, complex analysis, MCP tool integration. Frontier-model reasoning with structured orchestration on top.</p>
+            <span class="tag">Anthropic Claude</span>
+          </div>
+          <div class="card">
+            <div class="card-label">Local</div>
+            <h3>Ollama via Purple CLI</h3>
+            <p>Condensed identities (&lt;2K tokens), MCP tool support, offline-capable sovereign inference. Learns from cloud sessions without retraining — through the memory kernel.</p>
+            <span class="tag">Purple-Directive: CLI</span>
+          </div>
+        </div>
+      </section>
     </div>
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-label">Cloud</div>
-        <h3>Claude via Claude Code</h3>
-        <p>Full agent identities, multi-agent deliberation, complex analysis, MCP tool integration. Frontier-model reasoning with structured orchestration on top.</p>
-        <span class="tag">Anthropic Claude</span>
-      </div>
-      <div class="card">
-        <div class="card-label">Local</div>
-        <h3>Ollama via Purple CLI</h3>
-        <p>Condensed identities (&lt;2K tokens), MCP tool support, offline-capable sovereign inference. Learns from cloud sessions without retraining — through the memory kernel.</p>
-        <span class="tag">Purple-Directive: CLI</span>
-      </div>
-    </div>
-  </section>
+  </div>
 
   <!-- Infrastructure -->
   <section class="section">
@@ -188,49 +191,50 @@ const roadmap = [
     <p class="infra-note">All nodes connected via encrypted mesh VPN. Redundant tunnel endpoints across multiple independent nodes ensure high availability.</p>
   </section>
 
-  <!-- Updates Feed -->
-  <section class="section">
-    <div class="section-header">
-      <h2>Recent Updates</h2>
-      <p>What's actually been built, in order. Not a roadmap — a log.</p>
-    </div>
-    <div class="updates-feed">
-      {updateEntries.map((u) => (
-        <div class="update-entry">
-          <div class="update-meta">
-            <span class="update-date">{u.data.date.toISOString().split('T')[0]}</span>
-            <span class={`update-tag tag-${u.data.tagColor}`}>{u.data.tag}</span>
+  <!-- Updates + Roadmap (split section) -->
+  <div class="split-section">
+    <section class="section">
+      <div class="section-header">
+        <h2>Recent Updates</h2>
+        <p>What's actually been built, in order.</p>
+      </div>
+      <div class="updates-feed">
+        {updateEntries.map((u) => (
+          <div class="update-entry">
+            <div class="update-meta">
+              <span class="update-date">{u.data.date.toISOString().split('T')[0]}</span>
+              <span class={`update-tag tag-${u.data.tagColor}`}>{u.data.tag}</span>
+            </div>
+            <div class="update-body">
+              <h3 class="update-title">{u.data.title}</h3>
+              <p class="update-desc">{u.data.desc}</p>
+            </div>
           </div>
-          <div class="update-body">
-            <h3 class="update-title">{u.data.title}</h3>
-            <p class="update-desc">{u.data.desc}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-    <a href="/blog" class="updates-more">All posts and updates &rarr;</a>
-  </section>
+        ))}
+      </div>
+      <a href="/blog" class="updates-more">All posts and updates &rarr;</a>
+    </section>
 
-  <!-- Roadmap -->
-  <section class="section">
-    <div class="section-header">
-      <h2>What's Next</h2>
-      <p>Active work and planned improvements.</p>
-    </div>
-    <div class="roadmap">
-      {roadmap.map((item) => (
-        <div class="roadmap-item">
-          <span class={`roadmap-status status-${item.status}`}>
-            {item.status === "live" ? "live" : item.status === "active" ? "in progress" : "planned"}
-          </span>
-          <div class="roadmap-body">
-            <span class="roadmap-label">{item.label}</span>
-            <span class="roadmap-desc">{item.desc}</span>
+    <section class="section">
+      <div class="section-header">
+        <h2>What's Next</h2>
+        <p>Active work and planned improvements.</p>
+      </div>
+      <div class="roadmap">
+        {roadmap.map((item) => (
+          <div class="roadmap-item">
+            <span class={`roadmap-status status-${item.status}`}>
+              {item.status === "live" ? "live" : item.status === "active" ? "in progress" : "planned"}
+            </span>
+            <div class="roadmap-body">
+              <span class="roadmap-label">{item.label}</span>
+              <span class="roadmap-desc">{item.desc}</span>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
-  </section>
+        ))}
+      </div>
+    </section>
+  </div>
 
   <!-- Open Source -->
   <section class="section">
