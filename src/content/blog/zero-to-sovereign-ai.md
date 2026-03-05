@@ -61,17 +61,17 @@ The principle behind this came from a real failure. Early on, I had the system a
 
 ## Dual Runtime: Cloud and Local
 
-Claude Code is the cloud runtime — full context, full reasoning, complex analysis and deliberation. Local inference runs on an RTX 5090 via Ollama, the Purple-Directive CLI, and an MCP server that connects it to the memory kernel and tool layer.
+Claude Code is the cloud runtime — full context, full reasoning, complex analysis and deliberation. Local inference runs on a consumer GPU via Ollama, the Purple-Directive CLI, and an MCP server that connects it to the memory kernel and tool layer.
 
 The goal is a system that operates meaningfully offline. Not offline because the cloud is down, but offline by choice — sovereign, not dependent. The local runtime gets smarter via the teaching pipeline. Cloud sessions compile knowledge that local sessions consume. Same agents, same principles, different context density. The local profiles are compressed versions of the cloud identities — same cognitive style, under 2K tokens.
 
-I'm currently working on QLoRA fine-tuning on the 5090. Domain LoRA adapters over a shared base model, one per operational agent, served via vLLM multi-LoRA. The architecture is ready. Fine-tuning starts when I hit enough curated training examples.
+I'm currently working on QLoRA fine-tuning on the local GPU. Domain LoRA adapters over a shared base model, one per operational agent, served via vLLM multi-LoRA. The architecture is ready. Fine-tuning starts when I hit enough curated training examples.
 
 ## The Homelab
 
-A Raspberry Pi runs the network layer: DNS sinkhole via Pi-hole, VPN gateway, Wireguard. Cloudflare handles DNS, tunnels, and Access (authentication for private tools). The Pi is a network appliance — it never runs inference, it never stores sensitive data.
+A low-power ARM device runs the network layer: DNS filtering, VPN gateway, encrypted tunneling. Cloudflare handles DNS, tunnels, and Access (authentication for private tools). The network appliance never runs inference, never stores sensitive data.
 
-The purpleroom machine runs the RTX 5090 for inference and is the target for fine-tuning runs. Cloudflare Tunnel means I can reach private tools from anywhere without exposing ports. Cloudflare Access means those tools require authentication before the request ever hits the server.
+A separate compute node handles GPU inference and is the target for fine-tuning runs. Cloudflare Tunnel means I can reach private tools from anywhere without exposing ports. Cloudflare Access means those tools require authentication before the request ever hits the server.
 
 This setup cost real time to get right. The service dependency ordering on the Pi alone required three debugging sessions. Getting Cloudflare Access to play nicely with Astro's static site took more than it should. The details are what perfect the product — and the details are frequently annoying.
 
@@ -83,7 +83,7 @@ Auto-approving teaching fragments. Covered above.
 
 Building features before the foundation is solid. I spent time on operational agent tooling before the memory kernel was stable, and those agents kept hitting edge cases that better memory architecture would have prevented. I rebuilt from the bottom twice before it held.
 
-Running too many MCP tools simultaneously. At around 28 tools, you burn roughly 4,300 tokens on tool descriptions before the conversation starts. I cut to 17. The practical ceiling with a 64K context budget is about 15 active tools.
+Running too many MCP tools simultaneously. Tool descriptions consume context tokens before the conversation even starts. I cut the tool count significantly. The practical ceiling depends on your model's context budget, but fewer focused tools beats many broad ones.
 
 ## What's Next
 
