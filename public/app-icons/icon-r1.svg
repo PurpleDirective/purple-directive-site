@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!--
+    R1: PD rotated to match physical object — horizontal orientation.
+    Original path rotated 90° clockwise: stem now at bottom (horizontal),
+    bowl curves upward. No gem. Let the mark breathe.
+    V1 coloring: near-black bg, indigo PD, purple highlight.
+  -->
+  <defs>
+    <radialGradient id="r1_bg" cx="50%" cy="50%" r="60%">
+      <stop offset="0%"   style="stop-color:#1E0E42;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#060410;stop-opacity:1"/>
+    </radialGradient>
+    <filter id="r1_glow">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1024" height="1024" fill="url(#r1_bg)" rx="160"/>
+
+  <!--
+    Original path (scaled 8x, centered at 512,512):
+    M 312,832 L 312,192
+    C 312,112 712,112 712,464
+    C 712,704 568,816 456,760
+    C 368,704 344,624 392,560
+    C 424,504 504,488 552,488
+
+    Rotated 90° CW around (512,512): (x,y) → (512+(y-512), 512-(x-512)) = (y, 1024-x)
+  -->
+
+  <!-- PD — outer dark body (indigo base) -->
+  <g transform="rotate(90, 512, 512)">
+    <path
+      d="M 312,832 L 312,192
+         C 312,112 712,112 712,464
+         C 712,704 568,816 456,760
+         C 368,704 344,624 392,560
+         C 424,504 504,488 552,488"
+      fill="none"
+      stroke="#2C1C72"
+      stroke-width="90"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      opacity="0.85"
+    />
+    <!-- Mid violet layer -->
+    <path
+      d="M 312,832 L 312,192
+         C 312,112 712,112 712,464
+         C 712,704 568,816 456,760
+         C 368,704 344,624 392,560
+         C 424,504 504,488 552,488"
+      fill="none"
+      stroke="#5030A8"
+      stroke-width="40"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      opacity="0.40"
+      filter="url(#r1_glow)"
+    />
+    <!-- Inner highlight edge -->
+    <path
+      d="M 312,832 L 312,192
+         C 312,112 712,112 712,464
+         C 712,704 568,816 456,760
+         C 368,704 344,624 392,560
+         C 424,504 504,488 552,488"
+      fill="none"
+      stroke="#9060D0"
+      stroke-width="14"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      opacity="0.30"
+    />
+    <!-- Hairline specular -->
+    <path
+      d="M 312,832 L 312,192
+         C 312,112 712,112 712,464
+         C 712,704 568,816 456,760
+         C 368,704 344,624 392,560
+         C 424,504 504,488 552,488"
+      fill="none"
+      stroke="#C090F0"
+      stroke-width="5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      opacity="0.18"
+    />
+  </g>
+</svg>

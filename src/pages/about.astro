@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { social } from '../data/social';
 ---
 
 <Base title="About" activePage="about" description="The story behind PurpleDirective — building a sovereign AI system from scratch.">
@@ -69,8 +70,9 @@ import Base from '../layouts/Base.astro';
     <h2>Connect</h2>
 
     <ul>
-      <li><a href="https://github.com/PurpleDirective" target="_blank" rel="noopener">GitHub</a> — All repositories</li>
-      <li><a href="https://www.reddit.com/user/PurpleDirectiveEIK/" target="_blank" rel="noopener">Reddit</a> — Discussion and updates</li>
+      <li><a href={social.x.url} target="_blank" rel="noopener">X / Twitter</a> — {social.x.handle}</li>
+      <li><a href={social.reddit.url} target="_blank" rel="noopener">Reddit</a> — {social.reddit.handle}</li>
+      <li><a href={social.github.url} target="_blank" rel="noopener">GitHub</a> — All repositories</li>
     </ul>
   </section>
 </Base>

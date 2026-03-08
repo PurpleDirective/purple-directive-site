@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#0d0620"/>
+      <stop offset="100%" stop-color="#160830"/>
+    </linearGradient>
+    <linearGradient id="strokeGrad" x1="30%" y1="0%" x2="70%" y2="100%">
+      <stop offset="0%"   stop-color="#1a0a2e"/>
+      <stop offset="100%" stop-color="#2d1554"/>
+    </linearGradient>
+    <!-- Subtle glow around the stroke -->
+    <filter id="strokeGlow">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <!-- Background vignette glow -->
+    <radialGradient id="bgGlow" cx="50%" cy="48%" r="50%">
+      <stop offset="0%"   style="stop-color:#4A2890;stop-opacity:0.20"/>
+      <stop offset="100%" style="stop-color:#06040C;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1024" height="1024" fill="url(#bgGrad)" rx="160"/>
+  <!-- Subtle center glow -->
+  <circle cx="512" cy="490" r="380" fill="url(#bgGlow)"/>
+
+  <!--
+    PD monogram — single continuous stroke
+    Original path in 100×120 viewBox scaled to fit ~650px tall in 1024×1024 square
+    Original coords: M 26,96 → M 187,750 (scaled ×6.25, centered at 512)
+    X offset: 512 - (26+56)/2 * 6.25 = 512 - 256 = 256 approx
+    Scaling factor: ~6.5x to fill nicely
+  -->
+
+  <!-- Outer stroke — dark base (thick, gives depth) -->
+  <path
+    d="
+      M 281,754
+      L 281,154
+      C 281,74 781,74 781,414
+      C 781,594 613,714 469,647
+      C 358,590 325,500 391,432
+      C 435,385 535,369 591,369
+    "
+    fill="none"
+    stroke="url(#strokeGrad)"
+    stroke-width="95"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Glow layer — extends the purple depth -->
+  <path
+    d="
+      M 281,754
+      L 281,154
+      C 281,74 781,74 781,414
+      C 781,594 613,714 469,647
+      C 358,590 325,500 391,432
+      C 435,385 535,369 591,369
+    "
+    fill="none"
+    stroke="#5a2ab0"
+    stroke-width="40"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.25"
+    filter="url(#strokeGlow)"
+  />
+
+  <!-- Inner stroke — bright purple overlay -->
+  <path
+    d="
+      M 281,754
+      L 281,154
+      C 281,74 781,74 781,414
+      C 781,594 613,714 469,647
+      C 358,590 325,500 391,432
+      C 435,385 535,369 591,369
+    "
+    fill="none"
+    stroke="#9060d0"
+    stroke-width="30"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.65"
+  />
+
+  <!-- Highlight edge — brightest inner line -->
+  <path
+    d="
+      M 281,754
+      L 281,154
+      C 281,74 781,74 781,414
+      C 781,594 613,714 469,647
+      C 358,590 325,500 391,432
+      C 435,385 535,369 591,369
+    "
+    fill="none"
+    stroke="#c090f0"
+    stroke-width="8"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.35"
+  />
+</svg>

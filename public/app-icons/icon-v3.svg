@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!--
+    V3: PD monogram indigo, large and bold (~60% opacity) — both layers clearly visible
+        Gem smaller and centered where the P hook meets the stem — compositionally intentional
+        The PD is not a ghost here, it IS the backdrop. Gem sits in the negative space of the D.
+        Warm purple background instead of cold black.
+  -->
+  <defs>
+    <!-- Gem -->
+    <radialGradient id="g3_gemBase" cx="38%" cy="30%" r="68%" fx="34%" fy="26%">
+      <stop offset="0%"   style="stop-color:#E0D4F8;stop-opacity:0.99"/>
+      <stop offset="12%"  style="stop-color:#C0AEED;stop-opacity:0.98"/>
+      <stop offset="40%"  style="stop-color:#9278C8"/>
+      <stop offset="70%"  style="stop-color:#6858A8"/>
+      <stop offset="100%" style="stop-color:#3E2A78"/>
+    </radialGradient>
+    <linearGradient id="g3_ftl" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#EAE0FF;stop-opacity:0.60"/>
+      <stop offset="100%" style="stop-color:#A090D0;stop-opacity:0.04"/>
+    </linearGradient>
+    <linearGradient id="g3_ftr" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   style="stop-color:#C8B8E8;stop-opacity:0.32"/>
+      <stop offset="100%" style="stop-color:#8070C0;stop-opacity:0.04"/>
+    </linearGradient>
+    <linearGradient id="g3_fbl" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%"   style="stop-color:#221240;stop-opacity:0.58"/>
+      <stop offset="100%" style="stop-color:#6858A0;stop-opacity:0.04"/>
+    </linearGradient>
+    <linearGradient id="g3_fbr" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%"   style="stop-color:#160C30;stop-opacity:0.68"/>
+      <stop offset="100%" style="stop-color:#563C88;stop-opacity:0.06"/>
+    </linearGradient>
+    <!-- Warm purple background -->
+    <radialGradient id="g3_bg" cx="42%" cy="40%" r="65%">
+      <stop offset="0%"   style="stop-color:#22104A;stop-opacity:1"/>
+      <stop offset="60%"  style="stop-color:#120830;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#080418;stop-opacity:1"/>
+    </radialGradient>
+    <!-- Gem drop shadow — warmer -->
+    <filter id="g3_gemShadow">
+      <feDropShadow dx="0" dy="5" stdDeviation="16" flood-color="#140830" flood-opacity="0.85"/>
+    </filter>
+    <filter id="g3_gemGlow">
+      <feGaussianBlur stdDeviation="7" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <!-- PD soft glow filter -->
+    <filter id="g3_pdSoft">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <!-- Gem glow ring -->
+    <radialGradient id="g3_halo" cx="50%" cy="50%" r="50%">
+      <stop offset="55%"  style="stop-color:#8060C0;stop-opacity:0"/>
+      <stop offset="82%"  style="stop-color:#8060C0;stop-opacity:0.18"/>
+      <stop offset="100%" style="stop-color:#8060C0;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background — warmer deep purple -->
+  <rect width="1024" height="1024" fill="url(#g3_bg)" rx="160"/>
+
+  <!-- PD Monogram — indigo body, 60% opacity, clearly a design layer -->
+  <!-- Wide dark body gives physical weight -->
+  <path
+    d="M 281,754 L 281,154 C 281,74 781,74 781,414 C 781,594 613,714 469,647 C 358,590 325,500 391,432 C 435,385 535,369 591,369"
+    fill="none"
+    stroke="#2A1870"
+    stroke-width="100"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.60"
+  />
+  <!-- Mid violet layer — lighter than the base, defines the stroke face -->
+  <path
+    d="M 281,754 L 281,154 C 281,74 781,74 781,414 C 781,594 613,714 469,647 C 358,590 325,500 391,432 C 435,385 535,369 591,369"
+    fill="none"
+    stroke="#5030A0"
+    stroke-width="55"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.45"
+    filter="url(#g3_pdSoft)"
+  />
+  <!-- Bright inner edge — the "live" surface of the stroke -->
+  <path
+    d="M 281,754 L 281,154 C 281,74 781,74 781,414 C 781,594 613,714 469,647 C 358,590 325,500 391,432 C 435,385 535,369 591,369"
+    fill="none"
+    stroke="#9060D8"
+    stroke-width="14"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.38"
+  />
+  <!-- Highlight edge hairline -->
+  <path
+    d="M 281,754 L 281,154 C 281,74 781,74 781,414 C 781,594 613,714 469,647 C 358,590 325,500 391,432 C 435,385 535,369 591,369"
+    fill="none"
+    stroke="#C8A0F0"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.22"
+  />
+
+  <!-- Gem halo -->
+  <circle cx="512" cy="512" r="175" fill="url(#g3_halo)"/>
+
+  <!-- Gem shadow -->
+  <polygon points="512,392 632,512 512,632 392,512"
+    fill="#100820" filter="url(#g3_gemShadow)" opacity="0.9"/>
+
+  <!-- Gem — 120px radius (smaller, centered in the D negative space) -->
+  <polygon points="512,392 632,512 512,632 392,512"
+    fill="url(#g3_gemBase)" filter="url(#g3_gemGlow)"/>
+
+  <!-- 4 faces -->
+  <polygon points="512,392 392,512 512,512" fill="url(#g3_ftl)"/>
+  <polygon points="512,392 632,512 512,512" fill="url(#g3_ftr)"/>
+  <polygon points="392,512 512,632 512,512" fill="url(#g3_fbl)"/>
+  <polygon points="632,512 512,632 512,512" fill="url(#g3_fbr)"/>
+
+  <!-- Facet cross -->
+  <line x1="512" y1="392" x2="512" y2="632" stroke="#3A2068" stroke-width="1.2" opacity="0.42"/>
+  <line x1="392" y1="512" x2="632" y2="512" stroke="#3A2068" stroke-width="1.2" opacity="0.42"/>
+
+  <!-- Secondary facets -->
+  <line x1="468" y1="436" x2="556" y2="436" stroke="#5A3890" stroke-width="0.8" opacity="0.20"/>
+  <line x1="468" y1="588" x2="556" y2="588" stroke="#2A1848" stroke-width="0.8" opacity="0.24"/>
+  <line x1="436" y1="468" x2="436" y2="556" stroke="#5A3890" stroke-width="0.8" opacity="0.18"/>
+  <line x1="588" y1="468" x2="588" y2="556" stroke="#2A1848" stroke-width="0.8" opacity="0.22"/>
+
+  <!-- Highlights -->
+  <line x1="512" y1="394" x2="394" y2="512" stroke="#E8D8FF" stroke-width="1.8" opacity="0.25"/>
+  <line x1="512" y1="630" x2="630" y2="512" stroke="#100820" stroke-width="1.5" opacity="0.32"/>
+  <circle cx="438" cy="438" r="5.5" fill="#F4ECFF" opacity="0.26"/>
+  <circle cx="452" cy="445" r="2.2" fill="#FFFFFF" opacity="0.28"/>
+</svg>

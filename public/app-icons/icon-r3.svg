@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!--
+    R3: Physical emboss traced faithfully as a continuous stroke.
+    The stroke goes: enter from right → outer loop counterclockwise (large) →
+    cross back right → inner loop clockwise (small, the D counter) → exit right.
+    The self-crossing at the right side is visible (like the physical stamp).
+    Horizontal orientation. Small gem top-right.
+    V1 coloring.
+  -->
+  <defs>
+    <radialGradient id="r3_bg" cx="48%" cy="50%" r="62%">
+      <stop offset="0%"   style="stop-color:#1C0E40;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#060410;stop-opacity:1"/>
+    </radialGradient>
+    <filter id="r3_glow">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <!-- Gem -->
+    <radialGradient id="r3_gem" cx="40%" cy="32%" r="65%">
+      <stop offset="0%"   style="stop-color:#D4C4EC;stop-opacity:0.98"/>
+      <stop offset="40%"  style="stop-color:#8870B8"/>
+      <stop offset="100%" style="stop-color:#3C2870"/>
+    </radialGradient>
+    <linearGradient id="r3_gtl" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E0D0F8;stop-opacity:0.55"/>
+      <stop offset="100%" style="stop-color:#9880C8;stop-opacity:0.05"/>
+    </linearGradient>
+    <linearGradient id="r3_gbr" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#140A28;stop-opacity:0.65"/>
+      <stop offset="100%" style="stop-color:#503880;stop-opacity:0.08"/>
+    </linearGradient>
+    <filter id="r3_gemGlow">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1024" height="1024" fill="url(#r3_bg)" rx="160"/>
+
+  <!--
+    Continuous stroke PD — single open path traces both loops.
+    Layout: centered at (490, 530)
+    Outer teardrop: ~560×360, left-heavy (round left, narrow right)
+    Inner oval: ~190×130, sits right-center of outer loop
+    The path "crosses" itself on the right side where outer meets inner.
+  -->
+
+  <!-- PD outer body (dark indigo base) -->
+  <path
+    d="
+      M 790,530
+      C 778,430 684,358 568,348
+      C 430,336 248,404 224,530
+      C 200,656 366,726 498,726
+      C 622,726 738,662 778,570
+      C 790,542 790,530 790,530
+
+      C 785,512 764,474 728,462
+      C 695,450 654,455 626,470
+      C 588,490 568,518 572,548
+      C 576,578 604,598 640,602
+      C 676,606 714,592 740,570
+      C 762,550 778,534 790,530
+    "
+    fill="none"
+    stroke="#2A1870"
+    stroke-width="80"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.88"
+  />
+
+  <!-- Mid violet layer with glow -->
+  <path
+    d="
+      M 790,530
+      C 778,430 684,358 568,348
+      C 430,336 248,404 224,530
+      C 200,656 366,726 498,726
+      C 622,726 738,662 778,570
+      C 790,542 790,530 790,530
+
+      C 785,512 764,474 728,462
+      C 695,450 654,455 626,470
+      C 588,490 568,518 572,548
+      C 576,578 604,598 640,602
+      C 676,606 714,592 740,570
+      C 762,550 778,534 790,530
+    "
+    fill="none"
+    stroke="#5030A0"
+    stroke-width="36"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.38"
+    filter="url(#r3_glow)"
+  />
+
+  <!-- Bright inner edge -->
+  <path
+    d="
+      M 790,530
+      C 778,430 684,358 568,348
+      C 430,336 248,404 224,530
+      C 200,656 366,726 498,726
+      C 622,726 738,662 778,570
+      C 790,542 790,530 790,530
+
+      C 785,512 764,474 728,462
+      C 695,450 654,455 626,470
+      C 588,490 568,518 572,548
+      C 576,578 604,598 640,602
+      C 676,606 714,592 740,570
+      C 762,550 778,534 790,530
+    "
+    fill="none"
+    stroke="#8858CC"
+    stroke-width="12"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.30"
+  />
+
+  <!-- Hairline specular -->
+  <path
+    d="
+      M 790,530
+      C 778,430 684,358 568,348
+      C 430,336 248,404 224,530
+      C 200,656 366,726 498,726
+      C 622,726 738,662 778,570
+      C 790,542 790,530 790,530
+
+      C 785,512 764,474 728,462
+      C 695,450 654,455 626,470
+      C 588,490 568,518 572,548
+      C 576,578 604,598 640,602
+      C 676,606 714,592 740,570
+      C 762,550 778,534 790,530
+    "
+    fill="none"
+    stroke="#C090F0"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.18"
+  />
+
+  <!-- Small gem — top-right corner accent -->
+  <polygon points="840,184 880,224 840,264 800,224"
+    fill="url(#r3_gem)" filter="url(#r3_gemGlow)"/>
+  <polygon points="840,184 800,224 840,224" fill="url(#r3_gtl)"/>
+  <polygon points="880,224 840,264 840,224" fill="url(#r3_gbr)"/>
+  <line x1="840" y1="185" x2="840" y2="263" stroke="#3A2060" stroke-width="0.8" opacity="0.35"/>
+  <line x1="801" y1="224" x2="879" y2="224" stroke="#3A2060" stroke-width="0.8" opacity="0.35"/>
+  <line x1="840" y1="186" x2="802" y2="224" stroke="#E0D0F8" stroke-width="1.0" opacity="0.22"/>
+</svg>

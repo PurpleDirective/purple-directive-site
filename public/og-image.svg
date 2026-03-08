@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06040C"/>
+      <stop offset="40%" stop-color="#0a0a0f"/>
+      <stop offset="100%" stop-color="#0e0a18"/>
+    </linearGradient>
+    <radialGradient id="glowCenter" cx="50%" cy="45%" r="40%">
+      <stop offset="0%" stop-color="#2d1554" stop-opacity="0.30"/>
+      <stop offset="60%" stop-color="#1a0a2e" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#0a0a0f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="strokeGrad" x1="30%" y1="0%" x2="70%" y2="100%">
+      <stop offset="0%" stop-color="#b07ce8"/>
+      <stop offset="100%" stop-color="#7a4db5"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  <rect width="1200" height="630" fill="url(#glowCenter)"/>
+
+  <!-- Subtle hex grid -->
+  <g opacity="0.04" stroke="#9b72cf" stroke-width="0.5" fill="none">
+    <polygon points="100,80 140,57 180,80 180,126 140,149 100,126"/>
+    <polygon points="180,80 220,57 260,80 260,126 220,149 180,126"/>
+    <polygon points="140,149 180,126 220,149 220,195 180,218 140,195"/>
+    <polygon points="1020,430 1060,407 1100,430 1100,476 1060,499 1020,476"/>
+    <polygon points="1100,430 1140,407 1180,430 1180,476 1140,499 1100,476"/>
+    <polygon points="1060,499 1100,476 1140,499 1140,545 1100,568 1060,545"/>
+  </g>
+
+  <!-- PD Monogram — centered -->
+  <g transform="translate(480, 140) scale(2.5)">
+    <path
+      d="M 26,96 L 26,16 C 26,6 76,6 76,50 C 76,80 58,94 44,87 C 33,80 30,70 36,62 C 40,55 50,53 56,53"
+      fill="none" stroke="url(#strokeGrad)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"
+    />
+  </g>
+
+  <!-- Title -->
+  <text x="600" y="460" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="52" font-weight="700" fill="#e0e0e8" text-anchor="middle" letter-spacing="-0.02em">
+    Purple<tspan fill="#9b72cf">Directive</tspan>
+  </text>
+
+  <!-- Tagline -->
+  <text x="600" y="505" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="16" fill="#8888a0" text-anchor="middle">
+    Sovereign AI Agent Organization
+  </text>
+
+  <!-- Bottom line -->
+  <text x="600" y="580" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="13" fill="#555570" text-anchor="middle" letter-spacing="0.08em">
+    KEEP EVOLVING · KEEP IMPROVING · KEEP KEEN
+  </text>
+</svg>

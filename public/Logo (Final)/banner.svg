@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 500" width="1500" height="500">
+  <!--
+    PurpleDirective — Social Banner
+    X/Twitter: 1500x500, Reddit: 1920x384 (crops well from this)
+    Dark bg, PD monogram left, text center-right, subtle hex pattern
+  -->
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06040C"/>
+      <stop offset="40%" stop-color="#0a0a0f"/>
+      <stop offset="100%" stop-color="#0e0a18"/>
+    </linearGradient>
+    <radialGradient id="glowLeft" cx="22%" cy="50%" r="30%">
+      <stop offset="0%" stop-color="#2d1554" stop-opacity="0.35"/>
+      <stop offset="60%" stop-color="#1a0a2e" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#0a0a0f" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowRight" cx="85%" cy="50%" r="25%">
+      <stop offset="0%" stop-color="#1a0a2e" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#0a0a0f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="strokeGrad" x1="30%" y1="0%" x2="70%" y2="100%">
+      <stop offset="0%" stop-color="#1a0a2e"/>
+      <stop offset="100%" stop-color="#2d1554"/>
+    </linearGradient>
+    <linearGradient id="lineGrad" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#9b72cf" stop-opacity="0"/>
+      <stop offset="15%" stop-color="#9b72cf" stop-opacity="0.25"/>
+      <stop offset="50%" stop-color="#9b72cf" stop-opacity="0.08"/>
+      <stop offset="85%" stop-color="#9b72cf" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#9b72cf" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1500" height="500" fill="url(#bgGrad)"/>
+  <rect width="1500" height="500" fill="url(#glowLeft)"/>
+  <rect width="1500" height="500" fill="url(#glowRight)"/>
+
+  <!-- Subtle hex grid pattern in background -->
+  <g opacity="0.04" stroke="#9b72cf" stroke-width="0.5" fill="none">
+    <polygon points="100,80 140,57 180,80 180,126 140,149 100,126"/>
+    <polygon points="180,80 220,57 260,80 260,126 220,149 180,126"/>
+    <polygon points="140,149 180,126 220,149 220,195 180,218 140,195"/>
+    <polygon points="60,149 100,126 140,149 140,195 100,218 60,195"/>
+    <polygon points="220,149 260,126 300,149 300,195 260,218 220,195"/>
+    <polygon points="100,218 140,195 180,218 180,264 140,287 100,264"/>
+    <polygon points="180,218 220,195 260,218 260,264 220,287 180,264"/>
+    <polygon points="260,80 300,57 340,80 340,126 300,149 260,126"/>
+    <polygon points="300,149 340,126 380,149 380,195 340,218 300,195"/>
+    <polygon points="260,218 300,195 340,218 340,264 300,287 260,264"/>
+    <polygon points="140,287 180,264 220,287 220,333 180,356 140,333"/>
+    <polygon points="220,287 260,264 300,287 300,333 260,356 220,333"/>
+    <polygon points="60,287 100,264 140,287 140,333 100,356 60,333"/>
+    <polygon points="300,287 340,264 380,287 380,333 340,356 300,333"/>
+    <polygon points="180,356 220,333 260,356 260,402 220,425 180,402"/>
+    <polygon points="100,356 140,333 180,356 180,402 140,425 100,402"/>
+    <polygon points="340,218 380,195 420,218 420,264 380,287 340,264"/>
+  </g>
+
+  <!-- PD Monogram — left side, vertically centered -->
+  <g transform="translate(200, 118) scale(2.2)">
+    <path
+      d="
+        M 26,96
+        L 26,16
+        C 26,6 76,6 76,50
+        C 76,80 58,94 44,87
+        C 33,80 30,70 36,62
+        C 40,55 50,53 56,53
+      "
+      fill="none"
+      stroke="url(#strokeGrad)"
+      stroke-width="13"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="
+        M 26,96
+        L 26,16
+        C 26,6 76,6 76,50
+        C 76,80 58,94 44,87
+        C 33,80 30,70 36,62
+        C 40,55 50,53 56,53
+      "
+      fill="none"
+      stroke="#7a4db5"
+      stroke-width="5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      opacity="0.7"
+    />
+  </g>
+
+  <!-- Horizontal divider line -->
+  <line x1="0" y1="420" x2="1500" y2="420" stroke="url(#lineGrad)" stroke-width="1"/>
+
+  <!-- Top right — handles and links -->
+  <text x="1460" y="42" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="13" fill="#555570" text-anchor="end">
+    @TyrianMurex · u/TyrianMurex · github.com/PurpleDirective
+  </text>
+  <text x="1460" y="64" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="12" fill="#3a3a5a" text-anchor="end">
+    purpledirective.com
+  </text>
+
+  <!-- Title — center right -->
+  <text x="620" y="220" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="56" font-weight="700" fill="#e0e0e8" letter-spacing="-0.02em">
+    Purple<tspan fill="#9b72cf">Directive</tspan>
+  </text>
+
+  <!-- Motto — directly under title -->
+  <text x="622" y="272" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="16" fill="#555570" letter-spacing="0.12em">
+    KEEP EVOLVING · KEEP IMPROVING · KEEP KEEN
+  </text>
+
+  <!-- Bottom left — official marks -->
+  <text x="40" y="468" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#3a3a5a">
+    © 2026 PurpleDirective. All rights reserved.
+  </text>
+  <text x="40" y="486" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="10" fill="#2a2a3a">
+    Purple Directive™ is a registered trademark of Tyrian Murex.
+  </text>
+</svg>
