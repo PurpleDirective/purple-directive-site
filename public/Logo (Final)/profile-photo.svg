@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <!--
+    PurpleDirective — Profile Photo
+    Gem logo centered on dark background with subtle purple glow.
+    Use for X (@TyrianMurex), Reddit, GitHub.
+  -->
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1a1040" stop-opacity="0.6"/>
+      <stop offset="60%" stop-color="#0a0a0f" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#0a0a0f" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="gemBase" cx="42%" cy="34%" r="60%" fx="38%" fy="30%">
+      <stop offset="0%" stop-color="#B8A8D0" stop-opacity="0.95"/>
+      <stop offset="16%" stop-color="#9B8ABF" stop-opacity="0.97"/>
+      <stop offset="44%" stop-color="#7A68A5"/>
+      <stop offset="74%" stop-color="#5A4888"/>
+      <stop offset="100%" stop-color="#3A2860"/>
+    </radialGradient>
+    <linearGradient id="faceTopL" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C8B8E0" stop-opacity="0.30"/>
+      <stop offset="100%" stop-color="#8A78B0" stop-opacity="0.04"/>
+    </linearGradient>
+    <linearGradient id="faceTopR" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#A090C0" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#6A58A0" stop-opacity="0.04"/>
+    </linearGradient>
+    <linearGradient id="faceBotL" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2A1B48" stop-opacity="0.48"/>
+      <stop offset="100%" stop-color="#5A4888" stop-opacity="0.04"/>
+    </linearGradient>
+    <linearGradient id="faceBotR" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#1E1238" stop-opacity="0.58"/>
+      <stop offset="100%" stop-color="#4A3878" stop-opacity="0.06"/>
+    </linearGradient>
+    <radialGradient id="yFill" cx="52%" cy="44%" r="55%">
+      <stop offset="0%" stop-color="#3A2268" stop-opacity="1"/>
+      <stop offset="55%" stop-color="#2A1858" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#1C1040" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="gemHalo" cx="50%" cy="50%" r="50%">
+      <stop offset="40%" stop-color="#6848A0" stop-opacity="0"/>
+      <stop offset="72%" stop-color="#6848A0" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#6848A0" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="gemSoft">
+      <feGaussianBlur stdDeviation="0.4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="gemDrop">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0A0612" flood-opacity="0.60"/>
+    </filter>
+    <filter id="hexSoft" x="-3%" y="-3%" width="106%" height="106%">
+      <feGaussianBlur stdDeviation="0.7"/>
+    </filter>
+    <filter id="ySoftEdge" x="-8%" y="-8%" width="116%" height="116%">
+      <feGaussianBlur stdDeviation="1.4" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <mask id="yMask">
+      <rect width="400" height="400" fill="black"/>
+      <path d="
+        M 185,98 L 215,98
+        L 215,192
+        L 290,246 L 274,270
+        L 200,217
+        L 126,270 L 110,246
+        L 185,192
+        Z" fill="white"/>
+    </mask>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" fill="#0a0a0f" rx="0"/>
+  <circle cx="200" cy="200" r="180" fill="url(#bgGlow)"/>
+
+  <!-- Hex ring -->
+  <g filter="url(#hexSoft)">
+    <polygon points="200,102 285,151 285,249 200,298 115,249 115,151"
+      fill="#503878" stroke="#807890" stroke-width="1" opacity="0.55"/>
+    <polygon points="200,112 276,155 276,245 200,288 124,245 124,155"
+      fill="#0a0a0f" stroke="#807890" stroke-width="1" opacity="0.50"/>
+  </g>
+
+  <!-- Y body — soft edge -->
+  <path d="
+    M 185,98 L 215,98
+    L 215,192
+    L 290,246 L 274,270
+    L 200,217
+    L 126,270 L 110,246
+    L 185,192
+    Z"
+    fill="#1E1040"
+    filter="url(#ySoftEdge)"
+    opacity="0.90"/>
+  <path d="
+    M 185,98 L 215,98
+    L 215,192
+    L 290,246 L 274,270
+    L 200,217
+    L 126,270 L 110,246
+    L 185,192
+    Z"
+    fill="url(#yFill)"/>
+
+  <!-- Calligraphic interior -->
+  <g mask="url(#yMask)">
+    <path d="M 193,105 Q 207,116 192,131 Q 186,142 206,153 Q 209,161 200,167"
+      fill="none" stroke="#7060A0" stroke-width="1.4" stroke-linecap="round" opacity="0.26"/>
+    <path d="M 205,108 Q 193,121 206,137 Q 211,145 195,156 Q 193,162 203,167"
+      fill="none" stroke="#605880" stroke-width="0.7" stroke-linecap="round" opacity="0.20"/>
+  </g>
+
+  <!-- Diamond — centered at 200,200 with 43px radius -->
+  <circle cx="200" cy="200" r="60" fill="url(#gemHalo)"/>
+  <polygon points="200,157 243,200 200,243 157,200"
+    fill="#140A20" filter="url(#gemDrop)" opacity="0.70"/>
+  <polygon points="200,157 243,200 200,243 157,200"
+    fill="url(#gemBase)" filter="url(#gemSoft)"/>
+  <polygon points="200,157 157,200 200,200" fill="url(#faceTopL)"/>
+  <polygon points="200,157 243,200 200,200" fill="url(#faceTopR)"/>
+  <polygon points="157,200 200,243 200,200" fill="url(#faceBotL)"/>
+  <polygon points="243,200 200,243 200,200" fill="url(#faceBotR)"/>
+  <line x1="200" y1="157" x2="200" y2="243" stroke="#3A2060" stroke-width="0.6" opacity="0.32"/>
+  <line x1="157" y1="200" x2="243" y2="200" stroke="#3A2060" stroke-width="0.6" opacity="0.32"/>
+  <line x1="200" y1="159" x2="159" y2="200" stroke="#C8B8E0" stroke-width="0.6" opacity="0.09"/>
+  <path d="M 172,174 L 188,174 L 188,190 L 172,190 Z" fill="#B8A8D0" opacity="0.05"/>
+  <circle cx="178" cy="178" r="2" fill="#C8B8DC" opacity="0.07"/>
+</svg>

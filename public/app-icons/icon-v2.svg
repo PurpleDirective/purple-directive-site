@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!--
+    V2: PD monogram violet at ~45% opacity — readable but background
+        Gem with a thin lavender halo ring
+        More contrast, the PD is a visible layer not just a ghost
+  -->
+  <defs>
+    <!-- Gem -->
+    <radialGradient id="g2_gemBase" cx="40%" cy="32%" r="65%" fx="36%" fy="28%">
+      <stop offset="0%"   style="stop-color:#D4C4EC;stop-opacity:0.98"/>
+      <stop offset="15%"  style="stop-color:#B0A0D8;stop-opacity:0.97"/>
+      <stop offset="42%"  style="stop-color:#8870B8"/>
+      <stop offset="72%"  style="stop-color:#6050A0"/>
+      <stop offset="100%" style="stop-color:#3C2870"/>
+    </radialGradient>
+    <linearGradient id="g2_ftl" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#E0D0F8;stop-opacity:0.55"/>
+      <stop offset="100%" style="stop-color:#9880C8;stop-opacity:0.05"/>
+    </linearGradient>
+    <linearGradient id="g2_ftr" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   style="stop-color:#C0B0E0;stop-opacity:0.30"/>
+      <stop offset="100%" style="stop-color:#7870B8;stop-opacity:0.05"/>
+    </linearGradient>
+    <linearGradient id="g2_fbl" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%"   style="stop-color:#200F3C;stop-opacity:0.55"/>
+      <stop offset="100%" style="stop-color:#604898;stop-opacity:0.05"/>
+    </linearGradient>
+    <linearGradient id="g2_fbr" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%"   style="stop-color:#140A28;stop-opacity:0.65"/>
+      <stop offset="100%" style="stop-color:#503880;stop-opacity:0.08"/>
+    </linearGradient>
+    <!-- Background -->
+    <radialGradient id="g2_bg" cx="50%" cy="50%" r="60%">
+      <stop offset="0%"   style="stop-color:#180A38;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#060410;stop-opacity:1"/>
+    </radialGradient>
+    <!-- Halo ring gradient -->
+    <radialGradient id="g2_halo" cx="50%" cy="50%" r="50%">
+      <stop offset="60%"  style="stop-color:#7B5AB8;stop-opacity:0"/>
+      <stop offset="85%"  style="stop-color:#7B5AB8;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#7B5AB8;stop-opacity:0"/>
+    </radialGradient>
+    <filter id="g2_gemShadow">
+      <feDropShadow dx="0" dy="6" stdDeviation="20" flood-color="#0A0618" flood-opacity="0.8"/>
+    </filter>
+    <filter id="g2_gemGlow">
+      <feGaussianBlur stdDeviation="10" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="g2_pdGlow">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1024" height="1024" fill="url(#g2_bg)" rx="160"/>
+
+  <!-- PD Monogram — violet, 45% opacity, more present -->
+  <!-- Outer body stroke -->
+  <path
+    d="M 281,754 L 281,154 C 281,74 781,74 781,414 C 781,594 613,714 469,647 C 358,590 325,500 391,432 C 435,385 535,369 591,369"
+    fill="none"
+    stroke="#4A2A90"
+    stroke-width="90"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.42"
+  />
+  <!-- Inner violet edge — gives the stroke dimension -->
+  <path
+    d="M 281,754 L 281,154 C 281,74 781,74 781,414 C 781,594 613,714 469,647 C 358,590 325,500 391,432 C 435,385 535,369 591,369"
+    fill="none"
+    stroke="#7050C0"
+    stroke-width="28"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.30"
+    filter="url(#g2_pdGlow)"
+  />
+  <!-- Hairline brightest edge -->
+  <path
+    d="M 281,754 L 281,154 C 281,74 781,74 781,414 C 781,594 613,714 469,647 C 358,590 325,500 391,432 C 435,385 535,369 591,369"
+    fill="none"
+    stroke="#B088E8"
+    stroke-width="6"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.20"
+  />
+
+  <!-- Halo ring behind gem -->
+  <circle cx="512" cy="512" r="195" fill="url(#g2_halo)"/>
+  <!-- Thin lavender ring outline -->
+  <circle cx="512" cy="512" r="175" fill="none" stroke="#7B5AB8" stroke-width="1.5" opacity="0.25"/>
+
+  <!-- Gem shadow -->
+  <polygon points="512,372 652,512 512,652 372,512"
+    fill="#100820" filter="url(#g2_gemShadow)" opacity="0.9"/>
+
+  <!-- Gem — 140px radius -->
+  <polygon points="512,372 652,512 512,652 372,512"
+    fill="url(#g2_gemBase)" filter="url(#g2_gemGlow)"/>
+
+  <!-- 4 faces -->
+  <polygon points="512,372 372,512 512,512" fill="url(#g2_ftl)"/>
+  <polygon points="512,372 652,512 512,512" fill="url(#g2_ftr)"/>
+  <polygon points="372,512 512,652 512,512" fill="url(#g2_fbl)"/>
+  <polygon points="652,512 512,652 512,512" fill="url(#g2_fbr)"/>
+
+  <!-- Facet cross -->
+  <line x1="512" y1="372" x2="512" y2="652" stroke="#3A2060" stroke-width="1.2" opacity="0.40"/>
+  <line x1="372" y1="512" x2="652" y2="512" stroke="#3A2060" stroke-width="1.2" opacity="0.40"/>
+
+  <!-- Highlights -->
+  <line x1="512" y1="374" x2="374" y2="512" stroke="#E0D0F8" stroke-width="1.6" opacity="0.22"/>
+  <line x1="512" y1="650" x2="650" y2="512" stroke="#100820" stroke-width="1.4" opacity="0.30"/>
+  <circle cx="432" cy="432" r="5" fill="#F0E8FF" opacity="0.22"/>
+  <circle cx="446" cy="438" r="2" fill="#FFFFFF" opacity="0.26"/>
+</svg>

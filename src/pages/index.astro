@@ -130,7 +130,7 @@ const roadmap = [
   <section class="section">
     <div class="section-header">
       <h2>Infrastructure</h2>
-      <p>Sovereign hardware. No cloud vendor lock-in for compute. Encrypted mesh network, redundant edge tunnels.</p>
+      <p>Sovereign hardware. No cloud vendor lock-in for compute. Encrypted mesh network connecting all nodes.</p>
     </div>
     <div class="infra-grid">
       <div class="infra-node">
@@ -143,7 +143,7 @@ const roadmap = [
           <span class="infra-chip">Local inference</span>
           <span class="infra-chip">Fine-tuning</span>
           <span class="infra-chip">Private search</span>
-          <span class="infra-chip">Tunnel endpoint</span>
+          <span class="infra-chip">Docker services</span>
         </div>
         <span class="infra-hw">Linux server · GPU accelerated</span>
       </div>
@@ -154,9 +154,9 @@ const roadmap = [
           <span class="infra-role">24/7 Services</span>
         </div>
         <div class="infra-chips">
+          <span class="infra-chip">Tunnel connector</span>
           <span class="infra-chip">Web services</span>
-          <span class="infra-chip">Tunnel endpoint</span>
-          <span class="infra-chip">Monitoring</span>
+          <span class="infra-chip">Mail transport</span>
         </div>
         <span class="infra-hw">Low-power · always-on</span>
       </div>
@@ -164,12 +164,12 @@ const roadmap = [
         <div class="infra-header">
           <span class="status-dot"></span>
           <span class="infra-name">Network Appliance</span>
-          <span class="infra-role">Edge + Redundancy</span>
+          <span class="infra-role">DNS + Notifications</span>
         </div>
         <div class="infra-chips">
           <span class="infra-chip">DNS filtering</span>
-          <span class="infra-chip">VPN gateway</span>
-          <span class="infra-chip">Self-healing</span>
+          <span class="infra-chip">Push notifications</span>
+          <span class="infra-chip">Mesh node</span>
         </div>
         <span class="infra-hw">ARM SBC · minimal footprint</span>
       </div>
@@ -180,7 +180,7 @@ const roadmap = [
           <span class="infra-role">Edge</span>
         </div>
         <div class="infra-chips">
-          <span class="infra-chip">HA tunnels</span>
+          <span class="infra-chip">Tunnels</span>
           <span class="infra-chip">Zero Trust</span>
           <span class="infra-chip">Pages</span>
           <span class="infra-chip">SSL</span>
@@ -188,7 +188,7 @@ const roadmap = [
         <span class="infra-hw">Managed edge — $0/mo</span>
       </div>
     </div>
-    <p class="infra-note">All nodes connected via encrypted mesh VPN. Redundant tunnel endpoints across multiple independent nodes ensure high availability.</p>
+    <p class="infra-note">All nodes connected via encrypted mesh VPN. Tunnel traffic routes through a dedicated always-on node to Cloudflare's edge network.</p>
   </section>
 
   <!-- Updates + Roadmap (split section) -->

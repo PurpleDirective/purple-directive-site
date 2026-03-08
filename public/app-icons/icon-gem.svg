@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <!-- Gem gradient -->
+    <radialGradient id="gemBase" cx="42%" cy="34%" r="60%" fx="38%" fy="30%">
+      <stop offset="0%"   style="stop-color:#C8B8E8;stop-opacity:0.98"/>
+      <stop offset="18%"  style="stop-color:#A090CF;stop-opacity:0.97"/>
+      <stop offset="45%"  style="stop-color:#7A68A5"/>
+      <stop offset="75%"  style="stop-color:#5A4888"/>
+      <stop offset="100%" style="stop-color:#3A2860"/>
+    </radialGradient>
+    <linearGradient id="faceTopL" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#D8C8F0;stop-opacity:0.45"/>
+      <stop offset="100%" style="stop-color:#9080C0;stop-opacity:0.05"/>
+    </linearGradient>
+    <linearGradient id="faceTopR" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   style="stop-color:#B0A0D0;stop-opacity:0.25"/>
+      <stop offset="100%" style="stop-color:#7068B0;stop-opacity:0.05"/>
+    </linearGradient>
+    <linearGradient id="faceBotL" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%"   style="stop-color:#2A1B48;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#5A4888;stop-opacity:0.05"/>
+    </linearGradient>
+    <linearGradient id="faceBotR" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%"   style="stop-color:#1A1030;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#4A3878;stop-opacity:0.08"/>
+    </linearGradient>
+    <!-- Background glow -->
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="55%">
+      <stop offset="0%"   style="stop-color:#3A2870;stop-opacity:0.35"/>
+      <stop offset="60%"  style="stop-color:#1A1040;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#06040C;stop-opacity:0"/>
+    </radialGradient>
+    <!-- Hex glow -->
+    <radialGradient id="hexGlow" cx="50%" cy="50%" r="45%">
+      <stop offset="0%"   style="stop-color:#6A50A0;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#6A50A0;stop-opacity:0"/>
+    </radialGradient>
+    <!-- Drop shadow for gem -->
+    <filter id="gemDrop">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0A0612" flood-opacity="0.6"/>
+    </filter>
+    <filter id="gemGlow">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <!-- Y shape mask (scaled 2x from original) -->
+    <mask id="yMask">
+      <rect width="1024" height="1024" fill="black"/>
+      <path d="M 476,252 L 548,252 L 548,494 L 744,632 L 704,692 L 512,556 L 320,692 L 280,632 L 476,494 Z" fill="white"/>
+    </mask>
+  </defs>
+
+  <!-- Background square (rounded for Android adaptive icon) -->
+  <rect width="1024" height="1024" fill="#06040C" rx="160"/>
+
+  <!-- Background glow -->
+  <circle cx="512" cy="512" r="400" fill="url(#bgGlow)"/>
+
+  <!-- ═══ HEXAGON RING ═══ -->
+  <polygon points="512,260 730,386 730,638 512,764 294,638 294,386"
+    fill="#4A3870" stroke="#706880" stroke-width="2" opacity="0.5"/>
+  <polygon points="512,284 710,398 710,626 512,740 314,626 314,398"
+    fill="#06040C" stroke="#706880" stroke-width="2" opacity="0.45"/>
+
+  <!-- ═══ Y BODY ═══ -->
+  <!-- Outline -->
+  <path d="M 474,250 L 550,250 L 550,494 L 746,630 L 706,694 L 512,558 L 318,694 L 278,630 L 474,494 Z"
+    fill="none" stroke="#000000" stroke-width="3" opacity="0.6" stroke-linejoin="miter"/>
+  <!-- Fill -->
+  <path d="M 476,252 L 548,252 L 548,494 L 744,632 L 704,692 L 512,556 L 320,692 L 280,632 L 476,494 Z"
+    fill="#28194A"/>
+
+  <!-- ═══ CALLIGRAPHIC INTERIOR (masked to Y) ═══ -->
+  <g mask="url(#yMask)">
+    <!-- Stem details -->
+    <path d="M 500,268 Q 532,296 496,336 Q 480,364 528,392 Q 536,412 512,428"
+      fill="none" stroke="#6B5A90" stroke-width="3.5" stroke-linecap="round" opacity="0.22"/>
+    <path d="M 524,276 Q 496,310 528,350 Q 540,372 500,400 Q 496,416 520,428"
+      fill="none" stroke="#5A4A80" stroke-width="1.6" stroke-linecap="round" opacity="0.17"/>
+    <!-- Left arm details -->
+    <path d="M 460,556 Q 436,584 416,596 Q 388,612 372,632 Q 352,648 332,660 Q 296,688 296,688"
+      fill="none" stroke="#6B5A90" stroke-width="3.5" stroke-linecap="round" opacity="0.22"/>
+    <!-- Right arm details -->
+    <path d="M 564,556 Q 588,584 608,596 Q 636,612 652,632 Q 672,648 692,660 Q 728,688 728,688"
+      fill="none" stroke="#6B5A90" stroke-width="3.5" stroke-linecap="round" opacity="0.22"/>
+  </g>
+
+  <!-- ═══ 3D LAVENDER DIAMOND GEM (centered at 512,512) ═══ -->
+  <!-- Shadow base -->
+  <polygon points="512,442 582,512 512,582 442,512"
+    fill="#1A1028" filter="url(#gemDrop)" opacity="0.7"/>
+  <!-- Main gem -->
+  <polygon points="512,442 582,512 512,582 442,512"
+    fill="url(#gemBase)" filter="url(#gemGlow)"/>
+  <!-- 4 quadrant faces -->
+  <polygon points="512,442 442,512 512,512" fill="url(#faceTopL)"/>
+  <polygon points="512,442 582,512 512,512" fill="url(#faceTopR)"/>
+  <polygon points="442,512 512,582 512,512" fill="url(#faceBotL)"/>
+  <polygon points="582,512 512,582 512,512" fill="url(#faceBotR)"/>
+  <!-- Facet lines -->
+  <line x1="512" y1="442" x2="512" y2="582" stroke="#3A2860" stroke-width="1.2" opacity="0.35"/>
+  <line x1="442" y1="512" x2="582" y2="512" stroke="#3A2860" stroke-width="1.2" opacity="0.35"/>
+  <!-- Highlight -->
+  <line x1="512" y1="443" x2="443" y2="512" stroke="#D8C8F0" stroke-width="1.4" opacity="0.18"/>
+  <circle cx="466" cy="466" r="3" fill="#E0D0F4" opacity="0.18"/>
+</svg>

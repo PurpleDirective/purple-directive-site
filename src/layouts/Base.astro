@@ -1,12 +1,16 @@
 ---
+import { social } from '../data/social';
+
 interface Props {
   title: string;
   description?: string;
   activePage?: string;
+  ogImage?: string;
 }
 
-const { title, description = "Sovereign AI Agent Organization Framework", activePage = "" } = Astro.props;
+const { title, description = "Sovereign AI Agent Organization Framework", activePage = "", ogImage = "/og-image.png" } = Astro.props;
 const fullTitle = title === "Home" ? "PurpleDirective" : `${title} — PurpleDirective`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -17,6 +21,23 @@ const fullTitle = title === "Home" ? "PurpleDirective" : `${title} — PurpleDir
   <meta name="description" content={description} />
   <meta name="theme-color" content="#9b72cf" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="canonical" href={canonicalURL} />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="PurpleDirective" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content={social.x.handle} />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
+
   <title>{fullTitle}</title>
 </head>
 <body>
@@ -39,7 +60,7 @@ const fullTitle = title === "Home" ? "PurpleDirective" : `${title} — PurpleDir
         <li><a href="/projects" class:list={[{ active: activePage === "projects" }]}>Projects</a></li>
         <li><a href="/blog" class:list={[{ active: activePage === "blog" }]}>Blog</a></li>
         <li><a href="/about" class:list={[{ active: activePage === "about" }]}>About</a></li>
-        <li><a href="https://github.com/PurpleDirective" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href={social.github.url} target="_blank" rel="noopener">GitHub</a></li>
         <li class="nav-divider"></li>
         <li><button class="nav-tool bionic-btn" id="bionic-toggle" title="Bionic Reading: ON" aria-pressed="true">Aa</button></li>
       </ul>
@@ -54,8 +75,9 @@ const fullTitle = title === "Home" ? "PurpleDirective" : `${title} — PurpleDir
     <div class="container">
       <span class="motto">Keep Evolving. Keep Improving. Keep Keen.</span>
       <ul class="links">
-        <li><a href="https://github.com/PurpleDirective" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="https://www.reddit.com/user/PurpleDirectiveEIK/" target="_blank" rel="noopener">Reddit</a></li>
+        <li><a href={social.github.url} target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href={social.x.url} target="_blank" rel="noopener">X</a></li>
+        <li><a href={social.reddit.url} target="_blank" rel="noopener">Reddit</a></li>
       </ul>
     </div>
   </footer>
