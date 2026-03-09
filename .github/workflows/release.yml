@@ -1,0 +1,60 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get previous tag
+        id: prev_tag
+        run: |
+          PREV=$(git tag --sort=-v:refname | head -2 | tail -1)
+          if [ "$PREV" = "${{ github.ref_name }}" ]; then
+            PREV=$(git rev-list --max-parents=0 HEAD)
+          fi
+          echo "tag=$PREV" >> "$GITHUB_OUTPUT"
+
+      - name: Generate release notes from commits
+        id: notes
+        run: |
+          {
+            echo 'notes<<RELEASE_EOF'
+            echo "## What's Changed"
+            echo ""
+            git log "${{ steps.prev_tag.outputs.tag }}".."${{ github.ref_name }}" \
+              --pretty=format:"- %s" \
+              --no-merges
+            echo ""
+            echo ""
+            echo "**Full changelog**: https://github.com/${{ github.repository }}/compare/${{ steps.prev_tag.outputs.tag }}...${{ github.ref_name }}"
+            echo 'RELEASE_EOF'
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Determine pre-release
+        id: prerelease
+        run: |
+          if echo "${{ github.ref_name }}" | grep -qE '(alpha|beta|rc)'; then
+            echo "is_prerelease=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "is_prerelease=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
+          body: ${{ steps.notes.outputs.notes }}
+          prerelease: ${{ steps.prerelease.outputs.is_prerelease }}
+          generate_release_notes: false
