@@ -6,6 +6,19 @@ const updateEntries = (await getCollection('updates')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
 
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const updateGroups: Array<{ dateKey: string; humanDate: string; entries: typeof updateEntries }> = [];
+for (const entry of updateEntries) {
+  const key = entry.data.date.toISOString().split('T')[0];
+  const [y, m, d] = key.split('-').map(Number);
+  const last = updateGroups[updateGroups.length - 1];
+  if (last && last.dateKey === key) {
+    last.entries.push(entry);
+  } else {
+    updateGroups.push({ dateKey: key, humanDate: `${d} ${MONTHS[m - 1]} ${y}`, entries: [entry] });
+  }
+}
+
 const roadmap = [
   { status: "live",       label: "24/7 always-on node",               desc: "Dedicated always-on hardware running all web services" },
   { status: "active",     label: "PD logo — bubbly P/D monogram",    desc: "Custom mark where the outer curve reads P, inner hook reads D" },
@@ -199,16 +212,20 @@ const roadmap = [
         <p>What's actually been built, in order.</p>
       </div>
       <div class="updates-feed">
-        {updateEntries.map((u) => (
-          <div class="update-entry">
-            <div class="update-meta">
-              <span class="update-date">{u.data.date.toISOString().split('T')[0]}</span>
-              <span class={`update-tag tag-${u.data.tagColor}`}>{u.data.tag}</span>
+        {updateGroups.map(({ dateKey, humanDate, entries }) => (
+          <div class="update-day-group">
+            <div class="update-day-header">
+              <time datetime={dateKey} class="update-date">{humanDate}</time>
             </div>
-            <div class="update-body">
-              <h3 class="update-title">{u.data.title}</h3>
-              <p class="update-desc">{u.data.desc}</p>
-            </div>
+            {entries.map((u) => (
+              <div class="update-entry">
+                <span class={`update-tag tag-${u.data.tagColor}`}>{u.data.tag}</span>
+                <div class="update-body">
+                  <h3 class="update-title">{u.data.title}</h3>
+                  <p class="update-desc">{u.data.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         ))}
       </div>
