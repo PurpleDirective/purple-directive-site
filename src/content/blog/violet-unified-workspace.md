@@ -5,7 +5,7 @@ summary: "I was running two separate AI systems — one for business ops, one fo
 tags: ["architecture", "agents"]
 ---
 
-For a while I ran two parallel AI setups: **Project Amethyst** (business operations for A1 Clinical) and **Project Sapphire** (personal AI assistant). Different agent identities, different memory files, different instruction sets — but underneath, the same model, the same MCP tools, the same memory format.
+For a while I ran two parallel AI setups: **Project Amethyst** (business operations) and **Project Sapphire** (personal AI assistant). Different agent identities, different memory files, different instruction sets — but underneath, the same model, the same MCP tools, the same memory format.
 
 The duplication wasn't intentional. Amethyst came first. Sapphire was built alongside it when I realized I wanted the same orchestration for personal tasks. Within a few weeks I had two systems doing 80% of the same things with 20% different context.
 
