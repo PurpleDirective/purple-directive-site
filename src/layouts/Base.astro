@@ -41,6 +41,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <title>{fullTitle}</title>
 </head>
 <body>
+  <a href="#main" class="skip-link">Skip to content</a>
   <nav>
     <div class="container">
       <a href="/" class="logo">
@@ -61,13 +62,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         <li><a href="/blog" class:list={[{ active: activePage === "blog" }]}>Blog</a></li>
         <li><a href="/about" class:list={[{ active: activePage === "about" }]}>About</a></li>
         <li><a href={social.github.url} target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://dash.purpledirective.com" target="_blank" rel="noopener" class="nav-tool-link">Dash</a></li>
         <li class="nav-divider"></li>
-        <li><button class="nav-tool bionic-btn" id="bionic-toggle" title="Bionic Reading: ON" aria-pressed="true">Aa</button></li>
+        <li><button class="nav-tool bionic-btn" id="bionic-toggle" title="Bionic Reading: OFF" aria-pressed="false">Aa</button></li>
       </ul>
     </div>
   </nav>
 
-  <main class="container">
+  <main id="main" class="container">
     <slot />
   </main>
 
@@ -163,7 +165,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     // Init: default ON unless user explicitly turned it off
     const saved = localStorage.getItem(BIONIC_KEY);
-    const startEnabled = saved !== '0';
+    const startEnabled = saved === '1';
     setBionic(startEnabled);
 
     document.getElementById('bionic-toggle')?.addEventListener('click', () => {
