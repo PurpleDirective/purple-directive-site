@@ -639,33 +639,20 @@ footer .links a:hover {
   flex-direction: column;
   gap: 0;
   margin: var(--spacing-lg) 0 var(--spacing-md);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  overflow: hidden;
 }
 
-.update-entry {
-  display: flex;
-  gap: var(--spacing-lg);
-  padding: var(--spacing-lg);
+.update-day-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.update-day-group:last-child {
+  margin-bottom: 0;
+}
+
+.update-day-header {
+  padding-bottom: var(--spacing-xs);
   border-bottom: 1px solid var(--border);
-  transition: background 0.15s;
-}
-
-.update-entry:last-child {
-  border-bottom: none;
-}
-
-.update-entry:hover {
-  background: var(--bg-card);
-}
-
-.update-meta {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xs);
-  min-width: 8rem;
-  padding-top: 0.15rem;
+  margin-bottom: var(--spacing-xs);
 }
 
 .update-date {
@@ -673,6 +660,17 @@ footer .links a:hover {
   font-size: 0.72rem;
   color: var(--text-muted);
   white-space: nowrap;
+}
+
+.update-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm) 0;
+}
+
+.update-entry:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .update-tag {
@@ -684,6 +682,8 @@ footer .links a:hover {
   border-radius: 3px;
   border: 1px solid;
   width: fit-content;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
 }
 
 .tag-green {
@@ -926,14 +926,7 @@ footer .links a:hover {
   }
 
   .update-entry {
-    flex-direction: column;
     gap: var(--spacing-sm);
-  }
-
-  .update-meta {
-    flex-direction: row;
-    align-items: center;
-    min-width: auto;
   }
 
   .roadmap-item {
