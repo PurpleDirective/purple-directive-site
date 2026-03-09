@@ -10,7 +10,7 @@
 
   --text-primary: #e0e0e8;
   --text-secondary: #8888a0;
-  --text-muted: #555570;
+  --text-muted: #7575a0;
 
   --purple-primary: #9b72cf;
   --purple-light: #b490e0;
@@ -52,6 +52,22 @@ body {
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Skip link (accessibility) */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  padding: 0.5rem 1rem;
+  background: var(--purple-primary);
+  color: #fff;
+  z-index: 1000;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+.skip-link:focus {
+  top: 0;
 }
 
 /* Typography */

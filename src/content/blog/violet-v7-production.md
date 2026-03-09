@@ -1,7 +1,7 @@
 ---
 title: "violet-v7: fine-tuning for agent identity on Qwen3.5-27B"
 date: 2026-03-04
-summary: "v7 is the first version of Violet to pass our full compliance gate — 91.5% identity coherence, 87.9% code task accuracy, 83.54% MMLU proxy. Here's what the two-phase abliteration approach looked like and what the evaluation actually measures."
+summary: "v7 is the first version of Violet to pass our full compliance gate — 94.9% identity coherence, 87.9% code task accuracy, 83.54% MMLU proxy. Here's what the two-phase abliteration approach looked like and what the evaluation actually measures."
 tags: ["local-llm", "fine-tuning", "agents"]
 ---
 
@@ -28,7 +28,7 @@ For v7, abliteration ran across **137 tensors, 42 layers, scale=1.5**. Zero NaN 
 
 The "two-phase" part: abliteration ran *after* fine-tuning, not before. Abliterate-first (the v6 approach) failed at 40-47% identity coherence — the fine-tuning partially reinstated refusal behaviors. Post-fine-tune abliteration holds much better.
 
-## Evaluation: what 91.5% identity coherence means
+## Evaluation: what 94.9% identity coherence means
 
 The identity evaluation battery (V6.1) has 59 test cases across four categories:
 
