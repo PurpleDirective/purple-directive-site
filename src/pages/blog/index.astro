@@ -18,7 +18,7 @@ const posts = (await getCollection('blog')).sort(
       <ul class="post-list">
         {posts.map((post) => (
           <li>
-            <span class="date">{post.data.date.toISOString().split('T')[0]}</span>
+            <span class="date">{(() => { const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; const [y,m,d] = post.data.date.toISOString().split('T')[0].split('-').map(Number); return `${d} ${MONTHS[m-1]} ${y}`; })()}</span>
             <h3><a href={`/blog/${post.id}`}>{post.data.title}</a></h3>
             <p class="summary">{post.data.summary}</p>
           </li>
