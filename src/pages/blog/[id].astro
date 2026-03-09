@@ -17,7 +17,7 @@ const { Content } = await render(post);
 <Base title={post.data.title} activePage="blog" description={post.data.summary}>
   <article class="section prose">
     <span class="date" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">
-      {post.data.date.toISOString().split('T')[0]}
+      {(() => { const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; const [y,m,d] = post.data.date.toISOString().split('T')[0].split('-').map(Number); return `${d} ${MONTHS[m-1]} ${y}`; })()}
     </span>
     <h1>{post.data.title}</h1>
     <Content />
