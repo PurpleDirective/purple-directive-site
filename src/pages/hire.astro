@@ -1,0 +1,237 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Work With Me" description="Full-stack developer and AI systems engineer. I build production software — from modern websites to compliance-grade platforms.">
+  <section class="section hero">
+    <h1>Work With <span class="accent">Me</span></h1>
+    <p class="subtitle">
+      Full-stack developer and AI systems engineer. I build production software
+      for teams that need reliable tech — from modern websites to compliance-grade platforms.
+    </p>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <h2>What I Build</h2>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <span class="tag">Web</span>
+        <h3>Web Applications</h3>
+        <p>
+          Modern, fast web apps and sites. Astro, React, FastAPI, Tailwind.
+          From landing pages to full platforms.
+        </p>
+      </div>
+
+      <div class="card">
+        <span class="tag">AI / ML</span>
+        <h3>AI & LLM Integration</h3>
+        <p>
+          Custom AI tools, chatbots, RAG systems, fine-tuned models.
+          OpenAI, Claude API, or fully private open-source.
+        </p>
+      </div>
+
+      <div class="card">
+        <span class="tag">Automation</span>
+        <h3>Automation & Scripts</h3>
+        <p>
+          Python scripts that kill repetitive tasks. Data processing, report generation,
+          API integrations, workflow automation.
+        </p>
+      </div>
+
+      <div class="card">
+        <span class="tag">Healthcare</span>
+        <h3>Healthcare & Compliance Software</h3>
+        <p>
+          HIPAA-compliant apps, 21 CFR Part 11 audit trails, clinical trial management
+          systems. I know the regulatory rules.
+        </p>
+      </div>
+
+      <div class="card">
+        <span class="tag">Infrastructure</span>
+        <h3>Infrastructure & DevOps</h3>
+        <p>
+          Docker deployments, cloud hosting, DNS/email setup, Tailscale networking,
+          CI/CD pipelines.
+        </p>
+      </div>
+
+      <div class="card">
+        <span class="tag">Backend</span>
+        <h3>Backend & API Development</h3>
+        <p>
+          Python/FastAPI backends, REST APIs, PostgreSQL databases,
+          authentication and authorization systems.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <h2>Featured Work</h2>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <span class="tag">Production System</span>
+        <h3>Clinical Trial Management System</h3>
+        <p>
+          Full CTMS with audit trail, RBAC, encrypted backups. FastAPI + PostgreSQL + Docker.
+          Production deployment for a CRO.
+        </p>
+      </div>
+
+      <div class="card">
+        <span class="tag">Open Source</span>
+        <h3>Violet AI Framework</h3>
+        <p>
+          Multi-agent orchestration with persistent memory, deliberation protocol,
+          and cloud-to-local knowledge transfer.
+        </p>
+        <a href="https://github.com/PurpleDirective/purple-directive-violet" class="project-link" target="_blank" rel="noopener">GitHub &rarr;</a>
+      </div>
+
+      <div class="card">
+        <span class="tag">AI / ML</span>
+        <h3>LLM Fine-Tuning Pipeline</h3>
+        <p>
+          QLoRA training, abliteration, GGUF quantization, custom eval batteries.
+          Qwen3.5-27B on RTX 5090.
+        </p>
+      </div>
+
+      <div class="card">
+        <span class="tag">Web Development</span>
+        <h3>A1 Clinical Website</h3>
+        <p>
+          Bilingual (EN/ES) business website. Astro + Tailwind. Lighthouse 100.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <h2>Tech Stack</h2>
+    </div>
+
+    <div class="tech-tags">
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">TypeScript</span>
+      <span class="tech-tag">FastAPI</span>
+      <span class="tech-tag">React Native</span>
+      <span class="tech-tag">Astro</span>
+      <span class="tech-tag">Tailwind CSS</span>
+      <span class="tech-tag">PostgreSQL</span>
+      <span class="tech-tag">SQLite</span>
+      <span class="tech-tag">Docker</span>
+      <span class="tech-tag">Linux</span>
+      <span class="tech-tag">Cloudflare</span>
+      <span class="tech-tag">Ollama</span>
+      <span class="tech-tag">Claude API</span>
+      <span class="tech-tag">Git</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <h2>Let's Work Together</h2>
+      <p>Available for freelance projects, contract work, and consulting.</p>
+    </div>
+
+    <div class="contact-grid">
+      <a href="https://fiverr.com/tyrianm" class="contact-card" target="_blank" rel="noopener">
+        <span class="contact-label">Fiverr</span>
+        <span class="contact-value">fiverr.com/tyrianm</span>
+      </a>
+      <a href="mailto:Maaryjiftikhar@gmail.com" class="contact-card">
+        <span class="contact-label">Email</span>
+        <span class="contact-value">Maaryjiftikhar@gmail.com</span>
+      </a>
+      <a href="https://github.com/PurpleDirective" class="contact-card" target="_blank" rel="noopener">
+        <span class="contact-label">GitHub</span>
+        <span class="contact-value">github.com/PurpleDirective</span>
+      </a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: var(--spacing-lg) 0;
+  }
+
+  .tech-tag {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 0.3rem 0.7rem;
+    white-space: nowrap;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .tech-tag:hover {
+    border-color: var(--purple-dark);
+    color: var(--purple-light);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+  }
+
+  .contact-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: var(--spacing-lg);
+    transition: border-color 0.2s, transform 0.2s;
+    text-decoration: none;
+  }
+
+  .contact-card:hover {
+    border-color: var(--purple-dark);
+    transform: translateY(-2px);
+  }
+
+  .contact-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .contact-value {
+    font-size: 0.9rem;
+    color: var(--purple-primary);
+  }
+
+  .contact-card:hover .contact-value {
+    color: var(--purple-light);
+  }
+
+  @media (max-width: 480px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
