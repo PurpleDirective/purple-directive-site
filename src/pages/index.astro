@@ -1,278 +1,465 @@
 ---
 import Base from '../layouts/Base.astro';
-import { getCollection } from 'astro:content';
-
-const updateEntries = (await getCollection('updates')).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-);
-
-const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-const updateGroups: Array<{ dateKey: string; humanDate: string; entries: typeof updateEntries }> = [];
-for (const entry of updateEntries) {
-  const key = entry.data.date.toISOString().split('T')[0];
-  const [y, m, d] = key.split('-').map(Number);
-  const last = updateGroups[updateGroups.length - 1];
-  if (last && last.dateKey === key) {
-    last.entries.push(entry);
-  } else {
-    updateGroups.push({ dateKey: key, humanDate: `${d} ${MONTHS[m - 1]} ${y}`, entries: [entry] });
-  }
-}
-
-const roadmap = [
-  { status: "live",       label: "24/7 always-on node",               desc: "Dedicated always-on hardware running all web services" },
-  { status: "active",     label: "PD logo — bubbly P/D monogram",    desc: "Custom mark where the outer curve reads P, inner hook reads D" },
-  { status: "active",     label: "Public demo: try Violet",           desc: "Restricted local model letting visitors experience the agent personality" },
-  { status: "planned",    label: "Purple Directive CLI v2",           desc: "Rewrite with native tool calling, faster plan/build cycle" },
-  { status: "planned",    label: "Automated knowledge pipeline",      desc: "Overnight pipeline fully integrated — zero manual processing" },
-  { status: "planned",    label: "Multi-domain memory consolidation", desc: "Single unified memory kernel across all operational domains" },
-];
 ---
 
-<Base title="Home" activePage="home" description="Purple Directive — Violet is a sovereign, self-improving AI COO with hierarchical orchestration, structured deliberation, and closed-loop learning.">
+<Base title="Home" activePage="home" description="Purple Directive — compliance-grade software and operations consulting for clinical research sites and CROs. SOP templates, CTMS, and regulatory infrastructure.">
 
   <!-- Hero -->
   <section class="hero">
-    <p class="tagline">Sovereign Intelligence</p>
+    <p class="tagline">Clinical Research Operations</p>
     <h1>Purple<span class="accent">Directive</span></h1>
-    <p class="violet-badge">Powered by <span>Violet</span></p>
     <p class="subtitle">
-      An AI operations system built for a single human operator.
-      One COO agent — Violet — receives every task, triages it, delegates it,
-      and synthesizes the result. The system learns from every session.
+      Compliance-grade software and operations consulting for clinical research sites.
+      SOPs, CTMS, regulatory infrastructure — built from real site operations across Phase I-IV studies.
     </p>
+    <div class="hero-cta">
+      <a href="#products" class="btn-primary">View Products</a>
+      <a href="/hire" class="btn-secondary">Work With Us</a>
+    </div>
   </section>
 
-  <!-- Meet Violet -->
-  <section class="section">
-    <div class="section-header">
-      <h2>Meet Violet</h2>
-      <p>Violet is the COO. She is not a chatbot — she is an operations system with a hierarchy beneath her.</p>
+  <!-- Trust Indicators -->
+  <section class="trust-bar">
+    <div class="trust-item">
+      <span class="trust-num">8+</span>
+      <span class="trust-label">Years in Clinical Research</span>
     </div>
-    <div class="arch-diagram"><span class="highlight">Human</span>  (final authority — you)
-  │
-  └── <span class="highlight">Violet</span>  (COO — receives tasks, triages, delegates, audits, synthesizes)
-        │
-        ├── <span class="highlight">E.I.K. Advisory Council</span>  (3 agents, 2-round deliberation, hard stop)
-        │     ├── Evolution    — forward motion, innovation, "what should we build?"
-        │     ├── Improvement  — verification, accuracy, "is this actually right?"
-        │     └── Keenness     — blind spots, edge cases, "what are we not seeing?"
-        │
-        └── <span class="highlight">Operational Staff</span>  (domain execution agents)
-              ├── Domain agents scaffolded from a shared template
-              └── Each with: directives, tools, identity, memory</div>
+    <div class="trust-item">
+      <span class="trust-num">ICH E6(R3)</span>
+      <span class="trust-label">GCP Compliant</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-num">21 CFR</span>
+      <span class="trust-label">Part 11 Audit Trail</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-num">Phase I-IV</span>
+      <span class="trust-label">Study Experience</span>
+    </div>
   </section>
 
-  <!-- Workflow + Dual Runtime (bento grid) -->
-  <div class="bento-grid">
-    <section class="section">
-      <div class="section-header">
-        <h2>How a Task Moves Through the System</h2>
-      </div>
-      <div class="workflow">
-        <div class="workflow-step">
-          <div class="step-num">01</div>
-          <div class="step-body">
-            <h3>Task Arrives</h3>
-            <p>Human sends a request. Violet receives it and immediately classifies it — simple, complex, or administrative.</p>
-          </div>
-        </div>
-        <div class="workflow-arrow">↓</div>
-        <div class="workflow-step">
-          <div class="step-num">02</div>
-          <div class="step-body">
-            <h3>Triage</h3>
-            <p><strong>Simple</strong> — routed directly to the relevant domain agent with context and expected output format.<br/>
-            <strong>Complex</strong> — escalated to the E.I.K. Advisory Council.<br/>
-            <strong>Admin</strong> — handled by Violet directly.</p>
-          </div>
-        </div>
-        <div class="workflow-arrow">↓</div>
-        <div class="workflow-step">
-          <div class="step-num">03</div>
-          <div class="step-body">
-            <h3>Deliberation <span class="step-tag">Complex tasks only</span></h3>
-            <p><strong>Round 1:</strong> All three advisory agents analyze independently — no coordination, no groupthink.<br/>
-            <strong>Round 2:</strong> Each agent reads the others' work and responds. Hard stop after Round 2.</p>
-          </div>
-        </div>
-        <div class="workflow-arrow">↓</div>
-        <div class="workflow-step">
-          <div class="step-num">04</div>
-          <div class="step-body">
-            <h3>Synthesis + Audit</h3>
-            <p>Violet synthesizes the result. Every output is audited against a 6-point checklist before it reaches the human. No unreviewed AI output goes out.</p>
-          </div>
-        </div>
-        <div class="workflow-arrow">↓</div>
-        <div class="workflow-step step-final">
-          <div class="step-num">05</div>
-          <div class="step-body">
-            <h3>Learn</h3>
-            <p>New corrections, decisions, and insights are written to shared memory. Valuable knowledge fragments are queued for human review and compiled into the local model's memory kernel.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="bento-side">
-      <section class="section">
-        <div class="section-header">
-          <h2>Dual Runtime</h2>
-          <p>Same identity, memory, and protocols — different compute.</p>
-        </div>
-        <div class="card-grid">
-          <div class="card">
-            <div class="card-label">Cloud</div>
-            <h3>Claude via Claude Code</h3>
-            <p>Full agent identities, multi-agent deliberation, complex analysis, MCP tool integration. Frontier-model reasoning with structured orchestration on top.</p>
-            <span class="tag">Anthropic Claude</span>
-          </div>
-          <div class="card">
-            <div class="card-label">Local</div>
-            <h3>Ollama via Purple CLI</h3>
-            <p>Condensed identities (&lt;2K tokens), MCP tool support, offline-capable sovereign inference. Learns from cloud sessions without retraining — through the memory kernel.</p>
-            <span class="tag">Purple-Directive: CLI</span>
-          </div>
-        </div>
-      </section>
-    </div>
-  </div>
-
-  <!-- Infrastructure -->
-  <section class="section">
+  <!-- Products -->
+  <section class="section" id="products">
     <div class="section-header">
-      <h2>Infrastructure</h2>
-      <p>Sovereign hardware. No cloud vendor lock-in for compute. Encrypted mesh network connecting all nodes.</p>
+      <h2>Products</h2>
+      <p>Ready-to-use tools for clinical research operations.</p>
     </div>
-    <div class="infra-grid">
-      <div class="infra-node">
-        <div class="infra-header">
-          <span class="status-dot"></span>
-          <span class="infra-name">Compute Node</span>
-          <span class="infra-role">Inference + Training</span>
-        </div>
-        <div class="infra-chips">
-          <span class="infra-chip">Local inference</span>
-          <span class="infra-chip">Fine-tuning</span>
-          <span class="infra-chip">Private search</span>
-          <span class="infra-chip">Docker services</span>
-        </div>
-        <span class="infra-hw">Linux server · GPU accelerated</span>
-      </div>
-      <div class="infra-node">
-        <div class="infra-header">
-          <span class="status-dot"></span>
-          <span class="infra-name">Always-On Node</span>
-          <span class="infra-role">24/7 Services</span>
-        </div>
-        <div class="infra-chips">
-          <span class="infra-chip">Tunnel connector</span>
-          <span class="infra-chip">Web services</span>
-          <span class="infra-chip">Mail transport</span>
-        </div>
-        <span class="infra-hw">Low-power · always-on</span>
-      </div>
-      <div class="infra-node">
-        <div class="infra-header">
-          <span class="status-dot"></span>
-          <span class="infra-name">Network Appliance</span>
-          <span class="infra-role">DNS + Notifications</span>
-        </div>
-        <div class="infra-chips">
-          <span class="infra-chip">DNS filtering</span>
-          <span class="infra-chip">Push notifications</span>
-          <span class="infra-chip">Mesh node</span>
-        </div>
-        <span class="infra-hw">ARM SBC · minimal footprint</span>
-      </div>
-      <div class="infra-node infra-cloud">
-        <div class="infra-header">
-          <span class="status-dot"></span>
-          <span class="infra-name">Cloudflare</span>
-          <span class="infra-role">Edge</span>
-        </div>
-        <div class="infra-chips">
-          <span class="infra-chip">Tunnels</span>
-          <span class="infra-chip">Zero Trust</span>
-          <span class="infra-chip">Pages</span>
-          <span class="infra-chip">SSL</span>
-        </div>
-        <span class="infra-hw">Managed edge — $0/mo</span>
-      </div>
-    </div>
-    <p class="infra-note">All nodes connected via encrypted mesh VPN. Tunnel traffic routes through a dedicated always-on node to Cloudflare's edge network.</p>
-  </section>
 
-  <!-- Updates + Roadmap (split section) -->
-  <div class="split-section">
-    <section class="section">
-      <div class="section-header">
-        <h2>Recent Updates</h2>
-        <p>What's actually been built, in order.</p>
-      </div>
-      <div class="updates-feed">
-        {updateGroups.map(({ dateKey, humanDate, entries }) => (
-          <div class="update-day-group">
-            <div class="update-day-header">
-              <time datetime={dateKey} class="update-date">{humanDate}</time>
-            </div>
-            {entries.map((u) => (
-              <div class="update-entry">
-                <span class={`update-tag tag-${u.data.tagColor}`}>{u.data.tag}</span>
-                <div class="update-body">
-                  <h3 class="update-title">{u.data.title}</h3>
-                  <p class="update-desc">{u.data.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
-      <a href="/blog" class="updates-more">All posts and updates &rarr;</a>
-    </section>
-
-    <section class="section">
-      <div class="section-header">
-        <h2>What's Next</h2>
-        <p>Active work and planned improvements.</p>
-      </div>
-      <div class="roadmap">
-        {roadmap.map((item) => (
-          <div class="roadmap-item">
-            <span class={`roadmap-status status-${item.status}`}>
-              {item.status === "live" ? "live" : item.status === "active" ? "in progress" : "planned"}
-            </span>
-            <div class="roadmap-body">
-              <span class="roadmap-label">{item.label}</span>
-              <span class="roadmap-desc">{item.desc}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  </div>
-
-  <!-- Open Source -->
-  <section class="section">
-    <div class="section-header">
-      <h2>Open Source</h2>
-      <p>The framework, protocols, and tools are public. Build your own agent organization.</p>
-    </div>
     <div class="card-grid">
-      <div class="card">
-        <div class="card-label">Framework</div>
-        <h3>Purple Directive: Violet</h3>
-        <p>The full COO agent framework. E.I.K. advisory council, domain agents, memory kernel, teaching protocol, audit system, and all governing protocols.</p>
-        <a href="https://github.com/PurpleDirective/purple-directive-violet" class="project-link" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+      <div class="card product-card">
+        <div class="card-label">Templates</div>
+        <h3>SOP Template Bundle</h3>
+        <p>
+          8 ICH E6(R3)-aligned Standard Operating Procedures covering adverse events,
+          data management, informed consent, QA/QC, monitoring visits, IP management,
+          and recruitment. 40+ pages, customizable placeholders, PI signature lines.
+        </p>
+        <div class="product-meta">
+          <span class="price">$99</span>
+          <span class="price-note">8 SOPs included</span>
+        </div>
+        <a href="mailto:admin@purpledirective.com?subject=SOP%20Bundle%20Inquiry" class="btn-primary btn-sm">Get the Bundle</a>
       </div>
-      <div class="card">
-        <div class="card-label">Runtime</div>
-        <h3>Purple Directive: CLI</h3>
-        <p>Local AI runtime. Python app connecting to Ollama with MCP tools, condensed agent identities, plan/build modes. Offline-capable sovereign inference.</p>
-        <a href="https://github.com/PurpleDirective/purple-directive-cli" class="project-link" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+
+      <div class="card product-card">
+        <div class="card-label">Software</div>
+        <h3>Nexrial CTMS</h3>
+        <p>
+          Clinical Trial Management System with 21 CFR Part 11 audit trail,
+          role-based access control, encrypted backups, and multi-tenant architecture.
+          Built for sites and CROs managing active study portfolios.
+        </p>
+        <div class="product-meta">
+          <span class="price">Contact</span>
+          <span class="price-note">Custom deployment</span>
+        </div>
+        <a href="/hire" class="btn-secondary btn-sm">Learn More</a>
       </div>
+    </div>
+  </section>
+
+  <!-- What's in the SOPs -->
+  <section class="section">
+    <div class="section-header">
+      <h2>What's in the SOP Bundle</h2>
+      <p>Each SOP references ICH E6(R2/R3), 21 CFR Parts 50/56/312, and 45 CFR Part 46.</p>
+    </div>
+
+    <div class="sop-table-wrap">
+      <table class="sop-table">
+        <thead>
+          <tr>
+            <th>SOP</th>
+            <th>Title</th>
+            <th>Key Coverage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="sop-num">001</span></td>
+            <td>Adverse Events & Protocol Deviations</td>
+            <td>AE/SAE reporting, deviation classification, CAPA, non-compliance</td>
+          </tr>
+          <tr>
+            <td><span class="sop-num">002</span></td>
+            <td>Data Management & Documentation</td>
+            <td>ALCOA+ principles, source documents, CRF procedures, 21 CFR Part 11</td>
+          </tr>
+          <tr>
+            <td><span class="sop-num">003</span></td>
+            <td>Informed Consent</td>
+            <td>All 20 ICH-required elements, vulnerable populations, alternative consent</td>
+          </tr>
+          <tr>
+            <td><span class="sop-num">004</span></td>
+            <td>Quality Control / Quality Assurance</td>
+            <td>QA assessment framework, Quality by Design (QbD), CtQ factors</td>
+          </tr>
+          <tr>
+            <td><span class="sop-num">005</span></td>
+            <td>Sponsor Interactions & Monitoring</td>
+            <td>SQV, SIV, routine, close-out checklists, sponsor communication</td>
+          </tr>
+          <tr>
+            <td><span class="sop-num">006</span></td>
+            <td>Investigational Product Management</td>
+            <td>Receipt, storage, dispensing, return/destruction, DEA compliance</td>
+          </tr>
+          <tr>
+            <td><span class="sop-num">007</span></td>
+            <td>Remote Monitoring Visits</td>
+            <td>Platform requirements, document preparation, follow-up procedures</td>
+          </tr>
+          <tr>
+            <td><span class="sop-num">008</span></td>
+            <td>Recruitment & Retention</td>
+            <td>10 active methods, 8 passive methods, special populations, compensation</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Services</h2>
+      <p>Consulting and engineering for clinical research operations.</p>
+    </div>
+
+    <div class="card-grid card-grid-3">
+      <div class="card">
+        <div class="card-label">Consulting</div>
+        <h3>Regulatory Infrastructure</h3>
+        <p>
+          SOP development, regulatory binder setup, IRB submission support,
+          and compliance gap assessments for new and existing sites.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Software</div>
+        <h3>Compliance-Grade Development</h3>
+        <p>
+          Custom software with audit trails, RBAC, encrypted storage,
+          and regulatory documentation. HIPAA and 21 CFR Part 11 aligned.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Automation</div>
+        <h3>Site Operations Automation</h3>
+        <p>
+          Workflow automation, document generation, data pipelines,
+          and reporting tools that reduce manual overhead for research coordinators.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who We Serve -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Who We Work With</h2>
+    </div>
+
+    <div class="audience-grid">
+      <div class="audience-item">
+        <h3>Research Sites</h3>
+        <p>Sites starting new study programs or building compliance infrastructure from the ground up.</p>
+      </div>
+      <div class="audience-item">
+        <h3>CROs</h3>
+        <p>Contract research organizations updating SOP libraries or deploying site management tools.</p>
+      </div>
+      <div class="audience-item">
+        <h3>Principal Investigators</h3>
+        <p>PIs establishing site compliance infrastructure for sponsor-initiated or investigator-initiated studies.</p>
+      </div>
+      <div class="audience-item">
+        <h3>Consultants</h3>
+        <p>Clinical research consultants who need site-ready templates and tools for client engagements.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta-section">
+    <h2>Ready to get your site operational?</h2>
+    <p>Download the SOP bundle today, or reach out to discuss custom consulting and software.</p>
+    <div class="hero-cta">
+      <a href="mailto:admin@purpledirective.com?subject=SOP%20Bundle%20Inquiry" class="btn-primary">Get the SOP Bundle — $99</a>
+      <a href="mailto:admin@purpledirective.com" class="btn-secondary">Contact Us</a>
     </div>
   </section>
 
 </Base>
+
+<style>
+  /* Hero CTA buttons */
+  .hero-cta {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    margin-top: var(--spacing-lg);
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--purple-primary);
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: var(--purple-dark);
+    color: #fff;
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    color: var(--text-secondary);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.7rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--purple-primary);
+    color: var(--purple-primary);
+  }
+
+  .btn-sm {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+    margin-top: var(--spacing-sm);
+  }
+
+  /* Trust bar */
+  .trust-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+    padding: var(--spacing-xl) 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .trust-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .trust-num {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--purple-primary);
+  }
+
+  .trust-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Product cards */
+  .product-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-card p {
+    flex: 1;
+  }
+
+  .product-meta {
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-sm);
+    margin: var(--spacing-sm) 0;
+  }
+
+  .price {
+    font-family: var(--font-mono);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--purple-primary);
+  }
+
+  .price-note {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  /* SOP table */
+  .sop-table-wrap {
+    overflow-x: auto;
+    margin: var(--spacing-lg) 0;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+
+  .sop-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+  }
+
+  .sop-table thead {
+    background: var(--bg-card);
+  }
+
+  .sop-table th {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sop-table td {
+    padding: 0.65rem 1rem;
+    color: var(--text-secondary);
+    border-bottom: 1px solid rgba(42, 42, 58, 0.5);
+  }
+
+  .sop-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .sop-table tr:hover td {
+    background: rgba(155, 114, 207, 0.03);
+  }
+
+  .sop-num {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--purple-primary);
+  }
+
+  /* 3-column card grid */
+  .card-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Audience grid */
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+  }
+
+  .audience-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: var(--spacing-lg);
+  }
+
+  .audience-item h3 {
+    margin-top: 0;
+    font-size: 1rem;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .audience-item p {
+    font-size: 0.85rem;
+    margin-bottom: 0;
+  }
+
+  /* CTA section */
+  .cta-section {
+    text-align: center;
+    padding: var(--spacing-2xl) 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .cta-section h2 {
+    margin-top: 0;
+  }
+
+  .cta-section p {
+    max-width: 550px;
+    margin: 0 auto var(--spacing-md);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .trust-bar {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-lg);
+    }
+
+    .card-grid-3 {
+      grid-template-columns: 1fr;
+    }
+
+    .audience-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .trust-bar {
+      grid-template-columns: 1fr;
+      text-align: left;
+    }
+
+    .trust-item {
+      flex-direction: row;
+      align-items: center;
+      gap: var(--spacing-sm);
+      text-align: left;
+    }
+
+    .hero-cta {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .btn-primary, .btn-secondary {
+      text-align: center;
+    }
+  }
+</style>

@@ -8,7 +8,7 @@ interface Props {
   ogImage?: string;
 }
 
-const { title, description = "Sovereign AI Agent Organization Framework", activePage = "", ogImage = "/og-image.png" } = Astro.props;
+const { title, description = "Compliance-grade software and operations consulting for clinical research sites and CROs.", activePage = "", ogImage = "/og-image.png" } = Astro.props;
 const fullTitle = title === "Home" ? "PurpleDirective" : `${title} — PurpleDirective`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -54,18 +54,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
           </defs>
           <path d="M 26,96 L 26,16 C 26,6 76,6 76,50 C 76,80 58,94 44,87 C 33,80 30,70 36,62 C 40,55 50,53 56,53" fill="none" stroke="url(#navGrad)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        purple<span>directive</span><em>violet</em>
+        purple<span>directive</span>
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
       <ul class="links" id="nav-links">
-        <li><a href="/projects" class:list={[{ active: activePage === "projects" }]}>Projects</a></li>
+        <li><a href="/#products" class:list={[{ active: activePage === "products" }]}>Products</a></li>
+        <li><a href="/hire" class:list={[{ active: activePage === "hire" }]}>Services</a></li>
         <li><a href="/blog" class:list={[{ active: activePage === "blog" }]}>Blog</a></li>
+        <li><a href="/resume" class:list={[{ active: activePage === "resume" }]}>Resume</a></li>
         <li><a href="/about" class:list={[{ active: activePage === "about" }]}>About</a></li>
-        <li><a href="/hire" class:list={[{ active: activePage === "hire" }]}>Hire</a></li>
         <li><a href={social.github.url} target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="https://dash.purpledirective.com" target="_blank" rel="noopener" class="nav-tool-link">Dash</a></li>
-        <li class="nav-divider"></li>
-        <li><button class="nav-tool bionic-btn" id="bionic-toggle" title="Bionic Reading: OFF" aria-pressed="false">Aa</button></li>
       </ul>
     </div>
   </nav>
@@ -76,7 +74,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
   <footer>
     <div class="container">
-      <span class="motto">Keep Evolving. Keep Improving. Keep Keen.</span>
+      <span class="motto">Compliance-grade software for clinical research.</span>
       <ul class="links">
         <li><a href={social.github.url} target="_blank" rel="noopener">GitHub</a></li>
         <li><a href={social.x.url} target="_blank" rel="noopener">X</a></li>
@@ -97,82 +95,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       a.addEventListener('click', () => links.classList.remove('open'));
     });
 
-    // Bionic reading
-    const BIONIC_KEY = 'pd-bionic';
-    const SKIP_TAGS = new Set(['CODE', 'PRE', 'SCRIPT', 'STYLE', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'A', 'BUTTON']);
-    let originalHTML: string | null = null;
-
-    function bionicWord(word: string): string {
-      if (word.length <= 1) return word;
-      const mid = Math.ceil(word.length / 2);
-      return `<b>${word.slice(0, mid)}</b>${word.slice(mid)}`;
-    }
-
-    function hasSkipAncestor(node: Node, root: Node): boolean {
-      let el = node.parentElement;
-      while (el && el !== root) {
-        if (SKIP_TAGS.has(el.tagName)) return true;
-        el = el.parentElement;
-      }
-      return false;
-    }
-
-    function applyBionic(root: HTMLElement) {
-      if (!originalHTML) originalHTML = root.innerHTML;
-      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
-      const textNodes: Text[] = [];
-      let n: Text | null;
-      while ((n = walker.nextNode() as Text | null)) {
-        if (n.textContent?.trim() && !hasSkipAncestor(n, root)) {
-          textNodes.push(n);
-        }
-      }
-      textNodes.forEach(node => {
-        const frag = document.createDocumentFragment();
-        node.textContent!.split(/(\s+)/).forEach(part => {
-          if (/^\s+$/.test(part)) {
-            frag.appendChild(document.createTextNode(part));
-          } else if (part) {
-            const span = document.createElement('span');
-            span.innerHTML = bionicWord(part);
-            frag.appendChild(span);
-          }
-        });
-        node.parentNode?.replaceChild(frag, node);
-      });
-    }
-
-    function removeBionic(root: HTMLElement) {
-      if (originalHTML !== null) root.innerHTML = originalHTML;
-    }
-
-    function setBionic(enabled: boolean) {
-      const main = document.querySelector('main') as HTMLElement | null;
-      const btn = document.getElementById('bionic-toggle') as HTMLButtonElement | null;
-      if (!main || !btn) return;
-      if (enabled) {
-        applyBionic(main);
-        btn.classList.add('active');
-        btn.setAttribute('aria-pressed', 'true');
-        btn.title = 'Bionic Reading: ON';
-      } else {
-        removeBionic(main);
-        btn.classList.remove('active');
-        btn.setAttribute('aria-pressed', 'false');
-        btn.title = 'Bionic Reading: OFF';
-      }
-      localStorage.setItem(BIONIC_KEY, enabled ? '1' : '0');
-    }
-
-    // Init: default ON unless user explicitly turned it off
-    const saved = localStorage.getItem(BIONIC_KEY);
-    const startEnabled = saved === '1';
-    setBionic(startEnabled);
-
-    document.getElementById('bionic-toggle')?.addEventListener('click', () => {
-      const current = localStorage.getItem(BIONIC_KEY) !== '0';
-      setBionic(!current);
-    });
   </script>
 </body>
 </html>

@@ -1,0 +1,616 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Resume" activePage="resume" description="Maaryj Ahmad — Clinical Research Professional, Data Manager, and Clinical Systems Builder. 6+ years across academic research, multi-site CROs, and registry management.">
+
+  <section class="section hero">
+    <h1>Maaryj <span class="accent">Ahmad</span></h1>
+    <p class="subtitle">
+      Clinical Research Professional | Data Manager | Clinical Systems Builder
+    </p>
+    <div class="contact-row">
+      <span>Long Island, NY</span>
+      <span class="sep"></span>
+      <a href="mailto:admin@purpledirective.com">admin@purpledirective.com</a>
+      <span class="sep"></span>
+      <a href="https://github.com/PurpleDirective" target="_blank" rel="noopener">GitHub</a>
+      <span class="sep"></span>
+      <a href="https://purpledirective.com">purpledirective.com</a>
+    </div>
+  </section>
+
+  <!-- Summary -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Summary</h2>
+    </div>
+    <p class="summary-text">
+      6+ years across academic research, multi-site CROs, and registry management. Currently dual-role at Northwell Health.
+      10+ clinical studies across 6 therapeutic areas. Builder of compliance-grade clinical systems — including a production
+      CTMS with 21 CFR Part 11 audit trail, 25+ SOPs, and a complete REDCap EDC implementation.
+    </p>
+  </section>
+
+  <!-- Core Competencies -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Core Competencies</h2>
+    </div>
+    <div class="competency-grid">
+      <div class="competency-group">
+        <h3>Clinical Operations</h3>
+        <div class="tags">
+          <span class="tag">Clinical Data Management</span>
+          <span class="tag">EDC / REDCap</span>
+          <span class="tag">CTMS Administration</span>
+          <span class="tag">ICH-GCP Compliance</span>
+          <span class="tag">Multi-Site Coordination</span>
+          <span class="tag">SOP Development</span>
+          <span class="tag">IRB/FDA Submissions</span>
+          <span class="tag">CIBMTR Registry</span>
+        </div>
+      </div>
+      <div class="competency-group">
+        <h3>Technical</h3>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">SQL / PostgreSQL</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Git</span>
+          <span class="tag">Database Design</span>
+          <span class="tag">Data Validation</span>
+          <span class="tag">21 CFR Part 11 Audit Trails</span>
+          <span class="tag">Process Automation</span>
+          <span class="tag">HIPAA Compliance</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Professional Experience</h2>
+    </div>
+
+    <div class="experience">
+
+      <div class="job">
+        <div class="job-header">
+          <div class="job-company">Northwell Health, Inc.</div>
+          <div class="job-location">New Hyde Park / Manhasset, NY</div>
+          <div class="job-date">May 2023 — Present</div>
+        </div>
+
+        <div class="role">
+          <div class="role-title">Data Manager — Pediatric Stem Cell Transplant Program</div>
+          <div class="role-type">Part-Time, Jul 2025 — Present</div>
+          <ul>
+            <li>Process 15-25 CIBMTR registry data forms monthly via FormsNet3, covering Day 100, 6-month, 1-year, and annual follow-up timepoints with 100% on-time submission compliance.</li>
+            <li>Identify and resolve data discrepancies by cross-referencing source documents against registry entries, collaborating directly with physicians and APPs to reconcile clinical data.</li>
+            <li>Independently manage the follow-up tracking calendar for the full transplant patient population, preventing missed reporting deadlines.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-title">Clinical Research Coordinator — Institute of Bioelectronic Medicine</div>
+          <div class="role-type">Part-Time, Jul 2025 — Present</div>
+          <ul>
+            <li>Coordinate a vagus nerve stimulation trial under Dr. Jared M. Huston, MD FACS at the Feinstein Institutes — screening, informed consent, study visits, and EDC data entry per ICH-GCP.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-title">Clinical Research Coordinator — Institute of Molecular Medicine</div>
+          <div class="role-type">Full-Time, May 2023 — Jun 2025</div>
+          <ul>
+            <li>Enrolled 25 of 30 target patients as the sole coordinator for the 5Liter hematology study (83% of target), managing the full lifecycle from screening through long-term follow-up.</li>
+            <li>Designed and built an EDC system in REDCap from scratch — custom forms, validation rules, branching logic, and reporting dashboards — eliminating prior reliance on paper-based data collection.</li>
+            <li>Managed specimen collection, processing, and IATA-compliant shipment. Maintained regulatory binders and prepared for all monitoring visits.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div class="job-company">A1 Clinical Network, LLC</div>
+          <div class="job-location">Spring, TX / Queens, NY (3 sites)</div>
+          <div class="job-date">Oct 2022 — Jan 2024</div>
+        </div>
+
+        <div class="role">
+          <div class="role-title">Clinical Research Coordinator + Technology Lead</div>
+          <div class="role-type">Contract</div>
+          <ul>
+            <li>Operated independently across 3 clinical sites in Pulmonary (Asthma/COPD), IBD (Crohn's/UC), and Oncology (CRC) — managing recruitment, ICFs, specimen collection, and sponsor data submissions with no on-site oversight.</li>
+            <li>Built a production CTMS from scratch: 10 database tables, 4-tier RBAC, 21 CFR Part 11 audit trail, CSRF protection, and GPG-encrypted automated backups. Now the organization's primary operational system.</li>
+            <li>Authored 25+ SOPs spanning study start-up, monitoring, data management, regulatory submissions, and site close-out — establishing the organization's first standardized operational framework.</li>
+            <li>Rebuilt organizational web presence (12-page bilingual site), migrated DNS infrastructure to Cloudflare, and deployed business email systems.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div class="job-company">Smart Medical Research, LLC</div>
+          <div class="job-location">Jackson Heights / Queens, NY (2 sites)</div>
+          <div class="job-date">Nov 2022 — Apr 2023</div>
+        </div>
+
+        <div class="role">
+          <div class="role-title">Clinical Research Coordinator</div>
+          <div class="role-type">Part-Time, concurrent with A1 Clinical</div>
+          <ul>
+            <li>Coordinated data entry and vendor communications across 2 research sites. Participated in Investigator Meetings, SIVs, and SQVs.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div class="job-company">Best Medical Care, PC.</div>
+          <div class="job-location">Queens, NY</div>
+          <div class="job-date">Mar 2022 — Oct 2022</div>
+        </div>
+
+        <div class="role">
+          <div class="role-title">Medical Office Assistant</div>
+          <ul>
+            <li>Managed insurance verification, prior authorizations, and cross-facility medical records retrieval in a high-volume clinical practice.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div class="job-company">A1 Clinical Network, LLC</div>
+          <div class="job-location">Spring, TX</div>
+          <div class="job-date">Jun 2019 — Apr 2021</div>
+        </div>
+
+        <div class="role">
+          <div class="role-title">Clinical Research Assistant</div>
+          <ul>
+            <li>Supported Psychiatry and GI clinical trials: patient chart pre-screening against I/E criteria, 12-lead ECG performance, specimen preparation, and scored questionnaire administration per protocol.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Clinical Systems -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Clinical Data Systems & Technology</h2>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Production System</div>
+        <h3>CTMS — Nexrial</h3>
+        <p>
+          Designed, built, and deployed a Clinical Trial Management System for a CRO.
+          PostgreSQL database, FastAPI backend, web dashboard with Tailwind CSS.
+          21 CFR Part 11 audit trail, role-based access, automated encrypted backups, signature workflows.
+          In active production use.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-label">EDC Implementation</div>
+        <h3>REDCap</h3>
+        <p>
+          Built a complete REDCap EDC implementation for a Northwell clinical study —
+          form design, data validation rules, conditional branching, and automated reporting dashboards.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Therapeutic Areas -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Therapeutic Areas</h2>
+    </div>
+    <div class="tags therapeutic-tags">
+      <span class="tag tag-therapeutic">Hematology (Diamond Blackfan Anemia)</span>
+      <span class="tag tag-therapeutic">Oncology (Colorectal Cancer)</span>
+      <span class="tag tag-therapeutic">Pulmonary (Asthma & COPD)</span>
+      <span class="tag tag-therapeutic">Gastroenterology / IBD (Crohn's & UC)</span>
+      <span class="tag tag-therapeutic">Psychiatry (Schizophrenia)</span>
+      <span class="tag tag-therapeutic">Bioelectronic Medicine (VNS)</span>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Education</h2>
+    </div>
+
+    <div class="education-list">
+      <div class="edu-item">
+        <div class="edu-school">Western Governors University</div>
+        <div class="edu-detail">B.S. Accounting | 2026 — Present</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-school">Queensborough Community College</div>
+        <div class="edu-detail">A.A.S. Accounting | 2023 — 2025</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-school">University of Houston</div>
+        <div class="edu-detail">Biology Coursework | 2019 — 2023</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Certifications</h2>
+    </div>
+
+    <div class="cert-list">
+      <div class="cert-item">
+        <span class="cert-name">Good Clinical Practice (GCP) — ICH E6(R2)</span>
+        <span class="cert-date">October 2023</span>
+      </div>
+      <div class="cert-item">
+        <span class="cert-name">IATA Dangerous Goods Regulations (Category 6 Substances)</span>
+        <span class="cert-date">September 2022</span>
+      </div>
+      <div class="cert-item">
+        <span class="cert-name">SGNA Associates Program (#2418AJWCOR18)</span>
+        <span class="cert-date">August 2022</span>
+      </div>
+      <div class="cert-item">
+        <span class="cert-name">Microsoft Office Specialist</span>
+        <span class="cert-date">January 2021</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Publication -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Publication</h2>
+    </div>
+    <div class="publication">
+      <p>
+        Bravo-Iniguez CE, Papoin J, <strong>Ahmad M</strong>, Le B, Mirro I, McWade M, Benner C, Covalin A, Czura CJ, Khodaparast N, Blanc L, Huston JM.
+        Transcutaneous Auricular Neurostimulation Primes Platelets and Improves Laboratory Hemostasis in Healthy Human Subjects.
+        <em>Bioelectronic Medicine</em>. 2026. [In Revision]
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta-section">
+    <h2>Let's work together</h2>
+    <p>Available for consulting, contract work, and clinical systems development.</p>
+    <div class="cta-row">
+      <a href="mailto:admin@purpledirective.com" class="btn-primary">Get in Touch</a>
+      <a href="/#products" class="btn-secondary">View Products</a>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  /* Contact row */
+  .contact-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: var(--spacing-sm);
+  }
+
+  .contact-row a {
+    color: var(--purple-primary);
+  }
+
+  .sep {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    flex-shrink: 0;
+  }
+
+  /* Summary */
+  .summary-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    max-width: 720px;
+  }
+
+  /* Competency grid */
+  .competency-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+  }
+
+  .competency-group h3 {
+    font-size: 0.85rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-top: 0;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 0.25rem 0.6rem;
+    white-space: nowrap;
+  }
+
+  .tag-therapeutic {
+    border-color: rgba(155, 114, 207, 0.25);
+    color: var(--purple-light);
+    background: rgba(155, 114, 207, 0.05);
+  }
+
+  .therapeutic-tags {
+    margin: var(--spacing-lg) 0;
+  }
+
+  /* Experience */
+  .experience {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+  }
+
+  .job {
+    border-left: 2px solid var(--border);
+    padding-left: var(--spacing-lg);
+  }
+
+  .job-header {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .job-company {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .job-location {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .job-date {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--purple-primary);
+    margin-top: 0.15rem;
+  }
+
+  .role {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .role:last-child {
+    margin-bottom: 0;
+  }
+
+  .role-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .role-type {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .role ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .role li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: var(--spacing-sm);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .role li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--purple-dark);
+  }
+
+  /* Education */
+  .education-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+  }
+
+  .edu-item {
+    border-left: 2px solid var(--border);
+    padding-left: var(--spacing-lg);
+  }
+
+  .edu-school {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+  }
+
+  .edu-detail {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  /* Certifications */
+  .cert-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin: var(--spacing-lg) 0;
+  }
+
+  .cert-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    gap: var(--spacing-md);
+  }
+
+  .cert-name {
+    font-size: 0.85rem;
+    color: var(--text-primary);
+  }
+
+  .cert-date {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  /* Publication */
+  .publication p {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+  }
+
+  .publication em {
+    color: var(--purple-light);
+  }
+
+  /* CTA */
+  .cta-section {
+    text-align: center;
+    padding: var(--spacing-2xl) 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .cta-section h2 {
+    margin-top: 0;
+  }
+
+  .cta-section p {
+    max-width: 500px;
+    margin: 0 auto var(--spacing-md);
+  }
+
+  .cta-row {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    margin-top: var(--spacing-lg);
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--purple-primary);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: var(--purple-dark);
+    color: #fff;
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.7rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--purple-primary);
+    color: var(--purple-primary);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .competency-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cert-item {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .contact-row {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .sep {
+      display: none;
+    }
+
+    .cta-row {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .btn-primary, .btn-secondary {
+      text-align: center;
+    }
+  }
+</style>
