@@ -19,8 +19,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
-  <meta name="theme-color" content="#9b72cf" />
+  <meta name="theme-color" content="#6B4C9A" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="192x192" href="/favicon-192.png" />
   <link rel="canonical" href={canonicalURL} />
 
   <!-- Open Graph -->
@@ -54,7 +57,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
           </defs>
           <path d="M 26,96 L 26,16 C 26,6 76,6 76,50 C 76,80 58,94 44,87 C 33,80 30,70 36,62 C 40,55 50,53 56,53" fill="none" stroke="url(#navGrad)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        purple<span>directive</span>
+        Purple<span>Directive</span>
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
       <ul class="links" id="nav-links">
@@ -73,12 +76,60 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
   <footer>
     <div class="container">
-      <span class="motto">Compliance-grade software for clinical research.</span>
-      <ul class="links">
-        <li><a href={social.github.url} target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href={social.x.url} target="_blank" rel="noopener">X</a></li>
-        <li><a href={social.reddit.url} target="_blank" rel="noopener">Reddit</a></li>
-      </ul>
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <a href="/" class="footer-logo">
+            <svg class="footer-logo-mark" viewBox="0 0 100 120" aria-hidden="true">
+              <path d="M 26,96 L 26,16 C 26,6 76,6 76,50 C 76,80 58,94 44,87 C 33,80 30,70 36,62 C 40,55 50,53 56,53" fill="none" stroke="#5B21B6" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Purple<span>Directive</span>
+          </a>
+          <p class="footer-tagline">Compliance-grade software and operations consulting for clinical research sites and CROs.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="/sop-bundle">SOP Template Bundle</a></li>
+            <li><a href="/#products">Nexrial CTMS</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/hire">Services</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="mailto:admin@purpledirective.com">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href={social.github.url} target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href={social.x.url} target="_blank" rel="noopener">X (Twitter)</a></li>
+            <li><a href={social.reddit.url} target="_blank" rel="noopener">Reddit</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-legal">
+          <span>&copy; {new Date().getFullYear()} Purple Directive LLC. All rights reserved.</span>
+          <span class="footer-sep">&middot;</span>
+          <a href="/privacy">Privacy Policy</a>
+          <span class="footer-sep">&middot;</span>
+          <a href="/terms">Terms of Service</a>
+        </div>
+        <p class="footer-disclaimer">
+          Purple Directive LLC provides software, templates, and consulting services for informational and operational purposes only. Our products and services do not constitute legal, regulatory, or medical advice. SOP templates are customizable starting points and must be reviewed, adapted, and validated against your institution's specific policies, applicable regulations (including ICH E6(R2/R3), 21 CFR Parts 11/50/56/312, and 45 CFR Part 46), IRB requirements, and sponsor protocols before implementation. Purple Directive LLC assumes no liability for the use or misuse of any product or service.
+        </p>
+        <p class="footer-confidentiality">
+          All client engagements are subject to confidentiality obligations. Protected health information (PHI) and personally identifiable information (PII) are handled in accordance with HIPAA Privacy and Security Rules. Purple Directive does not store, transmit, or process PHI through its public-facing products.
+        </p>
+      </div>
     </div>
   </footer>
 
