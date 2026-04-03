@@ -9,7 +9,7 @@ export async function GET(context: APIContext) {
 
   return rss({
     title: 'PurpleDirective',
-    description: 'Sovereign AI agent organization — build logs, architecture, and lessons.',
+    description: 'Compliance-grade software and operations consulting for clinical research — build logs, architecture, and lessons.',
     site: context.site!,
     items: posts.map((post) => ({
       title: post.data.title,

@@ -7,27 +7,252 @@ const posts = (await getCollection('blog')).sort(
 );
 ---
 
-<Base title="Blog" activePage="blog" description="Writing about sovereign AI, agent architectures, and building in public.">
+<Base title="Blog" activePage="blog" description="How we build compliance-grade software and operations for clinical research — lessons, decisions, and what we learned the hard way.">
   <section class="section">
-    <div class="section-header">
-      <h1>Blog</h1>
-      <p>Notes on building sovereign AI systems, agent architectures, and lessons learned.</p>
+    <div class="blog-header">
+      <div>
+        <h1>Blog</h1>
+        <p>How we build, what we've learned, and where clinical research operations are headed.</p>
+      </div>
+      <div class="blog-count">
+        <span class="blog-count-num">{posts.length}</span>
+        <span class="blog-count-label">Posts</span>
+      </div>
     </div>
 
-    {posts.length > 0 ? (
-      <ul class="post-list">
-        {posts.map((post) => (
-          <li>
-            <span class="date">{(() => { const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; const [y,m,d] = post.data.date.toISOString().split('T')[0].split('-').map(Number); return `${d} ${MONTHS[m-1]} ${y}`; })()}</span>
-            <h3><a href={`/blog/${post.id}`}>{post.data.title}</a></h3>
-            <p class="summary">{post.data.summary}</p>
-          </li>
-        ))}
-      </ul>
-    ) : (
-      <div class="card" style="text-align: center; padding: 3rem;">
-        <p style="color: var(--text-muted); margin-bottom: 0;">First post coming soon.</p>
-      </div>
+    {posts.length > 0 && (
+      <>
+        {/* Featured post — most recent */}
+        <a href={`/blog/${posts[0].id}`} class="featured-post">
+          <div class="featured-post-meta">
+            <span class="post-tag">{posts[0].data.tags?.[0] || 'Insight'}</span>
+            <span class="post-date">{(() => { const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; const [y,m,d] = posts[0].data.date.toISOString().split('T')[0].split('-').map(Number); return `${d} ${MONTHS[m-1]} ${y}`; })()}</span>
+          </div>
+          <h2>{posts[0].data.title}</h2>
+          <p>{posts[0].data.summary}</p>
+          <div class="post-author-row">
+            <div class={`post-avatar ${posts[0].data.author === 'Violet' ? 'avatar-violet' : 'avatar-tyrian'}`}>
+              {posts[0].data.author === 'Violet' ? '🔮' : '🐌'}
+            </div>
+            <span class="post-author-name">{posts[0].data.author === 'Violet' ? 'Violet M.' : 'Tyrian M.'}</span>
+            <span class="read-link">Read post &rarr;</span>
+          </div>
+        </a>
+
+        {/* Remaining posts */}
+        {posts.length > 1 && (
+          <div class="post-grid">
+            {posts.slice(1).map((post) => (
+              <a href={`/blog/${post.id}`} class="post-card">
+                <div class="post-card-meta">
+                  <span class="post-tag">{post.data.tags?.[0] || 'Insight'}</span>
+                  <span class="post-date">{(() => { const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; const [y,m,d] = post.data.date.toISOString().split('T')[0].split('-').map(Number); return `${d} ${MONTHS[m-1]} ${y}`; })()}</span>
+                </div>
+                <h3>{post.data.title}</h3>
+                <p>{post.data.summary}</p>
+                <div class="post-author-row">
+                  <div class={`post-avatar ${post.data.author === 'Violet' ? 'avatar-violet' : 'avatar-tyrian'}`}>
+                    {post.data.author === 'Violet' ? '🔮' : '🐌'}
+                  </div>
+                  <span class="post-author-name">{post.data.author === 'Violet' ? 'Violet M.' : 'Tyrian M.'}</span>
+                  <span class="read-link">Read &rarr;</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        )}
+      </>
     )}
   </section>
 </Base>
+
+<style>
+  .blog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .blog-header h1 { margin-bottom: var(--spacing-sm); }
+  .blog-header p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0; }
+
+  .blog-count {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1rem;
+    flex-shrink: 0;
+  }
+
+  .blog-count-num {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--purple-primary);
+    line-height: 1;
+  }
+
+  .blog-count-label {
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* Featured post — latest */
+  .featured-post {
+    display: block;
+    background: linear-gradient(160deg, #f5f3f8 0%, #ede9fe 45%, #fafafa 100%);
+    border: 1px solid rgba(91, 33, 182, 0.1);
+    border-radius: 14px;
+    padding: var(--spacing-xl);
+    text-decoration: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .featured-post:hover {
+    border-color: var(--purple-primary);
+    box-shadow: 0 4px 16px rgba(91, 33, 182, 0.1);
+  }
+
+  .featured-post h2 {
+    margin-top: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-primary);
+    font-size: 1.5rem;
+  }
+
+  .featured-post p {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    max-width: 700px;
+  }
+
+  .featured-post-meta,
+  .post-card-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .post-tag {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--purple-primary);
+  }
+
+  .post-date {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+
+  .read-link {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--purple-primary);
+    display: inline-block;
+  }
+
+  /* Author row */
+  .post-author-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: var(--spacing-sm);
+  }
+
+  .post-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.55rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .avatar-tyrian {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    border: 2px solid #f59e0b;
+  }
+
+  .avatar-violet {
+    background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+    border: 2px solid #a78bfa;
+  }
+
+  .post-author-name {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    flex: 1;
+  }
+
+  /* Post grid — 2 columns */
+  .post-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: var(--spacing-lg);
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .post-card:hover {
+    border-color: var(--purple-primary);
+    transform: translateY(-2px);
+  }
+
+  .post-card h3 {
+    margin-top: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-primary);
+    font-size: 1.05rem;
+  }
+
+  .post-card p {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    flex: 1;
+  }
+
+  .post-card .read-link {
+    margin-top: auto;
+    padding-top: var(--spacing-sm);
+  }
+
+  @media (max-width: 768px) {
+    .post-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .blog-header {
+      flex-direction: column;
+      gap: var(--spacing-sm);
+    }
+
+    .blog-count {
+      flex-direction: row;
+      gap: var(--spacing-sm);
+      align-items: baseline;
+    }
+
+    .blog-count-num { font-size: 1.25rem; }
+  }
+</style>
