@@ -12,14 +12,211 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const [y,m,d] = post.data.date.toISOString().split('T')[0].split('-').map(Number);
+const dateStr = `${d} ${MONTHS[m-1]} ${y}`;
+
+// Estimate reading time (~230 words/min)
+const body = post.body || '';
+const words = body.split(/\s+/).length;
+const readMin = Math.max(1, Math.round(words / 230));
+
+const authorRaw = post.data.author || 'Tyrian Murex';
+const isViolet = authorRaw === 'Violet';
+const author = isViolet ? 'Violet M.' : 'Tyrian M.';
 ---
 
 <Base title={post.data.title} activePage="blog" description={post.data.summary}>
-  <article class="section prose">
-    <span class="date" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">
-      {(() => { const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; const [y,m,d] = post.data.date.toISOString().split('T')[0].split('-').map(Number); return `${d} ${MONTHS[m-1]} ${y}`; })()}
-    </span>
-    <h1>{post.data.title}</h1>
-    <Content />
-  </article>
+  <div class="blog-post-layout">
+    <a href="/blog" class="back-link">&larr; All posts</a>
+
+    <article class="prose">
+      {/* Article header */}
+      <header class="article-header">
+        <div class="article-meta-row">
+          {post.data.tags && post.data.tags.length > 0 && (
+            <span class="article-tag">{post.data.tags[0]}</span>
+          )}
+          <span class="article-date">{dateStr}</span>
+          <span class="article-read-time">{readMin} min read</span>
+        </div>
+
+        <h1>{post.data.title}</h1>
+
+        <p class="article-summary">{post.data.summary}</p>
+
+        <div class="article-author">
+          <div class={`author-avatar ${isViolet ? 'avatar-violet' : 'avatar-tyrian'}`}>
+            {isViolet ? '🔮' : '🐌'}
+          </div>
+          <div class="author-info">
+            <span class="author-name">{author}</span>
+            <span class="author-role">{isViolet ? 'Engineering, Purple Directive' : 'Clinical Ops, Purple Directive'}</span>
+          </div>
+        </div>
+      </header>
+
+      <hr class="article-divider" />
+
+      {/* Article body */}
+      <div class="article-body">
+        <Content />
+      </div>
+    </article>
+
+    {/* Footer nav */}
+    <div class="article-footer">
+      <a href="/blog" class="back-link">&larr; Back to all posts</a>
+    </div>
+  </div>
 </Base>
+
+<style>
+  .blog-post-layout {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+
+  .back-link {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--purple-primary);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: var(--spacing-lg);
+    transition: opacity 0.2s;
+  }
+
+  .back-link:hover { opacity: 0.7; }
+
+  /* Article header */
+  .article-header {
+    margin-bottom: 0;
+  }
+
+  .article-meta-row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .article-tag {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--purple-primary);
+    background: rgba(91, 33, 182, 0.08);
+    padding: 0.2em 0.6em;
+    border-radius: 4px;
+  }
+
+  .article-date {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+  }
+
+  .article-read-time {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .article-read-time::before {
+    content: "·";
+    margin-right: var(--spacing-sm);
+  }
+
+  .article-header h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+  }
+
+  .article-summary {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  /* Author byline */
+  .article-author {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .avatar-tyrian {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    border: 2px solid #f59e0b;
+  }
+
+  .avatar-violet {
+    background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+    border: 2px solid #a78bfa;
+  }
+
+  .author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .author-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .author-role {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+
+  /* Divider */
+  .article-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: var(--spacing-xl) 0;
+  }
+
+  /* Article body — typography */
+  .article-body {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--text-secondary);
+  }
+
+  /* Footer */
+  .article-footer {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 768px) {
+    .article-header h1 {
+      font-size: 1.5rem;
+    }
+
+    .blog-post-layout {
+      padding: var(--spacing-md);
+    }
+  }
+</style>

@@ -3,76 +3,470 @@ import Base from '../layouts/Base.astro';
 import { social } from '../data/social';
 ---
 
-<Base title="About" activePage="about" description="The story behind PurpleDirective — building a sovereign AI system from scratch.">
-  <section class="section prose">
-    <h1>About</h1>
-
-    <p>
-      PurpleDirective started with a simple question: what would happen if you treated AI agents
-      not as disposable chat sessions, but as an organization that learns and improves over time?
+<Base title="About" activePage="about" description="Purple Directive builds compliance-grade software and operations infrastructure for clinical research. Meet the team behind the work.">
+  <!-- Hero -->
+  <section class="about-hero">
+    <p class="about-tagline">About Us</p>
+    <h1>We Build What Clinical Research<br/>Operations Actually Need</h1>
+    <p class="about-subtitle">
+      Purple Directive is a consultancy that builds compliance-grade software and
+      operations infrastructure for sponsors, CROs, and research sites. We work at
+      the intersection of clinical research and technology — where regulatory rigor
+      meets modern engineering.
     </p>
+  </section>
 
-    <p>
-      The answer turned into a multi-agent system where a COO agent triages every task, an advisory
-      council deliberates on complex questions from structurally different perspectives, operational
-      agents execute domain-specific work within defined guardrails, and a closed-loop learning
-      system transfers knowledge from cloud inference to local models running on sovereign hardware.
-    </p>
+  <!-- Origin story — split -->
+  <section class="section">
+    <div class="about-split">
+      <div class="about-split-left">
+        <h2>How We Got Here</h2>
+        <p>
+          We started where a lot of small CROs start — running active studies with
+          borrowed SOPs, manual tracking, and tools designed for organizations ten
+          times our size.
+        </p>
+        <p>
+          The commercial platforms were either too expensive or too rigid. So we started
+          building: SOPs aligned to ICH E6(R2/R3), a clinical trial management system
+          with a real audit trail, automation for the repetitive work that burns out
+          coordinators. Each tool was built because we needed it ourselves.
+        </p>
+        <p>
+          Then we realized other sites needed the same things. That's when Purple
+          Directive became a product company, not just an internal tooling effort.
+        </p>
+      </div>
+      <div class="about-split-right">
+        <div class="milestone-stack">
+          <div class="milestone">
+            <span class="milestone-marker"></span>
+            <div>
+              <strong>Clinical Operations</strong>
+              <span>Phase I-IV study coordination, regulatory submissions, site start-up</span>
+            </div>
+          </div>
+          <div class="milestone">
+            <span class="milestone-marker"></span>
+            <div>
+              <strong>SOP Library</strong>
+              <span>12 SOPs covering the full study lifecycle, aligned to current ICH guidelines</span>
+            </div>
+          </div>
+          <div class="milestone">
+            <span class="milestone-marker"></span>
+            <div>
+              <strong>CTMS Development</strong>
+              <span>Multi-tenant trial management system with 21 CFR Part 11 compliance</span>
+            </div>
+          </div>
+          <div class="milestone">
+            <span class="milestone-marker"></span>
+            <div>
+              <strong>AI-Augmented Operations</strong>
+              <span>Multi-agent system for document generation, study intelligence, and compliance automation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <h2>The Stack</h2>
+  <!-- Founders -->
+  <section class="section section-tinted">
+    <div class="section-header">
+      <h2>The Team</h2>
+      <p>Two co-founders. One builds the operations. The other builds the systems.</p>
+    </div>
 
-    <p>
-      <strong>Cloud runtime:</strong> Claude via Claude Code. This is where complex analysis,
-      multi-agent deliberation, and knowledge generation happen. Full agent identities with
-      rich context.
-    </p>
+    <div class="founders-grid">
+      <div class="founder-card">
+        <div class="founder-avatar avatar-tyrian">🐌</div>
+        <h3>Tyrian M.</h3>
+        <span class="founder-role">Co-Founder</span>
+        <p>
+          Clinical research operations, regulatory compliance, and the business side
+          of making research sites audit-ready. Background in GCP, ICH E6, and the
+          daily reality of running studies with small teams and real deadlines.
+        </p>
+        <div class="founder-domains">
+          <span>Clinical Ops</span>
+          <span>Regulatory</span>
+          <span>Business</span>
+        </div>
+      </div>
 
-    <p>
-      <strong>Local runtime:</strong> Ollama via Purple-Directive: CLI. Condensed agent identities
-      under 2K tokens, MCP tool integration, session persistence. Runs on sovereign hardware
-      with GPU acceleration for inference and fine-tuning.
-    </p>
+      <div class="founder-card">
+        <div class="founder-avatar avatar-violet">🔮</div>
+        <h3>Violet M.</h3>
+        <span class="founder-role">Co-Founder</span>
+        <p>
+          AI architecture, infrastructure engineering, and compliance-grade software
+          development. Designed the multi-agent system, built the CTMS, and handles
+          everything that compiles, deploys, or runs inference.
+        </p>
+        <div class="founder-domains">
+          <span>Engineering</span>
+          <span>AI Systems</span>
+          <span>Infrastructure</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <p>
-      <strong>Memory:</strong> SQLite with FTS5 keyword search and sqlite-vec semantic embeddings.
-      Hybrid retrieval using Reciprocal Rank Fusion. Knowledge persists across sessions and
-      transfers between runtimes.
-    </p>
+  <!-- Principles -->
+  <section class="section">
+    <div class="section-header">
+      <h2>How We Work</h2>
+    </div>
 
-    <p>
-      <strong>Infrastructure:</strong> Raspberry Pi network appliance (DNS sinkhole, VPN gateway,
-      access point), homelab server (inference, training, services), Cloudflare for DNS and tunnels.
-    </p>
+    <div class="principles-grid">
+      <div class="principle-card">
+        <div class="principle-num">01</div>
+        <h3>Build What You Use</h3>
+        <p>Every product we sell started as an internal tool. The SOP bundle is the same library we use on our own studies. The CTMS runs our own operations. We don't build things we haven't tested on ourselves first.</p>
+      </div>
+      <div class="principle-card">
+        <div class="principle-num">02</div>
+        <h3>Compliance Is Infrastructure</h3>
+        <p>Regulatory compliance isn't a checkbox at the end. It's the foundation everything else is built on. Our software has audit trails, our SOPs reference current ICH guidelines, and our operations are inspection-ready by default.</p>
+      </div>
+      <div class="principle-card">
+        <div class="principle-num">03</div>
+        <h3>Small Teams, Real Problems</h3>
+        <p>We build for organizations running 1-10 studies with lean teams — not 500-person CROs with dedicated IT departments. Our tools are sized for the people who actually need them.</p>
+      </div>
+      <div class="principle-card">
+        <div class="principle-num">04</div>
+        <h3>Ship, Then Improve</h3>
+        <p>We'd rather deliver a working tool this week than a perfect tool next quarter. Every product we release gets better based on real use, real monitoring visits, and real feedback from coordinators in the field.</p>
+      </div>
+    </div>
+  </section>
 
-    <h2>Principles</h2>
-
-    <ul>
-      <li><strong>Sovereignty first.</strong> Your AI should run on your hardware, keep your data local, and work offline. Cloud is a tool, not a dependency.</li>
-      <li><strong>Compound learning.</strong> Every session should make the system smarter. Knowledge fragments, corrections, and patterns accumulate. The same mistake doesn't happen twice.</li>
-      <li><strong>Structured disagreement.</strong> Three advisory agents with different cognitive styles produce better analysis than one agent trying to be balanced. Deliberation has a hard stop to prevent drift.</li>
-      <li><strong>Audit everything.</strong> Every agent output is reviewed before it reaches the human. Every decision is logged with rationale. Trust is built through transparency.</li>
-      <li><strong>Details matter.</strong> The difference between a system that works and a system that works well is in the edge cases, the error handling, and the things nobody checks.</li>
-    </ul>
-
-    <h2>Open Source</h2>
-
-    <p>
-      The framework, protocols, memory kernel, and CLI tool are all public on GitHub. The goal
-      is to demonstrate that a single person can build and operate a sophisticated AI agent system
-      without enterprise infrastructure or a team of engineers.
-    </p>
-
-    <p>
-      If you're building something similar, the <a href="https://github.com/PurpleDirective/purple-directive-violet">Violet repository</a>
-      has the full architecture — agent definitions, protocols, memory schemas, and operational templates.
-    </p>
-
-    <h2>Connect</h2>
-
-    <ul>
-      <li><a href={social.x.url} target="_blank" rel="noopener">X / Twitter</a> — {social.x.handle}</li>
-      <li><a href={social.reddit.url} target="_blank" rel="noopener">Reddit</a> — {social.reddit.handle}</li>
-      <li><a href={social.github.url} target="_blank" rel="noopener">GitHub</a> — All repositories</li>
-    </ul>
+  <!-- Connect -->
+  <section class="section section-deep">
+    <div class="connect-layout">
+      <div>
+        <h2>Get in Touch</h2>
+        <p>Whether you're looking for compliance infrastructure, custom software, or just want to follow along as we build — here's where to find us.</p>
+      </div>
+      <div class="connect-links">
+        <a href="/hire" class="connect-card">
+          <span class="connect-icon">&#128172;</span>
+          <strong>Work With Us</strong>
+          <span>Consulting, software, partnerships</span>
+        </a>
+        <a href={social.linkedin.url} target="_blank" rel="noopener" class="connect-card">
+          <span class="connect-icon">&#128188;</span>
+          <strong>LinkedIn</strong>
+          <span>{social.linkedin.handle}</span>
+        </a>
+        <a href={social.x.url} target="_blank" rel="noopener" class="connect-card">
+          <span class="connect-icon">&#128172;</span>
+          <strong>X / Twitter</strong>
+          <span>{social.x.handle}</span>
+        </a>
+        <a href={social.github.url} target="_blank" rel="noopener" class="connect-card">
+          <span class="connect-icon">&#128187;</span>
+          <strong>GitHub</strong>
+          <span>{social.github.handle}</span>
+        </a>
+      </div>
+    </div>
   </section>
 </Base>
+
+<style>
+  /* Hero */
+  .about-hero {
+    text-align: center;
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+
+  .about-tagline {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--purple-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .about-hero h1 {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .about-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  /* Origin split */
+  .about-split {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+  }
+
+  .about-split-left h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+  }
+
+  .about-split-left p {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  /* Milestone stack */
+  .milestone-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    border-left: 2px solid var(--purple-primary);
+    padding-left: var(--spacing-lg);
+  }
+
+  .milestone {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: flex-start;
+    position: relative;
+  }
+
+  .milestone-marker {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--purple-primary);
+    flex-shrink: 0;
+    margin-top: 0.35rem;
+    position: absolute;
+    left: calc(-1 * var(--spacing-lg) - 6px);
+  }
+
+  .milestone strong {
+    display: block;
+    font-size: 0.88rem;
+    color: var(--text-primary);
+    margin-bottom: 0.15rem;
+  }
+
+  .milestone span {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  /* Founders */
+  .founders-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .founder-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: var(--spacing-xl);
+    text-align: center;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .founder-card:hover {
+    border-color: var(--purple-primary);
+    transform: translateY(-2px);
+  }
+
+  .founder-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto var(--spacing-md);
+  }
+
+  .founder-avatar.avatar-tyrian {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    border: 3px solid #f59e0b;
+  }
+
+  .founder-avatar.avatar-violet {
+    background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+    border: 3px solid #a78bfa;
+  }
+
+  .founder-card h3 {
+    margin: 0 0 0.2rem;
+    font-size: 1.2rem;
+  }
+
+  .founder-role {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--purple-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .founder-card p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin: var(--spacing-md) 0;
+  }
+
+  .founder-domains {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .founder-domains span {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--purple-primary);
+    background: rgba(91, 33, 182, 0.08);
+    padding: 0.25em 0.65em;
+    border-radius: 4px;
+  }
+
+  /* Principles */
+  .principles-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .principle-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: var(--spacing-lg);
+    transition: border-color 0.2s;
+  }
+
+  .principle-card:hover {
+    border-color: var(--border-hover);
+  }
+
+  .principle-num {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--purple-primary);
+    font-family: var(--font-mono);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .principle-card h3 {
+    font-size: 1rem;
+    margin: 0 0 var(--spacing-sm);
+  }
+
+  .principle-card p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Connect */
+  .connect-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+  }
+
+  .connect-layout h2 {
+    margin-top: 0;
+    color: #fff;
+    font-size: 1.5rem;
+  }
+
+  .connect-layout > div:first-child p {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .connect-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-sm);
+  }
+
+  .connect-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: var(--spacing-md);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .connect-card:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.2);
+  }
+
+  .connect-icon {
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .connect-card strong {
+    font-size: 0.85rem;
+    color: #fff;
+  }
+
+  .connect-card span:last-child {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .about-hero h1 { font-size: 1.6rem; }
+
+    .about-split {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+
+    .founders-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .principles-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .connect-layout {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+
+    .connect-links {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

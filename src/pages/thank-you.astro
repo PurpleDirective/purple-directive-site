@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Thank You" description="Your purchase is complete. Thank you for choosing Purple Directive.">
+  <section class="section hero">
+    <h1>Thank you for your <span class="accent">purchase</span></h1>
+    <p class="subtitle">
+      Your SOP Template Bundle is on its way. You'll receive a download link at the email address you used during checkout.
+    </p>
+    <p class="subtitle" style="margin-top: 1rem;">
+      If you have any questions or need help customizing your templates, reach out at
+      <a href="mailto:info@purpledirective.com">info@purpledirective.com</a>.
+    </p>
+    <div style="margin-top: 2rem; text-align: center;">
+      <a href="/" class="back-btn">Back to Home</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .back-btn {
+    display: inline-block;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.7rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .back-btn:hover {
+    border-color: var(--purple-primary);
+    color: var(--purple-primary);
+  }
+</style>

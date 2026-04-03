@@ -1,0 +1,188 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Privacy Policy" activePage="" description="Purple Directive privacy policy — how we handle your data when you use our website and purchase our products.">
+
+  <section class="legal-page">
+    <h1>Privacy Policy</h1>
+    <p class="legal-updated">Last updated: March 24, 2026</p>
+
+    <p>
+      Purple Directive LLC ("we", "us", "our") operates the website purpledirective.com.
+      This page describes how we collect, use, and protect your information when you visit
+      our site or purchase our products.
+    </p>
+
+    <h2>Information We Collect</h2>
+
+    <h3>When You Visit Our Site</h3>
+    <p>
+      We use Cloudflare Web Analytics, a privacy-first analytics service that does not use
+      cookies, does not track individual visitors, and does not collect personal information.
+      It measures aggregate page views and referral sources only.
+    </p>
+
+    <h3>When You Make a Purchase</h3>
+    <p>
+      Purchases are processed through Stripe, a PCI-compliant payment processor. When you
+      purchase a product, Stripe collects your payment information (card number, billing
+      address, email). We do not store your payment details on our servers. We receive your
+      name and email address from Stripe in order to deliver your purchase.
+    </p>
+
+    <h3>When You Contact Us</h3>
+    <p>
+      If you email us at info@purpledirective.com or use our contact form, we receive
+      your name, email address, and message content. We use this only to respond to your inquiry.
+    </p>
+
+    <h2>How We Use Your Information</h2>
+    <ul>
+      <li>To deliver products you purchase (email with download link)</li>
+      <li>To respond to support requests or inquiries</li>
+      <li>To understand aggregate site traffic (no individual tracking)</li>
+    </ul>
+    <p>We do not sell, rent, or share your personal information with third parties for marketing purposes.</p>
+
+    <h2>Third-Party Services</h2>
+    <table class="legal-table">
+      <thead>
+        <tr><th>Service</th><th>Purpose</th><th>Data Shared</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Stripe</td><td>Payment processing</td><td>Payment details, email, name</td></tr>
+        <tr><td>Cloudflare</td><td>Hosting, analytics, security</td><td>Aggregate traffic data (no PII)</td></tr>
+        <tr><td>Microsoft 365</td><td>Email delivery</td><td>Your email address (for purchase delivery)</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Data Retention</h2>
+    <p>
+      Purchase records (name, email, transaction ID) are retained for accounting and tax
+      purposes. You may request deletion of your data by emailing
+      <a href="mailto:info@purpledirective.com">info@purpledirective.com</a>.
+    </p>
+
+    <h2>Cookies</h2>
+    <p>
+      Our website does not set first-party cookies. Stripe may set cookies during the
+      checkout process on their domain. Cloudflare may set a security cookie
+      (<code>__cf_bm</code>) to distinguish humans from bots.
+    </p>
+
+    <h2>Security</h2>
+    <p>
+      All connections to purpledirective.com are encrypted via TLS (HTTPS). Payment
+      processing is handled entirely by Stripe's PCI DSS Level 1 certified infrastructure.
+      We do not store credit card numbers or CVVs.
+    </p>
+
+    <h2>Children's Privacy</h2>
+    <p>
+      Our products and services are intended for clinical research professionals.
+      We do not knowingly collect information from children under 13.
+    </p>
+
+    <h2>Changes to This Policy</h2>
+    <p>
+      We may update this policy from time to time. Changes will be posted on this page
+      with an updated "Last updated" date.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Questions about this privacy policy? Email us at
+      <a href="mailto:info@purpledirective.com">info@purpledirective.com</a>.
+    </p>
+  </section>
+
+</Base>
+
+<style>
+  .legal-page {
+    max-width: 680px;
+    padding: var(--spacing-xl) 0;
+  }
+
+  .legal-page h1 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .legal-updated {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .legal-page h2 {
+    font-size: 1.05rem;
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-sm);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border);
+  }
+
+  .legal-page h2:first-of-type {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .legal-page h3 {
+    font-size: 0.9rem;
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .legal-page p,
+  .legal-page li {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .legal-page ul {
+    padding-left: 1.5rem;
+    margin: var(--spacing-sm) 0;
+  }
+
+  .legal-page li {
+    margin-bottom: 0.3rem;
+  }
+
+  .legal-page a {
+    color: var(--purple-primary);
+  }
+
+  .legal-page code {
+    font-size: 0.82rem;
+    background: var(--bg-tinted);
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+  }
+
+  .legal-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    margin: var(--spacing-md) 0;
+  }
+
+  .legal-table th {
+    text-align: left;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    padding: 0.6rem 0.8rem;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .legal-table td {
+    padding: 0.6rem 0.8rem;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border);
+  }
+</style>

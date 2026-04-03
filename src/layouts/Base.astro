@@ -57,16 +57,17 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
           </defs>
           <path d="M 26,96 L 26,16 C 26,6 76,6 76,50 C 76,80 58,94 44,87 C 33,80 30,70 36,62 C 40,55 50,53 56,53" fill="none" stroke="url(#navGrad)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        Purple<span>Directive</span>
+        <span class="logo-text">Purple<span>Directive</span></span>
       </a>
+
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
       <ul class="links" id="nav-links">
         <li><a href="/#products" class:list={[{ active: activePage === "products" }]}>Products</a></li>
         <li><a href="/hire" class:list={[{ active: activePage === "hire" }]}>Services</a></li>
         <li><a href="/blog" class:list={[{ active: activePage === "blog" }]}>Blog</a></li>
         <li><a href="/about" class:list={[{ active: activePage === "about" }]}>About</a></li>
-        <li><a href={social.github.url} target="_blank" rel="noopener">GitHub</a></li>
       </ul>
+      <a href="/sop-bundle" class="nav-cta">Get the SOPs</a>
     </div>
   </nav>
 
@@ -82,7 +83,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
             <svg class="footer-logo-mark" viewBox="0 0 100 120" aria-hidden="true">
               <path d="M 26,96 L 26,16 C 26,6 76,6 76,50 C 76,80 58,94 44,87 C 33,80 30,70 36,62 C 40,55 50,53 56,53" fill="none" stroke="#5B21B6" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            Purple<span>Directive</span>
+            <span class="logo-text">Purple<span>Directive</span></span>
           </a>
           <p class="footer-tagline">Compliance-grade software and operations consulting for clinical research sites and CROs.</p>
         </div>
@@ -101,13 +102,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
             <li><a href="/about">About</a></li>
             <li><a href="/hire">Services</a></li>
             <li><a href="/blog">Blog</a></li>
-            <li><a href="mailto:admin@purpledirective.com">Contact</a></li>
+            <li><a href="mailto:info@purpledirective.com">Contact</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Connect</h4>
           <ul>
+            <li><a href={social.linkedin.url} target="_blank" rel="noopener">LinkedIn</a></li>
             <li><a href={social.github.url} target="_blank" rel="noopener">GitHub</a></li>
             <li><a href={social.x.url} target="_blank" rel="noopener">X (Twitter)</a></li>
             <li><a href={social.reddit.url} target="_blank" rel="noopener">Reddit</a></li>
@@ -144,8 +146,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     links?.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => links.classList.remove('open'));
     });
-
   </script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "be7494dd3df347c1b626566b5b386d91"}'></script>
 </body>
 </html>
 

@@ -7,226 +7,1080 @@ import Base from '../layouts/Base.astro';
     <h1>Work With <span class="accent">Us</span></h1>
     <p class="subtitle">
       Consulting and software development for clinical research operations.
-      We build compliance-grade tools and infrastructure for sites and CROs.
+      Compliance-grade tools and infrastructure for sites and CROs.
     </p>
   </section>
 
   <section class="section">
-    <div class="section-header">
-      <h2>What I Build</h2>
+    <div class="build-header">
+      <div>
+        <h2>What We Build</h2>
+        <p>Click any card to see how we can help.</p>
+      </div>
+      <div class="build-count">
+        <span class="build-count-num">6</span>
+        <span class="build-count-label">Service Areas</span>
+      </div>
     </div>
 
-    <div class="card-grid">
-      <div class="card">
-        <span class="tag">Web</span>
-        <h3>Web Applications</h3>
-        <p>
-          Modern, fast web apps and sites. Astro, React, FastAPI, Tailwind.
-          From landing pages to full platforms.
-        </p>
-      </div>
-
-      <div class="card">
-        <span class="tag">AI / ML</span>
-        <h3>AI & LLM Integration</h3>
-        <p>
-          Custom AI tools, chatbots, RAG systems, fine-tuned models.
-          OpenAI, Claude API, or fully private open-source.
-        </p>
-      </div>
-
-      <div class="card">
-        <span class="tag">Automation</span>
-        <h3>Automation & Scripts</h3>
-        <p>
-          Python scripts that kill repetitive tasks. Data processing, report generation,
-          API integrations, workflow automation.
-        </p>
-      </div>
-
-      <div class="card">
+    <div class="build-grid">
+      <!-- Row 1: Healthcare (2-col) + AI (1-col) -->
+      <div class="build-card build-wide" data-card="healthcare">
         <span class="tag">Healthcare</span>
         <h3>Healthcare & Compliance Software</h3>
         <p>
           HIPAA-compliant apps, 21 CFR Part 11 audit trails, clinical trial management
-          systems. I know the regulatory rules.
+          systems. Built by a team that knows the regulatory rules.
         </p>
+        <span class="card-hint">Click to learn more &rarr;</span>
       </div>
 
-      <div class="card">
+      <div class="build-card" data-card="ai">
+        <span class="tag">AI / ML</span>
+        <h3>AI & LLM Integration</h3>
+        <p>Custom AI tools, chatbots, RAG systems, fine-tuned models.</p>
+        <span class="card-hint">Learn more &rarr;</span>
+      </div>
+
+      <!-- Row 2: Infra (1-col) + Automation (2-col) -->
+      <div class="build-card" data-card="infra">
         <span class="tag">Infrastructure</span>
         <h3>Infrastructure & DevOps</h3>
-        <p>
-          Docker deployments, cloud hosting, DNS/email setup, Tailscale networking,
-          CI/CD pipelines.
-        </p>
+        <p>Docker deployments, cloud hosting, networking, CI/CD.</p>
+        <span class="card-hint">Learn more &rarr;</span>
       </div>
 
-      <div class="card">
+      <div class="build-card build-wide" data-card="automation">
+        <span class="tag">Automation</span>
+        <h3>Automation & Scripts</h3>
+        <p>Data pipelines, scheduled workflows, report generation, and API integrations — Python scripts that replace the manual clicks your team does every day.</p>
+        <span class="card-hint">Learn more &rarr;</span>
+      </div>
+
+      <!-- Row 3: Backend (2-col) + Web (1-col) -->
+      <div class="build-card build-wide" data-card="backend">
         <span class="tag">Backend</span>
         <h3>Backend & API Development</h3>
-        <p>
-          Python/FastAPI backends, REST APIs, PostgreSQL databases,
-          authentication and authorization systems.
-        </p>
+        <p>Production FastAPI backends with auto-documented REST endpoints, PostgreSQL databases with proper migrations, role-based access control, and webhook integrations.</p>
+        <span class="card-hint">Learn more &rarr;</span>
+      </div>
+
+      <div class="build-card" data-card="web">
+        <span class="tag">Web</span>
+        <h3>Web Applications</h3>
+        <p>Modern, fast web apps and sites. From landing pages to full platforms.</p>
+        <span class="card-hint">Learn more &rarr;</span>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <!-- Flashcard modal -->
+  <div class="flashcard-overlay" id="flashcard-overlay">
+    <div class="flashcard" id="flashcard">
+      <button class="flashcard-close" id="flashcard-close" aria-label="Close">&times;</button>
+      <span class="flashcard-tag" id="flashcard-tag"></span>
+      <h3 id="flashcard-title"></h3>
+      <p class="flashcard-oneliner" id="flashcard-oneliner"></p>
+      <div id="flashcard-body"></div>
+      <a href="mailto:info@purpledirective.com" class="flashcard-cta">Discuss Your Project &rarr;</a>
+    </div>
+  </div>
+
+  <!-- Featured Work — case study style -->
+  <section class="section section-tinted">
     <div class="section-header">
       <h2>Featured Work</h2>
+      <p>Systems running in production, not sitting in a portfolio.</p>
     </div>
 
-    <div class="card-grid">
-      <div class="card">
-        <span class="tag">Production System</span>
-        <h3>Clinical Trial Management System</h3>
-        <p>
-          Full CTMS with audit trail, RBAC, encrypted backups. FastAPI + PostgreSQL + Docker.
-          Production deployment for a CRO.
-        </p>
+    <div class="case-studies">
+      <div class="case-study case-study-hero">
+        <div class="case-study-content">
+          <span class="tag">Production System</span>
+          <h3>Nexrial CTMS</h3>
+          <p>
+            Full clinical trial management system built for an active CRO. Multi-tenant architecture
+            with org-level data isolation. Every action logged, every role scoped, every backup encrypted.
+          </p>
+          <div class="case-stats">
+            <div class="case-stat">
+              <span class="case-stat-num">33</span>
+              <span class="case-stat-label">Database tables</span>
+            </div>
+            <div class="case-stat">
+              <span class="case-stat-num">37</span>
+              <span class="case-stat-label">API routes</span>
+            </div>
+            <div class="case-stat">
+              <span class="case-stat-num">4</span>
+              <span class="case-stat-label">Active users</span>
+            </div>
+          </div>
+          <div class="case-stack">Python &middot; SQL &middot; Docker &middot; Edge CDN</div>
+        </div>
       </div>
 
-      <div class="card">
+      <div class="case-study">
         <span class="tag">Templates</span>
-        <h3>SOP Template Library</h3>
-        <p>
-          8 ICH E6(R3)-aligned SOPs covering adverse events, data management,
-          informed consent, QA/QC, monitoring, and more. 40+ pages, ready to customize.
-        </p>
+        <h3>SOP Template Bundle</h3>
+        <p>12 ICH E6(R2/R3)-aligned SOPs. 95+ pages. Used across Phase I–IV studies at multiple sites.</p>
+        <div class="case-stats">
+          <div class="case-stat">
+            <span class="case-stat-num">12</span>
+            <span class="case-stat-label">SOPs</span>
+          </div>
+          <div class="case-stat">
+            <span class="case-stat-num">11</span>
+            <span class="case-stat-label">Forms</span>
+          </div>
+        </div>
         <a href="/#products" class="project-link">View Bundle &rarr;</a>
       </div>
 
-      <div class="card">
+      <div class="case-study">
         <span class="tag">Compliance</span>
-        <h3>Regulatory Infrastructure</h3>
-        <p>
-          SOP libraries, regulatory binder setup, IRB submission support, and
-          compliance gap assessments for new and expanding research sites.
-        </p>
+        <h3>Site Regulatory Infrastructure</h3>
+        <p>Full compliance buildout for a new research site — SOP library, regulatory binder, IRB submission workflows, and gap assessment.</p>
+        <div class="case-stack">ICH E6(R2/R3) &middot; 21 CFR Part 11 &middot; IRB Submissions</div>
       </div>
 
-      <div class="card">
-        <span class="tag">Web Development</span>
-        <h3>A1 Clinical Website</h3>
-        <p>
-          Bilingual (EN/ES) business website. Astro + Tailwind. Lighthouse 100.
-        </p>
+      <div class="case-study">
+        <span class="tag">Automation</span>
+        <h3>Trial Scout</h3>
+        <p>Daily pipeline that monitors ClinicalTrials.gov, scores matching studies against configurable filters, and delivers results before the competition sees them.</p>
+        <div class="case-stats">
+          <div class="case-stat">
+            <span class="case-stat-num">500+</span>
+            <span class="case-stat-label">Studies scanned daily</span>
+          </div>
+        </div>
+        <div class="case-stack">Python &middot; SQL &middot; Scheduled Automation</div>
       </div>
     </div>
   </section>
 
+  <!-- Tech Stack — grouped by category, split layout -->
   <section class="section">
-    <div class="section-header">
-      <h2>Tech Stack</h2>
-    </div>
-
-    <div class="tech-tags">
-      <span class="tech-tag">Python</span>
-      <span class="tech-tag">TypeScript</span>
-      <span class="tech-tag">FastAPI</span>
-      <span class="tech-tag">Astro</span>
-      <span class="tech-tag">Tailwind CSS</span>
-      <span class="tech-tag">PostgreSQL</span>
-      <span class="tech-tag">SQLite</span>
-      <span class="tech-tag">Docker</span>
-      <span class="tech-tag">Linux</span>
-      <span class="tech-tag">Cloudflare</span>
-      <span class="tech-tag">Ollama</span>
-      <span class="tech-tag">Claude API</span>
-      <span class="tech-tag">Git</span>
+    <div class="stack-layout">
+      <div class="stack-left">
+        <h2>Tech Stack</h2>
+        <p>We pick the right tool for the constraint — not the trending one. Everything here is in active production use.</p>
+      </div>
+      <div class="stack-right">
+        <div class="stack-group">
+          <h4>Backend</h4>
+          <div class="stack-items">
+            <span class="stack-item">Python</span>
+            <span class="stack-item">TypeScript</span>
+            <span class="stack-item">REST APIs</span>
+            <span class="stack-item">Webhooks</span>
+          </div>
+        </div>
+        <div class="stack-group">
+          <h4>Frontend</h4>
+          <div class="stack-items">
+            <span class="stack-item">Static Sites</span>
+            <span class="stack-item">Server-Rendered UI</span>
+            <span class="stack-item">Dashboards</span>
+          </div>
+        </div>
+        <div class="stack-group">
+          <h4>Data</h4>
+          <div class="stack-items">
+            <span class="stack-item">SQL Databases</span>
+            <span class="stack-item">Migrations</span>
+            <span class="stack-item">Encrypted Backups</span>
+          </div>
+        </div>
+        <div class="stack-group">
+          <h4>Infrastructure</h4>
+          <div class="stack-items">
+            <span class="stack-item">Containerized Deploys</span>
+            <span class="stack-item">Edge CDN</span>
+            <span class="stack-item">Zero-Trust Networking</span>
+          </div>
+        </div>
+        <div class="stack-group">
+          <h4>AI & Automation</h4>
+          <div class="stack-items">
+            <span class="stack-item">LLM Integration</span>
+            <span class="stack-item">Local Inference</span>
+            <span class="stack-item">Fine-Tuning</span>
+            <span class="stack-item">Workflow Automation</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="section-header">
-      <h2>Let's Work Together</h2>
-      <p>Available for freelance projects, contract work, and consulting.</p>
-    </div>
+  <!-- Contact form -->
+  <section class="section section-deep">
+    <div class="contact-layout">
+      <div class="contact-left">
+        <h2>Let's Work Together</h2>
+        <p>Tell us what you're working on. We'll get back to you within one business day.</p>
+        <div class="contact-expect">
+          <h4>What to expect</h4>
+          <ul>
+            <li>A real response, not an auto-reply</li>
+            <li>An honest assessment of whether we're the right fit</li>
+            <li>A scoped proposal if we are</li>
+          </ul>
+        </div>
+      </div>
+      <form class="contact-form" action="https://formsubmit.co/info@purpledirective.com" method="POST">
+        <input type="hidden" name="_subject" value="New inquiry from purpledirective.com">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://purpledirective.com/thank-you">
+        <input type="text" name="_honey" style="display:none">
 
-    <div class="contact-grid">
-      <a href="mailto:admin@purpledirective.com" class="contact-card">
-        <span class="contact-label">Email</span>
-        <span class="contact-value">admin@purpledirective.com</span>
-      </a>
-      <a href="https://github.com/PurpleDirective" class="contact-card" target="_blank" rel="noopener">
-        <span class="contact-label">GitHub</span>
-        <span class="contact-value">github.com/PurpleDirective</span>
-      </a>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="you@company.com">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="org">Organization <span class="form-optional">(optional)</span></label>
+          <input type="text" id="org" name="organization" placeholder="Company, site, or CRO name">
+        </div>
+
+        <div class="form-group">
+          <label for="message">What do you need help with?</label>
+          <textarea id="message" name="message" rows="5" required placeholder="Tell us about your project, timeline, and any constraints. The more detail, the better our response."></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Send Inquiry</button>
+      </form>
     </div>
   </section>
 </Base>
 
+<script>
+  const cardData = {
+    healthcare: {
+      tag: 'Healthcare',
+      title: 'Healthcare & Compliance Software',
+      oneliner: 'Software that passes audits — not just demos.',
+      content: `
+        <div class="fc-grid">
+          <div class="fc-col">
+            <h4>The problem</h4>
+            <p>Most dev shops build "healthcare apps" that bolt compliance on as an afterthought. The audit trail is a log file. The access control is a boolean. The first FDA inspection breaks everything.</p>
+            <h4>Our approach</h4>
+            <p>We design for 21 CFR Part 11 and HIPAA from the database schema up. Every action is attributable, every change is versioned, every role is scoped.</p>
+          </div>
+          <div class="fc-col">
+            <h4>What this looks like</h4>
+            <ul>
+              <li>CTMS with full audit trail + RBAC</li>
+              <li>SOP libraries aligned to ICH E6(R2/R3)</li>
+              <li>Regulatory binder setup + gap analysis</li>
+              <li>21 CFR Part 11 validation packages</li>
+              <li>Encrypted backups on a schedule you choose</li>
+            </ul>
+          </div>
+          <div class="fc-proof">
+            <h4>Proof</h4>
+              <p>Production CTMS running for an active CRO — 33 tables, multi-tenant, automated regulatory alerts. 12-SOP bundle used across Phase I–IV studies.</p>
+          </div>
+        </div>
+      `
+    },
+    ai: {
+      tag: 'AI / ML',
+      title: 'AI & LLM Integration',
+      oneliner: 'AI that works on your data, under your roof.',
+      content: `
+        <div class="fc-grid">
+          <div class="fc-col">
+            <h4>The problem</h4>
+            <p>You want AI in your workflow, but you can't send patient data to OpenAI. Or you tried ChatGPT and it hallucinated your SOPs. Or you're paying $200/mo for a chatbot that could be a Python script.</p>
+            <h4>Our approach</h4>
+            <p>We match the tool to the constraint. Cloud APIs when privacy allows. Fully local models when it doesn't. RAG when you need grounded answers. Fine-tuning when generic isn't good enough.</p>
+          </div>
+          <div class="fc-col">
+            <h4>What this looks like</h4>
+            <ul>
+              <li>RAG systems over your own documents</li>
+              <li>Private on-premise inference (no data leaves your network)</li>
+              <li>Custom fine-tuned models on your domain data</li>
+              <li>AI agents for repetitive knowledge work</li>
+              <li>Semantic search across knowledge bases</li>
+            </ul>
+          </div>
+          <div class="fc-proof">
+            <h4>Proof</h4>
+              <p>Knowledge management system with vector search for a clinical research org. Custom LoRA models trained on domain-specific data. Teaching pipeline that extracts training pairs from real operational transcripts.</p>
+          </div>
+        </div>
+      `
+    },
+    web: {
+      tag: 'Web',
+      title: 'Web Applications',
+      oneliner: 'Fast sites that rank, convert, and don\'t break.',
+      content: `
+        <div class="fc-grid">
+          <div class="fc-col">
+            <h4>The problem</h4>
+            <p>Your site loads in 4 seconds, the SEO is an afterthought, and the last agency left you with a WordPress install you're afraid to update.</p>
+            <h4>Our approach</h4>
+            <p>Static-first with Astro when possible. Server-rendered with FastAPI + HTMX when you need interactivity. No WordPress. No page builders. Lighthouse 100 is the baseline, not the goal.</p>
+          </div>
+          <div class="fc-col">
+            <h4>What this looks like</h4>
+            <ul>
+              <li>Marketing sites that score 100 on Lighthouse</li>
+              <li>Full-stack platforms with auth + dashboards</li>
+              <li>Interactive UIs without JavaScript bloat</li>
+              <li>SEO done right — OG tags, sitemaps, structured data</li>
+              <li>Edge deployment with global CDN</li>
+            </ul>
+          </div>
+          <div class="fc-proof">
+            <h4>Proof</h4>
+              <p>purpledirective.com — static site with edge deployment, sub-second loads. Bilingual business website with perfect Lighthouse scores. Real-time dashboards with server-driven UI.</p>
+          </div>
+        </div>
+      `
+    },
+    automation: {
+      tag: 'Automation',
+      title: 'Automation & Scripts',
+      oneliner: 'Stop doing manually what a script can do at 3 AM.',
+      content: `
+        <div class="fc-grid">
+          <div class="fc-col">
+            <h4>The problem</h4>
+            <p>Your coordinator spends 2 hours a day copying data between systems. Your reports are manual. Your follow-up emails are manual. Everything that could run itself requires a human clicking buttons.</p>
+            <h4>Our approach</h4>
+            <p>We identify the repetitive loop, write the script, schedule it, and monitor it. Python for the logic, n8n or cron for the schedule, and notifications so you know it ran.</p>
+          </div>
+          <div class="fc-col">
+            <h4>What this looks like</h4>
+            <ul>
+              <li>Data pipelines that clean, transform, and deliver</li>
+              <li>Auto-generated reports (PDF, Excel, Word)</li>
+              <li>API integrations between your disconnected tools</li>
+              <li>Scheduled workflows that run unattended</li>
+              <li>Smart notifications — email, Slack, or push</li>
+            </ul>
+          </div>
+          <div class="fc-proof">
+            <h4>Proof</h4>
+              <p>Daily ClinicalTrials.gov scout that finds matching studies before your competitors do. Stripe webhook pipeline — payment triggers delivery in under 3 seconds. PHI scanner that flags protected data across thousands of transcripts overnight.</p>
+          </div>
+        </div>
+      `
+    },
+    infra: {
+      tag: 'Infrastructure',
+      title: 'Infrastructure & DevOps',
+      oneliner: 'The boring stuff that keeps everything running.',
+      content: `
+        <div class="fc-grid">
+          <div class="fc-col">
+            <h4>The problem</h4>
+            <p>Your app works on localhost but nobody can deploy it. Your DNS is a mystery. Your backups are "I think someone set that up." Your emails go to spam.</p>
+            <h4>Our approach</h4>
+            <p>Containerized deployments for consistency, edge security and CDN for performance, private mesh networking for internal access, encrypted backups on a schedule. Everything documented, everything reproducible.</p>
+          </div>
+          <div class="fc-col">
+            <h4>What this looks like</h4>
+            <ul>
+              <li>Containerized deployments that just work</li>
+              <li>DNS, SSL, tunnels, and edge security</li>
+              <li>Encrypted backups on a schedule</li>
+              <li>Private mesh networking</li>
+              <li>Email that actually lands in inboxes (SPF/DKIM/DMARC)</li>
+            </ul>
+          </div>
+          <div class="fc-proof">
+            <h4>Proof</h4>
+              <p>5-device infrastructure with private mesh networking, zero-trust access, and encrypted backups replicating across hosts every 6 hours. Zero unplanned downtime.</p>
+          </div>
+        </div>
+      `
+    },
+    backend: {
+      tag: 'Backend',
+      title: 'Backend & API Development',
+      oneliner: 'APIs you can hand to an auditor without flinching.',
+      content: `
+        <div class="fc-grid">
+          <div class="fc-col">
+            <h4>The problem</h4>
+            <p>Your frontend team needs an API but nobody owns the backend. Or you have a backend but it's a monolith with no docs, no tests, and credentials hardcoded in the source.</p>
+            <h4>Our approach</h4>
+            <p>FastAPI for auto-documented REST endpoints. PostgreSQL for data that matters. Migrations for schema changes you can track. RBAC for access you can explain to a compliance officer.</p>
+          </div>
+          <div class="fc-col">
+            <h4>What this looks like</h4>
+            <ul>
+              <li>REST APIs with auto-generated OpenAPI docs</li>
+              <li>Database design with proper migrations</li>
+              <li>Auth systems (session, JWT, or OAuth)</li>
+              <li>Role-based access control</li>
+              <li>Webhook receivers + event-driven flows</li>
+            </ul>
+          </div>
+          <div class="fc-proof">
+            <h4>Proof</h4>
+              <p>37-route FastAPI backend powering a production CTMS — 25 models, 17 migrations, multi-tenant data isolation. Stripe webhook integration for automated digital product delivery.</p>
+          </div>
+        </div>
+      `
+    }
+  };
+
+  document.querySelectorAll('.build-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const key = card.dataset.card;
+      const data = cardData[key];
+      if (!data) return;
+
+      document.getElementById('flashcard-tag').textContent = data.tag;
+      document.getElementById('flashcard-title').textContent = data.title;
+      document.getElementById('flashcard-oneliner').textContent = data.oneliner;
+      document.getElementById('flashcard-body').innerHTML = data.content;
+
+      document.getElementById('flashcard-overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  document.getElementById('flashcard-close')?.addEventListener('click', closeFlashcard);
+  document.getElementById('flashcard-overlay')?.addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) closeFlashcard();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeFlashcard();
+  });
+
+  function closeFlashcard() {
+    document.getElementById('flashcard-overlay')?.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+</script>
+
 <style>
-  .tech-tags {
+  /* ── Build section header ── */
+  .build-header {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: var(--spacing-lg) 0;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-lg);
   }
 
-  .tech-tag {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    color: var(--text-secondary);
-    background: var(--bg-secondary);
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    padding: 0.3rem 0.7rem;
-    white-space: nowrap;
-    transition: border-color 0.2s, color 0.2s;
-  }
+  .build-header h2 { margin-top: 0; }
+  .build-header p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0; }
 
-  .tech-tag:hover {
-    border-color: var(--purple-dark);
-    color: var(--purple-light);
-  }
-
-  .contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: var(--spacing-md);
-    margin: var(--spacing-lg) 0;
-  }
-
-  .contact-card {
+  .build-count {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-xs);
+    align-items: center;
+    gap: 0.1rem;
+  }
+
+  .build-count-num {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--purple-primary);
+    line-height: 1;
+  }
+
+  .build-count-label {
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── Build grid — bento style ── */
+  /*
+   * Row 1: [Healthcare 2-col] [AI/ML]
+   * Row 2: [Web] [Automation] [Infra]
+   * Row 3: [Backend 2-col]
+   * No gaps — every cell filled.
+   */
+  .build-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+  }
+
+  .build-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: var(--spacing-lg);
-    transition: border-color 0.2s, transform 0.2s;
-    text-decoration: none;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
   }
 
-  .contact-card:hover {
-    border-color: var(--purple-dark);
+  .build-card:hover {
+    border-color: var(--purple-primary);
     transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(91, 33, 182, 0.1);
   }
 
-  .contact-label {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
+  .build-card .card-hint {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--purple-primary);
+    margin-top: auto;
+    padding-top: var(--spacing-sm);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .build-card:hover .card-hint { opacity: 1; }
+
+  /* Wide cards span 2 of 3 columns */
+  .build-wide {
+    grid-column: span 2;
+  }
+
+  /* Healthcare gets the gradient treatment */
+  .build-card[data-card="healthcare"] {
+    background: linear-gradient(160deg, #f5f3f8 0%, #ede9fe 100%);
+    border-color: rgba(91, 33, 182, 0.15);
+  }
+
+  /* ── Flashcard modal ── */
+  .flashcard-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+  }
+
+  .flashcard-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .flashcard {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: var(--spacing-xl);
+    max-width: 780px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    transform: translateY(20px) scale(0.97);
+    transition: transform 0.25s;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  }
+
+  .flashcard-overlay.open .flashcard {
+    transform: translateY(0) scale(1);
+  }
+
+  .flashcard-close {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    background: none;
+    border: none;
+    font-size: 1.5rem;
     color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0.25rem;
+    transition: color 0.2s;
   }
 
-  .contact-value {
-    font-size: 0.9rem;
+  .flashcard-close:hover { color: var(--text-primary); }
+
+  .flashcard-tag {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
     color: var(--purple-primary);
   }
 
-  .contact-card:hover .contact-value {
-    color: var(--purple-light);
+  .flashcard h3 {
+    margin-top: var(--spacing-xs);
+    margin-bottom: 0.25rem;
+    font-size: 1.3rem;
+  }
+
+  .flashcard-oneliner {
+    font-size: 0.95rem;
+    color: var(--purple-primary);
+    font-weight: 500;
+    font-style: italic;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  /* Two-column flashcard body — :global() because innerHTML doesn't get Astro scoping */
+  :global(.fc-grid) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  :global(.fc-col h4) {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin: 0 0 var(--spacing-sm) 0;
+  }
+
+  :global(.fc-col h4:not(:first-child)) {
+    margin-top: var(--spacing-lg);
+  }
+
+  :global(.fc-col p) {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  :global(.fc-col ul) {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--spacing-sm) 0;
+  }
+
+  :global(.fc-col li) {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    padding: 0.3rem 0;
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  :global(.fc-col li::before) {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65rem;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--purple-primary);
+  }
+
+  :global(.fc-proof) {
+    grid-column: 1 / -1;
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-tinted);
+  }
+
+  :global(.fc-proof h4) {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin: 0 0 var(--spacing-sm) 0;
+  }
+
+  :global(.fc-proof p) {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: 0;
+  }
+
+  .flashcard-cta {
+    display: inline-block;
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--purple-primary);
+    text-decoration: none;
+    transition: color 0.2s;
+    width: 100%;
+  }
+
+  .flashcard-cta:hover { color: var(--purple-dark); }
+
+  /* ── Case studies ── */
+  .case-studies {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .case-study {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: var(--spacing-lg);
+    transition: border-color 0.2s;
+  }
+
+  .case-study:hover {
+    border-color: var(--border-hover);
+  }
+
+  .case-study h3 {
+    margin-top: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.1rem;
+  }
+
+  .case-study p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .case-study-hero {
+    grid-column: 1 / -1;
+    border-left: 3px solid var(--purple-primary);
+  }
+
+  .case-study-hero h3 {
+    font-size: 1.3rem;
+  }
+
+  .case-study-hero p {
+    font-size: 0.9rem;
+    max-width: 640px;
+  }
+
+  .case-stats {
+    display: flex;
+    gap: var(--spacing-xl);
+    margin: var(--spacing-md) 0;
+  }
+
+  .case-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.05rem;
+  }
+
+  .case-stat-num {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--purple-primary);
+    line-height: 1;
+  }
+
+  .case-stat-label {
+    font-size: 0.68rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .case-stack {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-top: var(--spacing-sm);
+  }
+
+  /* ── Tech stack — split layout with groups ── */
+  .stack-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+  }
+
+  .stack-left h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+  }
+
+  .stack-left p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .stack-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md) var(--spacing-xl);
+  }
+
+  .stack-group h4 {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin: 0 0 var(--spacing-sm) 0;
+  }
+
+  .stack-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .stack-item {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: var(--bg-tinted);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 0.3rem 0.65rem;
+    white-space: nowrap;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .stack-item:hover {
+    border-color: var(--purple-primary);
+    color: var(--purple-primary);
+  }
+
+  /* ── Contact form ── */
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+  }
+
+  .contact-left h2 {
+    margin-top: 0;
+    color: #f3e8ff;
+  }
+
+  .contact-left p {
+    color: #c4b5fd;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .contact-expect {
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid rgba(167, 139, 250, 0.2);
+  }
+
+  .contact-expect h4 {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #a78bfa;
+    margin: 0 0 var(--spacing-sm) 0;
+  }
+
+  .contact-expect ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .contact-expect li {
+    font-size: 0.82rem;
+    color: #c4b5fd;
+    padding: 0.3rem 0;
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .contact-expect li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #a78bfa;
+  }
+
+  .contact-form {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .form-group label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .form-optional {
+    font-weight: 400;
+    color: var(--text-muted);
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    color: var(--text-primary);
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.6rem 0.75rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: var(--purple-primary);
+    box-shadow: 0 0 0 3px rgba(91, 33, 182, 0.1);
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .form-submit {
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--purple-primary);
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    align-self: flex-start;
+  }
+
+  .form-submit:hover {
+    background: var(--purple-dark);
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 768px) {
+    .build-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .build-wide {
+      grid-column: 1 / -1;
+    }
+
+    .build-header {
+      flex-direction: column;
+      gap: var(--spacing-sm);
+    }
+
+    .build-count {
+      flex-direction: row;
+      gap: var(--spacing-sm);
+      align-items: baseline;
+    }
+
+    .build-count-num { font-size: 1.25rem; }
+
+    .case-studies {
+      grid-template-columns: 1fr;
+    }
+
+    .case-study-hero {
+      grid-column: auto;
+    }
+
+    .stack-layout {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+
+    .flashcard {
+      padding: var(--spacing-lg);
+      max-height: 90vh;
+    }
+
+    :global(.fc-grid) {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
   }
 
   @media (max-width: 480px) {
-    .contact-grid {
+    .build-grid {
       grid-template-columns: 1fr;
+    }
+
+    .build-wide {
+      grid-column: auto;
+    }
+
+    .build-card .card-hint { opacity: 1; }
+
+    .stack-right {
+      grid-template-columns: 1fr;
+    }
+
+    .case-stats {
+      gap: var(--spacing-lg);
+    }
+
+    .contact-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .flashcard {
+      padding: var(--spacing-md);
+      border-radius: 10px;
     }
   }
 </style>

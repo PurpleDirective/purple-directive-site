@@ -8,6 +8,7 @@ const blog = defineCollection({
     date: z.coerce.date(),
     summary: z.string(),
     tags: z.array(z.string()).optional(),
+    author: z.enum(['Tyrian Murex', 'Violet']).default('Tyrian Murex'),
   }),
 });
 

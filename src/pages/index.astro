@@ -9,8 +9,8 @@ import Base from '../layouts/Base.astro';
     <p class="tagline">Clinical Research Operations</p>
     <h1>Purple<span class="accent">Directive</span></h1>
     <p class="subtitle">
-      Compliance-grade software and operations consulting for clinical research sites.
-      SOPs, CTMS, regulatory infrastructure — built from real site operations across Phase I-IV studies.
+      Compliance-grade software and operations consulting for sponsors, CROs, and research sites.
+      SOPs, CTMS, regulatory infrastructure — built from real site operations across Phase I–IV studies.
     </p>
     <div class="hero-cta">
       <a href="#products" class="btn-primary">View Products</a>
@@ -21,127 +21,191 @@ import Base from '../layouts/Base.astro';
   <!-- Trust Indicators -->
   <section class="trust-bar">
     <div class="trust-item">
-      <span class="trust-num">6+</span>
-      <span class="trust-label">Years in Clinical Research</span>
-    </div>
-    <div class="trust-item">
       <span class="trust-num">ICH E6(R2/R3)</span>
       <span class="trust-label">GCP Aligned</span>
     </div>
     <div class="trust-item">
-      <span class="trust-num">21 CFR</span>
-      <span class="trust-label">Part 11 Audit Trail</span>
+      <span class="trust-num">21 CFR Part 11</span>
+      <span class="trust-label">Audit Trail</span>
     </div>
     <div class="trust-item">
-      <span class="trust-num">Phase I-IV</span>
-      <span class="trust-label">Study Experience</span>
+      <span class="trust-num">Phase I–IV</span>
+      <span class="trust-label">Active Studies</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-num">FDA Ready</span>
+      <span class="trust-label">Inspection Prepared</span>
     </div>
   </section>
 
-  <!-- Products -->
+  <!-- Products — split layout -->
   <section class="section" id="products">
-    <div class="section-header">
-      <h2>Products</h2>
-      <p>Ready-to-use tools for clinical research operations.</p>
-    </div>
-
-    <div class="card-grid">
-      <div class="card product-card">
-        <div class="card-label">Templates</div>
-        <h3>SOP Template Bundle</h3>
-        <p>
-          8 ICH E6(R3)-aligned Standard Operating Procedures covering adverse events,
-          data management, informed consent, QA/QC, monitoring visits, IP management,
-          and recruitment. 40+ pages, customizable placeholders, PI signature lines.
-        </p>
-        <div class="product-meta">
-          <span class="price">$99</span>
-          <span class="price-note">8 SOPs included</span>
+    <div class="split-layout">
+      <div class="split-left">
+        <h2>Products</h2>
+        <p class="split-desc">Ready-to-use tools for clinical research operations — from day-one compliance templates to full trial management software.</p>
+        <div class="split-stats">
+          <div class="split-stat">
+            <span class="split-stat-num">12</span>
+            <span class="split-stat-label">SOPs</span>
+          </div>
+          <div class="split-stat">
+            <span class="split-stat-num">11</span>
+            <span class="split-stat-label">Forms</span>
+          </div>
+          <div class="split-stat">
+            <span class="split-stat-num">95+</span>
+            <span class="split-stat-label">Pages</span>
+          </div>
         </div>
-        <a href="mailto:admin@purpledirective.com?subject=SOP%20Bundle%20Inquiry" class="btn-primary btn-sm">Get the Bundle</a>
       </div>
-
-      <div class="card product-card">
-        <div class="card-label">Software</div>
-        <h3>Nexrial CTMS</h3>
-        <p>
-          Clinical Trial Management System with 21 CFR Part 11 audit trail,
-          role-based access control, encrypted backups, and multi-tenant architecture.
-          Built for sites and CROs managing active study portfolios.
-        </p>
-        <div class="product-meta">
-          <span class="price">Contact</span>
-          <span class="price-note">Custom deployment</span>
+      <div class="split-right">
+        <div class="card product-card featured-card">
+          <div class="popular-badge">Most Popular</div>
+          <div class="card-label">Templates</div>
+          <h3>SOP Template Bundle</h3>
+          <p>
+            12 ICH E6(R2/R3)-aligned Standard Operating Procedures covering the full
+            study lifecycle — from staff training and site start-up through data management,
+            adverse events, monitoring, and close-out.
+          </p>
+          <div class="product-meta">
+            <span class="price">$249.99</span>
+            <span class="price-note">PDF + Word</span>
+          </div>
+          <a href="/sop-bundle" class="btn-primary btn-sm">View the Bundle</a>
         </div>
-        <a href="/hire" class="btn-secondary btn-sm">Learn More</a>
+
+        <div class="card product-card">
+          <div class="card-label">Software</div>
+          <h3>Nexrial CTMS</h3>
+          <p>
+            Clinical Trial Management System with 21 CFR Part 11 audit trail,
+            role-based access control, encrypted backups, and multi-tenant architecture.
+          </p>
+          <div class="product-meta">
+            <span class="price">Contact</span>
+            <span class="price-note">Custom deployment</span>
+          </div>
+          <a href="https://nexrial.com" class="btn-secondary btn-sm" target="_blank" rel="noopener">Learn More</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- What's in the SOPs -->
-  <section class="section">
-    <div class="section-header">
-      <h2>What's in the SOP Bundle</h2>
-      <p>Each SOP is built on ICH E6(R2) with E6(R3) guidance notes, referencing 21 CFR Parts 50/56/312 and 45 CFR Part 46.</p>
-    </div>
+  <!-- What's in the SOPs — split: sidebar + table -->
+  <section class="section section-tinted">
+    <div class="sop-split">
+      <div class="sop-sidebar">
+        <h2>What's in the Bundle</h2>
+        <p>Each SOP is built on ICH E6(R2) with E6(R3) guidance notes, referencing 21 CFR Parts 11/50/56/312 and 45 CFR Part 46.</p>
+        <p class="sop-lifecycle">Ordered by study lifecycle — from first training record to final close-out.</p>
 
-    <div class="sop-table-wrap">
-      <table class="sop-table">
-        <thead>
-          <tr>
-            <th>SOP</th>
-            <th>Title</th>
-            <th>Key Coverage</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="sop-num">001</span></td>
-            <td>Adverse Events & Protocol Deviations</td>
-            <td>AE/SAE reporting, deviation classification, CAPA, non-compliance</td>
-          </tr>
-          <tr>
-            <td><span class="sop-num">002</span></td>
-            <td>Data Management & Documentation</td>
-            <td>ALCOA+ principles, source documents, CRF procedures, 21 CFR Part 11</td>
-          </tr>
-          <tr>
-            <td><span class="sop-num">003</span></td>
-            <td>Informed Consent</td>
-            <td>All 20 ICH-required elements, vulnerable populations, alternative consent</td>
-          </tr>
-          <tr>
-            <td><span class="sop-num">004</span></td>
-            <td>Quality Control / Quality Assurance</td>
-            <td>QA assessment framework, Quality by Design (QbD), CtQ factors</td>
-          </tr>
-          <tr>
-            <td><span class="sop-num">005</span></td>
-            <td>Sponsor Interactions & Monitoring</td>
-            <td>SQV, SIV, routine, close-out checklists, sponsor communication</td>
-          </tr>
-          <tr>
-            <td><span class="sop-num">006</span></td>
-            <td>Investigational Product Management</td>
-            <td>Receipt, storage, dispensing, return/destruction, DEA compliance</td>
-          </tr>
-          <tr>
-            <td><span class="sop-num">007</span></td>
-            <td>Remote Monitoring Visits</td>
-            <td>Platform requirements, document preparation, follow-up procedures</td>
-          </tr>
-          <tr>
-            <td><span class="sop-num">008</span></td>
-            <td>Recruitment & Retention</td>
-            <td>10 active methods, 8 passive methods, special populations, compensation</td>
-          </tr>
-        </tbody>
-      </table>
+        <div class="bundle-extras-stacked">
+          <div class="extra-item">
+            <span class="extra-icon">&#128196;</span>
+            <div>
+              <strong>Editable Word files</strong>
+              <span>Branded PDF + customizable .docx</span>
+            </div>
+          </div>
+          <div class="extra-item">
+            <span class="extra-icon">&#9745;</span>
+            <div>
+              <strong>11 companion forms</strong>
+              <span>Training logs, checklists, tracking templates</span>
+            </div>
+          </div>
+          <div class="extra-item">
+            <span class="extra-icon">&#9998;</span>
+            <div>
+              <strong>PI signature lines</strong>
+              <span>Approval sections on every SOP</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="/sop-bundle" class="btn-primary btn-sm" style="margin-top: var(--spacing-md);">Get the Bundle — $249.99</a>
+      </div>
+
+      <div class="sop-table-wrap">
+        <table class="sop-table">
+          <thead>
+            <tr>
+              <th>SOP</th>
+              <th>Title</th>
+              <th>Key Coverage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="sop-num">001</span></td>
+              <td>Training & Qualification</td>
+              <td>GCP training, DOA log, competency assessment</td>
+            </tr>
+            <tr>
+              <td><span class="sop-num">002</span></td>
+              <td>Essential Documents</td>
+              <td>12-tab binder, ICH E6 Sections 8.2-8.4, eTMF</td>
+            </tr>
+            <tr>
+              <td><span class="sop-num">003</span></td>
+              <td>Study Start-Up</td>
+              <td>Feasibility, CDA/NDA, budget, 1572, SIV prep</td>
+            </tr>
+            <tr>
+              <td><span class="sop-num">004</span></td>
+              <td>Informed Consent</td>
+              <td>20 ICH elements, eConsent, vulnerable populations</td>
+            </tr>
+            <tr>
+              <td><span class="sop-num">005</span></td>
+              <td>Recruitment & Retention</td>
+              <td>10 active + 8 passive methods, compensation</td>
+            </tr>
+            <tr>
+              <td><span class="sop-num">006</span></td>
+              <td>IP Management</td>
+              <td>Receipt, dispensing, unblinding, DEA compliance</td>
+            </tr>
+            <tr>
+              <td><span class="sop-num">007</span></td>
+              <td>Data Management</td>
+              <td>ALCOA+, source docs, 21 CFR Part 11</td>
+            </tr>
+            <tr>
+              <td><span class="sop-num">008</span></td>
+              <td>AE & Deviations</td>
+              <td>SAE reporting timelines, CAPA procedures</td>
+            </tr>
+            <tr>
+              <td><span class="sop-num">009</span></td>
+              <td>QC / QA</td>
+              <td>QA framework, Quality by Design, CtQ factors</td>
+            </tr>
+            <tr>
+              <td><span class="sop-num">010</span></td>
+              <td>Monitoring Visits</td>
+              <td>SQV, SIV, routine, close-out checklists</td>
+            </tr>
+            <tr>
+              <td><span class="sop-num">011</span></td>
+              <td>Remote Monitoring</td>
+              <td>Platform security, PHI, hybrid visits</td>
+            </tr>
+            <tr>
+              <td><span class="sop-num">012</span></td>
+              <td>Study Close-Out</td>
+              <td>DB lock, IP reconciliation, archival</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 
   <!-- Services -->
-  <section class="section">
+  <section class="section section-deep">
     <div class="section-header">
       <h2>Services</h2>
       <p>Consulting and engineering for clinical research operations.</p>
@@ -177,46 +241,55 @@ import Base from '../layouts/Base.astro';
     </div>
   </section>
 
-  <!-- Who We Serve -->
-  <section class="section">
+  <!-- Who We Serve — bento grid -->
+  <section class="section section-tinted">
     <div class="section-header">
       <h2>Who We Work With</h2>
     </div>
 
-    <div class="audience-grid">
-      <div class="audience-item">
-        <h3>Research Sites</h3>
-        <p>Sites starting new study programs or building compliance infrastructure from the ground up.</p>
+    <div class="bento-grid">
+      <div class="audience-item bento-feature">
+        <div class="bento-icon">&#127973;</div>
+        <h3>Sponsors</h3>
+        <p>Pharmaceutical and biotech companies qualifying sites, evaluating CRO operations, or sourcing audit-ready compliance documentation for their study portfolios.</p>
       </div>
       <div class="audience-item">
+        <div class="bento-icon">&#128200;</div>
         <h3>CROs</h3>
-        <p>Contract research organizations updating SOP libraries or deploying site management tools.</p>
+        <p>Contract research organizations updating SOP libraries or standardizing multi-site operations.</p>
       </div>
       <div class="audience-item">
+        <div class="bento-icon">&#127975;</div>
+        <h3>Research Sites</h3>
+        <p>Sites building compliance infrastructure from the ground up or preparing for their first study.</p>
+      </div>
+      <div class="audience-item">
+        <div class="bento-icon">&#128300;</div>
         <h3>Principal Investigators</h3>
-        <p>PIs establishing site compliance infrastructure for sponsor-initiated or investigator-initiated studies.</p>
+        <p>PIs establishing compliance infrastructure for sponsor-initiated or investigator-initiated studies.</p>
       </div>
       <div class="audience-item">
-        <h3>Consultants</h3>
-        <p>Clinical research consultants who need site-ready templates and tools for client engagements.</p>
+        <div class="bento-icon">&#128188;</div>
+        <h3>Consultants &amp; Individuals</h3>
+        <p>Independent professionals who need ready-to-use templates for client engagements or career development.</p>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section cta-section">
+  <!-- CTA (dark) -->
+  <section class="cta-dark">
     <h2>Ready to get your site operational?</h2>
     <p>Download the SOP bundle today, or reach out to discuss custom consulting and software.</p>
     <div class="hero-cta">
-      <a href="mailto:admin@purpledirective.com?subject=SOP%20Bundle%20Inquiry" class="btn-primary">Get the SOP Bundle — $99</a>
-      <a href="mailto:admin@purpledirective.com" class="btn-secondary">Contact Us</a>
+      <a href="/sop-bundle" class="btn-primary">View the SOP Bundle — $249.99</a>
+      <a href="mailto:info@purpledirective.com" class="btn-secondary btn-on-dark">Contact Us</a>
     </div>
   </section>
 
 </Base>
 
 <style>
-  /* Hero CTA buttons */
+  /* ── Buttons ── */
   .hero-cta {
     display: flex;
     gap: var(--spacing-md);
@@ -230,9 +303,9 @@ import Base from '../layouts/Base.astro';
     background: var(--purple-primary);
     color: #fff;
     font-family: var(--font-sans);
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     font-weight: 600;
-    padding: 0.7rem 1.5rem;
+    padding: 0.75rem 1.5rem;
     border-radius: 8px;
     text-decoration: none;
     transition: background 0.2s, transform 0.2s;
@@ -248,9 +321,9 @@ import Base from '../layouts/Base.astro';
     display: inline-block;
     color: var(--text-secondary);
     font-family: var(--font-sans);
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     font-weight: 500;
-    padding: 0.7rem 1.5rem;
+    padding: 0.75rem 1.5rem;
     border: 1px solid var(--border);
     border-radius: 8px;
     text-decoration: none;
@@ -262,170 +335,237 @@ import Base from '../layouts/Base.astro';
     color: var(--purple-primary);
   }
 
-  .btn-sm {
-    font-size: 0.8rem;
-    padding: 0.5rem 1rem;
-    margin-top: var(--spacing-sm);
-  }
+  .btn-on-dark { color: #9ca3af; border-color: #374151; }
+  .btn-on-dark:hover { color: #e5e7eb; border-color: #6b7280; }
+  .btn-sm { font-size: 0.82rem; padding: 0.55rem 1rem; margin-top: var(--spacing-sm); }
 
-  /* Trust bar */
+  /* ── Trust bar ── */
   .trust-bar {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: var(--spacing-md);
-    padding: var(--spacing-xl) 0;
-    border-top: 1px solid var(--border);
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border-top: 3px solid var(--purple-primary);
     border-bottom: 1px solid var(--border);
+    background: var(--bg-card);
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   }
 
-  .trust-item {
-    text-align: center;
+  .trust-item { text-align: center; display: flex; flex-direction: column; gap: 0.2rem; }
+  .trust-num { font-size: 1rem; font-weight: 700; color: var(--purple-primary); }
+  .trust-label { font-size: 0.7rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* ── Split layout (Products) ── */
+  .split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+  }
+
+  .split-left h2 {
+    margin-top: 0;
+    font-size: 1.75rem;
+  }
+
+  .split-desc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  .split-stats {
+    display: flex;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border);
+  }
+
+  .split-stat {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 0.1rem;
   }
 
-  .trust-num {
-    font-family: var(--font-mono);
-    font-size: 1.1rem;
+  .split-stat-num {
+    font-size: 1.75rem;
     font-weight: 700;
     color: var(--purple-primary);
+    line-height: 1;
   }
 
-  .trust-label {
-    font-size: 0.75rem;
+  .split-stat-label {
+    font-size: 0.72rem;
+    font-weight: 500;
     color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
   }
 
-  /* Product cards */
-  .product-card {
+  .split-right {
     display: flex;
     flex-direction: column;
+    gap: var(--spacing-md);
   }
 
-  .product-card p {
-    flex: 1;
+  /* ── Product cards ── */
+  .product-card { display: flex; flex-direction: column; }
+  .product-card p { flex: 1; }
+
+  .featured-card {
+    border-color: var(--purple-primary);
+    border-width: 2px;
+    position: relative;
   }
 
-  .product-meta {
-    display: flex;
-    align-items: baseline;
-    gap: var(--spacing-sm);
-    margin: var(--spacing-sm) 0;
+  .featured-card:hover {
+    border-color: var(--purple-primary);
+    box-shadow: 0 8px 24px rgba(91, 33, 182, 0.14);
+    transform: translateY(-3px);
   }
 
-  .price {
-    font-family: var(--font-mono);
-    font-size: 1.25rem;
+  .popular-badge {
+    font-size: 0.65rem;
     font-weight: 700;
-    color: var(--purple-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #fff;
+    background: var(--purple-primary);
+    padding: 0.3rem 0.75rem;
+    border-radius: 4px;
+    margin-bottom: var(--spacing-sm);
+    width: fit-content;
   }
 
-  .price-note {
-    font-size: 0.75rem;
-    color: var(--text-muted);
+  .product-meta { display: flex; align-items: baseline; gap: var(--spacing-sm); margin: var(--spacing-sm) 0; }
+  .price { font-size: 1.25rem; font-weight: 700; color: var(--purple-primary); }
+  .price-orig { font-size: 0.9rem; color: var(--text-muted); text-decoration: line-through; }
+  .price-note { font-size: 0.72rem; color: var(--text-muted); }
+
+  /* ── SOP split layout ── */
+  .sop-split {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: var(--spacing-xl);
+    align-items: start;
   }
+
+  .sop-sidebar h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+  }
+
+  .sop-sidebar p {
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
+  .sop-lifecycle {
+    color: var(--purple-primary);
+    font-weight: 500;
+    font-size: 0.85rem !important;
+  }
+
+  .bundle-extras-stacked {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border);
+  }
+
+  .extra-item { display: flex; gap: var(--spacing-sm); align-items: flex-start; }
+  .extra-icon { font-size: 1.2rem; line-height: 1.4; flex-shrink: 0; }
+  .extra-item strong { display: block; font-size: 0.85rem; color: var(--text-primary); margin-bottom: 0.15rem; }
+  .extra-item span { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.4; }
 
   /* SOP table */
   .sop-table-wrap {
     overflow-x: auto;
-    margin: var(--spacing-lg) 0;
     border: 1px solid var(--border);
     border-radius: 10px;
-  }
-
-  .sop-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.85rem;
-  }
-
-  .sop-table thead {
     background: var(--bg-card);
+    margin: 0;
   }
 
+  .sop-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  .sop-table thead { background: var(--bg-card); }
   .sop-table th {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--text-muted);
-    text-align: left;
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid var(--border);
+    font-size: 0.68rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--text-muted); text-align: left;
+    padding: 0.65rem 0.85rem; border-bottom: 2px solid var(--border);
   }
+  .sop-table td { padding: 0.55rem 0.85rem; color: var(--text-secondary); border-bottom: 1px solid var(--border); }
+  .sop-table tr:last-child td { border-bottom: none; }
+  .sop-table tr:hover td { background: var(--purple-glow); }
+  .sop-num { font-weight: 700; color: var(--purple-primary); font-size: 0.78rem; }
 
-  .sop-table td {
-    padding: 0.65rem 1rem;
-    color: var(--text-secondary);
-    border-bottom: 1px solid rgba(42, 42, 58, 0.5);
-  }
+  /* ── 3-column card grid (Services) ── */
+  .card-grid-3 { grid-template-columns: repeat(3, 1fr); }
 
-  .sop-table tr:last-child td {
-    border-bottom: none;
-  }
-
-  .sop-table tr:hover td {
-    background: rgba(155, 114, 207, 0.03);
-  }
-
-  .sop-num {
-    font-family: var(--font-mono);
-    font-weight: 600;
-    color: var(--purple-primary);
-  }
-
-  /* 3-column card grid */
-  .card-grid-3 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  /* Audience grid */
-  .audience-grid {
+  /* ── Bento grid (Who We Work With) ── */
+  .bento-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
     gap: var(--spacing-md);
     margin: var(--spacing-lg) 0;
   }
+
+  .bento-feature {
+    grid-row: 1 / 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--purple-primary) !important;
+    border-color: var(--purple-primary) !important;
+    color: #fff;
+  }
+
+  .bento-feature h3 { color: #fff; }
+  .bento-feature p { color: rgba(255,255,255,0.85); }
+  .bento-feature .bento-icon { font-size: 2rem; }
 
   .audience-item {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: var(--spacing-lg);
+    transition: border-color 0.2s, transform 0.2s;
   }
 
-  .audience-item h3 {
-    margin-top: 0;
-    font-size: 1rem;
-    margin-bottom: var(--spacing-xs);
+  .audience-item:not(.bento-feature):hover {
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
   }
 
-  .audience-item p {
-    font-size: 0.85rem;
-    margin-bottom: 0;
+  .bento-icon {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
   }
 
-  /* CTA section */
-  .cta-section {
-    text-align: center;
-    padding: var(--spacing-2xl) 0;
-    border-top: 1px solid var(--border);
-  }
+  .audience-item h3 { margin-top: 0; font-size: 1rem; margin-bottom: var(--spacing-xs); }
+  .audience-item p { font-size: 0.85rem; margin-bottom: 0; }
 
-  .cta-section h2 {
-    margin-top: 0;
-  }
-
-  .cta-section p {
-    max-width: 550px;
-    margin: 0 auto var(--spacing-md);
-  }
-
-  /* Responsive */
+  /* ── Responsive ── */
   @media (max-width: 768px) {
+    .split-layout {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+
+    .split-stats {
+      justify-content: flex-start;
+    }
+
+    .sop-split {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+
     .trust-bar {
       grid-template-columns: repeat(2, 1fr);
       gap: var(--spacing-lg);
@@ -435,31 +575,25 @@ import Base from '../layouts/Base.astro';
       grid-template-columns: 1fr;
     }
 
-    .audience-grid {
-      grid-template-columns: 1fr;
+    .bento-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .bento-feature {
+      grid-column: 1 / -1;
+      grid-row: auto;
     }
   }
 
   @media (max-width: 480px) {
-    .trust-bar {
+    .bento-grid {
       grid-template-columns: 1fr;
-      text-align: left;
     }
 
-    .trust-item {
-      flex-direction: row;
-      align-items: center;
-      gap: var(--spacing-sm);
-      text-align: left;
-    }
+    .trust-bar { grid-template-columns: 1fr; text-align: left; }
+    .trust-item { flex-direction: row; align-items: center; gap: var(--spacing-sm); text-align: left; }
 
-    .hero-cta {
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    .btn-primary, .btn-secondary {
-      text-align: center;
-    }
+    .hero-cta { flex-direction: column; align-items: stretch; }
+    .btn-primary, .btn-secondary { text-align: center; }
   }
 </style>
