@@ -12,15 +12,4 @@ const blog = defineCollection({
   }),
 });
 
-const updates = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/updates' }),
-  schema: z.object({
-    date: z.coerce.date(),
-    tag: z.string(),
-    tagColor: z.string(),
-    title: z.string(),
-    desc: z.string(),
-  }),
-});
-
-export const collections = { blog, updates };
+export const collections = { blog };
