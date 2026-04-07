@@ -1,20 +1,20 @@
-# Purple-Directive: Site
+# purpledirective.com
 
-Source for [purpledirective.com](https://purpledirective.com) — the public-facing home of the Purple Directive project.
+Source for [purpledirective.com](https://purpledirective.com) — clinical research SOPs, CTMS, and consulting.
 
 ## Stack
 
 - **Astro 5** — static site generator
-- **Vanilla CSS** — no frameworks, no Tailwind
-- **Cloudflare Pages** — hosting and CDN ($0/month)
+- **Vanilla CSS** — no frameworks
+- **Cloudflare Pages** — hosting and CDN
 - Auto-deploys on push to `main`
 
 ## Pages
 
 - **/** — Landing page
-- **/projects** — Project showcase
-- **/about** — Background and philosophy
-- **/blog** — Technical writing (Markdown with YAML frontmatter)
+- **/about** — Background and team
+- **/blog** — Clinical research and technical writing
+- **/shop** — SOP bundle purchase
 
 ## Local Development
 
@@ -34,17 +34,12 @@ Add new posts to `src/content/blog/`:
 title: "Post Title"
 date: 2026-03-04
 summary: "One-line summary"
-tags: ["ai", "agents"]
+tags: ["clinical-research", "sops"]
 ---
 
 Post content here.
 ```
 
-## Related
-
-- [Purple-Directive: Violet](https://github.com/PurpleDirective/purple-directive-violet) — Multi-agent AI framework
-- [Purple-Directive: CLI](https://github.com/PurpleDirective/purple-directive-cli) — Local AI agent with Ollama + MCP
-
 ## License
 
-MIT
+Proprietary. See [LICENSE](LICENSE).
