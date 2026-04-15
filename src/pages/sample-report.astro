@@ -1,0 +1,237 @@
+---
+import Base from '../layouts/Base.astro';
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Report",
+  "headline": "What FDA Inspections Have Been Finding at US Oncology Trial Sites — A Pattern Read of Recent Enforcement (2023–2025)",
+  "description": "A public 1-page sample of the Purple Directive Healthcare Market Research Report. Demonstrates analytical depth and citation discipline by extracting three FDA Form 483 observation patterns at US oncology clinical trial sites from recent BIMO enforcement actions.",
+  "author": {
+    "@type": "Person",
+    "name": "Tyrian M.",
+    "jobTitle": "Clinical Research Professional",
+    "description": "Clinical research professional working on FDA-regulated oncology studies at a major US academic health system. Service offered in personal, independent capacity."
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Purple Directive LLC",
+    "url": "https://purpledirective.com"
+  },
+  "datePublished": "2026-04-15",
+  "dateModified": "2026-04-15",
+  "inLanguage": "en-US",
+  "isPartOf": {
+    "@type": "Service",
+    "name": "Healthcare Market Research Report",
+    "url": "https://purpledirective.com/research-report",
+    "offers": {
+      "@type": "Offer",
+      "price": "750",
+      "priceCurrency": "USD"
+    }
+  }
+};
+---
+
+<Base
+  title="Sample Report — FDA 483 Patterns at US Oncology Sites"
+  activePage="products"
+  description="Public sample of the Purple Directive Healthcare Market Research Report. A pattern read of FDA Form 483 observations at US oncology trial sites, drawn from recent BIMO enforcement actions (2023-2025), with primary-source citations."
+>
+
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
+  <!-- Hero -->
+  <div class="product-top">
+    <div class="product-hero-text" style="max-width: 860px; margin: 0 auto; text-align: center;">
+      <span class="product-badge">Public Sample</span>
+      <h1>What FDA Inspections Have Been Finding at US Oncology Trial Sites</h1>
+      <p class="product-tagline">
+        A pattern read of recent enforcement (2023–2025). Three Form 483 observation patterns
+        extracted from verified FDA warning letters, with primary-source citations on every claim.
+        This is a 1-page sample of the full Purple Directive Healthcare Market Research Report.
+      </p>
+      <div style="margin-top: 1.5rem;">
+        <a href="/research-report" class="buy-btn" style="display: inline-block;">See the Full Research Service ($750)</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Executive Summary -->
+  <section class="why-now-section">
+    <h2>Executive Summary</h2>
+    <p style="max-width: 760px;">
+      The FDA's Bioresearch Monitoring (BIMO) program has intensified its scrutiny of clinical investigator conduct over the last 24 months.
+      Across approximately 5,600 BIMO inspections conducted at US clinical sites between FY2019 and FY2024,
+      roughly <strong>1 in 4 sites received actionable findings</strong> — with protocol non-compliance cited in about 60% of warning letters
+      issued to investigators, sponsors, and IRBs<sup><a href="#cite-1">1</a></sup>.
+      This note extracts three recurring failure patterns at oncology trial sites, each drawn from verified warning letters currently live on FDA.gov:
+    </p>
+    <ol style="max-width: 760px; line-height: 1.8;">
+      <li><strong>Dosing past confirmed disease progression</strong> — the most public 2024–2025 oncology enforcement signal</li>
+      <li><strong>Genetic / biomarker sub-study consent failures</strong> — a consent failure mode that appears uniquely in targeted oncology protocols</li>
+      <li><strong>Investigational product accountability breakdowns</strong> — protocol misinterpretation leading to unplanned additional dosing in pediatric oncology</li>
+    </ol>
+    <p style="max-width: 760px;">
+      Each concentrates operational risk at the site level, not the sponsor level — meaning most oncology sponsors cannot mitigate the exposure through remote monitoring alone.
+    </p>
+  </section>
+
+  <!-- Finding 1 -->
+  <section class="why-now-section">
+    <h2>Finding 1 — Dosing past confirmed progression (2025 enforcement signal)</h2>
+    <p style="max-width: 760px;">
+      In September 2025, the FDA issued warning letter <strong>716181-09042025</strong> to Dr. Shirish M. Gadgeel,
+      a thoracic oncologist at Henry Ford Health, following an August 5–23, 2024 BIMO inspection<sup><a href="#cite-2">2</a></sup>.
+      The central finding: a subject with disease progression per modified RECIST 1.1 —
+      initial progression observed on the September 16, 2021 tumor measurement report and
+      <em>confirmed</em> on the November 9, 2021 report. The protocol required removal from treatment upon confirmed progression.
+    </p>
+    <p style="max-width: 760px;">
+      Despite that, the subject received IV infusions of the investigational drug on October 12, 2021 and November 9, 2021 —
+      with sponsor approval for continued dosing not obtained until <strong>November 23, 2021</strong>,
+      <em>after the dosing had already occurred</em>. The subject was not formally removed from study treatment until January 3, 2022,
+      more than three months after confirmed progression. The letter cites failure to comply with 21 CFR 312.60.
+    </p>
+    <p style="max-width: 760px;">
+      <strong>Why this compounds in 2025–2026:</strong> as targeted oncology protocols embed hard RECIST-based stopping rules,
+      sites running multiple investigational oncology protocols simultaneously must implement per-protocol stop-rule operational
+      workflows — not rely on physician memory. FDA's December 2024 draft guidance on Protocol Deviations<sup><a href="#cite-3">3</a></sup>
+      signals increased inspection focus on this category in 2026. Sites running more than three concurrent investigational oncology
+      protocols should assume baseline exposure unless RECIST-stop workflows are operationalized.
+    </p>
+  </section>
+
+  <!-- Finding 2 -->
+  <section class="why-now-section">
+    <h2>Finding 2 — Genetic / biomarker sub-study consent failures</h2>
+    <p style="max-width: 760px;">
+      The same Gadgeel warning letter cites a second distinct failure. The IRB-approved protocol required subjects to sign
+      a <em>separate special consent</em> for inherited genetic analysis before blood samples could be collected for that purpose.
+      No separate consent was obtained for a subject whose blood was drawn for genetic analysis at
+      <strong>Cycle 2, Day 1 (May 25, 2021) and Cycle 3, Day 1 (June 15, 2021)</strong><sup><a href="#cite-2">2</a></sup>.
+      The letter cites 21 CFR 50.20 — failure to obtain legally effective informed consent.
+    </p>
+    <p style="max-width: 760px;">
+      <strong>Why this is oncology-specific:</strong> targeted oncology protocols increasingly nest optional genetic profiling,
+      circulating tumor DNA collection, and biomarker sub-studies inside the main consent. Sites that treat the master consent
+      as covering all components face direct 21 CFR 50.20 / 50.25 exposure when a protocol-required separate consent is not obtained.
+      The operational risk concentrates at the coordinator level — per-sample consent verification must live in the sample collection workflow, not just at enrollment.
+    </p>
+  </section>
+
+  <!-- Finding 3 -->
+  <section class="why-now-section">
+    <h2>Finding 3 — Investigational product accountability (pediatric oncology)</h2>
+    <p style="max-width: 760px;">
+      Warning letter <strong>674545-12192023</strong>, issued to Dr. Jeffrey W. Taub
+      (Chief, Pediatric Hematology-Oncology, Children's Hospital of Michigan), documents a different failure mode following
+      a September–October 2022 BIMO inspection<sup><a href="#cite-4">4</a></sup>. A pediatric subject received
+      <strong>three additional five-day cycles of vincristine and dexamethasone at Weeks 53, 57, and 61</strong> —
+      beyond the schedule the protocol specified. Root cause: a physician sub-investigator misinterpreted the drug administration schedule.
+      FDA specifically noted that pediatric subjects administered vincristine are exposed to serious neurologic and hematologic toxicity,
+      amplifying the clinical risk of excess dosing.
+    </p>
+    <p style="max-width: 760px;">
+      The hospital's corrective action plan was found inadequate.
+    </p>
+    <p style="max-width: 760px;">
+      <strong>Why this matters for oncology sites specifically:</strong> protocol schedule misinterpretation is a quiet failure mode —
+      it doesn't look like non-compliance until FDA reconstructs the expected vs. actual dosing timeline.
+      For oncology protocols with complex dose-escalation, induction-consolidation-maintenance phases, or cycle-based schedules,
+      risk concentrates in the handoff between protocol reading and dose administration.
+      Sites running cytotoxic or narrow-therapeutic-window oncology regimens should assume this pattern applies unless a formal second-check workflow exists.
+    </p>
+    <p style="max-width: 760px; font-size: 0.9rem; opacity: 0.85;">
+      <em>Note: the Taub letter was issued December 2023 following a 2022 inspection. It remains the most recent public FDA
+      warning letter to a confirmed pediatric oncology investigator citing investigational product accountability —
+      an enduring pattern, not a stale one.</em>
+    </p>
+  </section>
+
+  <!-- Base Rate -->
+  <section class="why-now-section">
+    <h2>Base rate — how exposed are sites overall?</h2>
+    <p style="max-width: 760px;">
+      From FY2019 through FY2024, FDA conducted approximately 5,600 BIMO inspections at clinical sites<sup><a href="#cite-1">1</a></sup>. Classification outcomes:
+    </p>
+    <div style="overflow-x: auto;">
+      <table style="max-width: 760px; width: 100%; border-collapse: collapse; margin: 1rem 0;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border, #333);">
+            <th style="padding: 0.75rem; text-align: left;">Outcome</th>
+            <th style="padding: 0.75rem; text-align: left;">Share</th>
+            <th style="padding: 0.75rem; text-align: left;">What it means</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border, #444);">
+            <td style="padding: 0.75rem;"><strong>NAI</strong> (No Action Indicated)</td>
+            <td style="padding: 0.75rem;">~76%</td>
+            <td style="padding: 0.75rem;">No objectionable conditions cited</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border, #444);">
+            <td style="padding: 0.75rem;"><strong>VAI</strong> (Voluntary Action Indicated)</td>
+            <td style="padding: 0.75rem;">~22%</td>
+            <td style="padding: 0.75rem;">Observations issued; site responds in writing</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem;"><strong>OAI</strong> (Official Action Indicated)</td>
+            <td style="padding: 0.75rem;">~1.7%</td>
+            <td style="padding: 0.75rem;">Serious — may trigger warning letter or further enforcement</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="max-width: 760px;">
+      <strong>Translation:</strong> roughly 1 in 4 inspected US clinical sites receives actionable findings.
+      Among the top-cited regulatory sections in recent warning letters: 21 CFR 312.60 (investigational plan adherence),
+      21 CFR 312.20 (IND submission), 21 CFR 312.57 (record maintenance), and 21 CFR 50.25 (informed consent requirements)<sup><a href="#cite-5">5</a></sup>.
+    </p>
+  </section>
+
+  <!-- CTA -->
+  <section class="why-now-section" style="text-align: center; padding: 2.5rem 1rem; background: rgba(107, 76, 154, 0.08); border-radius: 12px;">
+    <h2>Order a Full Report — $750, 48 Hours</h2>
+    <p style="max-width: 640px; margin: 0 auto 1.5rem;">
+      The full 20–30 page report delivers a complete inventory of 2023–2025 oncology warning letters,
+      an observation taxonomy mapped to site-level operational workflows, analysis of FDA's December 2024
+      Protocol Deviations draft guidance, site-level readiness criteria, and sponsor-side monitoring gap analysis.
+    </p>
+    <a href="/research-report" class="buy-btn" style="display: inline-block;">See Pricing and Scope</a>
+    <p style="margin-top: 1rem; font-size: 0.9rem;">
+      Or <a href="https://calendly.com/nexrial/healthcare-market-research-scoping-call">book a 15-minute scoping call</a>.
+    </p>
+  </section>
+
+  <!-- Methodology -->
+  <section class="why-now-section">
+    <h2>Methodology</h2>
+    <p style="max-width: 760px;">
+      Primary sources: FDA public warning letters database, FDA BIMO Inspection Metrics (fiscal year reports),
+      Federal Register guidance documents. Secondary analysis: legal and regulatory publications from Goodwin,
+      Food and Drug Law Institute (FDLI), and The FDA Group. Every claim links to a primary source or a cited secondary analysis.
+      No findings were fabricated or extrapolated beyond what public records support.
+    </p>
+    <p style="max-width: 760px;">
+      <strong>Human + AI:</strong> this analysis was produced with AI-assisted retrieval and drafting.
+      Every primary source was independently verified. Every regulatory claim was cross-checked against the primary text.
+      Written and certified by a clinical research professional actively working on FDA-regulated oncology studies at a US academic health system.
+      Service offered in personal, independent capacity — not affiliated with, endorsed by, or representative of any employer or institution.
+    </p>
+  </section>
+
+  <!-- Citations -->
+  <section class="why-now-section">
+    <h2>Citations</h2>
+    <ol style="max-width: 760px; line-height: 1.7; font-size: 0.92rem;">
+      <li id="cite-1">Food and Drug Law Institute, "Compliance Challenges for Clinical Research Sites" (Feb 2025). <a href="https://www.fdli.org/2025/02/compliance-challenges-for-clinical-research-sites/" rel="noopener nofollow">fdli.org/2025/02/compliance-challenges-for-clinical-research-sites</a></li>
+      <li id="cite-2">FDA Warning Letter 716181-09042025 — Shirish M. Gadgeel, M.D. (Sept 4, 2025). <a href="https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/shirish-m-gadgeel-md-716181-09042025" rel="noopener">FDA.gov</a></li>
+      <li id="cite-3">FDA Draft Guidance, "Protocol Deviations for Clinical Investigations of Drugs, Biological Products, and Devices," Federal Register 2024-31261 (Dec 30, 2024). <a href="https://www.federalregister.gov/documents/2024/12/30/2024-31261/protocol-deviations-for-clinical-investigations-of-drugs-biological-products-and-devices-draft" rel="noopener">federalregister.gov</a></li>
+      <li id="cite-4">FDA Warning Letter 674545-12192023 — Jeffrey W. Taub, M.D. / Children's Hospital of Michigan (Dec 19, 2023). <a href="https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/jeffrey-w-taub-mdchildrens-hospital-michigan-674545-12192023" rel="noopener">FDA.gov</a></li>
+      <li id="cite-5">Goodwin Procter LLP, "Common FDA Bioresearch Monitoring (BIMO) Violations: Updates from FY 2023 to Now" (July 2024). <a href="https://www.goodwinlaw.com/en/insights/publications/2024/07/alerts-lifesciences-common-fda-bioresearch-monitoring-violations" rel="noopener nofollow">goodwinlaw.com</a></li>
+      <li id="cite-6">FDA BIMO Inspection Metrics (official annual reports). <a href="https://www.fda.gov/science-research/clinical-trials-and-human-subject-protection/bimo-inspection-metrics" rel="noopener">FDA.gov</a></li>
+    </ol>
+  </section>
+
+</Base>

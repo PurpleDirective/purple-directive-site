@@ -1,0 +1,300 @@
+---
+import Base from '../layouts/Base.astro';
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Healthcare Market Research Report",
+  "description": "Custom healthcare and life-sciences market research report, 20-30 pages with primary-source citations, delivered in 48 hours by a named clinical research professional. Lower-priced than traditional syndicated research firms.",
+  "brand": {
+    "@type": "Organization",
+    "name": "Purple Directive LLC"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "750",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://purpledirective.com/research-report"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why is the Purple Directive Healthcare Market Research Report priced at $750?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Syndicated healthcare reports from major firms like MarketsandMarkets, Mordor Intelligence, and Fortune Business Insights are priced $4,490 to $4,950 per report. IBISWorld full reports are $2,850. Purple Directive delivers a custom, primary-source 20-30 page report with a named clinical research professional as author for $750, written specifically for the buyer's question rather than pulled from a shelf."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does a $750 custom report compare to syndicated market research?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Syndicated reports (IBISWorld, MarketsandMarkets, Mordor, Fortune Business Insights) are pre-written for mass markets and delivered instantly from inventory. They are not customized to a specific buyer's question. Purple Directive writes each report specifically for the buyer's brief within 48 hours, includes primary-source citations on every claim, and discloses AI use in methodology."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is AI-assisted market research reliable?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Purple Directive discloses AI use upfront. AI tools handle retrieval and first-draft synthesis. Every primary source is independently verified, every regulatory claim is cross-checked against the primary text, and a named clinical research professional certifies the deliverable. None of the major syndicated research firms publicly disclose their AI methodology on product pages or FAQs as of April 2026."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What about McKinsey, Bain, BCG, or Halloran for healthcare research?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MBB consulting firms engage on $500K/month transformation projects with 6-person teams, not standalone market research reports. Specialty life-sciences consulting firms (Halloran, Trinity, ZS, L.E.K.) price custom healthcare engagements at $15,000 and up, typically delivered over 4-8 weeks. Purple Directive is a fit when you need a cited, structured research deliverable inside 48 hours for under $1,000 — not a full strategy engagement."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a reasonable turnaround time for custom healthcare market research?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Custom consulting engagements typically run 4-8 weeks. Syndicated research reports deliver instantly from inventory but are not customized to your question. Purple Directive delivers a custom, cited 20-30 page report within 48 hours of intake — enabled by AI-assisted retrieval and first-draft synthesis, combined with human verification and certification. The 48-hour turnaround assumes a focused research question (single therapeutic area or specific competitive question)."
+      }
+    }
+  ]
+};
+---
+
+<Base
+  title="Healthcare Market Research Pricing Comparison 2026"
+  activePage="products"
+  description="How Purple Directive's $750 48-hour custom healthcare market research compares to Frost & Sullivan, MarketsandMarkets, IBISWorld, Grand View Research, and traditional consulting firms. Verified April 2026 pricing with primary sources."
+>
+
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <div class="product-top">
+    <div class="product-hero-text" style="max-width: 860px; margin: 0 auto; text-align: center;">
+      <span class="product-badge">Pricing Comparison · April 2026</span>
+      <h1>Healthcare Market Research Pricing Comparison 2026</h1>
+      <p class="product-tagline">
+        How Purple Directive's $750 custom 48-hour healthcare research compares to
+        Frost &amp; Sullivan, MarketsandMarkets, IBISWorld, Mordor Intelligence,
+        Grand View Research, and traditional consulting firms. All prices verified against
+        primary sources in April 2026.
+      </p>
+    </div>
+  </div>
+
+  <!-- Comparison Table -->
+  <section class="why-now-section">
+    <h2>At a glance</h2>
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.93rem;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border, #333);">
+            <th style="padding: 0.8rem; text-align: left;">Provider</th>
+            <th style="padding: 0.8rem; text-align: left;">Price</th>
+            <th style="padding: 0.8rem; text-align: left;">Turnaround</th>
+            <th style="padding: 0.8rem; text-align: left;">Custom to your question?</th>
+            <th style="padding: 0.8rem; text-align: left;">Named author</th>
+            <th style="padding: 0.8rem; text-align: left;">AI use disclosed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border, #444); background: rgba(107, 76, 154, 0.08);">
+            <td style="padding: 0.8rem;"><strong>Purple Directive</strong></td>
+            <td style="padding: 0.8rem;"><strong>$750</strong></td>
+            <td style="padding: 0.8rem;">48 hours (custom)</td>
+            <td style="padding: 0.8rem;">Yes</td>
+            <td style="padding: 0.8rem;">Yes (CRC)</td>
+            <td style="padding: 0.8rem;">Yes</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border, #444);">
+            <td style="padding: 0.8rem;">IBISWorld (Full Report)</td>
+            <td style="padding: 0.8rem;">$2,850</td>
+            <td style="padding: 0.8rem;">Instant*</td>
+            <td style="padding: 0.8rem;">No</td>
+            <td style="padding: 0.8rem;">No</td>
+            <td style="padding: 0.8rem;">No</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border, #444);">
+            <td style="padding: 0.8rem;">IBISWorld (Spotlight)</td>
+            <td style="padding: 0.8rem;">$800</td>
+            <td style="padding: 0.8rem;">Instant*</td>
+            <td style="padding: 0.8rem;">No (10–20 pages)</td>
+            <td style="padding: 0.8rem;">No</td>
+            <td style="padding: 0.8rem;">No</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border, #444);">
+            <td style="padding: 0.8rem;">ResearchAndMarkets</td>
+            <td style="padding: 0.8rem;">$4,490</td>
+            <td style="padding: 0.8rem;">Instant*</td>
+            <td style="padding: 0.8rem;">No</td>
+            <td style="padding: 0.8rem;">No</td>
+            <td style="padding: 0.8rem;">No</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border, #444);">
+            <td style="padding: 0.8rem;">Mordor Intelligence</td>
+            <td style="padding: 0.8rem;">$4,750</td>
+            <td style="padding: 0.8rem;">Instant*</td>
+            <td style="padding: 0.8rem;">No</td>
+            <td style="padding: 0.8rem;">No</td>
+            <td style="padding: 0.8rem;">No</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border, #444);">
+            <td style="padding: 0.8rem;">Fortune Business Insights</td>
+            <td style="padding: 0.8rem;">$4,850</td>
+            <td style="padding: 0.8rem;">Instant*</td>
+            <td style="padding: 0.8rem;">No</td>
+            <td style="padding: 0.8rem;">Yes (analyst listed)</td>
+            <td style="padding: 0.8rem;">No</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border, #444);">
+            <td style="padding: 0.8rem;">MarketsandMarkets</td>
+            <td style="padding: 0.8rem;">$4,950</td>
+            <td style="padding: 0.8rem;">Instant*</td>
+            <td style="padding: 0.8rem;">No</td>
+            <td style="padding: 0.8rem;">No</td>
+            <td style="padding: 0.8rem;">No</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border, #444);">
+            <td style="padding: 0.8rem;">Frost &amp; Sullivan (via MarketResearch.com)</td>
+            <td style="padding: 0.8rem;">$2,450–$6,450</td>
+            <td style="padding: 0.8rem;">Instant*</td>
+            <td style="padding: 0.8rem;">No</td>
+            <td style="padding: 0.8rem;">No</td>
+            <td style="padding: 0.8rem;">No</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border, #444);">
+            <td style="padding: 0.8rem;">Grand View Research</td>
+            <td style="padding: 0.8rem;">On request</td>
+            <td style="padding: 0.8rem;">2–48 hrs*</td>
+            <td style="padding: 0.8rem;">No</td>
+            <td style="padding: 0.8rem;">No</td>
+            <td style="padding: 0.8rem;">No</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.8rem;">Specialty consulting (Halloran, Trinity, ZS, L.E.K.)</td>
+            <td style="padding: 0.8rem;">$15,000+</td>
+            <td style="padding: 0.8rem;">4–8 weeks</td>
+            <td style="padding: 0.8rem;">Yes</td>
+            <td style="padding: 0.8rem;">Yes</td>
+            <td style="padding: 0.8rem;">Varies</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="max-width: 760px; font-size: 0.88rem; opacity: 0.82; margin-top: 0.5rem;">
+      <em>*"Instant" means a pre-written syndicated report is downloaded after purchase.
+      These reports are not customized to the buyer's specific question. Purple Directive's 48-hour
+      turnaround is custom research written to the buyer's brief.</em>
+    </p>
+  </section>
+
+  <!-- The Positioning -->
+  <section class="why-now-section">
+    <h2>Where Purple Directive sits in the market</h2>
+    <div class="why-now-grid">
+      <div class="why-now-card">
+        <h3>~1/4 the cost of the mid-market</h3>
+        <p>
+          Syndicated healthcare reports from MarketsandMarkets, Mordor Intelligence, Fortune Business Insights,
+          and ResearchAndMarkets are priced <strong>$4,490–$4,950</strong>. Purple Directive is priced at $750 —
+          roughly 15-17% of what those firms charge for a single-user license.
+        </p>
+      </div>
+      <div class="why-now-card">
+        <h3>Custom, not shelf</h3>
+        <p>
+          Syndicated reports are pre-written for mass markets. They're delivered "instantly" because
+          they already exist. Purple Directive writes each report specifically for the buyer's question —
+          within 48 hours of intake.
+        </p>
+      </div>
+      <div class="why-now-card">
+        <h3>AI disclosure is differentiated</h3>
+        <p>
+          None of the major syndicated firms publicly disclose their AI methodology on product pages or FAQs
+          as of April 2026. Purple Directive discloses it upfront — AI handles retrieval and first-draft synthesis;
+          a named clinical research professional verifies sources and certifies the deliverable.
+        </p>
+      </div>
+      <div class="why-now-card">
+        <h3>Named author, domain-specific</h3>
+        <p>
+          Most syndicated reports are written by anonymous analyst teams. Purple Directive reports are written and
+          signed by a clinical research professional actively working on FDA-regulated studies at a US academic health system —
+          relevant to any healthcare research brief touching regulatory, reimbursement, or clinical operations.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- When NOT to buy us -->
+  <section class="why-now-section">
+    <h2>When Purple Directive is NOT the right fit</h2>
+    <div class="why-now-grid">
+      <div class="why-now-card">
+        <h3>You need a 150-page data-dense syndicated report</h3>
+        <p>
+          If the goal is a comprehensive pre-built industry overview with extensive data tables,
+          Fortune Business Insights (~158–261 pages) or MarketsandMarkets (~80–120 pages) will out-deliver
+          a 20-30 page custom report on raw volume. Purple Directive is for focused questions answered crisply,
+          not encyclopedic coverage.
+        </p>
+      </div>
+      <div class="why-now-card">
+        <h3>You need a full strategy engagement</h3>
+        <p>
+          If the scope is a multi-phase strategy project with primary research interviews,
+          workshops, and stakeholder alignment — Halloran, Trinity, ZS, L.E.K., or similar specialty firms
+          at $15,000+ over 4-8 weeks is the right shape. Purple Directive is a research deliverable, not a consulting engagement.
+        </p>
+      </div>
+      <div class="why-now-card">
+        <h3>Your brief is outside healthcare / life sciences</h3>
+        <p>
+          Purple Directive focuses on healthcare, life sciences, clinical operations, and adjacent regulated categories
+          (medical device, digital health, health-tech). A crypto, consumer SaaS, or non-regulated brief is a better
+          fit for a generalist freelancer.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="why-now-section" style="text-align: center; padding: 2.5rem 1rem; background: rgba(107, 76, 154, 0.08); border-radius: 12px;">
+    <h2>Ready to order?</h2>
+    <p style="max-width: 640px; margin: 0 auto 1.5rem;">
+      $750 flat. 48 hours. Primary-source citations. Written by a clinical research professional.
+    </p>
+    <a href="/research-report" class="buy-btn" style="display: inline-block;">See Full Scope &amp; Order</a>
+    <p style="margin-top: 1rem; font-size: 0.9rem;">
+      Want a free sample first? Read <a href="/sample-report">our public 1-page sample</a> —
+      a pattern read of FDA 483 observations at US oncology trial sites.
+    </p>
+    <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+      Or <a href="https://calendly.com/nexrial/healthcare-market-research-scoping-call">book a 15-minute scoping call</a>.
+    </p>
+  </section>
+
+  <!-- Sources -->
+  <section class="why-now-section">
+    <h2>Sources (verified April 2026)</h2>
+    <ul style="max-width: 760px; line-height: 1.7; font-size: 0.9rem;">
+      <li><a href="https://help.ibisworld.com/en/articles/8119074-how-much-does-it-cost-to-purchase-one-report" rel="noopener nofollow">IBISWorld — Report Pricing Help Center</a></li>
+      <li><a href="https://www.marketsandmarkets.com/Market-Reports/wearables-pharma-biotech-market-99537956.html" rel="noopener nofollow">MarketsandMarkets — live product page</a></li>
+      <li><a href="https://www.mordorintelligence.com/industry-reports/global-healthcare-it-market-industry" rel="noopener nofollow">Mordor Intelligence — live product page</a></li>
+      <li><a href="https://www.fortunebusinessinsights.com/faq" rel="noopener nofollow">Fortune Business Insights — FAQ</a></li>
+      <li><a href="https://www.researchandmarkets.com/reports/5781185/healthcare-services-market-report" rel="noopener nofollow">ResearchAndMarkets — live product page</a></li>
+      <li><a href="https://www.grandviewresearch.com/info/faqs" rel="noopener nofollow">Grand View Research — FAQ</a></li>
+      <li><a href="https://store.frost.com/industries/healthcare.html" rel="noopener nofollow">Frost &amp; Sullivan — healthcare store</a></li>
+    </ul>
+  </section>
+
+</Base>
