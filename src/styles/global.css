@@ -824,3 +824,295 @@ footer .container {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* =============================================
+   Focus-visible (accessibility — WCAG 2.4.7)
+   ============================================= */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--purple-light);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+.buy-btn:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 5px var(--purple-light);
+}
+
+/* =============================================
+   Shared product page components
+   Used by: sample-report, healthcare-market-research-pricing,
+   and any future product/landing page. Scoped duplicates exist
+   in sop-bundle.astro and research-report.astro — safe to
+   remove in a future cleanup once parity is verified.
+   ============================================= */
+
+.product-top {
+  padding-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--border);
+}
+
+.product-hero {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: var(--spacing-xl);
+  align-items: start;
+}
+
+.product-hero-text {
+  padding-top: var(--spacing-sm);
+}
+
+.product-badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--purple-primary);
+  background: var(--purple-tint);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  margin-bottom: var(--spacing-md);
+}
+
+.product-hero-text h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-md);
+  letter-spacing: -0.02em;
+}
+
+.product-tagline {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: var(--spacing-lg);
+  max-width: 560px;
+}
+
+.product-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.product-price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.product-price-note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.buy-btn {
+  display: inline-block;
+  background: var(--purple-primary);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 0.85rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  width: 100%;
+  text-align: center;
+  max-width: 300px;
+}
+
+.buy-btn:hover {
+  background: var(--purple-dark);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.buy-note {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: var(--spacing-sm);
+  margin-bottom: 0;
+}
+
+.product-hero-preview {
+  background: var(--bg-tinted);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-hero-preview img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.product-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  padding-top: var(--spacing-lg);
+}
+
+.stat {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.stat strong {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.stat-sep {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.why-now-section {
+  padding: var(--spacing-xl) 0;
+  border-top: 1px solid var(--border);
+}
+
+.why-now-section h2 {
+  font-size: 1.25rem;
+  margin-top: 0;
+  margin-bottom: var(--spacing-lg);
+}
+
+.why-now-section > p,
+.why-now-section > ol,
+.why-now-section > ul {
+  max-width: 760px;
+}
+
+.why-now-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+
+.why-now-card {
+  background: var(--bg-tinted);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: var(--spacing-lg);
+}
+
+.why-now-card h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.why-now-card p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* CTA tinted box — reusable section variant */
+.cta-tinted {
+  background: var(--purple-glow);
+  border-radius: 12px;
+  padding: var(--spacing-xl) var(--spacing-md);
+  text-align: center;
+  border-top: none !important;
+}
+
+/* Comparison table — shared across product pages */
+.compare-table-wrap {
+  overflow-x: auto;
+  margin: var(--spacing-lg) 0;
+}
+
+.compare-table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.compare-table thead tr {
+  border-bottom: 2px solid var(--border);
+}
+
+.compare-table th {
+  padding: 0.8rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.compare-table tbody tr {
+  border-bottom: 1px solid var(--border);
+}
+
+.compare-table tbody tr.compare-row-highlight {
+  background: var(--purple-glow);
+  border-left: 3px solid var(--purple-primary);
+}
+
+.compare-table td {
+  padding: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.compare-table td:first-child {
+  color: var(--text-primary);
+}
+
+.compare-note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  max-width: 760px;
+  margin-top: 0.5rem;
+}
+
+/* Citations — verified-source accent */
+.citations-list {
+  list-style: decimal;
+  padding-left: 1.2rem;
+  max-width: 760px;
+  border-left: 3px solid var(--purple-primary);
+  padding-left: 1.5rem;
+  line-height: 1.7;
+  font-size: 0.92rem;
+}
+
+.citations-list li {
+  margin-left: 0.8rem;
+  padding: 0.3rem 0;
+}
+
+@media (max-width: 768px) {
+  .product-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .why-now-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-stats {
+    flex-wrap: wrap;
+  }
+}
