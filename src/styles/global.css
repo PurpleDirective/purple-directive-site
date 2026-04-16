@@ -858,11 +858,15 @@ button:focus-visible {
   display: grid;
   grid-template-columns: 1fr 320px;
   gap: var(--spacing-xl);
-  align-items: start;
+  align-items: stretch;
 }
 
 .product-hero-text {
   padding-top: var(--spacing-sm);
+}
+
+.product-hero-preview {
+  align-self: stretch;
 }
 
 .product-badge {
@@ -1060,6 +1064,8 @@ button:focus-visible {
   text-align: left;
   font-weight: 600;
   color: var(--text-primary);
+  vertical-align: bottom;
+  line-height: 1.3;
 }
 
 .compare-table tbody tr {
