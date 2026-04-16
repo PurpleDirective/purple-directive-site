@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { getCollection, render } from 'astro:content';
+import { siteConfig } from '../../data/site-config';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -25,6 +26,10 @@ const readMin = Math.max(1, Math.round(words / 230));
 const authorRaw = post.data.author || 'Tyrian Murex';
 const isViolet = authorRaw === 'Violet';
 const author = isViolet ? 'Violet M.' : 'Tyrian M.';
+
+const disqusShortname = siteConfig.disqusShortname;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const disqusIdentifier = `blog-${post.id}`;
 ---
 
 <Base title={post.data.title} activePage="blog" description={post.data.summary}>
@@ -64,6 +69,31 @@ const author = isViolet ? 'Violet M.' : 'Tyrian M.';
         <Content />
       </div>
     </article>
+
+    {/* Comments — Disqus (loads only when shortname is configured) */}
+    {disqusShortname && (
+      <section class="article-comments">
+        <h2 class="comments-heading">Discussion</h2>
+        <p class="comments-note">
+          Your perspective matters. Share your view, disagree with the take, or ask a follow-up — I read every comment.
+        </p>
+        <div id="disqus_thread"></div>
+        <script is:inline define:vars={{ disqusShortname, disqusIdentifier, canonicalUrl, postTitle: post.data.title }}>
+          var disqus_config = function () {
+            this.page.url = canonicalUrl;
+            this.page.identifier = disqusIdentifier;
+            this.page.title = postTitle;
+          };
+          (function() {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', String(+new Date()));
+            (d.head || d.body).appendChild(s);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </section>
+    )}
 
     {/* Footer nav */}
     <div class="article-footer">
@@ -201,6 +231,27 @@ const author = isViolet ? 'Violet M.' : 'Tyrian M.';
     font-size: 1rem;
     line-height: 1.75;
     color: var(--text-secondary);
+  }
+
+  /* Comments */
+  .article-comments {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid var(--border);
+  }
+
+  .comments-heading {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0 0 var(--spacing-sm) 0;
+    color: var(--text-primary);
+  }
+
+  .comments-note {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.5;
   }
 
   /* Footer */

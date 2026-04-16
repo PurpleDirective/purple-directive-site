@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import EmailCapture from '../components/EmailCapture.astro';
 
 const productSchema = {
   "@context": "https://schema.org",
@@ -283,6 +284,14 @@ const faqSchema = {
         </p>
       </div>
     </div>
+  </section>
+
+  <!-- Email capture -->
+  <section class="why-now-section">
+    <EmailCapture
+      heading="Stay on the list"
+      subheading="Monthly practitioner notes on FDA enforcement patterns, regulatory shifts, and the kind of operational intel that doesn't fit on a blog post. Short, specific, no hype."
+    />
   </section>
 
   <!-- CTA -->

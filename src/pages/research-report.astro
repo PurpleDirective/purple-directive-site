@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import EmailCapture from '../components/EmailCapture.astro';
 ---
 
 <Base
@@ -194,6 +195,22 @@ import Base from '../layouts/Base.astro';
     <p class="buy-note" style="margin-top: 1rem;">
       Or <a href="https://calendly.com/nexrial/healthcare-market-research-scoping-call">book a 15-minute call</a> first.
     </p>
+  </section>
+
+  <!-- Lead magnet + email capture -->
+  <section class="why-now-section">
+    <div style="padding: var(--spacing-lg); border: 1px solid var(--border); border-radius: 8px; background: var(--purple-glow); margin-bottom: var(--spacing-lg);">
+      <p style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--purple-primary); margin: 0 0 0.5rem 0;">Free to read first</p>
+      <h3 style="font-size: 1.1rem; margin: 0 0 0.5rem 0;">FY2022–2024 BIMO 483 Observation Taxonomy</h3>
+      <p style="margin: 0 0 1rem 0; color: var(--text-secondary); font-size: 0.95rem; max-width: 720px;">
+        See the depth standard before you commission a custom report. Seven observation categories, verified primary-source citations, FDA BIMO base rates. Free, no signup.
+      </p>
+      <a href="/bimo-taxonomy/" class="buy-btn" style="max-width: 260px;">Read the Taxonomy &rarr;</a>
+    </div>
+    <EmailCapture
+      heading="Or follow the practitioner notes"
+      subheading="Monthly notes from a practitioner working in FDA-regulated oncology studies. No pitch — just specific, cited observations from the inside of clinical research operations."
+    />
   </section>
 
   <!-- Service Terms — future-proofing baseline -->

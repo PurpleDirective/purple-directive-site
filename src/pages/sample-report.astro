@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import EmailCapture from '../components/EmailCapture.astro';
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -220,6 +221,26 @@ const articleSchema = {
       21 CFR 312.60 (investigational plan adherence), 21 CFR 312.20 (IND submission), 21 CFR 312.57 (record maintenance),
       and 21 CFR 50.25 (informed consent requirements)<sup><a href="#cite-6">6</a></sup>.
     </p>
+  </section>
+
+  <!-- Lead magnet + email capture -->
+  <section class="why-now-section">
+    <div style="padding: var(--spacing-lg); border: 1px solid var(--border); border-radius: 8px; background: var(--purple-glow);">
+      <p style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--purple-primary); margin: 0 0 0.5rem 0;">Related free resource</p>
+      <h3 style="font-size: 1.1rem; margin: 0 0 0.5rem 0;">The full FY2022–2024 BIMO 483 Observation Taxonomy</h3>
+      <p style="margin: 0 0 1rem 0; color: var(--text-secondary); font-size: 0.95rem; max-width: 720px;">
+        Seven observation categories with verified primary-source citations, base-rate context, trend analysis from FY2019–2024 warning letters. Free to read online or download as PDF/Word. No signup required.
+      </p>
+      <a href="/bimo-taxonomy/" class="buy-btn" style="max-width: 260px;">Read the Taxonomy &rarr;</a>
+    </div>
+  </section>
+
+  <!-- Email capture -->
+  <section class="why-now-section">
+    <EmailCapture
+      heading="Stay on the list"
+      subheading="Monthly practitioner notes on FDA enforcement patterns, regulatory shifts, and the operational intel that doesn't fit on a blog post. Short, specific, no hype."
+    />
   </section>
 
   <!-- CTA -->
