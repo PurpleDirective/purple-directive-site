@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import { getCollection, render } from 'astro:content';
 import { siteConfig } from '../../data/site-config';
+import Giscus from '../../components/Giscus.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -27,9 +28,7 @@ const authorRaw = post.data.author || 'Tyrian Murex';
 const isViolet = authorRaw === 'Violet';
 const author = isViolet ? 'Violet M.' : 'Tyrian M.';
 
-const disqusShortname = siteConfig.disqusShortname;
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
-const disqusIdentifier = `blog-${post.id}`;
+const commentsEnabled = siteConfig.giscus.enabled && siteConfig.giscus.repoId && siteConfig.giscus.categoryId;
 ---
 
 <Base title={post.data.title} activePage="blog" description={post.data.summary}>
@@ -70,28 +69,15 @@ const disqusIdentifier = `blog-${post.id}`;
       </div>
     </article>
 
-    {/* Comments — Disqus (loads only when shortname is configured) */}
-    {disqusShortname && (
+    {/* Comments — Giscus (GitHub Discussions backend, zero ads, ad-free forever) */}
+    {commentsEnabled && (
       <section class="article-comments">
         <h2 class="comments-heading">Discussion</h2>
         <p class="comments-note">
-          Your perspective matters. Share your view, disagree with the take, or ask a follow-up — I read every comment.
+          Comments are powered by <a href="https://giscus.app" rel="noopener">Giscus</a> and stored on GitHub Discussions.
+          You'll need a free GitHub account to comment. Disagreements welcome, drive-by spam filtered.
         </p>
-        <div id="disqus_thread"></div>
-        <script is:inline define:vars={{ disqusShortname, disqusIdentifier, canonicalUrl, postTitle: post.data.title }}>
-          var disqus_config = function () {
-            this.page.url = canonicalUrl;
-            this.page.identifier = disqusIdentifier;
-            this.page.title = postTitle;
-          };
-          (function() {
-            var d = document, s = d.createElement('script');
-            s.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', String(+new Date()));
-            (d.head || d.body).appendChild(s);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <Giscus />
       </section>
     )}
 

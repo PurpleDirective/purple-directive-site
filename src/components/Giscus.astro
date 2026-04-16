@@ -1,0 +1,33 @@
+---
+/**
+ * Giscus — GitHub Discussions-based comment system.
+ *
+ * Configuration lives in `src/data/site-config.ts` under `giscus`.
+ * Renders nothing until `giscus.enabled === true` AND repoId + categoryId are set.
+ */
+import { siteConfig } from '../data/site-config';
+
+const g = siteConfig.giscus;
+const ready = g.enabled && g.repoId && g.categoryId;
+---
+
+{ready && (
+  <div class="giscus"></div>
+  <script
+    src="https://giscus.app/client.js"
+    data-repo={g.repo}
+    data-repo-id={g.repoId}
+    data-category={g.category}
+    data-category-id={g.categoryId}
+    data-mapping={g.mapping}
+    data-strict="0"
+    data-reactions-enabled={g.reactionsEnabled}
+    data-emit-metadata="0"
+    data-input-position={g.inputPosition}
+    data-theme={g.theme}
+    data-lang={g.lang}
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async
+  ></script>
+)}
