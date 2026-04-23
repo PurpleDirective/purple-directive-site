@@ -1,0 +1,390 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Advarra pricing is not publicly listed for any CTMS product (OnCore or Clinical Conductor).
+// Sources:
+//   - advarra.com/solutions-for/clinical-trial-sites/ (fetched 2026-04-23): no pricing disclosed
+//   - advarra.com/solutions-for/clinical-trial-sites/clinical-conductor-ctms/ (fetched 2026-04-23): no pricing disclosed
+// Advarra OnCore serves academic medical centers (88% of NCI cancer centers).
+// Clinical Conductor serves site networks and health systems.
+// Neither product targets the small independent site market with published pricing.
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Nexrial CTMS vs Advarra — Comparison",
+  "url": "https://purpledirective.com/nexrial-vs-advarra",
+  "description": "An honest comparison of Nexrial CTMS and Advarra (OnCore / Clinical Conductor) for clinical research sites. Advarra is an enterprise research technology platform primarily serving academic medical centers and large site networks. Nexrial targets independent small sites with published pricing and a purpose-built compliance architecture.",
+  "brand": {
+    "@type": "Organization",
+    "name": "Purple Directive"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Advarra?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Advarra is a clinical research technology and services company offering IRB services, CTMS platforms (OnCore for academic medical centers, Clinical Conductor for site networks), regulatory document management (eReg), data capture (eSource), and AI analytics (Braid). Advarra serves approximately 3,500 institutions and 50,000 investigators, with 88% of NCI-designated cancer centers using Advarra technology. It is an enterprise-positioned vendor, not primarily a point solution for independent small research sites."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Advarra pricing compare to Nexrial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nexrial publishes pricing transparently: $349/month Core, $549/month Pro, and $199/month Founder (first 5 sites). Advarra pricing for OnCore and Clinical Conductor is not publicly listed — all pricing requires a sales engagement. Advarra targets institutions with procurement processes, not independent sites evaluating software on a public pricing page."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Advarra or Nexrial better for a small independent site?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Advarra's CTMS products (OnCore and Clinical Conductor) are primarily designed for academic medical centers, health systems, and large site networks — not independent small research sites. Nexrial is purpose-built for independent sites running 5–25 concurrent studies with a CTMS budget under $700/month. If you are an independent site, Nexrial is likely the more appropriate evaluation; if you are an academic cancer center or large health system, Advarra is worth evaluating."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a small site use Advarra Clinical Conductor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Clinical Conductor (Advarra) is designed for site networks and health systems, not specifically for single-site independent operators. Its feature set — Epic integration, CCPay participant reimbursements, CCText messaging, enterprise reporting — is built around multi-site scale. A small independent site can inquire with Advarra, but the platform and procurement process are oriented toward larger organizations."
+      }
+    }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://purpledirective.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Compare CTMS", "item": "https://purpledirective.com/best-ctms-small-clinical-sites" },
+    { "@type": "ListItem", "position": 3, "name": "Nexrial vs Advarra", "item": "https://purpledirective.com/nexrial-vs-advarra" }
+  ]
+};
+---
+
+<Base
+  title="Nexrial vs Advarra (OnCore / Clinical Conductor) — CTMS Comparison (April 2026)"
+  activePage="products"
+  description="Advarra (OnCore, Clinical Conductor) is an enterprise research technology platform for academic medical centers and large site networks. Nexrial targets independent small sites with published pricing. This page explains who each product is actually built for."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <div class="product-top">
+    <div class="product-hero">
+      <div class="product-hero-text">
+        <span class="product-badge">CTMS · Enterprise vs. Independent Site · Reviewed April 2026</span>
+        <h1>Nexrial vs Advarra</h1>
+        <p class="product-tagline">
+          <strong>Short answer:</strong> Advarra (OnCore, Clinical Conductor) is an
+          enterprise platform primarily built for academic medical centers, cancer
+          centers, and large site networks. Nexrial is built for independent small
+          research sites that need a compliance-grade CTMS with published pricing
+          and no enterprise procurement process. These products serve different
+          organizational profiles.
+        </p>
+        <a href="https://nexrial.com" class="buy-btn" style="background-color: #0d9488;">Learn About Nexrial</a>
+        <p class="buy-note">
+          Reviewed <time datetime="2026-04-23">April 23, 2026</time> by
+          Tyrian Murex, Purple Directive founder. Advarra pricing is not publicly
+          listed for any CTMS product; no pricing figures are asserted for Advarra
+          on this page. Sources: advarra.com (fetched 2026-04-23).
+          <!-- Source: advarra.com/solutions-for/clinical-trial-sites/ fetched 2026-04-23 -->
+        </p>
+      </div>
+      <div class="product-hero-preview">
+        <div>
+          <p style="margin: 0 0 0.5rem; font-weight: 600; text-align: center;">At a glance</p>
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 1.8;">
+            <li><strong>Nexrial:</strong> CTMS, $199–549/mo published</li>
+            <li><strong>Advarra:</strong> Enterprise platform, contact sales</li>
+            <li>Different organizational scale</li>
+            <li>Different procurement process</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="why-now-section">
+    <h2>What each one actually is</h2>
+
+    <h3>Nexrial — CTMS for independent research sites</h3>
+    <p>
+      Nexrial is a site-operations CTMS for independent research sites and small site
+      networks running 5–25 concurrent studies. Verified native capabilities include:
+      subject tracking with visit scheduling, delegation log with PI e-signature and
+      PDF export, monitoring visit management (findings, action items), IRB submission
+      tracking, protocol deviation logging, SOP management with version gating, training
+      log with expiry tracking, consent version tracking, invoice management, and a
+      21 CFR Part 11 immutable audit trail enforced by three independent database-level
+      defenses.
+    </p>
+    <p>
+      Pricing is published: <strong>$349/month Core, $549/month Pro, $199/month Founder</strong>
+      (first five sites). No sales call required to evaluate cost.
+    </p>
+
+    <h3>Advarra — enterprise research technology platform</h3>
+    <p>
+      Advarra is an enterprise clinical research technology and services company. Its
+      CTMS offerings are:
+    </p>
+    <ul>
+      <li>
+        <strong>OnCore CTMS</strong> — built for academic medical centers and cancer
+        centers with comprehensive operations, financial management, regulatory
+        management, and analytics. 88% of NCI-designated cancer centers use Advarra
+        technology.
+      </li>
+      <li>
+        <strong>Clinical Conductor CTMS</strong> — built for site networks, health
+        systems, and multi-site independent organizations. Supports financial oversight,
+        patient recruitment, and research portfolio management. Add-on modules include
+        CCText (HIPAA-compliant participant messaging), CCPay (subject reimbursements
+        via debit card), and Epic EHR integration.
+      </li>
+    </ul>
+    <p>
+      Advarra also offers eReg (regulatory document management), eSource (data
+      capture), and Braid (AI analytics). The company serves approximately 3,500
+      institutions and 50,000 investigators.
+    </p>
+    <p>
+      Advarra pricing for all CTMS products is not publicly listed. Contact Advarra
+      directly for a quote.
+      <!-- Source: advarra.com/solutions-for/clinical-trial-sites/clinical-conductor-ctms/ and /solutions-for/clinical-trial-sites/ fetched 2026-04-23 -->
+    </p>
+  </section>
+
+  <section class="why-now-section">
+    <h2>Feature comparison</h2>
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th scope="col">Capability</th>
+            <th scope="col" style="color: #0d9488;">Nexrial</th>
+            <th scope="col">Advarra (OnCore / Clinical Conductor)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Primary buyer</strong></td>
+            <td>Independent sites; small networks (1–3 locations)</td>
+            <td>Academic medical centers; health systems; large networks</td>
+          </tr>
+          <tr>
+            <td>Subject tracking & visit scheduling</td>
+            <td>✅ Native <!-- confirmed: app/routes/subjects.py --></td>
+            <td>✅ Native (both products)</td>
+          </tr>
+          <tr>
+            <td>Delegation log with PI e-signature</td>
+            <td>✅ Native (PDF export) <!-- confirmed: app/routes/delegation_log.py --></td>
+            <td>✅ Native</td>
+          </tr>
+          <tr>
+            <td>Monitoring visit management</td>
+            <td>✅ Native (findings, action items) <!-- confirmed: app/routes/monitoring_visits.py --></td>
+            <td>✅ Native</td>
+          </tr>
+          <tr>
+            <td>IRB submission tracking</td>
+            <td>✅ Native <!-- confirmed: app/routes/irb_submissions.py --></td>
+            <td>✅ Native</td>
+          </tr>
+          <tr>
+            <td>Protocol deviation tracking</td>
+            <td>✅ Native <!-- confirmed: app/routes/protocol_deviation.py --></td>
+            <td>✅ Native</td>
+          </tr>
+          <tr>
+            <td>Regulatory document management (eReg)</td>
+            <td>✅ Regulatory binder + document versioning (native) <!-- confirmed: app/routes/documents.py --></td>
+            <td>✅ eReg (separate Advarra product)</td>
+          </tr>
+          <tr>
+            <td>EHR integration (Epic)</td>
+            <td>⚠️ Not native</td>
+            <td>✅ Clinical Conductor: Epic integration</td>
+          </tr>
+          <tr>
+            <td>Participant SMS messaging</td>
+            <td>⚠️ Not native (planned)</td>
+            <td>✅ CCText add-on (HIPAA-compliant)</td>
+          </tr>
+          <tr>
+            <td>Subject reimbursements (debit card)</td>
+            <td>⚠️ Not native</td>
+            <td>✅ CCPay add-on</td>
+          </tr>
+          <tr>
+            <td>AI analytics / operational intelligence</td>
+            <td>⚠️ AI eligibility (Pro); advanced analytics roadmap</td>
+            <td>✅ Braid AI analytics engine</td>
+          </tr>
+          <tr>
+            <td>21 CFR Part 11 audit trail</td>
+            <td>✅ 3 independent DB-level defenses <!-- confirmed: app/routes/audit.py --></td>
+            <td>✅ ISO 27001:2013 + SOC 2 Type 2 certified</td>
+          </tr>
+          <tr>
+            <td>HIPAA BAA</td>
+            <td>✅ Template ready; signed per tenant</td>
+            <td>✅ Available</td>
+          </tr>
+          <tr>
+            <td>SOC 2 Type 2</td>
+            <td>⚠️ Scheduled at $10K ARR milestone</td>
+            <td>✅ Certified (Advarra infrastructure)</td>
+          </tr>
+          <tr>
+            <td>IRB services (institutional)</td>
+            <td>❌ Not in scope (CTMS only)</td>
+            <td>✅ Advarra operates a central IRB service</td>
+          </tr>
+          <tr>
+            <td>Pricing transparency</td>
+            <td>✅ Published on website</td>
+            <td>❌ Contact sales — pricing undisclosed</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="why-now-section">
+    <h2>When to pick which</h2>
+
+    <h3>Pick Nexrial if…</h3>
+    <ul>
+      <li>You are an independent research site (1–3 locations) that needs a compliance-grade CTMS, not an enterprise platform</li>
+      <li>You want to evaluate CTMS pricing from a public page — no sales call to get a number</li>
+      <li>Your budget is under $700/month and you need a delegation log, monitoring-visit workflow, regulatory binder, and IRB tracking as core capabilities</li>
+      <li>You do not need Epic integration, subject debit-card reimbursements, or institutional IRB services as part of the same vendor</li>
+      <li>A formal validation package (VAL-PLAN, IQ/OQ/PQ, VAL-REPORT) for Part 11 documentation is important to your compliance team</li>
+    </ul>
+
+    <h3>Pick Advarra if…</h3>
+    <ul>
+      <li>You are an academic medical center, NCI cancer center, or large health system research operation</li>
+      <li>You run a multi-site network and need centralized financial management, cross-site analytics, and Epic EHR integration</li>
+      <li>You need IRB services and CTMS from a single vendor relationship</li>
+      <li>Your organization requires ISO 27001 and SOC 2 Type 2 certification from day one of your CTMS contract</li>
+      <li>Your procurement process involves an enterprise vendor engagement with SLA and dedicated onboarding</li>
+    </ul>
+  </section>
+
+  <section class="why-now-section">
+    <h2>Pricing — honest table</h2>
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th scope="col">Plan</th>
+            <th scope="col">Price</th>
+            <th scope="col">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="compare-row-highlight">
+            <td><strong>Nexrial Founder</strong></td>
+            <td><strong>$199/month</strong></td>
+            <td>First 5 sites only · full platform · published</td>
+          </tr>
+          <tr>
+            <td><strong>Nexrial Core</strong></td>
+            <td><strong>$349/month</strong></td>
+            <td>Up to 10 users · up to 3 concurrent studies · published</td>
+          </tr>
+          <tr>
+            <td><strong>Nexrial Pro</strong></td>
+            <td><strong>$549/month</strong></td>
+            <td>Up to 25 users · unlimited studies · advanced audit reports · published</td>
+          </tr>
+          <tr>
+            <td>Advarra OnCore</td>
+            <td>Contact sales — pricing undisclosed</td>
+            <td>Academic medical centers; NCI cancer centers; verify with Advarra</td>
+          </tr>
+          <tr>
+            <td>Advarra Clinical Conductor</td>
+            <td>Contact sales — pricing undisclosed</td>
+            <td>Site networks; health systems; verify with Advarra</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 0.85rem; color: #64748b; margin-top: 1rem;">
+      Advarra pricing is not publicly listed as of April 2026 for any CTMS product.
+      <!-- Source: advarra.com fetched 2026-04-23 -->
+      Contact Advarra at <a href="https://www.advarra.com" rel="noopener">advarra.com</a>.
+      Nexrial pricing is published at <a href="https://nexrial.com">nexrial.com</a>.
+    </p>
+  </section>
+
+  <section class="why-now-section">
+    <h2>FAQ</h2>
+
+    <h3>Does Advarra's eReg replace the need for a CTMS regulatory binder?</h3>
+    <p>
+      Advarra sells eReg as a separate product from Clinical Conductor CTMS. eReg
+      handles regulatory document management (ISF, binder templates, e-signatures on
+      regulatory documents). Nexrial includes a regulatory binder with document
+      versioning and audit trail as a native CTMS feature — no separate product
+      required for basic regulatory document management.
+    </p>
+
+    <h3>Is Nexrial 21 CFR Part 11 compliant?</h3>
+    <p>
+      Yes. Nexrial's audit-log integrity is enforced by three independent database-level
+      defenses: UPDATE, DELETE, and TRUNCATE are revoked at the database user level,
+      ensuring audit records cannot be modified even by application code. A full
+      validation package (VAL-PLAN, IQ/OQ/PQ, VAL-REPORT) with executed-run evidence
+      is available under NDA. See <a href="https://nexrial.com/trust">nexrial.com/trust</a>.
+    </p>
+
+    <h3>Can a small site use Advarra's Clinical Conductor?</h3>
+    <p>
+      Clinical Conductor is marketed to site networks and health systems. A small
+      independent site can inquire with Advarra, but the platform scope (Epic integration,
+      CCPay, CCText, enterprise portfolio reporting) and procurement process are oriented
+      toward larger organizations. Sites with fewer than 25 concurrent studies and a
+      CTMS budget under $700/month are likely outside Clinical Conductor's target profile.
+    </p>
+
+    <h3>Does Advarra provide IRB services as well as CTMS?</h3>
+    <p>
+      Yes. Advarra operates as a central IRB (Institutional Review Board) service in
+      addition to its technology products. This vertical integration — IRB, CTMS, eReg,
+      eSource — is a differentiator for health systems that want a single clinical
+      research vendor. Nexrial does not offer IRB services; it is a CTMS point solution.
+    </p>
+  </section>
+
+  <section class="why-now-section">
+    <h2>Next steps</h2>
+    <p>
+      If Nexrial is a fit for your independent research site, book a 30-minute demo at
+      <a href="https://calendly.com/nexrial/demo" rel="noopener">calendly.com/nexrial/demo</a>
+      or email <a href="mailto:info@purpledirective.com">info@purpledirective.com</a>.
+    </p>
+    <p>
+      If Advarra's enterprise infrastructure — IRB services, Epic integration,
+      cross-site analytics — is what your organization needs, contact Advarra at
+      <a href="https://www.advarra.com" rel="noopener">advarra.com</a>. We have no
+      affiliate relationship with Advarra.
+    </p>
+  </section>
+</Base>
