@@ -366,13 +366,15 @@ const breadcrumbSchema = {
       that use Florence typically still need a CTMS alongside it.
     </p>
 
-    <h3>Is Nexrial 21 CFR Part 11 compliant?</h3>
+    <h3>Does Nexrial implement 21 CFR Part 11 controls?</h3>
     <p>
-      Yes. Nexrial's audit-log integrity is enforced by three independent database-level
+      Nexrial is designed against the controls of 21 CFR Part 11 Subpart B (electronic
+      records). Audit-log integrity is enforced by three independent database-level
       defenses: UPDATE, DELETE, and TRUNCATE are revoked at the database user level,
       ensuring audit records cannot be modified even by application code. A full
       validation package (VAL-PLAN, IQ/OQ/PQ, VAL-REPORT) with executed-run evidence
-      is available under NDA. See <a href="https://nexrial.com/trust">nexrial.com/trust</a>.
+      is available under NDA. Part 11 is a design standard, not a certification — see
+      <a href="https://nexrial.com/trust">nexrial.com/trust</a> for the current control posture.
     </p>
 
     <h3>Does Florence eBinders have a Part 11 e-signature?</h3>

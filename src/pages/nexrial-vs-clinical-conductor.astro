@@ -229,7 +229,7 @@ const breadcrumbSchema = {
           </tr>
           <tr>
             <td>ISO 27001 / SOC 2 Type 2</td>
-            <td>⚠️ SOC 2 scheduled at $10K ARR milestone</td>
+            <td>⚠️ SOC 2 readiness work begins at $10K ARR</td>
             <td>✅ ISO 27001:2013 and SOC 2 Type 2 certified</td>
           </tr>
           <tr>
@@ -324,22 +324,24 @@ const breadcrumbSchema = {
       document management.
     </p>
 
-    <h3>Is Nexrial 21 CFR Part 11 compliant?</h3>
+    <h3>Does Nexrial implement 21 CFR Part 11 controls?</h3>
     <p>
-      Yes. Nexrial's audit-log integrity is enforced by three independent database-level
+      Nexrial is designed against the controls of 21 CFR Part 11 Subpart B (electronic
+      records). Audit-log integrity is enforced by three independent database-level
       defenses: UPDATE, DELETE, and TRUNCATE are revoked at the database user level,
       meaning audit records cannot be altered even by application code. A validation
       package (VAL-PLAN, IQ/OQ/PQ, VAL-REPORT) with executed-run evidence is
-      available under NDA. See <a href="https://nexrial.com/trust">nexrial.com/trust</a>
-      for the current compliance posture.
+      available under NDA. Part 11 is a design standard, not a certification — see
+      <a href="https://nexrial.com/trust">nexrial.com/trust</a> for the current control posture.
     </p>
 
     <h3>Can Nexrial scale to a site network?</h3>
     <p>
-      Nexrial's Enterprise tier ($1,200+/month) supports multi-site org hierarchy, cross-site
-      reporting, and sponsor/CRO read-only portals. For very large networks (10+ sites) where
-      Epic integration and enterprise vendor SLAs are requirements, Clinical Conductor's Advarra
-      backing is worth evaluating in parallel.
+      Nexrial today is purpose-built for independent sites and small networks. Multi-site
+      org hierarchy, cross-site reporting, and sponsor/CRO read-only portals are on the
+      roadmap; pricing for a network tier has not been published. For large networks
+      (10+ sites) where Epic integration and enterprise vendor SLAs are hard requirements
+      now, Clinical Conductor's Advarra backing is worth evaluating in parallel.
     </p>
 
     <h3>Who owns Clinical Conductor now?</h3>

@@ -245,7 +245,6 @@ const breadcrumbSchema = {
       <li>You need a delegation log with native PI e-signature and PDF export as a core workflow (not a bolt-on)</li>
       <li>You want a compliance posture designed specifically for FDA inspection readiness, with a formal validation package available</li>
       <li>Your site is early-stage or running on a constrained budget — the Founder tier ($199/month) is designed for that</li>
-      <li>Mesh-redundant HIPAA infrastructure (multi-node backup topology) matters to your compliance officer</li>
     </ul>
 
     <h3>Pick RealTime CTMS if…</h3>
@@ -311,13 +310,15 @@ const breadcrumbSchema = {
       the migration path for your specific data set.
     </p>
 
-    <h3>Is Nexrial 21 CFR Part 11 compliant?</h3>
+    <h3>Does Nexrial implement 21 CFR Part 11 controls?</h3>
     <p>
-      Yes. Nexrial's audit-log integrity is protected by three independent database-level
+      Nexrial is designed against the controls of 21 CFR Part 11 Subpart B (electronic
+      records). Audit-log integrity is enforced by three independent database-level
       defenses: UPDATE, DELETE, and TRUNCATE are revoked at the database user level,
       meaning audit records cannot be modified even by application code. A full validation
       package (VAL-PLAN, IQ/OQ/PQ, VAL-REPORT) with executed-run evidence is available
-      under NDA. See <a href="https://nexrial.com/trust">nexrial.com/trust</a>.
+      under NDA. Part 11 is a design standard, not a certification — see
+      <a href="https://nexrial.com/trust">nexrial.com/trust</a> for the current control posture.
     </p>
 
     <h3>What happens if Nexrial raises prices later?</h3>
@@ -325,7 +326,6 @@ const breadcrumbSchema = {
       Founding site customers lock in the $199/month rate for the life of their
       subscription at that tier. Core and Pro pricing is published on nexrial.com; any
       price changes would be communicated to existing customers with advance notice.
-      Annual prepay locks in the current rate for 12 months (18% discount from monthly).
     </p>
   </section>
 
