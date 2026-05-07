@@ -6,9 +6,10 @@ interface Props {
   description?: string;
   activePage?: string;
   ogImage?: string;
+  ogType?: string;
 }
 
-const { title, description = "Compliance-grade software and operations consulting for clinical research sites and CROs.", activePage = "", ogImage = "/og-image.png" } = Astro.props;
+const { title, description = "Compliance-grade software and operations consulting for clinical research sites and CROs.", activePage = "", ogImage = "/og-image.png", ogType = "website" } = Astro.props;
 const fullTitle = title === "Home" ? "PurpleDirective" : `${title} — PurpleDirective`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -31,7 +32,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <meta property="og:description" content={description} />
   <meta property="og:image" content={new URL(ogImage, Astro.site)} />
   <meta property="og:url" content={canonicalURL} />
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content={ogType} />
   <meta property="og:site_name" content="PurpleDirective" />
 
   <!-- Twitter / X -->
@@ -91,8 +92,21 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         <div class="footer-col">
           <h4>Products</h4>
           <ul>
+            <li><a href="/research-report">Research Report ($750)</a></li>
             <li><a href="/sop-bundle">SOP Template Bundle</a></li>
-            <li><a href="/#products">Nexrial CTMS</a></li>
+            <li><a href="/best-ctms-small-clinical-sites">Nexrial CTMS</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Free Resources</h4>
+          <ul>
+            <li><a href="/bimo-taxonomy">BIMO 483 Taxonomy</a></li>
+            <li><a href="/how-to-read-an-fda-483">How to Read an FDA 483</a></li>
+            <li><a href="/sample-report">Oncology 483 Sample</a></li>
+            <li><a href="/healthcare-market-research-pricing">Research Pricing Compare</a></li>
+            <li><a href="/ich-gcp-sop-templates">SOP Options Compare</a></li>
+            <li><a href="https://github.com/PurpleDirective" rel="noopener" target="_blank">Open Source on GitHub</a></li>
           </ul>
         </div>
 
@@ -119,14 +133,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
       <div class="footer-bottom">
         <div class="footer-legal">
-          <span>&copy; {new Date().getFullYear()} Purple Directive LLC. All rights reserved.</span>
+          <span>&copy; {new Date().getFullYear()} Purple Directive. All rights reserved.</span>
           <span class="footer-sep">&middot;</span>
           <a href="/privacy">Privacy Policy</a>
           <span class="footer-sep">&middot;</span>
           <a href="/terms">Terms of Service</a>
         </div>
         <p class="footer-disclaimer">
-          Purple Directive LLC provides software, templates, and consulting services for informational and operational purposes only. Our products and services do not constitute legal, regulatory, or medical advice. SOP templates are customizable starting points and must be reviewed, adapted, and validated against your institution's specific policies, applicable regulations (including ICH E6(R2/R3), 21 CFR Parts 11/50/56/312, and 45 CFR Part 46), IRB requirements, and sponsor protocols before implementation. Purple Directive LLC assumes no liability for the use or misuse of any product or service.
+          Purple Directive provides software, templates, and consulting services for informational and operational purposes only. Our products and services do not constitute legal, regulatory, or medical advice. SOP templates are customizable starting points and must be reviewed, adapted, and validated against your institution's specific policies, applicable regulations (including ICH E6(R2/R3), 21 CFR Parts 11/50/56/312, and 45 CFR Part 46), IRB requirements, and sponsor protocols before implementation. Purple Directive assumes no liability for the use or misuse of any product or service.
         </p>
         <p class="footer-confidentiality">
           All client engagements are subject to confidentiality obligations. Protected health information (PHI) and personally identifiable information (PII) are handled in accordance with HIPAA Privacy and Security Rules. Purple Directive does not store, transmit, or process PHI through its public-facing products.

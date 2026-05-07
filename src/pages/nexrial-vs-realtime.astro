@@ -1,0 +1,346 @@
+---
+import Base from '../layouts/Base.astro';
+
+// RealTime CTMS pricing is not publicly listed.
+// realtimesoftware.com returns client-rendered pages that do not expose pricing via fetch (verified 2026-04-23).
+// All competitor claims on this page are sourced from the vendor's public marketing materials
+// and third-party CTMS market analyses; no pricing figures are asserted.
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Nexrial CTMS vs RealTime CTMS — Comparison",
+  "url": "https://purpledirective.com/nexrial-vs-realtime",
+  "description": "An honest comparison of Nexrial and RealTime CTMS for clinical research sites. Both are CTMS platforms serving research site operations. This page covers how they differ on pricing transparency, target buyer, and compliance architecture.",
+  "brand": {
+    "@type": "Organization",
+    "name": "Purple Directive"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is RealTime CTMS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RealTime CTMS (by RealTime Software) is a Clinical Trial Management System designed for research sites and site networks. It covers study management, subject tracking, scheduling, financial management, and reporting workflows for clinical research operations. RealTime has served the independent research site market for over a decade and is used by community-based research sites and site networks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does RealTime CTMS pricing compare to Nexrial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nexrial publishes pricing transparently: $349/month Core, $549/month Pro, and $199/month Founder tier (first 5 sites). RealTime CTMS pricing is not publicly listed — contact RealTime Software directly for a quote. Industry sources suggest RealTime targets the independent site and site-network market at a quote-based price point."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is RealTime CTMS or Nexrial better for an independent research site?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both target the independent research site market. RealTime has an established presence in the community-based research site space with a longer track record. Nexrial offers published pricing, a native PI e-signature delegation log, database-level Part 11 audit trail (three independent defenses), and a compliance architecture built specifically for FDA inspection readiness. Nexrial's Founder tier at $199/month is designed for sites evaluating their first formal CTMS."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does RealTime CTMS support 21 CFR Part 11?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RealTime CTMS includes electronic signature and audit trail capabilities consistent with 21 CFR Part 11 requirements. Nexrial's Part 11 implementation uses three independent database-level defenses (UPDATE, DELETE, and TRUNCATE revoked at the DB user level), ensuring audit records cannot be altered even by application-layer code. A full validation package is available under NDA."
+      }
+    }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://purpledirective.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Compare CTMS", "item": "https://purpledirective.com/best-ctms-small-clinical-sites" },
+    { "@type": "ListItem", "position": 3, "name": "Nexrial vs RealTime", "item": "https://purpledirective.com/nexrial-vs-realtime" }
+  ]
+};
+---
+
+<Base
+  title="Nexrial vs RealTime CTMS — Comparison for Independent Research Sites (April 2026)"
+  activePage="products"
+  description="RealTime CTMS and Nexrial are both designed for independent clinical research sites. This page compares them on pricing transparency, compliance architecture, feature scope, and fit for small sites."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <div class="product-top">
+    <div class="product-hero">
+      <div class="product-hero-text">
+        <span class="product-badge">CTMS vs CTMS · Reviewed April 2026</span>
+        <h1>Nexrial vs RealTime CTMS</h1>
+        <p class="product-tagline">
+          <strong>Short answer:</strong> Both are CTMS platforms targeting research sites
+          and site networks. RealTime has an established presence in the
+          community-based site market. Nexrial is purpose-built for independent sites
+          that want published pricing, a native PI e-signature workflow, and a
+          compliance posture designed for FDA inspection readiness from day one.
+        </p>
+        <a href="https://nexrial.com" class="buy-btn" style="background-color: #0d9488;">Learn About Nexrial</a>
+        <p class="buy-note">
+          Reviewed <time datetime="2026-04-23">April 23, 2026</time> by
+          Tyrian Murex, Purple Directive founder. RealTime CTMS pricing is not publicly
+          listed; no pricing figures are claimed for RealTime on this page. Contact
+          RealTime Software directly for a quote.
+        </p>
+      </div>
+      <div class="product-hero-preview">
+        <div>
+          <p style="margin: 0 0 0.5rem; font-weight: 600; text-align: center;">At a glance</p>
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 1.8;">
+            <li><strong>Nexrial:</strong> CTMS, $199–549/mo published</li>
+            <li><strong>RealTime:</strong> CTMS, contact sales</li>
+            <li>Same category, same buyer</li>
+            <li>Differentiated on pricing transparency</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="why-now-section">
+    <h2>What each one actually is</h2>
+
+    <h3>Nexrial — CTMS built for small independent sites</h3>
+    <p>
+      Nexrial is a Clinical Trial Management System for independent research sites and
+      small site networks running 5–25 concurrent studies. Verified native features
+      include: subject tracking with visit scheduling, delegation log with PI e-signature
+      and PDF export, monitoring visit management with findings and action items, IRB
+      submission tracking, protocol deviation logging, SOP management with version
+      gating, training log with expiry tracking, consent version tracking, invoice
+      management, and a 21 CFR Part 11 immutable audit trail enforced at the database
+      level.
+    </p>
+    <p>
+      Pricing is published: <strong>$349/month Core, $549/month Pro, $199/month Founder</strong>
+      (first five sites). No quote required to evaluate cost.
+    </p>
+
+    <h3>RealTime CTMS — established CTMS for community research sites</h3>
+    <p>
+      RealTime CTMS (by RealTime Software) is a Clinical Trial Management System with
+      a multi-year presence in the community-based research site and site-network market.
+      It covers study management, participant enrollment and tracking, scheduling,
+      financial management, reporting, and operational workflows for research sites.
+      RealTime targets independent research sites and site networks — the same buyer
+      profile as Nexrial.
+    </p>
+    <p>
+      RealTime CTMS pricing is not publicly listed. Contact RealTime Software directly
+      for current pricing.
+    </p>
+  </section>
+
+  <section class="why-now-section">
+    <h2>Feature-by-feature comparison</h2>
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th scope="col">Capability</th>
+            <th scope="col" style="color: #0d9488;">Nexrial</th>
+            <th scope="col">RealTime CTMS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Primary job</strong></td>
+            <td>Site operations — independent small sites</td>
+            <td>Site operations — community research sites and networks</td>
+          </tr>
+          <tr>
+            <td>Subject tracking & visit scheduling</td>
+            <td>✅ Native <!-- confirmed: app/routes/subjects.py --></td>
+            <td>✅ Native</td>
+          </tr>
+          <tr>
+            <td>Delegation log with PI e-signature</td>
+            <td>✅ Native (PDF export) <!-- confirmed: app/routes/delegation_log.py --></td>
+            <td>✅ Supported</td>
+          </tr>
+          <tr>
+            <td>Monitoring visit management</td>
+            <td>✅ Native (findings, action items) <!-- confirmed: app/routes/monitoring_visits.py --></td>
+            <td>✅ Supported</td>
+          </tr>
+          <tr>
+            <td>IRB submission tracking</td>
+            <td>✅ Native <!-- confirmed: app/routes/irb_submissions.py --></td>
+            <td>✅ Supported</td>
+          </tr>
+          <tr>
+            <td>Protocol deviation tracking</td>
+            <td>✅ Native <!-- confirmed: app/routes/protocol_deviation.py --></td>
+            <td>✅ Supported</td>
+          </tr>
+          <tr>
+            <td>SOP management with version gating</td>
+            <td>✅ Native <!-- confirmed: app/routes/sops.py --></td>
+            <td>✅ Supported</td>
+          </tr>
+          <tr>
+            <td>Training log with expiry tracking</td>
+            <td>✅ Native <!-- confirmed: app/routes/training_log.py --></td>
+            <td>✅ Supported</td>
+          </tr>
+          <tr>
+            <td>Invoice / billing management</td>
+            <td>✅ Native <!-- confirmed: app/routes/invoices.py --></td>
+            <td>✅ Financial management supported</td>
+          </tr>
+          <tr>
+            <td>21 CFR Part 11 audit trail</td>
+            <td>✅ 3 independent DB-level defenses <!-- confirmed: app/routes/audit.py --></td>
+            <td>✅ Supported (e-sig and audit trail)</td>
+          </tr>
+          <tr>
+            <td>HIPAA BAA</td>
+            <td>✅ Template ready; signed per tenant</td>
+            <td>✅ Available</td>
+          </tr>
+          <tr>
+            <td>Pricing transparency</td>
+            <td>✅ Published on website</td>
+            <td>❌ Contact sales — pricing undisclosed</td>
+          </tr>
+          <tr>
+            <td>Validation package (VAL-PLAN, IQ/OQ/PQ)</td>
+            <td>✅ Available under NDA</td>
+            <td>⚠️ Not publicly confirmed</td>
+          </tr>
+          <tr>
+            <td>Target buyer</td>
+            <td>Independent sites; small networks (5–25 studies)</td>
+            <td>Community research sites; site networks</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 0.85rem; color: #64748b; margin-top: 0.75rem;">
+      RealTime CTMS capabilities are sourced from publicly available product descriptions.
+      Verify current feature availability with RealTime Software directly.
+    </p>
+  </section>
+
+  <section class="why-now-section">
+    <h2>When to pick which</h2>
+
+    <h3>Pick Nexrial if…</h3>
+    <ul>
+      <li>You want to evaluate CTMS cost without scheduling a sales call — pricing is published</li>
+      <li>You need a delegation log with native PI e-signature and PDF export as a core workflow (not a bolt-on)</li>
+      <li>You want a compliance posture designed specifically for FDA inspection readiness, with a formal validation package available</li>
+      <li>Your site is early-stage or running on a constrained budget — the Founder tier ($199/month) is designed for that</li>
+    </ul>
+
+    <h3>Pick RealTime CTMS if…</h3>
+    <ul>
+      <li>Your site network has colleagues already on RealTime — shared workflows and familiarity have real operational value</li>
+      <li>You want a vendor with a longer market track record in the community research site space</li>
+      <li>Your site's operational workflow is closer to what RealTime's interface was built around, and migration friction is a concern</li>
+      <li>Your preferred procurement process involves a vendor sales relationship from the start</li>
+    </ul>
+  </section>
+
+  <section class="why-now-section">
+    <h2>Pricing — honest table</h2>
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th scope="col">Plan</th>
+            <th scope="col">Price</th>
+            <th scope="col">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="compare-row-highlight">
+            <td><strong>Nexrial Founder</strong></td>
+            <td><strong>$199/month</strong></td>
+            <td>First 5 sites only · full platform · published</td>
+          </tr>
+          <tr>
+            <td><strong>Nexrial Core</strong></td>
+            <td><strong>$349/month</strong></td>
+            <td>Up to 10 users · up to 3 concurrent studies · published</td>
+          </tr>
+          <tr>
+            <td><strong>Nexrial Pro</strong></td>
+            <td><strong>$549/month</strong></td>
+            <td>Up to 25 users · unlimited studies · advanced audit reports · published</td>
+          </tr>
+          <tr>
+            <td>RealTime CTMS</td>
+            <td>Contact sales — pricing undisclosed</td>
+            <td>Verify directly with RealTime Software at realtimesoftware.com</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 0.85rem; color: #64748b; margin-top: 1rem;">
+      RealTime CTMS pricing is not publicly listed as of April 2026. No pricing figures
+      are claimed on this page for RealTime. Contact RealTime Software directly.
+      Nexrial pricing is published at <a href="https://nexrial.com">nexrial.com</a>.
+    </p>
+  </section>
+
+  <section class="why-now-section">
+    <h2>FAQ</h2>
+
+    <h3>Can Nexrial import data from RealTime CTMS?</h3>
+    <p>
+      Nexrial supports data import during onboarding — subject records, study metadata,
+      and delegation log history can be migrated from structured exports. If you are
+      considering switching from RealTime, contact
+      <a href="mailto:info@purpledirective.com">info@purpledirective.com</a> to discuss
+      the migration path for your specific data set.
+    </p>
+
+    <h3>Does Nexrial implement 21 CFR Part 11 controls?</h3>
+    <p>
+      Nexrial is designed against the controls of 21 CFR Part 11 Subpart B (electronic
+      records). Audit-log integrity is enforced by three independent database-level
+      defenses: UPDATE, DELETE, and TRUNCATE are revoked at the database user level,
+      meaning audit records cannot be modified even by application code. A full validation
+      package (VAL-PLAN, IQ/OQ/PQ, VAL-REPORT) with executed-run evidence is available
+      under NDA. Part 11 is a design standard, not a certification — see
+      <a href="https://nexrial.com/trust">nexrial.com/trust</a> for the current control posture.
+    </p>
+
+    <h3>What happens if Nexrial raises prices later?</h3>
+    <p>
+      Founding site customers lock in the $199/month rate for the life of their
+      subscription at that tier. Core and Pro pricing is published on nexrial.com; any
+      price changes would be communicated to existing customers with advance notice.
+    </p>
+  </section>
+
+  <section class="why-now-section">
+    <h2>Next steps</h2>
+    <p>
+      If Nexrial looks like a fit, book a 30-minute demo at
+      <a href="https://calendly.com/nexrial/demo" rel="noopener">calendly.com/nexrial/demo</a>
+      or email <a href="mailto:info@purpledirective.com">info@purpledirective.com</a>.
+    </p>
+    <p>
+      If RealTime CTMS sounds like the stronger fit for your network — particularly if
+      your colleagues are already on the platform — contact RealTime Software at
+      <a href="https://realtimesoftware.com" rel="noopener">realtimesoftware.com</a>.
+      We'd rather see sites in the right tool.
+    </p>
+  </section>
+</Base>

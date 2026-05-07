@@ -1,0 +1,366 @@
+---
+import Base from '../layouts/Base.astro';
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Nexrial CTMS vs Medrio — Comparison",
+  "url": "https://purpledirective.com/nexrial-vs-medrio",
+  "description": "An honest comparison of Nexrial CTMS and Medrio for clinical research sites and small site networks. Nexrial is a Clinical Trial Management System (CTMS) built for site operations; Medrio is primarily an Electronic Data Capture (EDC) platform with supplementary site-tracking features. The right choice depends on whether your primary need is site operations (CTMS) or sponsor-led data capture (EDC).",
+  "brand": {
+    "@type": "Organization",
+    "name": "Purple Directive"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is Nexrial or Medrio better for a clinical research site?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on the primary job the site needs done. Nexrial is a Clinical Trial Management System (CTMS) built for site operations — regulatory binder, delegation log, visit scheduling, PI e-signatures, monitoring visit tracking, protocol deviations. Medrio is primarily an Electronic Data Capture (EDC) platform focused on sponsor-led data capture, eCOA (electronic Clinical Outcome Assessments), and randomization. For a site that needs to run its operations and satisfy monitors, Nexrial fits. For a site that needs to capture sponsor-required outcome data, Medrio (or another EDC) fits. Many sites use both categories of tool."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between CTMS and EDC?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Clinical Trial Management System (CTMS) is site operations software: subject tracking, visit scheduling, delegation log, regulatory binder, monitoring visit management, protocol deviations, billing, and 21 CFR Part 11 audit trail. An Electronic Data Capture (EDC) system is sponsor-facing data collection software: case report forms (CRFs), data queries, coding, study-level database locking, and sponsor reporting. A site running a sponsored trial typically uses both — the CTMS manages the site's own operations, and the EDC captures the data the sponsor requires. Nexrial is a CTMS. Medrio is primarily an EDC."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does Medrio cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Medrio's pricing is quote-based and not publicly listed as of April 2026. Industry reports place Medrio in the mid-market EDC range (ballpark $5,000 to $20,000 per year per study for site-facing deployments, higher for sponsor contracts), with volume-based pricing for CROs and sponsors. Medrio targets sponsor and CRO buyers more than independent sites. For current pricing, contact Medrio directly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does Nexrial cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nexrial is priced transparently: $349/month Core, $549/month Pro, and $199/month Founder tier for the first 5 sites. Pricing is per site, not per study. A small research site running 5-25 concurrent studies on a budget under $700/month fits the target profile. See https://nexrial.com for current pricing."
+      }
+    }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://purpledirective.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Compare CTMS", "item": "https://purpledirective.com/best-ctms-small-clinical-sites" },
+    { "@type": "ListItem", "position": 3, "name": "Nexrial vs Medrio", "item": "https://purpledirective.com/nexrial-vs-medrio" }
+  ]
+};
+---
+
+<Base
+  title="Nexrial vs Medrio — CTMS or EDC? Honest Comparison (April 2026)"
+  activePage="products"
+  description="Nexrial is a Clinical Trial Management System (CTMS) for site operations. Medrio is primarily an Electronic Data Capture (EDC) platform. They solve different problems. This page explains when to pick which — and why many sites run both."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <div class="product-top">
+    <div class="product-hero">
+      <div class="product-hero-text">
+        <span class="product-badge">CTMS vs EDC · Reviewed April 2026</span>
+        <h1>Nexrial vs Medrio</h1>
+        <p class="product-tagline">
+          <strong>Short answer:</strong> Nexrial is a CTMS built for clinical research site
+          operations. Medrio is primarily an EDC built for sponsor-led data capture. They
+          are not direct competitors — they solve different problems. Many sites use both.
+          This page explains when to pick which.
+        </p>
+        <a href="https://nexrial.com" class="buy-btn">Learn About Nexrial</a>
+        <p class="buy-note">
+          Reviewed <time datetime="2026-04-18">April 18, 2026</time> by
+          Tyrian Murex, Purple Directive founder. Medrio pricing is quote-based and not
+          publicly listed; ranges shown reflect industry reporting and should be verified
+          with Medrio directly.
+        </p>
+      </div>
+      <div class="product-hero-preview">
+        <div>
+          <p style="margin: 0 0 0.5rem; font-weight: 600; text-align: center;">At a glance</p>
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 1.8;">
+            <li><strong>Nexrial:</strong> CTMS, $199–549/mo</li>
+            <li><strong>Medrio:</strong> EDC-first, quote-based</li>
+            <li>Different jobs to be done</li>
+            <li>Common to use both</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="why-now-section">
+    <h2>What each one actually is</h2>
+
+    <h3>Nexrial — Clinical Trial Management System (CTMS)</h3>
+    <p>
+      Nexrial is site-operations software. Its job is to help a clinical research site
+      run its studies: tracking subjects through visits, maintaining the regulatory
+      binder, managing the delegation log, capturing PI e-signatures, scheduling
+      monitoring visits, logging protocol deviations, and satisfying 21 CFR Part 11
+      audit-trail requirements during sponsor monitoring and FDA inspection.
+    </p>
+    <p>
+      Nexrial targets small independent sites and small site networks running 5–25
+      concurrent studies on a budget under $700/month. Pricing is published:
+      <strong>$349/month Core, $549/month Pro, $199/month Founder</strong> (first five sites).
+    </p>
+
+    <h3>Medrio — primarily Electronic Data Capture (EDC)</h3>
+    <p>
+      Medrio's core product is an Electronic Data Capture (EDC) platform: case report
+      forms (CRFs), data queries, coding, randomization, and sponsor-facing data
+      export. Medrio also offers eCOA (electronic Clinical Outcome Assessments), ePRO
+      (electronic Patient Reported Outcomes), and eConsent. Medrio historically
+      serves sponsors, CROs, and mid-size academic trials more than independent
+      sites.
+    </p>
+    <p>
+      Medrio pricing is quote-based and not publicly listed as of April 2026.
+      Industry reports place it in the mid-market range — verify directly with
+      Medrio for current numbers.
+    </p>
+  </section>
+
+  <section class="why-now-section">
+    <h2>Feature-by-feature comparison</h2>
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th scope="col">Capability</th>
+            <th scope="col">Nexrial (CTMS)</th>
+            <th scope="col">Medrio (EDC-first)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Primary job</strong></td>
+            <td>Site operations</td>
+            <td>Sponsor-led data capture</td>
+          </tr>
+          <tr>
+            <td>Subject tracking & visit scheduling</td>
+            <td>✅ Native</td>
+            <td>⚠️ Partial (limited CTMS features)</td>
+          </tr>
+          <tr>
+            <td>Regulatory binder (eTMF-adjacent)</td>
+            <td>✅ Native</td>
+            <td>❌ Not primary focus</td>
+          </tr>
+          <tr>
+            <td>Delegation log</td>
+            <td>✅ Native</td>
+            <td>❌ Not a native feature</td>
+          </tr>
+          <tr>
+            <td>Monitoring visit management</td>
+            <td>✅ Native (SDV, findings, action items)</td>
+            <td>❌ Not a native CTMS feature</td>
+          </tr>
+          <tr>
+            <td>Case report forms (CRFs)</td>
+            <td>⚠️ Basic; not a full EDC</td>
+            <td>✅ Core product</td>
+          </tr>
+          <tr>
+            <td>Data queries, coding, lock</td>
+            <td>❌ Not in scope</td>
+            <td>✅ Core product</td>
+          </tr>
+          <tr>
+            <td>eCOA / ePRO</td>
+            <td>❌ Not in scope</td>
+            <td>✅ Supported</td>
+          </tr>
+          <tr>
+            <td>eConsent</td>
+            <td>⚠️ Consent version tracking; not full eConsent</td>
+            <td>✅ Supported</td>
+          </tr>
+          <tr>
+            <td>Randomization (IWRS)</td>
+            <td>❌ Not in scope</td>
+            <td>✅ Supported</td>
+          </tr>
+          <tr>
+            <td>21 CFR Part 11 audit trail</td>
+            <td>✅ Database-level (3 independent defenses)</td>
+            <td>✅ Validated</td>
+          </tr>
+          <tr>
+            <td>HIPAA BAA</td>
+            <td>✅ Template ready; signed per tenant</td>
+            <td>✅ Available</td>
+          </tr>
+          <tr>
+            <td>SOC 2 Type II</td>
+            <td>⚠️ Readiness work begins at $10K ARR</td>
+            <td>✅ Historically attested</td>
+          </tr>
+          <tr>
+            <td>Pricing transparency</td>
+            <td>✅ Published on website</td>
+            <td>❌ Quote-based</td>
+          </tr>
+          <tr>
+            <td>Target buyer</td>
+            <td>Independent small sites; small site networks</td>
+            <td>Sponsors; CROs; academic trials</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="why-now-section">
+    <h2>When to pick which</h2>
+
+    <h3>Pick Nexrial if…</h3>
+    <ul>
+      <li>You run a small clinical research site (1–3 sites, 3–10 users) and need site-operations software</li>
+      <li>Your studies are mostly sponsor-supplied with the sponsor's EDC already in place</li>
+      <li>You need a regulatory binder, delegation log, and monitoring-visit workflow that monitors can audit</li>
+      <li>Your budget is under $700/month and enterprise CTMS ($10K–100K/yr) isn't realistic</li>
+      <li>You want published pricing and a vendor built by clinical research professionals</li>
+    </ul>
+
+    <h3>Pick Medrio if…</h3>
+    <ul>
+      <li>You need to capture CRF data from subjects — you're running investigator-initiated or sponsor-led trials and need your own EDC</li>
+      <li>You need eCOA, ePRO, randomization, or full eConsent in one platform</li>
+      <li>You are a sponsor or CRO (Medrio historically serves sponsor-side more than site-side)</li>
+      <li>A mid-market EDC with validated data-capture + sponsor reporting is the primary need</li>
+    </ul>
+
+    <h3>Use both if…</h3>
+    <p>
+      Your site runs a sponsored trial where the sponsor has specified Medrio (or another
+      EDC) for data capture, and you also need your own CTMS for site operations, regulatory
+      binder, and monitoring management. This is the common case for mid-size sites.
+      Nexrial and Medrio do not overlap in the functions that matter most — they can sit
+      side by side.
+    </p>
+  </section>
+
+  <section class="why-now-section">
+    <h2>Pricing — honest table</h2>
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th scope="col">Plan</th>
+            <th scope="col">Price</th>
+            <th scope="col">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="compare-row-highlight">
+            <td><strong>Nexrial Founder</strong></td>
+            <td><strong>$199/month</strong></td>
+            <td>First 5 sites only · full platform · published</td>
+          </tr>
+          <tr>
+            <td><strong>Nexrial Core</strong></td>
+            <td><strong>$349/month</strong></td>
+            <td>Up to 10 users · published</td>
+          </tr>
+          <tr>
+            <td><strong>Nexrial Pro</strong></td>
+            <td><strong>$549/month</strong></td>
+            <td>Up to 25 users · advanced audit + compliance reports · published</td>
+          </tr>
+          <tr>
+            <td>Medrio — site tier</td>
+            <td>Quote-based</td>
+            <td>Industry reports: ~$5K–$20K/yr range · verify with Medrio</td>
+          </tr>
+          <tr>
+            <td>Medrio — sponsor tier</td>
+            <td>Quote-based</td>
+            <td>Volume-based · multi-study contracts · verify with Medrio</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 0.85rem; color: #64748b; margin-top: 1rem;">
+      Medrio ranges are rough industry reporting, not Medrio's own published numbers.
+      Contact Medrio directly for current pricing. Nexrial pricing is published on
+      <a href="https://nexrial.com">nexrial.com</a>.
+    </p>
+  </section>
+
+  <section class="why-now-section">
+    <h2>FAQ</h2>
+
+    <h3>Can Nexrial replace Medrio for data capture?</h3>
+    <p>
+      No. Nexrial is not a full EDC. If you need CRF data capture, data queries, coding,
+      and sponsor-facing database lock, you need an EDC — Medrio, Medidata Rave, Veeva
+      Vault EDC, Castor, Clinical Studio, or similar. Nexrial does not compete in that
+      category and does not claim to.
+    </p>
+
+    <h3>Can Medrio replace Nexrial for site operations?</h3>
+    <p>
+      Partially. Medrio has some site-tracking features, but the core workflows a small
+      site needs — regulatory binder, delegation log, monitoring-visit management, PI
+      e-signatures on site documents, protocol-deviation tracking separate from EDC
+      queries — are not what Medrio is optimized for. A site could force-fit Medrio as
+      a pseudo-CTMS, but it will feel heavy for the price.
+    </p>
+
+    <h3>Which integrates better with sponsor EDCs?</h3>
+    <p>
+      Sponsor EDCs are typically specified by the sponsor, not the site. Most sites
+      log into whatever EDC the sponsor requires (Veeva Vault EDC, Medidata Rave,
+      Medrio, Clinical Studio, Castor, etc.). A site-side CTMS like Nexrial stays
+      out of that path — it tracks what the site owns (subjects, visits, regulatory
+      binder, monitoring) without trying to be the data-capture layer.
+    </p>
+
+    <h3>Does Nexrial implement 21 CFR Part 11 controls?</h3>
+    <p>
+      Nexrial is designed against the controls of 21 CFR Part 11 Subpart B (electronic
+      records). Audit-log integrity is protected by three independent database-level
+      defenses (UPDATE, DELETE, and TRUNCATE all revoked), with validation package
+      (VAL-PLAN, IQ/OQ/PQ, VAL-REPORT) and executed-run evidence available under NDA.
+      Part 11 is a design standard, not a certification — see
+      <a href="https://nexrial.com/trust">nexrial.com/trust</a> for live control posture.
+    </p>
+  </section>
+
+  <section class="why-now-section">
+    <h2>Next steps</h2>
+    <p>
+      If you think Nexrial fits your site, email
+      <a href="mailto:info@purpledirective.com">info@purpledirective.com</a> or
+      book a demo at
+      <a href="https://calendly.com/nexrial/demo" rel="noopener">calendly.com/nexrial/demo</a>.
+    </p>
+    <p>
+      If Medrio sounds like the better fit — meaning your primary need is EDC rather
+      than site operations — contact Medrio directly at
+      <a href="https://www.medrio.com" rel="noopener">medrio.com</a>. We don't have an
+      affiliate relationship; we'd rather see sites in the right tool than in the
+      wrong one.
+    </p>
+  </section>
+</Base>

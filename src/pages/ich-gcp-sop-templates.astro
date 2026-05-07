@@ -1,0 +1,264 @@
+---
+import Base from '../layouts/Base.astro';
+import EmailCapture from '../components/EmailCapture.astro';
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Clinical Research SOP Template Bundle",
+  "url": "https://purpledirective.com/sop-bundle/",
+  "description": "12 ICH E6(R2/R3)-aligned Standard Operating Procedures for clinical research sites, with 11 companion forms. Editable Word + PDF. Lower-priced than traditional SOP consulting engagements.",
+  "brand": {
+    "@type": "Organization",
+    "name": "Purple Directive"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "249.99",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://purpledirective.com/sop-bundle/"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why are Purple Directive SOP templates priced at $249.99 for the full bundle?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Custom SOP consulting for a clinical research site typically costs $5,000 to $15,000 for a full 12-document library from firms like Advarra, Halloran, or WCG. Site-specific software platforms (Medidata, Veeva Vault QMS, MasterControl) run $10,000 to $100,000+ per year. The Purple Directive bundle is a starting-point library — 12 ICH E6(R3)-aligned templates that a site adapts to its own operations. $249.99 full bundle or $29 per individual SOP."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which SOPs are in the bundle?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Twelve core procedures: SOP-001 Training & Qualification, SOP-002 Essential Documents, SOP-003 Study Start-Up & Feasibility, SOP-004 Informed Consent, SOP-005 Recruitment & Retention, SOP-006 Investigational Product Management, SOP-007 Data Management & Documentation, SOP-008 Adverse Events & Protocol Deviations, SOP-009 Quality Control & Assurance, SOP-010 Sponsor Interactions, SOP-011 Remote Monitoring Visits, SOP-012 Study Close-Out. Plus 11 companion forms."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are these SOPs ready to use as-is?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They are templates, not turnkey documents. Every SOP template contains customizable placeholders (site name, PI name, IRB of record, specific contact information, local regulatory context). Sites adapt each template to their own operations, review through their own QA process, and sign off through the PI. This is exactly how custom SOP consulting engagements deliver SOPs — the consultant writes the template, the site adapts it. We are selling the template layer directly, not the consulting layer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are they aligned to ICH E6(R3)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. All 12 SOPs are written against the current ICH E6(R3) framework with explicit attention to the structural changes from R2 to R3 — risk-based monitoring language, expanded electronic records requirements, updated sponsor oversight obligations, and the broader quality management system expectations. Sites operating under R2-only language for sponsor and monitor expectations will find the R3 updates already incorporated."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can sites buy individual SOPs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Each of the 12 SOPs is available individually at $29. Useful for sites that have mature libraries but need targeted updates — for example, consent (SOP-004) or IP accountability (SOP-006) as ICH E6(R3) changes those specific procedures."
+      }
+    }
+  ]
+};
+---
+
+<Base
+  title="ICH E6(R3) SOP Templates — Purple Directive vs. Custom SOP Consulting"
+  activePage="products"
+  description="How Purple Directive's $249.99 12-SOP bundle compares to custom SOP consulting ($5K-$15K), QMS platforms ($10K-$100K+), and other template libraries. Built against ICH E6(R3), editable Word + PDF."
+>
+
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <div class="product-top">
+    <div class="product-hero">
+      <div class="product-hero-text">
+        <span class="product-badge">SOP Library Comparison · April 2026</span>
+        <h1>ICH E6(R3) SOP Templates for Clinical Research Sites</h1>
+        <p class="product-tagline">
+          How my $249.99 12-SOP bundle compares to custom SOP consulting ($5K–$15K),
+          quality management system platforms ($10K–$100K+/year), and other template libraries.
+          Every SOP is written against ICH E6(R3) and covers the seven 483 observation categories
+          FDA BIMO inspections are currently citing.
+        </p>
+        <a href="/sop-bundle/" class="buy-btn">See the SOP Bundle</a>
+        <p class="buy-note">
+          Or read the free <a href="/bimo-taxonomy/">FY2022–2024 BIMO 483 Observation Taxonomy</a> first —
+          it shows exactly which site failures each SOP is designed to prevent.
+        </p>
+      </div>
+      <div class="product-hero-preview">
+        <div>
+          <p style="margin: 0 0 0.5rem; font-weight: 600; text-align: center;">At a glance</p>
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 1.8;">
+            <li><strong>$249.99</strong> vs $5K–$15K consulting</li>
+            <li><strong>12 SOPs</strong> + 11 companion forms</li>
+            <li><strong>ICH E6(R3)</strong> aligned</li>
+            <li><strong>Editable Word</strong> + PDF</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="product-stats">
+      <div class="stat"><strong>12</strong> SOPs</div>
+      <div class="stat-sep"></div>
+      <div class="stat"><strong>11</strong> companion forms</div>
+      <div class="stat-sep"></div>
+      <div class="stat"><strong>95+</strong> pages</div>
+      <div class="stat-sep"></div>
+      <div class="stat"><strong>$249.99</strong> / $29 per SOP</div>
+    </div>
+  </div>
+
+  <!-- Comparison table -->
+  <section class="why-now-section">
+    <h2>How SOP options compare</h2>
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th scope="col">Option</th>
+            <th scope="col">Price</th>
+            <th scope="col">Delivery</th>
+            <th scope="col">Custom to your site</th>
+            <th scope="col">ICH E6(R3) current</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="compare-row-highlight">
+            <td><strong>Purple Directive Bundle</strong></td>
+            <td><strong>$249.99</strong></td>
+            <td>Instant download</td>
+            <td>Template (site adapts)</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Purple Directive — individual SOP</td>
+            <td>$29</td>
+            <td>Instant download</td>
+            <td>Template (site adapts)</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Custom SOP consulting (Advarra, Halloran, WCG)</td>
+            <td>$5,000–$15,000</td>
+            <td>4–8 weeks</td>
+            <td>Yes (custom-written)</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>QMS platform (Veeva Vault QMS, MasterControl)</td>
+            <td>$10,000–$100,000+/yr</td>
+            <td>Onboarding 4–12 weeks</td>
+            <td>Platform + templates</td>
+            <td>Varies</td>
+          </tr>
+          <tr>
+            <td>Free SOP templates (ACRP, academic sites)</td>
+            <td>$0</td>
+            <td>Instant</td>
+            <td>Generic</td>
+            <td>Often R2-era</td>
+          </tr>
+          <tr>
+            <td>Write from scratch in-house</td>
+            <td>50+ hours staff time</td>
+            <td>Weeks–months</td>
+            <td>Yes</td>
+            <td>If you do it right</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="compare-note">
+      <em>Consulting prices are industry ranges — firms rarely publish fixed prices for SOP-library engagements. Platform pricing is subscription-based with tiered feature sets.</em>
+    </p>
+  </section>
+
+  <!-- The positioning -->
+  <section class="why-now-section">
+    <h2>Where Purple Directive sits in the SOP market</h2>
+    <div class="why-now-grid">
+      <div class="why-now-card">
+        <h3>20–60× cheaper than custom consulting</h3>
+        <p>
+          Custom SOP consulting from Advarra, Halloran, WCG, and similar firms runs $5,000 to $15,000 for a full 12-document library. Purple Directive bundle is $249.99 — because we're selling the template layer, not the consulting engagement that adapts the templates to your specific site.
+        </p>
+      </div>
+      <div class="why-now-card">
+        <h3>A fraction of QMS platform cost</h3>
+        <p>
+          Veeva Vault QMS, MasterControl, and similar document-controlled quality management platforms start at $10,000 per year and scale to six figures for multi-site deployments. They are the right choice for CROs and large sponsor networks. For an independent or small-network site, the overhead-to-value ratio is often wrong — and a $249.99 template library adapted to your existing document management process delivers R3-aligned compliance at 1% of the cost.
+        </p>
+      </div>
+      <div class="why-now-card">
+        <h3>R3-aligned, not R2-era</h3>
+        <p>
+          Free SOP templates from ACRP archives, older academic sites, and legacy compliance resources typically reference ICH E6(R2) language for monitoring, essential documents, and electronic records. Sponsors and monitors operating under R3 expect the updated language. The Purple Directive bundle is written directly against R3, with explicit attention to the R2-to-R3 structural changes.
+        </p>
+      </div>
+      <div class="why-now-card">
+        <h3>Mapped to FDA's enforcement patterns</h3>
+        <p>
+          The 12 SOPs in the bundle map directly to the seven observation categories in our <a href="/bimo-taxonomy/">FY2022–2024 BIMO 483 Observation Taxonomy</a>. That means each SOP is designed to address a specific failure mode FDA is currently citing: SOP-004 (Consent) for Part 50 observations, SOP-006 (IP) for IP accountability, SOP-008 (AE / Deviations) for 312.64(b) and protocol non-compliance, SOP-007 (Data Management) for 312.62 recordkeeping, SOP-002 (Essential Documents) for IRB communication. Not generic — targeted at the actual enforcement landscape.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Not for -->
+  <section class="why-now-section">
+    <h2>When a different option is the better fit</h2>
+    <div class="why-now-grid">
+      <div class="why-now-card">
+        <h3>You need fully custom SOPs from scratch</h3>
+        <p>
+          If your site has unusual procedures (bespoke Phase I protocols, rare-disease trials with non-standard workflows, non-GCP investigator-initiated research), a custom SOP consulting engagement from Halloran, Advarra, or WCG at $5K–$15K will write documents built specifically for your operations. A template bundle is a starting point, not a bespoke deliverable — if your operations are unusual enough that the templates need substantial rewriting, custom consulting is the right spend.
+        </p>
+      </div>
+      <div class="why-now-card">
+        <h3>You need an integrated document-control platform</h3>
+        <p>
+          If your site needs electronic SOP version control, automated training assignments, audit-trail-backed revision history, and enforced routing — you need a QMS platform (Veeva, MasterControl, SimpleQMS, Greenlight Guru) at $10K+/year. Our SOPs integrate into any of those platforms as the document layer, but we don't replace the platform itself.
+        </p>
+      </div>
+      <div class="why-now-card">
+        <h3>You already have a mature SOP library</h3>
+        <p>
+          If you're a 10+ year site with an existing R2 library that just needs R3 updates, you probably don't need a full bundle. Individual SOPs at $29 each (e.g., just SOP-004 Consent and SOP-011 Remote Monitoring if those are the R2→R3 changes that hit you hardest) are the better spend.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="why-now-section cta-tinted">
+    <h2>Ready to review the bundle?</h2>
+    <p style="max-width: 640px; margin: 0 auto 1.5rem;">
+      $249.99 full bundle · $29 per individual SOP · 95+ pages · 12 ICH E6(R3)-aligned SOPs plus 11 companion forms · Editable Word and PDF.
+    </p>
+    <a href="/sop-bundle/" class="buy-btn" style="display: inline-block;">See the SOP Bundle</a>
+    <p style="margin-top: 1rem; font-size: 0.9rem;">
+      Or start with the free <a href="/bimo-taxonomy/">BIMO 483 Observation Taxonomy</a> —
+      it shows the specific site failures each SOP is designed to prevent.
+    </p>
+  </section>
+
+  <!-- Email capture -->
+  <section class="why-now-section">
+    <EmailCapture
+      heading="Stay updated on ICH & FDA changes"
+      subheading="Monthly practitioner notes on FDA enforcement patterns, ICH updates, and the operational intel that doesn't fit on a product page."
+    />
+  </section>
+
+</Base>

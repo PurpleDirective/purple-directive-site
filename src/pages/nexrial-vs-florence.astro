@@ -1,0 +1,412 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Florence Healthcare pricing is not publicly listed.
+// Sources:
+//   - florencehc.com (fetched 2026-04-23): no pricing disclosed; demo/contact-sales gating
+//   - florencehc.com/products (fetched 2026-04-23): product suite confirmed (eBinders, eConsent, SiteLink, eTMF)
+//   - florencehc.com/ebinders (fetched 2026-04-23): eISF / Participant Binder product confirmed; no pricing
+//   - florencehc.com/pricing returns 404 as of 2026-04-23
+// Florence self-describes as a "Trial Operations Platform" / "Site Enablement Platform"
+// serving 65,000 study sites across 90+ countries.
+// eBinders is Florence's eISF product; eTMF is the sponsor-side trial master file.
+// Florence is NOT a full CTMS — it does not cover visit invoicing, budget tracking,
+// monitoring visit management, or protocol deviation logs as its primary scope.
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Nexrial CTMS vs Florence Healthcare — Comparison",
+  "url": "https://purpledirective.com/nexrial-vs-florence",
+  "description": "An honest comparison of Nexrial CTMS and Florence Healthcare for clinical research sites. Florence is a site enablement platform focused on eTMF, eISF (eBinders), eConsent, and remote monitoring. Nexrial is a full CTMS for independent sites covering study management, visit scheduling, invoicing, delegation logs, and native Part 11 e-signature.",
+  "brand": {
+    "@type": "Organization",
+    "name": "Purple Directive"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Florence Healthcare?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Florence Healthcare is a clinical trial site enablement platform offering eBinders (eISF / electronic Investigator Site File), eConsent (digital informed consent workflows), SiteLink (document exchange and remote monitoring for sponsors/CROs), and eTMF (Electronic Trial Master File). Florence serves approximately 65,000 study sites across 90+ countries and describes itself as the #1 rated platform for research sites. It is not a full CTMS — it does not natively cover visit scheduling, budget tracking, monitoring visit findings, or protocol deviation logs as primary features."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Florence Healthcare pricing compare to Nexrial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nexrial publishes pricing transparently: $349/month Core, $549/month Pro, and $199/month Founder (first 5 sites). Florence Healthcare pricing is not publicly listed — their pricing page returns a 404, and all product pages direct visitors to request a demo or contact sales. No pricing tiers or cost estimates appear anywhere on florencehc.com as of April 2026."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Florence Healthcare a CTMS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Florence Healthcare is primarily a document and workflow platform — an eISF, eTMF, and eConsent solution — not a full CTMS. It excels at site file organization, remote monitoring access for sponsors, and informed consent digitization. It does not natively replace functions like visit scheduling, protocol deviation tracking, IRB submission tracking, monitoring visit management, or invoice management that a CTMS like Nexrial covers as core features."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a site use both Florence and Nexrial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — they serve different layers. Florence eBinders handles the eISF (regulatory document organization, remote monitoring access). Nexrial handles operations: visit scheduling, delegation logs, IRB tracking, monitoring visit management, protocol deviations, SOP management, and invoicing. Some sites use a dedicated eISF product alongside a CTMS, though Nexrial's regulatory binder feature covers basic document versioning and audit trail natively without a second tool."
+      }
+    }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://purpledirective.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Compare CTMS", "item": "https://purpledirective.com/best-ctms-small-clinical-sites" },
+    { "@type": "ListItem", "position": 3, "name": "Nexrial vs Florence Healthcare", "item": "https://purpledirective.com/nexrial-vs-florence" }
+  ]
+};
+---
+
+<Base
+  title="Nexrial vs Florence Healthcare (eBinders / eTMF) — CTMS Comparison (April 2026)"
+  activePage="products"
+  description="Florence Healthcare is a site enablement platform for eISF, eTMF, and eConsent — not a full CTMS. Nexrial is a full CTMS for independent sites: visit scheduling, delegation logs, IRB tracking, invoicing, and native Part 11 e-signature. This page explains the difference."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <div class="product-top">
+    <div class="product-hero">
+      <div class="product-hero-text">
+        <span class="product-badge">CTMS vs. Site Enablement Platform · Reviewed April 2026</span>
+        <h1>Nexrial vs Florence Healthcare</h1>
+        <p class="product-tagline">
+          <strong>Short answer:</strong> Florence Healthcare (eBinders, eTMF, eConsent, SiteLink)
+          is a site enablement platform — it organizes regulatory documents, enables remote
+          monitoring, and digitizes consent. It is not a full CTMS. Nexrial covers operations
+          that Florence does not: visit scheduling, monitoring visit management, protocol
+          deviation tracking, IRB submissions, SOP management, and invoice management —
+          all with a native Part 11 audit trail and published pricing.
+        </p>
+        <a href="https://nexrial.com" class="buy-btn" style="background-color: #0d9488;">Learn About Nexrial</a>
+        <p class="buy-note">
+          Reviewed <time datetime="2026-04-23">April 23, 2026</time> by
+          Tyrian Murex, Purple Directive founder. Florence Healthcare pricing is not
+          publicly listed — no pricing figures are asserted for Florence on this page.
+          Florence's pricing page (florencehc.com/pricing) returned 404 as of April 23, 2026.
+          <!-- Sources: florencehc.com, florencehc.com/products, florencehc.com/ebinders — all fetched 2026-04-23 -->
+        </p>
+      </div>
+      <div class="product-hero-preview">
+        <div>
+          <p style="margin: 0 0 0.5rem; font-weight: 600; text-align: center;">At a glance</p>
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 1.8;">
+            <li><strong>Nexrial:</strong> Full CTMS, $199–549/mo published</li>
+            <li><strong>Florence:</strong> eISF/eTMF/eConsent platform, contact sales</li>
+            <li>Different functional scope</li>
+            <li>Different pricing transparency</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="why-now-section">
+    <h2>What each one actually is</h2>
+
+    <h3>Nexrial — full CTMS for independent research sites</h3>
+    <p>
+      Nexrial is a site-operations CTMS for independent research sites and small site
+      networks running 5–25 concurrent studies. Verified native capabilities include:
+      subject tracking with visit scheduling, delegation log with PI e-signature and
+      PDF export, monitoring visit management (findings, action items), IRB submission
+      tracking, protocol deviation logging, SOP management with version gating, training
+      log with expiry tracking, consent version tracking, invoice management, and a
+      21 CFR Part 11 immutable audit trail enforced by three independent database-level
+      defenses.
+    </p>
+    <p>
+      Pricing is published: <strong>$349/month Core, $549/month Pro, $199/month Founder</strong>
+      (first five sites). No sales call required to evaluate cost.
+    </p>
+
+    <h3>Florence Healthcare — site enablement platform (eISF, eTMF, eConsent)</h3>
+    <p>
+      Florence Healthcare is a document and workflow platform for clinical trials,
+      not a full CTMS. Its core products are:
+    </p>
+    <ul>
+      <li>
+        <strong>eBinders (eISF)</strong> — electronic Investigator Site File and
+        participant binder. Handles regulatory document organization, version control,
+        role-based access, audit trails, Part 11 / Annex 11 e-signatures on regulatory
+        documents, and long-term archiving. Integrates with CTMS and EMR/EHR systems.
+      </li>
+      <li>
+        <strong>SiteLink</strong> — document exchange and remote monitoring access for
+        sponsors and CROs. Enables sponsors to review site documents digitally before
+        on-site visits without duplicate uploads.
+      </li>
+      <li>
+        <strong>eTMF</strong> — Electronic Trial Master File for sponsors managing
+        regulatory documentation centrally across multiple sites.
+      </li>
+      <li>
+        <strong>eConsent</strong> — digitizes informed consent workflows for research
+        participants and site staff.
+      </li>
+    </ul>
+    <p>
+      Florence reports serving 65,000 study sites across 90+ countries with 600+
+      sponsors supported. It is well-regarded for its eISF implementation — if your
+      primary need is a deeply capable, widely adopted eISF with sponsor remote access,
+      Florence eBinders is a legitimate option.
+    </p>
+    <p>
+      Florence pricing is not publicly listed. Contact Florence Healthcare at
+      <a href="https://florencehc.com" rel="noopener">florencehc.com</a> for a quote.
+      <!-- Sources: florencehc.com, florencehc.com/products, florencehc.com/ebinders — fetched 2026-04-23 -->
+    </p>
+  </section>
+
+  <section class="why-now-section">
+    <h2>Feature comparison</h2>
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th scope="col">Capability</th>
+            <th scope="col" style="color: #0d9488;">Nexrial</th>
+            <th scope="col">Florence Healthcare</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Primary purpose</strong></td>
+            <td>Full CTMS — operations + compliance</td>
+            <td>Site enablement — eISF, eTMF, eConsent, remote monitoring</td>
+          </tr>
+          <tr>
+            <td>Electronic Investigator Site File (eISF)</td>
+            <td>⚠️ Regulatory binder with document versioning + audit trail (native) <!-- confirmed: app/routes/documents.py --></td>
+            <td>✅ eBinders — dedicated eISF product, widely adopted</td>
+          </tr>
+          <tr>
+            <td>Electronic Trial Master File (eTMF)</td>
+            <td>❌ Not in scope (CTMS only)</td>
+            <td>✅ Native eTMF product for sponsors/CROs</td>
+          </tr>
+          <tr>
+            <td>Remote monitoring access for sponsors</td>
+            <td>⚠️ Monitoring visit module (findings + action items); no sponsor-facing document portal <!-- confirmed: app/routes/monitoring_visits.py --></td>
+            <td>✅ SiteLink — dedicated sponsor/CRO document review portal</td>
+          </tr>
+          <tr>
+            <td>eConsent (digital informed consent)</td>
+            <td>⚠️ Consent version tracking native; digital consent workflows not native</td>
+            <td>✅ Native eConsent product</td>
+          </tr>
+          <tr>
+            <td>Subject tracking & visit scheduling</td>
+            <td>✅ Native <!-- confirmed: app/routes/subjects.py --></td>
+            <td>⚠️ Not Florence's primary scope — requires CTMS integration</td>
+          </tr>
+          <tr>
+            <td>Delegation log with PI e-signature</td>
+            <td>✅ Native (PDF export) <!-- confirmed: app/routes/delegation_log.py --></td>
+            <td>⚠️ Digital logs in eBinders; not a CTMS delegation-log workflow</td>
+          </tr>
+          <tr>
+            <td>Monitoring visit management (findings, AIs)</td>
+            <td>✅ Native <!-- confirmed: app/routes/monitoring_visits.py --></td>
+            <td>❌ Not in scope</td>
+          </tr>
+          <tr>
+            <td>IRB submission tracking</td>
+            <td>✅ Native <!-- confirmed: app/routes/irb_submissions.py --></td>
+            <td>❌ Not in scope</td>
+          </tr>
+          <tr>
+            <td>Protocol deviation tracking</td>
+            <td>✅ Native <!-- confirmed: app/routes/protocol_deviation.py --></td>
+            <td>❌ Not in scope</td>
+          </tr>
+          <tr>
+            <td>SOP management with version gating</td>
+            <td>✅ Native <!-- confirmed: app/routes/sop_management.py --></td>
+            <td>❌ Not in scope</td>
+          </tr>
+          <tr>
+            <td>Invoice management</td>
+            <td>✅ Native <!-- confirmed: app/routes/invoices.py --></td>
+            <td>❌ Not in scope</td>
+          </tr>
+          <tr>
+            <td>21 CFR Part 11 / Annex 11 e-signatures</td>
+            <td>✅ Native (enrollment, delegation, PI sign-off) <!-- confirmed: app/routes/audit.py --></td>
+            <td>✅ Part 11 + Annex 11 e-signatures on regulatory documents (eBinders)</td>
+          </tr>
+          <tr>
+            <td>Immutable audit trail</td>
+            <td>✅ 3 independent DB-level defenses (UPDATE/DELETE/TRUNCATE revoked) <!-- confirmed: app/routes/audit.py --></td>
+            <td>✅ Audit trails on eBinders documents</td>
+          </tr>
+          <tr>
+            <td>HIPAA BAA</td>
+            <td>✅ Template ready; signed per tenant</td>
+            <td>✅ Available (platform is HIPAA compliant per florencehc.com)</td>
+          </tr>
+          <tr>
+            <td>EMR/EHR integration</td>
+            <td>⚠️ Not native</td>
+            <td>✅ eBinders integrates with CTMS and EMR/EHR systems</td>
+          </tr>
+          <tr>
+            <td>Pricing transparency</td>
+            <td>✅ Published on website</td>
+            <td>❌ Contact sales — pricing undisclosed</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="why-now-section">
+    <h2>When to pick which</h2>
+
+    <h3>Pick Nexrial if…</h3>
+    <ul>
+      <li>You need a full CTMS — visit scheduling, monitoring visit management, protocol deviation tracking, IRB submission tracking, SOP management, and invoice management in one system</li>
+      <li>You want to evaluate pricing from a public page without a sales call</li>
+      <li>You run 5–25 concurrent studies and your budget is under $700/month</li>
+      <li>Your sponsor does not require a dedicated eISF product with a separate remote-access portal; Nexrial's regulatory binder covers basic document versioning and audit trail</li>
+      <li>A formal validation package (VAL-PLAN, IQ/OQ/PQ, VAL-REPORT) for Part 11 documentation is important to your compliance team</li>
+    </ul>
+
+    <h3>Pick Florence Healthcare if…</h3>
+    <ul>
+      <li>Your primary need is a deeply capable eISF — document organization, version control, long-term archiving, and sponsor remote monitoring access at scale</li>
+      <li>You are a sponsor or CRO that needs SiteLink for remote site document review across many sites, or an eTMF for central trial master file management</li>
+      <li>Your sponsors already use Florence and require sites to connect via eBinders/SiteLink for remote monitoring visits</li>
+      <li>You need eConsent workflow digitization as a primary requirement</li>
+      <li>You are comfortable with contact-sales pricing and have a procurement process that accommodates undisclosed pricing</li>
+    </ul>
+
+    <h3>Using both</h3>
+    <p>
+      Florence and Nexrial are not direct substitutes — they address different operational
+      layers. A site that needs a robust eISF for sponsor connectivity (Florence eBinders)
+      and a full CTMS for internal study operations (Nexrial) could run both. Whether the
+      cost and complexity of two platforms is justified depends on your sponsor requirements
+      and the volume of remote monitoring visits you host.
+    </p>
+  </section>
+
+  <section class="why-now-section">
+    <h2>Pricing — honest table</h2>
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th scope="col">Plan</th>
+            <th scope="col">Price</th>
+            <th scope="col">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="compare-row-highlight">
+            <td><strong>Nexrial Founder</strong></td>
+            <td><strong>$199/month</strong></td>
+            <td>First 5 sites only · full platform · published</td>
+          </tr>
+          <tr>
+            <td><strong>Nexrial Core</strong></td>
+            <td><strong>$349/month</strong></td>
+            <td>Up to 10 users · up to 3 concurrent studies · published</td>
+          </tr>
+          <tr>
+            <td><strong>Nexrial Pro</strong></td>
+            <td><strong>$549/month</strong></td>
+            <td>Up to 25 users · unlimited studies · advanced audit reports · published</td>
+          </tr>
+          <tr>
+            <td>Florence eBinders / SiteLink / eConsent / eTMF</td>
+            <td>Contact sales — pricing undisclosed</td>
+            <td>No public pricing as of April 2026; demo required. Verify with Florence Healthcare.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 0.85rem; color: #64748b; margin-top: 1rem;">
+      Florence Healthcare pricing is not publicly listed as of April 2026.
+      <!-- Source: florencehc.com fetched 2026-04-23; /pricing returns 404 -->
+      Contact Florence at <a href="https://florencehc.com" rel="noopener">florencehc.com</a>.
+      Nexrial pricing is published at <a href="https://nexrial.com">nexrial.com</a>.
+    </p>
+  </section>
+
+  <section class="why-now-section">
+    <h2>FAQ</h2>
+
+    <h3>Does Florence Healthcare replace a CTMS?</h3>
+    <p>
+      No. Florence Healthcare replaces paper site files and adds sponsor remote monitoring
+      access — it is an eISF, eTMF, and eConsent platform. It does not cover visit
+      scheduling, monitoring visit management (findings, action items), protocol deviation
+      tracking, IRB submission tracking, SOP management, or invoice management. Sites
+      that use Florence typically still need a CTMS alongside it.
+    </p>
+
+    <h3>Does Nexrial implement 21 CFR Part 11 controls?</h3>
+    <p>
+      Nexrial is designed against the controls of 21 CFR Part 11 Subpart B (electronic
+      records). Audit-log integrity is enforced by three independent database-level
+      defenses: UPDATE, DELETE, and TRUNCATE are revoked at the database user level,
+      ensuring audit records cannot be modified even by application code. A full
+      validation package (VAL-PLAN, IQ/OQ/PQ, VAL-REPORT) with executed-run evidence
+      is available under NDA. Part 11 is a design standard, not a certification — see
+      <a href="https://nexrial.com/trust">nexrial.com/trust</a> for the current control posture.
+    </p>
+
+    <h3>Does Florence eBinders have a Part 11 e-signature?</h3>
+    <p>
+      Yes. Florence eBinders supports Part 11 and Annex 11 compliant e-signatures on
+      regulatory documents within the eISF — covering document sign-offs in the
+      Investigator Site File. Nexrial's native e-signature covers delegation log
+      PI sign-off and enrollment authorization. These are different use cases:
+      Florence signs regulatory documents; Nexrial signs operational records.
+    </p>
+
+    <h3>My sponsor uses Florence SiteLink — do I have to use eBinders?</h3>
+    <p>
+      If your sponsor conducts remote monitoring visits through Florence SiteLink, they
+      may require you to have Florence eBinders set up so they can access your site
+      documents remotely. This is a sponsor-driven requirement, not a regulatory
+      mandate. Check with your monitor whether SiteLink connectivity is required before
+      evaluating your eISF options.
+    </p>
+  </section>
+
+  <section class="why-now-section">
+    <h2>Next steps</h2>
+    <p>
+      If Nexrial is a fit for your independent research site, book a 30-minute demo at
+      <a href="https://calendly.com/nexrial/demo" rel="noopener">calendly.com/nexrial/demo</a>
+      or email <a href="mailto:info@purpledirective.com">info@purpledirective.com</a>.
+    </p>
+    <p>
+      If Florence's eISF or eTMF capabilities are what you need, contact Florence
+      Healthcare at <a href="https://florencehc.com" rel="noopener">florencehc.com</a>.
+      We have no affiliate relationship with Florence Healthcare.
+    </p>
+  </section>
+</Base>

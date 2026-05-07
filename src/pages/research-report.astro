@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import EmailCapture from '../components/EmailCapture.astro';
 ---
 
 <Base
@@ -24,16 +25,24 @@ import Base from '../layouts/Base.astro';
           <span class="product-price">$750</span>
           <span class="product-price-note">flat fee · no revisions theater · delivered as PDF</span>
         </div>
-        <a href="#STRIPE-PAYMENT-LINK-TODO" class="buy-btn">Order a Report</a>
+        <a href="https://buy.stripe.com/cNiaEX6aX5JTaD0gUR3gk0j" class="buy-btn">Order a Report</a>
         <p class="buy-note">
           Secure checkout via Stripe. After payment, you'll receive an intake form and a link to schedule a 15-minute scoping call (optional).
         </p>
       </div>
       <div class="product-hero-preview">
-        <!-- TODO: swap for a real report cover screenshot -->
-        <div style="padding: 2rem; border: 1px solid var(--border, #333); border-radius: 8px; text-align: center; opacity: 0.6;">
-          <p style="margin: 0 0 0.5rem; font-weight: 600;">Sample Report Cover</p>
-          <p style="margin: 0; font-size: 0.85rem;">(Preview image TODO)</p>
+        <div>
+          <p style="margin: 0 0 0.5rem; font-weight: 600; text-align: center;">Read a Free Sample</p>
+          <p style="margin: 0 0 1rem; font-size: 0.9rem; opacity: 0.85;">
+            <em>What FDA Inspections Have Been Finding at US Oncology Trial Sites</em> —
+            a 1-page public sample with primary-source citations. See the depth before you buy.
+          </p>
+          <p style="margin: 0; text-align: center;">
+            <a href="/sample-report/">Read the sample &rarr;</a>
+          </p>
+          <p style="margin: 0.75rem 0 0; text-align: center; font-size: 0.85rem; opacity: 0.75;">
+            or see <a href="/healthcare-market-research-pricing/">how this compares</a> to other research firms
+          </p>
         </div>
       </div>
     </div>
@@ -159,7 +168,7 @@ import Base from '../layouts/Base.astro';
       </div>
       <div class="why-now-card">
         <h3>Can I see a sample report?</h3>
-        <p>Sample coming soon. In the meantime, the intake form includes a section where you describe what a "useful report" looks like for your decision, and I'll confirm before starting that the scope matches.</p>
+        <p>Yes. <a href="/sample-report">Read our public 1-page sample</a> — a pattern read of FDA Form 483 observations at US oncology trial sites (2023–2025) with primary-source citations. It shows the analytical depth and citation discipline a full report delivers.</p>
       </div>
       <div class="why-now-card">
         <h3>What if it's not useful?</h3>
@@ -182,10 +191,26 @@ import Base from '../layouts/Base.astro';
     <p style="max-width: 640px; margin: 0 auto 1.5rem;">
       $750 flat. 48 hours. Healthcare and life-sciences market research written by someone who lives in the regulated world.
     </p>
-    <a href="#STRIPE-PAYMENT-LINK-TODO" class="buy-btn" style="display: inline-block;">Order a Report</a>
+    <a href="https://buy.stripe.com/cNiaEX6aX5JTaD0gUR3gk0j" class="buy-btn" style="display: inline-block;">Order a Report</a>
     <p class="buy-note" style="margin-top: 1rem;">
       Or <a href="https://calendly.com/nexrial/healthcare-market-research-scoping-call">book a 15-minute call</a> first.
     </p>
+  </section>
+
+  <!-- Lead magnet + email capture -->
+  <section class="why-now-section">
+    <div style="padding: var(--spacing-lg); border: 1px solid var(--border); border-radius: 8px; background: var(--purple-glow); margin-bottom: var(--spacing-lg);">
+      <p style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--purple-primary); margin: 0 0 0.5rem 0;">Free to read first</p>
+      <h3 style="font-size: 1.1rem; margin: 0 0 0.5rem 0;">FY2022–2024 BIMO 483 Observation Taxonomy</h3>
+      <p style="margin: 0 0 1rem 0; color: var(--text-secondary); font-size: 0.95rem; max-width: 720px;">
+        See the depth standard before you commission a custom report. Seven observation categories, verified primary-source citations, FDA BIMO base rates. Free, no signup.
+      </p>
+      <a href="/bimo-taxonomy/" class="buy-btn" style="max-width: 260px;">Read the Taxonomy &rarr;</a>
+    </div>
+    <EmailCapture
+      heading="Or follow the practitioner notes"
+      subheading="Monthly notes from a practitioner working in FDA-regulated oncology studies. No pitch — just specific, cited observations from the inside of clinical research operations."
+    />
   </section>
 
   <!-- Service Terms — future-proofing baseline -->

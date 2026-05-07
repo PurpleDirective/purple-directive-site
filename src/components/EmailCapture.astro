@@ -1,0 +1,165 @@
+---
+/**
+ * Email capture widget — reusable block for newsletter signup.
+ *
+ * Configuration lives in `src/data/site-config.ts`:
+ * - siteConfig.newsletterFormAction  → form POST URL (Substack/ConvertKit/Mailchimp)
+ * - siteConfig.newsletterFormHiddenFields  → hidden fields required by the provider
+ *
+ * Substack: `https://<publication>.substack.com/api/v1/free?nojs=true`
+ * ConvertKit: `https://app.kit.com/forms/<form-id>/subscriptions`
+ * Mailchimp: audience form action URL
+ *
+ * If not configured, the widget renders a fallback mailto link.
+ */
+import { siteConfig } from '../data/site-config';
+
+interface Props {
+  heading?: string;
+  subheading?: string;
+  leadMagnet?: string;  // If the signup unlocks a specific lead magnet, mention it
+  variant?: 'inline' | 'boxed';
+}
+
+const {
+  heading = "Join the practitioner newsletter",
+  subheading = "Short, specific, monthly. FDA enforcement patterns, regulatory updates, and the kind of operational intel I can't put on a blog post.",
+  leadMagnet,
+  variant = 'boxed',
+} = Astro.props;
+
+const action = siteConfig.newsletterFormAction;
+const hiddenFields = siteConfig.newsletterFormHiddenFields;
+---
+
+<div class={`email-capture email-capture--${variant}`}>
+  <div class="email-capture-text">
+    <h3 class="email-capture-heading">{heading}</h3>
+    <p class="email-capture-sub">{subheading}</p>
+    {leadMagnet && (
+      <p class="email-capture-magnet">
+        <strong>Free on signup:</strong> {leadMagnet}
+      </p>
+    )}
+  </div>
+  {action ? (
+    <form action={action} method="post" class="email-capture-form" target="_blank">
+      {Object.entries(hiddenFields).map(([name, value]) => (
+        <input type="hidden" name={name} value={value} />
+      ))}
+      <input
+        type="email"
+        name="email"
+        placeholder="you@company.com"
+        required
+        aria-label="Email address"
+        class="email-capture-input"
+      />
+      <button type="submit" class="email-capture-btn">Subscribe</button>
+    </form>
+  ) : (
+    <p class="email-capture-fallback">
+      <em>Newsletter launching shortly.</em> Email <a href="mailto:info@purpledirective.com?subject=Newsletter%20signup">info@purpledirective.com</a> with subject "Newsletter signup" to be added at launch.
+    </p>
+  )}
+</div>
+
+<style>
+  .email-capture {
+    margin: var(--spacing-xl) 0;
+  }
+
+  .email-capture--boxed {
+    background: var(--purple-glow);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: var(--spacing-lg);
+  }
+
+  .email-capture--inline {
+    padding: var(--spacing-md) 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .email-capture-heading {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 0.4rem 0;
+    color: var(--text-primary);
+  }
+
+  .email-capture-sub {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    margin: 0 0 0.75rem 0;
+    line-height: 1.55;
+    max-width: 640px;
+  }
+
+  .email-capture-magnet {
+    font-size: 0.88rem;
+    color: var(--purple-primary);
+    margin: 0 0 var(--spacing-md) 0;
+  }
+
+  .email-capture-form {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    max-width: 520px;
+  }
+
+  .email-capture-input {
+    flex: 1 1 220px;
+    min-width: 0;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    background: var(--bg-card);
+    color: var(--text-primary);
+  }
+
+  .email-capture-input:focus-visible {
+    outline: 2px solid var(--purple-primary);
+    outline-offset: 1px;
+    border-color: var(--purple-primary);
+  }
+
+  .email-capture-btn {
+    padding: 0.7rem 1.4rem;
+    background: var(--purple-primary);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .email-capture-btn:hover {
+    background: var(--purple-dark);
+  }
+
+  .email-capture-fallback {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 640px) {
+    .email-capture-form {
+      flex-direction: column;
+    }
+
+    .email-capture-input,
+    .email-capture-btn {
+      width: 100%;
+    }
+  }
+</style>
