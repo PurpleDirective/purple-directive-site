@@ -1,6 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { getCollection, render } from 'astro:content';
+import { siteConfig } from '../../data/site-config';
+import Giscus from '../../components/Giscus.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -25,6 +27,8 @@ const readMin = Math.max(1, Math.round(words / 230));
 const authorRaw = post.data.author || 'Tyrian Murex';
 const isViolet = authorRaw === 'Violet';
 const author = isViolet ? 'Violet M.' : 'Tyrian M.';
+
+const commentsEnabled = siteConfig.giscus.enabled && siteConfig.giscus.repoId && siteConfig.giscus.categoryId;
 ---
 
 <Base title={post.data.title} activePage="blog" description={post.data.summary}>
@@ -64,6 +68,18 @@ const author = isViolet ? 'Violet M.' : 'Tyrian M.';
         <Content />
       </div>
     </article>
+
+    {/* Comments — Giscus (GitHub Discussions backend, zero ads, ad-free forever) */}
+    {commentsEnabled && (
+      <section class="article-comments">
+        <h2 class="comments-heading">Discussion</h2>
+        <p class="comments-note">
+          Comments are powered by <a href="https://giscus.app" rel="noopener">Giscus</a> and stored on GitHub Discussions.
+          You'll need a free GitHub account to comment. Disagreements welcome, drive-by spam filtered.
+        </p>
+        <Giscus />
+      </section>
+    )}
 
     {/* Footer nav */}
     <div class="article-footer">
@@ -201,6 +217,27 @@ const author = isViolet ? 'Violet M.' : 'Tyrian M.';
     font-size: 1rem;
     line-height: 1.75;
     color: var(--text-secondary);
+  }
+
+  /* Comments */
+  .article-comments {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid var(--border);
+  }
+
+  .comments-heading {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0 0 var(--spacing-sm) 0;
+    color: var(--text-primary);
+  }
+
+  .comments-note {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.5;
   }
 
   /* Footer */

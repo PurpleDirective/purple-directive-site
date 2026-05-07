@@ -1,0 +1,279 @@
+---
+import Base from '../layouts/Base.astro';
+import EmailCapture from '../components/EmailCapture.astro';
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Nexrial CTMS",
+  "url": "https://nexrial.com",
+  "description": "Multi-tenant Clinical Trial Management System (CTMS) built for independent clinical research sites and small site networks. Compliance-grade, lightweight, priced for sites that cannot justify enterprise CTMS pricing.",
+  "brand": {
+    "@type": "Organization",
+    "name": "Purple Directive"
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "lowPrice": "199",
+    "highPrice": "549",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/PreOrder",
+    "url": "https://nexrial.com",
+    "offerCount": "3"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the best CTMS for small clinical research sites?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The best CTMS for small clinical research sites depends on volume and budget. For sites running 5-25 concurrent studies on a budget under $700/month, a lightweight compliance-grade CTMS like Nexrial ($349 Core / $549 Pro, with a $199/month Founder tier for the first 5 sites) is often a better fit than enterprise platforms (OnCore, Veeva Vault CTMS, Medidata CTMS) which run $10,000 to $100,000+ per year. Key criteria: subject tracking, visit scheduling, document versioning, delegation log, 21 CFR Part 11 audit trails, and a user count appropriate to a small team (3-10 users, not 50+)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does a CTMS cost for a small site?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Enterprise CTMS platforms (OnCore, Veeva Vault CTMS, Medidata CTMS, Rave CTMS, DFdiscover) typically start at $10,000 to $30,000 per year for small deployments and scale into six figures for large CROs and academic networks. Mid-market options (Advarra Longboat, RealTime, SimpleTrials) run $5,000 to $20,000 per year. Small-site-focused options like Nexrial are priced at $349/month Core or $549/month Pro (with a $199/month Founder tier for the first 5 sites) — roughly one-third to one-tenth of mid-market pricing, for sites that would otherwise run their studies on spreadsheets."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Nexrial CTMS 21 CFR Part 11 compliant?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Nexrial is built with 21 CFR Part 11 electronic records and signatures requirements as foundational: audit trails on every record change, user authentication with role-based access, timestamped electronic signatures, and validation documentation available for sponsor and FDA inspection. See nexrial.com for the current validation package and HIPAA BAA."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What features should a small-site CTMS have?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A small-site CTMS should cover: (1) study and subject management — enrollment tracking, visit scheduling, screen-fail and withdrawal workflows; (2) document management — Form FDA 1572, delegation log, CVs, CITI/GCP certificates, IRB approval letters; (3) regulatory compliance — 21 CFR Part 11 audit trail, electronic signatures, validated; (4) reporting — sponsor status reports, enrollment metrics, protocol deviations; (5) user access appropriate to a small team — typically 3-10 users rather than 50+; (6) pricing a small site can justify — under $500/month for 5-25 concurrent studies."
+      }
+    }
+  ]
+};
+---
+
+<Base
+  title="Best CTMS for Small Clinical Research Sites — Comparison"
+  activePage="products"
+  description="How Nexrial CTMS ($349 Core / $549 Pro / $199 Founder) compares to enterprise platforms (OnCore, Veeva Vault CTMS, Medidata CTMS) and mid-market options (RealTime, SimpleTrials, Advarra Longboat) for small independent clinical research sites."
+>
+
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <div class="product-top">
+    <div class="product-hero">
+      <div class="product-hero-text">
+        <span class="product-badge">CTMS Comparison · April 2026</span>
+        <h1>Best CTMS for Small Clinical Research Sites</h1>
+        <p class="product-tagline">
+          How Nexrial compares to enterprise CTMS platforms
+          (OnCore, Veeva Vault CTMS, Medidata CTMS) and mid-market options (RealTime, SimpleTrials,
+          Advarra Longboat) for independent sites and small site networks — the segment that enterprise
+          CTMS pricing effectively excludes.
+        </p>
+        <a href="https://nexrial.com" class="buy-btn">Learn About Nexrial</a>
+        <p class="buy-note">
+          Nexrial is currently in pre-release. Early access and beta site onboarding open —
+          contact <a href="mailto:info@purpledirective.com">info@purpledirective.com</a>.
+        </p>
+      </div>
+      <div class="product-hero-preview">
+        <div>
+          <p style="margin: 0 0 0.5rem; font-weight: 600; text-align: center;">At a glance</p>
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 1.8;">
+            <li><strong>$349–$549/mo</strong> vs $10K+/yr enterprise</li>
+            <li><strong>21 CFR Part 11</strong> compliant</li>
+            <li><strong>3–10 users</strong> small-team fit</li>
+            <li><strong>Multi-tenant</strong> SaaS</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="product-stats">
+      <div class="stat"><strong>$199–$549</strong>/month</div>
+      <div class="stat-sep"></div>
+      <div class="stat"><strong>5–25</strong> concurrent studies</div>
+      <div class="stat-sep"></div>
+      <div class="stat"><strong>3–10</strong> users</div>
+      <div class="stat-sep"></div>
+      <div class="stat"><strong>HIPAA BAA</strong> + 21 CFR Part 11</div>
+    </div>
+  </div>
+
+  <!-- Comparison table -->
+  <section class="why-now-section">
+    <h2>Small-site CTMS landscape</h2>
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th scope="col">CTMS</th>
+            <th scope="col">Typical price</th>
+            <th scope="col">Target site size</th>
+            <th scope="col">Deployment</th>
+            <th scope="col">21 CFR Part 11</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="compare-row-highlight">
+            <td><strong>Nexrial</strong></td>
+            <td><strong>$349 Core · $549 Pro · $199 Founder*</strong></td>
+            <td>Small independent, 5–25 studies</td>
+            <td>SaaS, instant</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>SimpleTrials</td>
+            <td>$5K–$15K/year</td>
+            <td>Small to mid-size</td>
+            <td>SaaS</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>RealTime eClinical (SitePro)</td>
+            <td>$10K–$30K/year</td>
+            <td>Site networks</td>
+            <td>SaaS</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Advarra Longboat</td>
+            <td>$15K+/year</td>
+            <td>CRO + site networks</td>
+            <td>SaaS</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Veeva Vault CTMS</td>
+            <td>$30K–$100K+/year</td>
+            <td>CRO, sponsor, large networks</td>
+            <td>SaaS, 6–12 wk onboarding</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Medidata CTMS (Rave)</td>
+            <td>$30K–$100K+/year</td>
+            <td>CRO, sponsor, large networks</td>
+            <td>SaaS, extended onboarding</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>OnCore (IQVIA)</td>
+            <td>$50K+/year (academic)</td>
+            <td>Academic medical centers</td>
+            <td>SaaS + integration</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Excel + SharePoint</td>
+            <td>$0–$100/month</td>
+            <td>Any (poorly)</td>
+            <td>Existing tools</td>
+            <td>No</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="compare-note">
+      <em>*Nexrial Founder tier ($199/month) is available to the first 5 sites only — a limited launch pricing for early partners. After that, Core ($349/mo) and Pro ($549/mo) are the standard tiers. Competitor pricing ranges reflect public information, industry reports, and vendor disclosures as of April 2026; final pricing depends on user count, module selection, and multi-year contracts. Contact vendors directly for current quotes.</em>
+    </p>
+  </section>
+
+  <!-- Positioning -->
+  <section class="why-now-section">
+    <h2>Where Nexrial sits in the market</h2>
+    <div class="why-now-grid">
+      <div class="why-now-card">
+        <h3>Enterprise CTMS excludes small sites on pricing</h3>
+        <p>
+          OnCore, Veeva Vault CTMS, and Medidata CTMS are excellent platforms for CROs, sponsors, and academic medical centers. They are also, in most configurations, priced for organizations with $10M+ annual clinical trial revenue. A 3-person independent site running 10 concurrent studies with $500K in annual sponsor revenue cannot justify $30K/year on a CTMS — and the platform complexity is designed for 50+ concurrent users, not 3.
+        </p>
+      </div>
+      <div class="why-now-card">
+        <h3>Small-site-focused by design</h3>
+        <p>
+          Nexrial is built for the 3-10 user team, the 5-25 concurrent study workload, and the $349–$549/month budget range that the small-independent-site segment can actually sustain — with a $199/month Founder tier for the first 5 sites. The feature set is the compliance-grade core — subject management, visit scheduling, delegation log, 21 CFR Part 11 audit trail, HIPAA BAA — without the enterprise-only modules (multi-site financial reconciliation, complex approval workflows, full eTMF integration) that drive platform complexity and price.
+        </p>
+      </div>
+      <div class="why-now-card">
+        <h3>Multi-tenant SaaS, instant onboarding</h3>
+        <p>
+          Enterprise CTMS onboarding typically runs 4-12 weeks for implementation, validation, and training. Nexrial is multi-tenant SaaS — a site signs up, onboards its team, and can be running a study within 24-48 hours. The compliance validation package is already complete at the platform layer; sites document their own use-case-specific validation.
+        </p>
+      </div>
+      <div class="why-now-card">
+        <h3>Designed and shipped from inside clinical research</h3>
+        <p>
+          Nexrial is designed and shipped by a clinical research professional actively working on FDA-regulated oncology studies at a US academic health system, under Purple Directive. Service offered in personal, independent capacity — not affiliated with, endorsed by, or representative of any employer or institution. The roadmap responds to the real operational constraints of site-level clinical research work, not a B2B SaaS designer's abstraction of it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- When not -->
+  <section class="why-now-section">
+    <h2>When Nexrial is NOT the right fit</h2>
+    <div class="why-now-grid">
+      <div class="why-now-card">
+        <h3>Large CRO or sponsor operations</h3>
+        <p>
+          If you're running 100+ concurrent studies, 50+ users, or multi-site financial reconciliation across sponsor engagements, Veeva Vault CTMS, Medidata CTMS, or IQVIA OnCore are the right platforms. Nexrial is deliberately scoped to the small-independent-site segment. We'd rather serve that segment well than over-engineer for scale we're not targeting.
+        </p>
+      </div>
+      <div class="why-now-card">
+        <h3>Academic medical center with existing OnCore</h3>
+        <p>
+          If your institution already has an OnCore deployment or a parallel enterprise platform, fighting that decision is almost never worth it for a single investigator or department. Use what your institution provides and spend your effort on the research, not the tooling.
+        </p>
+      </div>
+      <div class="why-now-card">
+        <h3>Site with mature homegrown systems</h3>
+        <p>
+          Sites that have built their own CTMS-like workflows in Excel, SharePoint, or custom Access databases over 10+ years have operational knowledge embedded in those tools. Migrating to any SaaS CTMS is a real project. If your current system works and your sponsors aren't pushing you to modernize, the migration ROI needs to clear more than the cost of Nexrial itself.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="why-now-section cta-tinted">
+    <h2>Want a demo or beta access?</h2>
+    <p style="max-width: 640px; margin: 0 auto 1.5rem;">
+      Nexrial is in pre-release. Early-access sites are onboarding now. Email <a href="mailto:info@purpledirective.com">info@purpledirective.com</a> with your site size, study volume, and timeline to request access.
+    </p>
+    <a href="mailto:info@purpledirective.com?subject=Nexrial%20CTMS%20-%20Beta%20Access%20Request" class="buy-btn" style="display: inline-block;">Request Beta Access</a>
+  </section>
+
+  <!-- Email capture -->
+  <section class="why-now-section">
+    <EmailCapture
+      heading="Get notified at general availability"
+      subheading="Monthly practitioner notes on clinical research operations plus product updates as Nexrial moves from beta to general availability."
+    />
+  </section>
+
+  <!-- Methodology -->
+  <section class="why-now-section">
+    <h2>Methodology note</h2>
+    <p>
+      Competitor pricing ranges are drawn from public vendor information, industry reports, and procurement disclosures as of April 2026. CTMS vendors typically do not publish fixed pricing; actual quotes depend on user count, module selection, multi-year commitments, and negotiation. Sites evaluating CTMS options should request current quotes from each vendor of interest.
+    </p>
+    <p>
+      <strong>Published:</strong> 2026-04-16. If pricing has changed materially or a significant CTMS option is missing from this comparison, email <a href="mailto:info@purpledirective.com">info@purpledirective.com</a> and I'll update.
+    </p>
+  </section>
+
+</Base>

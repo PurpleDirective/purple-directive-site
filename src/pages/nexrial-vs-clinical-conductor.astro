@@ -1,0 +1,370 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Clinical Conductor is now an Advarra product. Pricing is not publicly listed.
+// Source: https://www.advarra.com/solutions-for/clinical-trial-sites/clinical-conductor-ctms/ (fetched 2026-04-23)
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Nexrial CTMS vs Clinical Conductor — Comparison",
+  "url": "https://purpledirective.com/nexrial-vs-clinical-conductor",
+  "description": "An honest comparison of Nexrial CTMS and Clinical Conductor (Advarra) for independent clinical research sites and small site networks. Both are CTMS platforms — this page covers how they differ on pricing transparency, target buyer, and operational scope.",
+  "brand": {
+    "@type": "Organization",
+    "name": "Purple Directive"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Clinical Conductor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Clinical Conductor is a CTMS (Clinical Trial Management System) originally developed for research sites and site networks. It was acquired by Advarra and is now part of Advarra's broader portfolio of clinical trial technology (which also includes OnCore, eReg, and eSource). Clinical Conductor targets site networks, health systems, and independent sites with a focus on financial management, patient recruitment, and research portfolio reporting."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Nexrial pricing compare to Clinical Conductor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nexrial publishes pricing transparently: $349/month Core, $549/month Pro, and $199/month Founder tier (first 5 sites). Clinical Conductor pricing is not publicly listed — Advarra directs all pricing inquiries to their sales team. Based on industry reporting, Clinical Conductor has historically been positioned in the $100–$800/month range depending on modules, but you should contact Advarra directly for current pricing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Clinical Conductor or Nexrial better for a small independent site?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on size and budget. Clinical Conductor's Advarra backing means enterprise infrastructure — ISO 27001, SOC 2, and EHR integrations — which is a meaningful advantage for large health systems. For an independent site running 5–25 concurrent studies with a sub-$700/month CTMS budget, Nexrial's published pricing and purpose-built compliance architecture (delegation log with PI e-sig, immutable audit trail, IRB tracking, monitoring-visit workflow) are often a better fit without the enterprise overhead."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Clinical Conductor support 21 CFR Part 11?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Clinical Conductor, as part of Advarra's ISO 27001 and SOC 2 Type 2 certified infrastructure, includes audit trail and e-signature capabilities consistent with 21 CFR Part 11 requirements. Nexrial's Part 11 approach uses three independent database-level defenses (UPDATE, DELETE, and TRUNCATE revoked at the DB user level) with a full validation package (VAL-PLAN, IQ/OQ/PQ, VAL-REPORT) available under NDA."
+      }
+    }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://purpledirective.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Compare CTMS", "item": "https://purpledirective.com/best-ctms-small-clinical-sites" },
+    { "@type": "ListItem", "position": 3, "name": "Nexrial vs Clinical Conductor", "item": "https://purpledirective.com/nexrial-vs-clinical-conductor" }
+  ]
+};
+---
+
+<Base
+  title="Nexrial vs Clinical Conductor — CTMS Comparison for Small Sites (April 2026)"
+  activePage="products"
+  description="Clinical Conductor (Advarra) and Nexrial are both CTMS platforms for research sites. This page compares them on pricing transparency, target buyer, compliance architecture, and fit for small independent sites."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <div class="product-top">
+    <div class="product-hero">
+      <div class="product-hero-text">
+        <span class="product-badge">CTMS vs CTMS · Reviewed April 2026</span>
+        <h1>Nexrial vs Clinical Conductor</h1>
+        <p class="product-tagline">
+          <strong>Short answer:</strong> Both are Clinical Trial Management Systems for
+          research sites. Clinical Conductor (now part of Advarra) targets site networks,
+          health systems, and organizations that want a single enterprise vendor. Nexrial
+          targets independent small sites that need transparent pricing, a published
+          compliance posture, and a CTMS that fits under $700/month.
+        </p>
+        <a href="https://nexrial.com" class="buy-btn" style="background-color: #0d9488;">Learn About Nexrial</a>
+        <p class="buy-note">
+          Reviewed <time datetime="2026-04-23">April 23, 2026</time> by
+          Tyrian Murex, Purple Directive founder. Clinical Conductor pricing is not
+          publicly listed; industry ranges are sourced from third-party reports and
+          should be verified with Advarra directly.
+          <!-- Source: advarra.com/solutions-for/clinical-trial-sites/clinical-conductor-ctms/ fetched 2026-04-23 -->
+        </p>
+      </div>
+      <div class="product-hero-preview">
+        <div>
+          <p style="margin: 0 0 0.5rem; font-weight: 600; text-align: center;">At a glance</p>
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 1.8;">
+            <li><strong>Nexrial:</strong> CTMS, $199–549/mo published</li>
+            <li><strong>Clinical Conductor:</strong> CTMS, contact sales</li>
+            <li>Same category — different buyer profile</li>
+            <li>Enterprise vs. independent site fit</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="why-now-section">
+    <h2>What each one actually is</h2>
+
+    <h3>Nexrial — CTMS for independent sites</h3>
+    <p>
+      Nexrial is a site-operations CTMS built for small independent research sites and
+      small site networks running 5–25 concurrent studies. Core workflows: subject
+      tracking, visit scheduling, regulatory binder, delegation log with PI e-signature,
+      monitoring visit management (including findings and action items), protocol
+      deviations, IRB submissions, SOPs with version gating, training log with expiry
+      tracking, consent version tracking, and invoice management.
+    </p>
+    <p>
+      Pricing is published: <strong>$349/month Core, $549/month Pro, $199/month Founder</strong>
+      (first five sites). No quote required.
+    </p>
+
+    <h3>Clinical Conductor — CTMS for site networks and health systems</h3>
+    <p>
+      Clinical Conductor was originally built as a CTMS for research sites and site
+      networks. Advarra acquired it and now positions it alongside OnCore (for academic
+      medical centers) and additional modules including eReg (regulatory document
+      management), eSource (data capture), CCText (HIPAA-compliant participant
+      messaging), and CCPay (subject reimbursements). The platform targets organizations
+      that want financial oversight, patient recruitment, and research portfolio
+      management under one vendor, including health systems like Ascension and Velocity
+      Clinical Research.
+    </p>
+    <p>
+      Clinical Conductor pricing is not publicly listed. Advarra directs all pricing
+      inquiries to their sales team. Contact Advarra directly for current pricing.
+      <!-- Source: advarra.com/solutions-for/clinical-trial-sites/clinical-conductor-ctms/ fetched 2026-04-23 -->
+    </p>
+  </section>
+
+  <section class="why-now-section">
+    <h2>Feature-by-feature comparison</h2>
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th scope="col">Capability</th>
+            <th scope="col" style="color: #0d9488;">Nexrial</th>
+            <th scope="col">Clinical Conductor (Advarra)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Primary job</strong></td>
+            <td>Site operations — independent sites</td>
+            <td>Site operations — networks and health systems</td>
+          </tr>
+          <tr>
+            <td>Subject tracking & visit scheduling</td>
+            <td>✅ Native <!-- confirmed: app/routes/subjects.py --></td>
+            <td>✅ Native</td>
+          </tr>
+          <tr>
+            <td>Delegation log</td>
+            <td>✅ Native (PI e-sig, PDF export) <!-- confirmed: app/routes/delegation_log.py --></td>
+            <td>✅ Native</td>
+          </tr>
+          <tr>
+            <td>Monitoring visit management</td>
+            <td>✅ Native (findings, action items) <!-- confirmed: app/routes/monitoring_visits.py --></td>
+            <td>✅ Native</td>
+          </tr>
+          <tr>
+            <td>IRB submission tracking</td>
+            <td>✅ Native <!-- confirmed: app/routes/irb_submissions.py --></td>
+            <td>✅ Native</td>
+          </tr>
+          <tr>
+            <td>Protocol deviation tracking</td>
+            <td>✅ Native <!-- confirmed: app/routes/protocol_deviation.py --></td>
+            <td>✅ Native</td>
+          </tr>
+          <tr>
+            <td>SOP management with version gating</td>
+            <td>✅ Native <!-- confirmed: app/routes/sops.py --></td>
+            <td>✅ Native</td>
+          </tr>
+          <tr>
+            <td>Training log with expiry tracking</td>
+            <td>✅ Native <!-- confirmed: app/routes/training_log.py --></td>
+            <td>✅ Native</td>
+          </tr>
+          <tr>
+            <td>Invoice / billing management</td>
+            <td>✅ Native <!-- confirmed: app/routes/invoices.py --></td>
+            <td>✅ Native (financial oversight focus)</td>
+          </tr>
+          <tr>
+            <td>Participant messaging (SMS)</td>
+            <td>⚠️ Not native (planned)</td>
+            <td>✅ CCText add-on (HIPAA-compliant)</td>
+          </tr>
+          <tr>
+            <td>Subject reimbursements (debit card)</td>
+            <td>⚠️ Not native</td>
+            <td>✅ CCPay add-on</td>
+          </tr>
+          <tr>
+            <td>EHR integration (Epic)</td>
+            <td>⚠️ Not native</td>
+            <td>✅ Epic integration available</td>
+          </tr>
+          <tr>
+            <td>21 CFR Part 11 audit trail</td>
+            <td>✅ 3 independent DB-level defenses <!-- confirmed: app/routes/audit.py --></td>
+            <td>✅ SOC 2 Type 2 certified</td>
+          </tr>
+          <tr>
+            <td>HIPAA BAA</td>
+            <td>✅ Template ready; signed per tenant</td>
+            <td>✅ Available</td>
+          </tr>
+          <tr>
+            <td>ISO 27001 / SOC 2 Type 2</td>
+            <td>⚠️ SOC 2 readiness work begins at $10K ARR</td>
+            <td>✅ ISO 27001:2013 and SOC 2 Type 2 certified</td>
+          </tr>
+          <tr>
+            <td>Pricing transparency</td>
+            <td>✅ Published on website</td>
+            <td>❌ Contact sales — pricing undisclosed</td>
+          </tr>
+          <tr>
+            <td>Target buyer</td>
+            <td>Independent sites; small networks (5–25 studies)</td>
+            <td>Site networks; health systems; large research organizations</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="why-now-section">
+    <h2>When to pick which</h2>
+
+    <h3>Pick Nexrial if…</h3>
+    <ul>
+      <li>You run a small independent research site (1–3 locations, sub-$700/month CTMS budget)</li>
+      <li>You need a delegation log, regulatory binder, monitoring-visit workflow, and PI e-signatures without an enterprise contract</li>
+      <li>You want pricing you can evaluate without a sales call</li>
+      <li>Your studies are sponsor-supplied — you need site-operations coverage, not participant reimbursement infrastructure</li>
+      <li>You want a vendor built specifically for small site compliance, not a scaled-down enterprise platform</li>
+    </ul>
+
+    <h3>Pick Clinical Conductor if…</h3>
+    <ul>
+      <li>You run a multi-site network or health system research operation with centralized financial management needs</li>
+      <li>You need Epic EHR integration, participant SMS, or debit-card reimbursements as native capabilities</li>
+      <li>Your organization requires ISO 27001 and SOC 2 Type 2 certification from day one</li>
+      <li>You want a single enterprise vendor (Advarra) covering CTMS, regulatory documents, and data capture</li>
+      <li>Your CTMS budget allows for a quote-based engagement with a sales team</li>
+    </ul>
+  </section>
+
+  <section class="why-now-section">
+    <h2>Pricing — honest table</h2>
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th scope="col">Plan</th>
+            <th scope="col">Price</th>
+            <th scope="col">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="compare-row-highlight">
+            <td><strong>Nexrial Founder</strong></td>
+            <td><strong>$199/month</strong></td>
+            <td>First 5 sites only · full platform · published</td>
+          </tr>
+          <tr>
+            <td><strong>Nexrial Core</strong></td>
+            <td><strong>$349/month</strong></td>
+            <td>Up to 10 users · up to 3 concurrent studies · published</td>
+          </tr>
+          <tr>
+            <td><strong>Nexrial Pro</strong></td>
+            <td><strong>$549/month</strong></td>
+            <td>Up to 25 users · unlimited studies · advanced audit reports · published</td>
+          </tr>
+          <tr>
+            <td>Clinical Conductor</td>
+            <td>Contact sales — pricing undisclosed</td>
+            <td>Industry reports suggest a variable range; verify with Advarra directly</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 0.85rem; color: #64748b; margin-top: 1rem;">
+      Clinical Conductor pricing is not publicly listed as of April 2026.
+      <!-- Source: advarra.com/solutions-for/clinical-trial-sites/clinical-conductor-ctms/ fetched 2026-04-23 -->
+      Contact Advarra at <a href="https://www.advarra.com" rel="noopener">advarra.com</a> for current pricing.
+      Nexrial pricing is published at <a href="https://nexrial.com">nexrial.com</a>.
+    </p>
+  </section>
+
+  <section class="why-now-section">
+    <h2>FAQ</h2>
+
+    <h3>Does Clinical Conductor include eReg (regulatory document management)?</h3>
+    <p>
+      eReg is an Advarra product but is sold separately from Clinical Conductor CTMS.
+      The two can be used together as part of the Advarra platform. Nexrial includes
+      regulatory binder functionality (document versioning, document-level signatures,
+      audit trail) natively — no separate product required for basic regulatory
+      document management.
+    </p>
+
+    <h3>Does Nexrial implement 21 CFR Part 11 controls?</h3>
+    <p>
+      Nexrial is designed against the controls of 21 CFR Part 11 Subpart B (electronic
+      records). Audit-log integrity is enforced by three independent database-level
+      defenses: UPDATE, DELETE, and TRUNCATE are revoked at the database user level,
+      meaning audit records cannot be altered even by application code. A validation
+      package (VAL-PLAN, IQ/OQ/PQ, VAL-REPORT) with executed-run evidence is
+      available under NDA. Part 11 is a design standard, not a certification — see
+      <a href="https://nexrial.com/trust">nexrial.com/trust</a> for the current control posture.
+    </p>
+
+    <h3>Can Nexrial scale to a site network?</h3>
+    <p>
+      Nexrial today is purpose-built for independent sites and small networks. Multi-site
+      org hierarchy, cross-site reporting, and sponsor/CRO read-only portals are on the
+      roadmap; pricing for a network tier has not been published. For large networks
+      (10+ sites) where Epic integration and enterprise vendor SLAs are hard requirements
+      now, Clinical Conductor's Advarra backing is worth evaluating in parallel.
+    </p>
+
+    <h3>Who owns Clinical Conductor now?</h3>
+    <p>
+      Clinical Conductor is owned and operated by Advarra, which also owns OnCore CTMS
+      (academic medical centers), eReg, and eSource. Advarra serves approximately 3,500
+      institutions and 50,000 investigators. Clinical Conductor continues to operate as
+      a distinct product within that portfolio.
+    </p>
+  </section>
+
+  <section class="why-now-section">
+    <h2>Next steps</h2>
+    <p>
+      If Nexrial sounds like a fit for your site, book a 30-minute demo at
+      <a href="https://calendly.com/nexrial/demo" rel="noopener">calendly.com/nexrial/demo</a>
+      or email <a href="mailto:info@purpledirective.com">info@purpledirective.com</a>.
+    </p>
+    <p>
+      If Clinical Conductor sounds like the better fit — especially if you run a
+      multi-site network and need enterprise infrastructure — contact Advarra directly at
+      <a href="https://www.advarra.com" rel="noopener">advarra.com</a>. We don't have
+      an affiliate relationship with Advarra; the right tool matters more than referral credit.
+    </p>
+  </section>
+</Base>
