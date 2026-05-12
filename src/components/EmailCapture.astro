@@ -2,23 +2,29 @@
 /**
  * Email capture widget — reusable block for newsletter signup.
  *
- * Configuration lives in `src/data/site-config.ts`:
- * - siteConfig.newsletterFormAction  → form POST URL (Substack/ConvertKit/Mailchimp)
- * - siteConfig.newsletterFormHiddenFields  → hidden fields required by the provider
+ * Provider resolution (configured in src/data/site-config.ts):
+ *   1. beehiiv.publicationId set → our own HTML form, POST to
+ *      /api/subscribe (Cloudflare Pages Function proxies to Beehiiv
+ *      API using BEEHIIV_API_KEY env var). Brand-matched UI in Inter.
+ *   2. beehiiv.formUuid set → Beehiiv's loader.js widget (cross-origin
+ *      iframe, default Beehiiv styling). Legacy mode.
+ *   3. newsletterFormAction set → generic HTML form POST.
+ *   4. none → fallback mailto.
  *
- * Substack: `https://<publication>.substack.com/api/v1/free?nojs=true`
- * ConvertKit: `https://app.kit.com/forms/<form-id>/subscriptions`
- * Mailchimp: audience form action URL
- *
- * If not configured, the widget renders a fallback mailto link.
+ * The "beehiiv-api" path is the default and matches the rest of the
+ * site's typography (var(--font-sans) = Inter). It also keeps the
+ * visitor on purpledirective.com end-to-end (Pages Function does the
+ * cross-domain proxy server-side).
  */
 import { siteConfig } from '../data/site-config';
 
 interface Props {
   heading?: string;
   subheading?: string;
-  leadMagnet?: string;  // If the signup unlocks a specific lead magnet, mention it
+  leadMagnet?: string;
   variant?: 'inline' | 'boxed';
+  /** Forwarded to /api/subscribe as a hidden `source` field for UTM tagging. */
+  source?: string;
 }
 
 const {
@@ -26,13 +32,29 @@ const {
   subheading = "Short, specific, monthly. FDA enforcement patterns, regulatory updates, and the kind of operational intel I can't put on a blog post.",
   leadMagnet,
   variant = 'boxed',
+  source,
 } = Astro.props;
 
+const beehiivPubId = siteConfig.beehiiv?.publicationId || '';
+const beehiivFormUuid = siteConfig.beehiiv?.formUuid || '';
+const beehiivAttribution = siteConfig.beehiiv?.attribution || false;
 const action = siteConfig.newsletterFormAction;
 const hiddenFields = siteConfig.newsletterFormHiddenFields;
+
+type Provider = 'beehiiv-api' | 'beehiiv-widget' | 'html-post' | 'fallback';
+const provider: Provider = beehiivPubId
+  ? 'beehiiv-api'
+  : beehiivFormUuid
+    ? 'beehiiv-widget'
+    : action
+      ? 'html-post'
+      : 'fallback';
+
+// Page-specific UTM source: explicit prop wins; otherwise derive from URL path.
+const computedSource = source || (Astro.url?.pathname?.replace(/^\/|\/$/g, '') || 'home') || 'home';
 ---
 
-<div class={`email-capture email-capture--${variant}`}>
+<div class={`email-capture email-capture--${variant} email-capture--provider-${provider}`}>
   <div class="email-capture-text">
     <h3 class="email-capture-heading">{heading}</h3>
     <p class="email-capture-sub">{subheading}</p>
@@ -42,7 +64,75 @@ const hiddenFields = siteConfig.newsletterFormHiddenFields;
       </p>
     )}
   </div>
-  {action ? (
+  {provider === 'beehiiv-api' && (
+    <>
+      <form action="/api/subscribe" method="post" class="email-capture-form" data-newsletter-form>
+        <input type="hidden" name="source" value={computedSource} />
+        <input
+          type="email"
+          name="email"
+          placeholder="you@company.com"
+          required
+          aria-label="Email address"
+          class="email-capture-input"
+          autocomplete="email"
+        />
+        <button type="submit" class="email-capture-btn">Subscribe</button>
+      </form>
+      <p
+        class="email-capture-error"
+        data-newsletter-error
+        hidden
+      ></p>
+      <script is:inline>
+        // Reveal an inline error message if the page was redirected back
+        // from /api/subscribe with ?newsletter_error=<slug>. Slugs are
+        // emitted by functions/api/subscribe.ts.
+        (function () {
+          const params = new URLSearchParams(window.location.search);
+          const slug = params.get('newsletter_error');
+          if (!slug) return;
+          const msgs = {
+            'invalid-email': 'That email address doesn’t look right. Try again?',
+            'not-configured': 'Newsletter signup is temporarily unavailable. Please try again later.',
+            'auth': 'Newsletter signup is temporarily unavailable. Please try again later.',
+            'beehiiv-down': 'Our newsletter provider is having issues. Try again in a few minutes.',
+            'rate-limited': 'Too many signup attempts. Please wait a minute and try again.',
+            'network': 'Network error. Check your connection and try again.',
+            'bad-request': 'Something went wrong submitting the form. Try again?',
+            'unknown': 'Something went wrong. Please try again or email info@purpledirective.com.'
+          };
+          const el = document.querySelector('[data-newsletter-error]');
+          if (!el) return;
+          el.textContent = msgs[slug] || msgs.unknown;
+          el.hidden = false;
+        })();
+      </script>
+    </>
+  )}
+  {provider === 'beehiiv-widget' && (
+    <div class="email-capture-beehiiv">
+      <script
+        is:inline
+        async
+        src="https://subscribe-forms.beehiiv.com/v3/loader.js"
+        data-beehiiv-form={beehiivFormUuid}
+      ></script>
+      {beehiivAttribution && (
+        <script
+          is:inline
+          async
+          src="https://subscribe-forms.beehiiv.com/attribution.js"
+        ></script>
+      )}
+      <noscript>
+        <p class="email-capture-fallback">
+          Subscribe at <a href="https://purpledirective.beehiiv.com/subscribe" target="_blank" rel="noopener">purpledirective.beehiiv.com</a>.
+        </p>
+      </noscript>
+    </div>
+  )}
+  {provider === 'html-post' && (
     <form action={action} method="post" class="email-capture-form" target="_blank">
       {Object.entries(hiddenFields).map(([name, value]) => (
         <input type="hidden" name={name} value={value} />
@@ -57,7 +147,8 @@ const hiddenFields = siteConfig.newsletterFormHiddenFields;
       />
       <button type="submit" class="email-capture-btn">Subscribe</button>
     </form>
-  ) : (
+  )}
+  {provider === 'fallback' && (
     <p class="email-capture-fallback">
       <em>Newsletter launching shortly.</em> Email <a href="mailto:info@purpledirective.com?subject=Newsletter%20signup">info@purpledirective.com</a> with subject "Newsletter signup" to be added at launch.
     </p>
@@ -145,11 +236,53 @@ const hiddenFields = siteConfig.newsletterFormHiddenFields;
     background: var(--purple-dark);
   }
 
+  .email-capture-error {
+    font-size: 0.88rem;
+    color: #b91c1c;
+    margin: var(--spacing-sm) 0 0 0;
+    max-width: 520px;
+  }
+
   .email-capture-fallback {
     font-size: 0.9rem;
     color: var(--text-secondary);
     margin: 0;
     line-height: 1.6;
+  }
+
+  .email-capture-beehiiv {
+    /* Legacy widget mode only. Beehiiv renders the form in a cross-origin
+       iframe; we constrain its outer wrapper to a centered narrow column
+       since we can't style the iframe contents. */
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Beehiiv-API mode: center heading + subheading + form as a band, the
+     way the site's other CTA bands center on the page. */
+  .email-capture--provider-beehiiv-api .email-capture-text,
+  .email-capture--provider-beehiiv-widget .email-capture-text {
+    text-align: center;
+  }
+
+  .email-capture--provider-beehiiv-api .email-capture-sub,
+  .email-capture--provider-beehiiv-widget .email-capture-sub {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Center the form itself (block-level flex container) inside the wider
+     boxed wrapper. The form's inner items still flex as before. */
+  .email-capture--provider-beehiiv-api .email-capture-form {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .email-capture--provider-beehiiv-api .email-capture-error {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
 
   @media (max-width: 640px) {
