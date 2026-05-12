@@ -186,11 +186,15 @@ const provider: Provider = beehiivFormUuid
 
   .email-capture-beehiiv {
     /* Beehiiv renders the form in a cross-origin iframe from
-       subscribe-forms.beehiiv.com — we cannot style its internals
-       (publication-name heading, padding, internal alignment) from
-       here. The wrapper fills the parent bubble; internal layout is
-       Beehiiv's responsibility via their form-builder Style tab. */
-    width: 100%;
+       subscribe-forms.beehiiv.com. Content inside is anchored to the
+       iframe's left edge (their default alignment, not styleable from
+       our side). To center it visually inside the wider purple bubble,
+       constrain the iframe wrapper to ~520px and center via auto
+       margins — the form fills its narrow iframe and the iframe sits
+       centered inside the bubble. */
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   /* Beehiiv mode: center the inner text to align with the form
