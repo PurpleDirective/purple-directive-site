@@ -44,15 +44,32 @@ export const siteConfig = {
   // Email capture / newsletter
   // =============================================================
   //
-  // Paste the form action URL + any hidden fields after setting up
-  // your newsletter provider (Substack recommended; see
-  // 1.Products/Research-Report/10-newsletter-launch-guide.md).
+  // Provider resolution order in EmailCapture.astro:
+  //   1. beehiiv.formUuid set → render Beehiiv subscribe-form widget
+  //   2. newsletterFormAction set → render HTML form POST
+  //   3. neither set → fallback mailto message
   //
-  // Substack example: `https://<publication>.substack.com/api/v1/free?nojs=true`
-  // ConvertKit example: `https://app.kit.com/forms/<form-id>/subscriptions`
+  // Active provider: Beehiiv (publication "Practitioner Notes:
+  // Clinical Research × Regulation", purpledirective.beehiiv.com).
   //
-  // Leave blank string to show the fallback mailto: message.
+  // To swap providers later: clear the active one's config and set the
+  // other. Beehiiv form UUIDs are visible in the Beehiiv dashboard at
+  // /subscribe_forms; each form has its own embed snippet.
   // =============================================================
+  beehiiv: {
+    // Form UUID from app.beehiiv.com → Audience → Subscribe forms.
+    // Used as data-beehiiv-form attribute on the loader script.
+    formUuid: '0b2d5779-2104-4e90-b87e-d8cf4be72f78',
+    // Set true to also inject the UTM attribution script. Off by default
+    // to keep external JS minimal; turn on if running paid acquisition.
+    attribution: false,
+  },
+
+  // Legacy / alternate provider config — used only if beehiiv.formUuid
+  // is empty. Substack example URL pattern:
+  //   `https://<publication>.substack.com/api/v1/free?nojs=true`
+  // ConvertKit:
+  //   `https://app.kit.com/forms/<form-id>/subscriptions`
   newsletterFormAction: '',
   newsletterFormHiddenFields: {} as Record<string, string>,
 } as const;
