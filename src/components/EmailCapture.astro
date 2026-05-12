@@ -185,7 +185,12 @@ const provider: Provider = beehiivFormUuid
   }
 
   .email-capture-beehiiv {
-    max-width: 520px;
+    /* No max-width: let Beehiiv's iframe widen to the parent column.
+       Beehiiv renders the form in a cross-origin iframe from
+       subscribe-forms.beehiiv.com — we cannot style its internals
+       (publication-name heading, padding) from here. The iframe must
+       be widened/configured via Beehiiv's form-builder Style tab. */
+    width: 100%;
   }
 
   /* When Beehiiv provides its own card-styled form, drop the wrapper's
