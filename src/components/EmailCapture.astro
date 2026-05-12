@@ -205,6 +205,14 @@ const provider: Provider = beehiivFormUuid
     text-align: center;
   }
 
+  /* Subheading <p> has max-width 640px from base styles; without auto
+     margins it stays left-anchored in the wider text block. Add auto
+     margins in Beehiiv mode so the constrained paragraph also centers. */
+  .email-capture--provider-beehiiv .email-capture-sub {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   @media (max-width: 640px) {
     .email-capture-form {
       flex-direction: column;
