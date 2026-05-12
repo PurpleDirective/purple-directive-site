@@ -2,15 +2,15 @@
 /**
  * Email capture widget — reusable block for newsletter signup.
  *
- * Configuration lives in `src/data/site-config.ts`:
- * - siteConfig.newsletterFormAction  → form POST URL (Substack/ConvertKit/Mailchimp)
- * - siteConfig.newsletterFormHiddenFields  → hidden fields required by the provider
+ * Provider resolution (configured in src/data/site-config.ts):
+ *   1. beehiiv.formUuid set → render Beehiiv subscribe-form widget
+ *   2. newsletterFormAction set → render HTML form POST
+ *   3. neither set → fallback mailto
  *
- * Substack: `https://<publication>.substack.com/api/v1/free?nojs=true`
- * ConvertKit: `https://app.kit.com/forms/<form-id>/subscriptions`
- * Mailchimp: audience form action URL
- *
- * If not configured, the widget renders a fallback mailto link.
+ * Beehiiv widget mode injects loader.js which renders Beehiiv-hosted
+ * form UI at the script tag's DOM position. Heading + subheading from
+ * Astro props sit above; Beehiiv's hosted form (with its own Title/
+ * Subtitle from the dashboard) renders below.
  */
 import { siteConfig } from '../data/site-config';
 
@@ -28,8 +28,17 @@ const {
   variant = 'boxed',
 } = Astro.props;
 
+const beehiivFormUuid = siteConfig.beehiiv?.formUuid || '';
+const beehiivAttribution = siteConfig.beehiiv?.attribution || false;
 const action = siteConfig.newsletterFormAction;
 const hiddenFields = siteConfig.newsletterFormHiddenFields;
+
+type Provider = 'beehiiv' | 'html-post' | 'fallback';
+const provider: Provider = beehiivFormUuid
+  ? 'beehiiv'
+  : action
+    ? 'html-post'
+    : 'fallback';
 ---
 
 <div class={`email-capture email-capture--${variant}`}>
@@ -42,7 +51,29 @@ const hiddenFields = siteConfig.newsletterFormHiddenFields;
       </p>
     )}
   </div>
-  {action ? (
+  {provider === 'beehiiv' && (
+    <div class="email-capture-beehiiv">
+      <script
+        is:inline
+        async
+        src="https://subscribe-forms.beehiiv.com/v3/loader.js"
+        data-beehiiv-form={beehiivFormUuid}
+      ></script>
+      {beehiivAttribution && (
+        <script
+          is:inline
+          async
+          src="https://subscribe-forms.beehiiv.com/attribution.js"
+        ></script>
+      )}
+      <noscript>
+        <p class="email-capture-fallback">
+          Subscribe at <a href="https://purpledirective.beehiiv.com/subscribe" target="_blank" rel="noopener">purpledirective.beehiiv.com</a>.
+        </p>
+      </noscript>
+    </div>
+  )}
+  {provider === 'html-post' && (
     <form action={action} method="post" class="email-capture-form" target="_blank">
       {Object.entries(hiddenFields).map(([name, value]) => (
         <input type="hidden" name={name} value={value} />
@@ -57,7 +88,8 @@ const hiddenFields = siteConfig.newsletterFormHiddenFields;
       />
       <button type="submit" class="email-capture-btn">Subscribe</button>
     </form>
-  ) : (
+  )}
+  {provider === 'fallback' && (
     <p class="email-capture-fallback">
       <em>Newsletter launching shortly.</em> Email <a href="mailto:info@purpledirective.com?subject=Newsletter%20signup">info@purpledirective.com</a> with subject "Newsletter signup" to be added at launch.
     </p>
@@ -150,6 +182,10 @@ const hiddenFields = siteConfig.newsletterFormHiddenFields;
     color: var(--text-secondary);
     margin: 0;
     line-height: 1.6;
+  }
+
+  .email-capture-beehiiv {
+    max-width: 520px;
   }
 
   @media (max-width: 640px) {
