@@ -193,15 +193,10 @@ const provider: Provider = beehiivFormUuid
     width: 100%;
   }
 
-  /* Center the whole capture band when Beehiiv renders the form —
-     the entire wrapper (heading + subheading + Beehiiv iframe box)
-     becomes a centered ~640px column on the page. */
-  .email-capture--provider-beehiiv {
-    max-width: 640px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
+  /* Beehiiv mode: center the inner text to align with the form
+     (which Beehiiv centers inside its iframe). Width is left to the
+     parent — the wrapper fills the section so the purple-glow bubble
+     spans the column like sibling boxes (e.g. "Read the Taxonomy"). */
   .email-capture--provider-beehiiv .email-capture-text {
     text-align: center;
   }
