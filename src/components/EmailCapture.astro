@@ -202,6 +202,21 @@ const provider: Provider = beehiivFormUuid
     padding-right: 0;
   }
 
+  /* Center the whole capture band when Beehiiv renders the form —
+     Beehiiv's hosted form is already centered inside its iframe,
+     so our heading + subheading need to match. */
+  .email-capture--provider-beehiiv .email-capture-text {
+    text-align: center;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .email-capture--provider-beehiiv .email-capture-sub {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   @media (max-width: 640px) {
     .email-capture-form {
       flex-direction: column;
