@@ -41,7 +41,7 @@ const provider: Provider = beehiivFormUuid
     : 'fallback';
 ---
 
-<div class={`email-capture email-capture--${variant}`}>
+<div class={`email-capture email-capture--${variant} email-capture--provider-${provider}`}>
   <div class="email-capture-text">
     <h3 class="email-capture-heading">{heading}</h3>
     <p class="email-capture-sub">{subheading}</p>
@@ -186,6 +186,15 @@ const provider: Provider = beehiivFormUuid
 
   .email-capture-beehiiv {
     max-width: 520px;
+  }
+
+  /* When Beehiiv provides its own card-styled form, drop the wrapper's
+     background/border so we don't get a card-inside-card visual. */
+  .email-capture--provider-beehiiv.email-capture--boxed {
+    background: transparent;
+    border-color: transparent;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   @media (max-width: 640px) {
