@@ -45,31 +45,39 @@ export const siteConfig = {
   // =============================================================
   //
   // Provider resolution order in EmailCapture.astro:
-  //   1. beehiiv.formUuid set → render Beehiiv subscribe-form widget
-  //   2. newsletterFormAction set → render HTML form POST
-  //   3. neither set → fallback mailto message
+  //   1. beehiiv.publicationId set → render our own form, POST to
+  //      /api/subscribe (Cloudflare Pages Function proxies to Beehiiv
+  //      API using BEEHIIV_API_KEY env var). Brand-matched UI.
+  //   2. beehiiv.formUuid set → render Beehiiv's loader.js widget
+  //      (cross-origin iframe; visual = Beehiiv defaults). Legacy.
+  //   3. newsletterFormAction set → render generic HTML form POST.
+  //   4. none set → fallback mailto message.
   //
-  // Active provider: Beehiiv (publication "Practitioner Notes:
-  // Clinical Research × Regulation", purpledirective.beehiiv.com).
+  // Active provider: Beehiiv-API (custom form, our brand styling).
+  // Publication: "Practitioner Notes: Clinical Research × Regulation"
+  // at purpledirective.beehiiv.com.
   //
-  // To swap providers later: clear the active one's config and set the
-  // other. Beehiiv form UUIDs are visible in the Beehiiv dashboard at
-  // /subscribe_forms; each form has its own embed snippet.
+  // Server-side env vars (set in Cloudflare Pages dashboard):
+  //   BEEHIIV_API_KEY        — secret, Bearer token. Get from
+  //                            app.beehiiv.com → Settings → API.
+  //   BEEHIIV_PUBLICATION_ID — required, e.g. "pub_6f5579d5-..."
+  //                            (matches publicationId below; the
+  //                            client uses publicationId for nothing
+  //                            sensitive, only display/debug).
   // =============================================================
   beehiiv: {
-    // Form UUID from app.beehiiv.com → Audience → Subscribe forms.
-    // Used as data-beehiiv-form attribute on the loader script.
-    formUuid: '0b2d5779-2104-4e90-b87e-d8cf4be72f78',
-    // Set true to also inject the UTM attribution script. Off by default
-    // to keep external JS minimal; turn on if running paid acquisition.
+    // Non-secret publication identifier. Mirrors the BEEHIIV_PUBLICATION_ID
+    // server env var. Kept here for traceability; the Pages Function
+    // reads its own env var, not this value.
+    publicationId: 'pub_6f5579d5-0f7c-4690-b671-41753cf7b391',
+    // Legacy: form UUID for the Beehiiv-hosted widget (iframe-based).
+    // Empty = use the API-backed custom form via /api/subscribe.
+    formUuid: '',
     attribution: false,
   },
 
-  // Legacy / alternate provider config — used only if beehiiv.formUuid
-  // is empty. Substack example URL pattern:
-  //   `https://<publication>.substack.com/api/v1/free?nojs=true`
-  // ConvertKit:
-  //   `https://app.kit.com/forms/<form-id>/subscriptions`
+  // Legacy / alternate provider config — used only when both
+  // beehiiv.publicationId and beehiiv.formUuid are empty.
   newsletterFormAction: '',
   newsletterFormHiddenFields: {} as Record<string, string>,
 } as const;
