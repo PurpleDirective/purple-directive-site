@@ -5,7 +5,7 @@ import { social } from '../data/social';
 
 <Base title="About" activePage="about" description="Purple Directive builds compliance-grade software and operations infrastructure for clinical research. Meet the team behind the work.">
   <!-- Hero -->
-  <section class="about-hero">
+  <section class="about-hero hero">
     <p class="about-tagline">About Us</p>
     <h1>We Build What Clinical Research<br/>Operations Actually Need</h1>
     <p class="about-subtitle">
@@ -57,7 +57,7 @@ import { social } from '../data/social';
             <span class="milestone-marker"></span>
             <div>
               <strong>CTMS Development</strong>
-              <span>Multi-tenant trial management system with 21 CFR Part 11 compliance</span>
+              <span>Multi-tenant trial management system implementing 21 CFR Part 11 controls</span>
             </div>
           </div>
           <div class="milestone">
@@ -81,7 +81,7 @@ import { social } from '../data/social';
 
     <div class="founders-grid">
       <div class="founder-card">
-        <div class="founder-avatar avatar-tyrian">🐌</div>
+        <div class="founder-avatar avatar-tyrian">TM</div>
         <h3>Tyrian M.</h3>
         <span class="founder-role">Co-Founder</span>
         <p>
@@ -97,7 +97,7 @@ import { social } from '../data/social';
       </div>
 
       <div class="founder-card">
-        <div class="founder-avatar avatar-violet">🔮</div>
+        <div class="founder-avatar avatar-violet">VM</div>
         <h3>Violet M.</h3>
         <span class="founder-role">Co-Founder</span>
         <p>
@@ -153,22 +153,34 @@ import { social } from '../data/social';
       </div>
       <div class="connect-links">
         <a href="/hire" class="connect-card">
-          <span class="connect-icon">&#128172;</span>
+          <span class="connect-icon">
+            <!-- chat bubble / work with us -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </span>
           <strong>Work With Us</strong>
           <span>Consulting, software, partnerships</span>
         </a>
         <a href={social.linkedin.url} target="_blank" rel="noopener" class="connect-card">
-          <span class="connect-icon">&#128188;</span>
+          <span class="connect-icon">
+            <!-- linkedin -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </span>
           <strong>LinkedIn</strong>
           <span>{social.linkedin.handle}</span>
         </a>
         <a href={social.x.url} target="_blank" rel="noopener" class="connect-card">
-          <span class="connect-icon">&#128172;</span>
+          <span class="connect-icon">
+            <!-- X / twitter -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4l16 16M4 20L20 4"/></svg>
+          </span>
           <strong>X / Twitter</strong>
           <span>{social.x.handle}</span>
         </a>
         <a href={social.github.url} target="_blank" rel="noopener" class="connect-card">
-          <span class="connect-icon">&#128187;</span>
+          <span class="connect-icon">
+            <!-- github -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </span>
           <strong>GitHub</strong>
           <span>{social.github.handle}</span>
         </a>
@@ -182,6 +194,7 @@ import { social } from '../data/social';
   .about-hero {
     text-align: center;
     padding: var(--spacing-xl) var(--spacing-md);
+    background: linear-gradient(160deg, #f5f3f8, #ede9fe 45%, #fafafa);
   }
 
   .about-tagline {
@@ -294,8 +307,12 @@ import { social } from '../data/social';
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #4c1d95;
     margin: 0 auto var(--spacing-md);
+    user-select: none;
   }
 
   .founder-avatar.avatar-tyrian {
@@ -429,8 +446,10 @@ import { social } from '../data/social';
   }
 
   .connect-icon {
-    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
     margin-bottom: 0.2rem;
+    color: rgba(255,255,255,0.75);
   }
 
   .connect-card strong {

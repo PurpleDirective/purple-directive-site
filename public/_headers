@@ -1,0 +1,5 @@
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://analytics.purpledirective.com https://static.cloudflareinsights.com; connect-src 'self' https://analytics.purpledirective.com https://cloudflareinsights.com; img-src 'self' data: https://analytics.purpledirective.com; style-src 'self' 'unsafe-inline'; font-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
