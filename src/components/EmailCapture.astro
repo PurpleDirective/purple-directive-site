@@ -187,11 +187,10 @@ const provider: Provider = beehiivFormUuid
   .email-capture-beehiiv {
     /* Beehiiv renders the form in a cross-origin iframe from
        subscribe-forms.beehiiv.com — we cannot style its internals
-       (publication-name heading, padding) from here. We CAN constrain
-       the iframe's outer container to a centered narrow column. */
-    max-width: 520px;
-    margin-left: auto;
-    margin-right: auto;
+       (publication-name heading, padding, internal alignment) from
+       here. The wrapper fills the parent bubble; internal layout is
+       Beehiiv's responsibility via their form-builder Style tab. */
+    width: 100%;
   }
 
   /* Beehiiv mode: center the inner text to align with the form
