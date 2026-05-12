@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import { social } from '../data/social';
 ---
 
-<Base title="About" activePage="about" description="Purple Directive builds compliance-grade software and operations infrastructure for clinical research. Meet the team behind the work.">
+<Base title="About" activePage="about" description="Purple Directive builds compliance-grade software and operations infrastructure for clinical research. Meet the founder behind the work.">
   <!-- Hero -->
   <section class="about-hero hero">
     <p class="about-tagline">About Us</p>
@@ -22,19 +22,28 @@ import { social } from '../data/social';
       <div class="about-split-left">
         <h2>How We Got Here</h2>
         <p>
-          We started where a lot of small CROs start — running active studies with
-          borrowed SOPs, manual tracking, and tools designed for organizations ten
-          times our size.
+          Purple Directive started where most small research sites start: active
+          studies, borrowed SOPs, and commercial platforms sized for organizations
+          ten times as large. The tools that existed were either too expensive, too
+          rigid, or both — built for 500-person CROs with dedicated IT, not for
+          coordinators who also handle regulatory submissions and study close-out
+          in the same week.
         </p>
         <p>
-          The commercial platforms were either too expensive or too rigid. So we started
-          building: SOPs aligned to ICH E6(R2/R3), a clinical trial management system
-          with a real audit trail, automation for the repetitive work that burns out
-          coordinators. Each tool was built because we needed it ourselves.
+          So we started building. SOPs aligned to ICH E6(R2/R3), written to cover
+          the full study lifecycle without the filler. A clinical trial management
+          system with a real audit trail and the workflows that coordinators
+          actually use. Each tool was built because we needed it ourselves —
+          developed during active work on FDA-regulated studies at a 21-hospital
+          US academic health system. If it didn't hold up under a real monitoring
+          visit, it didn't ship.
         </p>
         <p>
-          Then we realized other sites needed the same things. That's when Purple
-          Directive became a product company, not just an internal tooling effort.
+          That internal pressure is what turned Purple Directive from a tooling
+          effort into a product company. Other sites were running into the same
+          problems. The gap between what clinical research software promises and
+          what it actually delivers in a small-site context was consistent enough
+          to be worth closing.
         </p>
       </div>
       <div class="about-split-right">
@@ -72,45 +81,79 @@ import { social } from '../data/social';
     </div>
   </section>
 
-  <!-- Founders -->
+  <!-- Founder -->
   <section class="section section-tinted">
     <div class="section-header">
-      <h2>The Team</h2>
-      <p>Two co-founders. One builds the operations. The other builds the systems.</p>
+      <h2>Founder</h2>
+      <p>Purple Directive is run by a practitioner — someone currently doing the work, not just advising on it.</p>
     </div>
 
-    <div class="founders-grid">
+    <div class="founders-grid founders-grid-single">
       <div class="founder-card">
         <div class="founder-avatar avatar-tyrian">TM</div>
         <h3>Tyrian M.</h3>
-        <span class="founder-role">Co-Founder</span>
+        <span class="founder-role">Founder &amp; Principal</span>
         <p>
-          Clinical research operations, regulatory compliance, and the business side
-          of making research sites audit-ready. Background in GCP, ICH E6, and the
-          daily reality of running studies with small teams and real deadlines.
+          Clinical research operations, regulatory compliance, and the engineering
+          to put both into practice. Currently working on FDA-regulated studies at
+          a 21-hospital US academic health system. Background in GCP, ICH E6, and
+          site start-up — the daily reality of running studies with lean teams,
+          real regulators, and real deadlines. Founded Purple Directive to build
+          the tools that didn't exist.
         </p>
         <div class="founder-domains">
           <span>Clinical Ops</span>
           <span>Regulatory</span>
-          <span>Business</span>
-        </div>
-      </div>
-
-      <div class="founder-card">
-        <div class="founder-avatar avatar-violet">VM</div>
-        <h3>Violet M.</h3>
-        <span class="founder-role">Co-Founder</span>
-        <p>
-          AI architecture, infrastructure engineering, and compliance-grade software
-          development. Designed the multi-agent system, built the CTMS, and handles
-          everything that compiles, deploys, or runs inference.
-        </p>
-        <div class="founder-domains">
           <span>Engineering</span>
-          <span>AI Systems</span>
-          <span>Infrastructure</span>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- What We Build -->
+  <section class="section">
+    <div class="section-header">
+      <h2>What We Build</h2>
+      <p>Tools and resources for clinical research sites, sponsors, and the teams who run them.</p>
+    </div>
+
+    <div class="products-grid">
+      <a href="https://nexrial.com" target="_blank" rel="noopener" class="product-card">
+        <strong>Nexrial CTMS</strong>
+        <p>Purpose-built trial management for independent research sites. Audit trails, eSource, and ICH E6(R3) controls without enterprise pricing.</p>
+        <span class="product-cta">Visit Nexrial →</span>
+      </a>
+      <a href="/sop-bundle" class="product-card">
+        <strong>SOP Bundle</strong>
+        <p>12 ICH E6(R3)-aligned SOPs covering the full study lifecycle. Ready to adapt and deploy.</p>
+        <span class="product-cta">See the SOPs →</span>
+      </a>
+      <a href="/research-report" class="product-card">
+        <strong>Research Reports</strong>
+        <p>Analyst-grade vendor comparison and regulatory landscape reports for sites making real purchasing decisions.</p>
+        <span class="product-cta">View Reports →</span>
+      </a>
+      <a href="/hire" class="product-card">
+        <strong>Consulting</strong>
+        <p>Site start-up, compliance infrastructure, and regulatory operations support. Engagements scoped by need.</p>
+        <span class="product-cta">Work With Us →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Engineering Practices (AI disclosure) -->
+  <section class="section section-tinted">
+    <div class="engineering-disclosure">
+      <p class="engineering-label">Engineering Practices</p>
+      <p>
+        Purple Directive uses AI-augmented engineering across our software products.
+        Code is written and reviewed by Tyrian Murex, with AI assistance from a
+        multi-agent system used internally for development, analysis, and
+        documentation. AI does not act as a legal entity, does not sign contracts,
+        and does not represent the company in any business or regulatory capacity.
+        Detailed AI engineering practices specific to each product are described
+        on that product's site.
+      </p>
     </div>
   </section>
 
@@ -286,6 +329,12 @@ import { social } from '../data/social';
     gap: var(--spacing-lg);
   }
 
+  .founders-grid-single {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
   .founder-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -318,11 +367,10 @@ import { social } from '../data/social';
   .founder-avatar.avatar-tyrian {
     background: linear-gradient(135deg, #fef3c7, #fde68a);
     border: 3px solid #f59e0b;
-  }
-
-  .founder-avatar.avatar-violet {
-    background: linear-gradient(135deg, #ede9fe, #ddd6fe);
-    border: 3px solid #a78bfa;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #92400e;
+    letter-spacing: 0.02em;
   }
 
   .founder-card h3 {
@@ -361,6 +409,74 @@ import { social } from '../data/social';
     background: rgba(91, 33, 182, 0.08);
     padding: 0.25em 0.65em;
     border-radius: 4px;
+  }
+
+  /* What We Build (products grid) */
+  .products-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .product-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: var(--spacing-lg);
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .product-card:hover {
+    border-color: var(--purple-primary);
+    transform: translateY(-2px);
+  }
+
+  .product-card strong {
+    font-size: 1rem;
+    color: var(--text-primary);
+  }
+
+  .product-card p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .product-cta {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--purple-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: auto;
+  }
+
+  /* Engineering disclosure */
+  .engineering-disclosure {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .engineering-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--purple-primary);
+    margin: 0 0 var(--spacing-sm);
+  }
+
+  .engineering-disclosure p:not(.engineering-label) {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin: 0;
   }
 
   /* Principles */
@@ -472,6 +588,10 @@ import { social } from '../data/social';
     }
 
     .founders-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .products-grid {
       grid-template-columns: 1fr;
     }
 
