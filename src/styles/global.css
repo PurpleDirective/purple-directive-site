@@ -1042,6 +1042,46 @@ button:focus-visible {
   border-top: none !important;
 }
 
+/* Nexrial intro — logo + one-liner above compare tables */
+.nexrial-intro {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  margin: 0 0 var(--spacing-lg);
+  background: var(--bg-tinted);
+  border: 1px solid var(--border);
+  border-left: 3px solid #0d9488;
+  border-radius: 8px;
+}
+
+.nexrial-intro-logo {
+  flex-shrink: 0;
+  height: 36px;
+  width: auto;
+}
+
+.nexrial-intro p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.nexrial-intro p a {
+  color: #0d9488;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .nexrial-intro {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+}
+
 /* Comparison table — shared across product pages */
 .compare-table-wrap {
   overflow-x: auto;

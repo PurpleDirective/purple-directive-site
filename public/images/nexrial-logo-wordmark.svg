@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 120" fill="none" role="img" aria-labelledby="nexrial-lockup-title">
+  <title id="nexrial-lockup-title">Nexrial</title>
+  
+  <g id="lockup-dark">
+    <g color="#0d9488">
+      <line x1="14" y1="42" x2="106" y2="42" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".35"></line>
+      <line x1="14" y1="78" x2="106" y2="78" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".35"></line>
+      <path d="M25 60 L45 35 L60 52 L75 35 L95 60 L75 85 L60 68 L45 85 Z" stroke="currentColor" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" fill="none"></path>
+      <line x1="45" y1="60" x2="75" y2="60" stroke="currentColor" stroke-width="3" stroke-linecap="round"></line>
+      <circle cx="60" cy="60" r="5" fill="currentColor"></circle>
+    </g>
+    <text x="148" y="78" fill="#0f172a" font-family="Inter, -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-weight="700" font-size="62" letter-spacing="-1.8">Nexrial</text>
+  </g>
+  
+  <g id="lockup-light" style="display:none">
+    <g color="#0d9488">
+      <line x1="14" y1="42" x2="106" y2="42" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".55"></line>
+      <line x1="14" y1="78" x2="106" y2="78" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".55"></line>
+      <path d="M25 60 L45 35 L60 52 L75 35 L95 60 L75 85 L60 68 L45 85 Z" stroke="currentColor" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" fill="none"></path>
+      <line x1="45" y1="60" x2="75" y2="60" stroke="currentColor" stroke-width="3" stroke-linecap="round"></line>
+      <circle cx="60" cy="60" r="5" fill="currentColor"></circle>
+    </g>
+    <text x="148" y="78" fill="#f1f5f9" font-family="Inter, -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-weight="700" font-size="62" letter-spacing="-1.8">Nexrial</text>
+  </g>
+</svg>
