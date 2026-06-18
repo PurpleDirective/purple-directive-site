@@ -54,11 +54,11 @@ This isn't aspirational. It's the baseline that sponsors expect when they award 
 
 ## Building vs. Buying
 
-Writing 12 SOPs from scratch takes a qualified person 80-120 hours. That's factoring in regulatory research, cross-referencing ICH guidelines, drafting procedures, creating companion forms, and routing for PI review.
+Writing 13 SOPs from scratch takes a qualified person 80-120 hours. That's factoring in regulatory research, cross-referencing ICH guidelines, drafting procedures, creating companion forms, and routing for PI review.
 
 The alternative is starting from professionally written templates that already have the regulatory framework built in. You customize them — add your site name, your PI, your specific workflows — and you have a signed SOP library in days instead of months.
 
-This is why we built the [SOP Template Bundle](/sop-bundle). Twelve SOPs covering the full clinical study lifecycle, aligned to ICH E6(R2/R3), with editable Word files and companion forms. It's the infrastructure we wished existed when we were building a research site from the ground up.
+This is why we built the [SOP Template Bundle](/sop-bundle). Thirteen SOPs covering the full clinical study lifecycle, aligned to ICH E6(R2/R3), with editable Word files and companion forms. It's the infrastructure we wished existed when we were building a research site from the ground up.
 
 ---
 
