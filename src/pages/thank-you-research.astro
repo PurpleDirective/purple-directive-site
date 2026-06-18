@@ -1,0 +1,154 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Payment received — your research intake"
+  description="Your Healthcare Market Research order is confirmed. Complete the short intake so scope can be confirmed before research begins."
+>
+  <section class="section hero">
+    <h1>Payment received — <span class="accent">thank you</span></h1>
+    <p class="subtitle">
+      Your Healthcare Market Research order is confirmed. One short step before research begins:
+      complete the intake below so the scope can be confirmed against what you actually need.
+    </p>
+  </section>
+
+  <section class="intake-wrap">
+    <ol class="next-steps">
+      <li><strong>Complete the intake form below</strong> — about 5 minutes.</li>
+      <li><strong>Scope confirmed within 12 hours</strong> — a short reply confirms scope (or asks 1–3 clarifying questions).</li>
+      <li><strong>Report delivered in 48 hours</strong> — a structured PDF, timed from when scope is confirmed.</li>
+    </ol>
+
+    <p class="scoping-note">
+      Prefer to talk first?
+      <a href="https://calendly.com/nexrial/healthcare-market-research-scoping-call">Book a 15-minute scoping call →</a>
+    </p>
+
+    <p id="intake-error" class="intake-error" style="display:none"></p>
+
+    <form class="intake-form" action="/api/research-intake" method="POST">
+      <input type="hidden" name="form" value="research-intake" />
+      <!-- honeypot: bots fill this; humans never see it -->
+      <input type="text" name="company_website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+      <label>Your name <span class="req">*</span>
+        <input type="text" name="name" required maxlength="120" />
+      </label>
+      <label>Your email <span class="req">*</span>
+        <input type="email" name="email" required maxlength="160" />
+        <small>Where the report will be sent.</small>
+      </label>
+      <label>Your role / title <span class="req">*</span>
+        <input type="text" name="role" required maxlength="120" placeholder="e.g. Founder, VP Strategy, Investor" />
+      </label>
+      <label>Company / organization <span class="req">*</span>
+        <input type="text" name="company" required maxlength="160" />
+      </label>
+      <label>Stripe order ID <span class="req">*</span>
+        <input type="text" name="stripe_order_id" required maxlength="120" />
+        <small>From your Stripe receipt email — confirms your payment matches this intake.</small>
+      </label>
+      <label>What market do you need researched? <span class="req">*</span>
+        <textarea name="market" required rows="3" placeholder="Be specific. 'AI-assisted prior authorization for Medicare Advantage payers' beats 'healthcare AI'."></textarea>
+      </label>
+      <label>What decision are you making with this report? <span class="req">*</span>
+        <textarea name="decision" required rows="3"></textarea>
+      </label>
+      <label>Specific questions you need answered <span class="req">*</span>
+        <textarea name="questions" required rows="3" placeholder="List 3–5: market size, top competitors, pricing benchmarks, regulatory pathway, reimbursement…"></textarea>
+      </label>
+      <label>What does NOT need to be in the report?
+        <textarea name="not_needed" rows="2"></textarea>
+      </label>
+      <label>Geography focus <span class="req">*</span>
+        <select name="geography" required>
+          <option value="" disabled selected>Select…</option>
+          <option>United States</option>
+          <option>European Union</option>
+          <option>United Kingdom</option>
+          <option>Asia-Pacific</option>
+          <option>Global</option>
+          <option>Other</option>
+        </select>
+      </label>
+      <label>When do you need this report? <span class="req">*</span>
+        <input type="date" name="deadline" required />
+        <small>Standard turnaround is 48 hours from confirmed scope.</small>
+      </label>
+      <label>Do you need a mutual NDA before research begins? <span class="req">*</span>
+        <select name="nda" required>
+          <option value="" disabled selected>Select…</option>
+          <option value="No">No</option>
+          <option value="Yes">Yes — send me a mutual NDA first</option>
+        </select>
+      </label>
+      <label>Who will read this report?
+        <textarea name="audience" rows="2" placeholder="CFO, board, a VC, your engineering team — helps calibrate depth."></textarea>
+      </label>
+      <label>Anything else I should know?
+        <textarea name="anything_else" rows="2"></textarea>
+      </label>
+      <label>How did you find this service?
+        <input type="text" name="how_found" maxlength="160" />
+      </label>
+
+      <p class="docs-note">
+        Have documents to share (prior research, a one-pager, competitor materials)? You can reply to the
+        confirmation email with attachments — all confidential, mutual NDA available.
+      </p>
+
+      <button type="submit" class="submit-btn">Submit intake</button>
+      <p class="priv-note">Your information is used only to produce your report. Not shared with third parties, not used to train any AI model.</p>
+    </form>
+  </section>
+</Base>
+
+<style>
+  .intake-wrap { max-width: 720px; margin: 0 auto; padding: 0 1rem 3rem; }
+  .next-steps { line-height: 1.7; padding-left: 1.2rem; }
+  .next-steps li { margin-bottom: 0.4rem; }
+  .scoping-note { margin: 1.25rem 0 2rem; }
+  .intake-error {
+    background: #fdecec; border: 1px solid #e7a3a3; color: #8a1f1f;
+    padding: 0.7rem 0.9rem; border-radius: 8px; margin-bottom: 1.25rem; font-size: 0.92rem;
+  }
+  .intake-form { display: flex; flex-direction: column; gap: 1.1rem; }
+  .intake-form label { display: flex; flex-direction: column; gap: 0.35rem; font-weight: 600; font-size: 0.95rem; }
+  .intake-form input, .intake-form textarea, .intake-form select {
+    font: inherit; padding: 0.6rem 0.7rem; border: 1px solid var(--border);
+    border-radius: 8px; background: #fff; color: inherit; font-weight: 400;
+  }
+  .intake-form textarea { resize: vertical; }
+  .intake-form small { font-weight: 400; color: var(--text-secondary); font-size: 0.82rem; }
+  .req { color: var(--purple-primary); }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .docs-note, .priv-note { font-size: 0.85rem; color: var(--text-secondary); }
+  .submit-btn {
+    align-self: flex-start; margin-top: 0.5rem; cursor: pointer;
+    background: var(--purple-primary, #5B21B6); color: #fff; border: none;
+    padding: 0.8rem 1.6rem; border-radius: 8px; font-weight: 600; font-size: 1rem;
+  }
+  .submit-btn:hover { opacity: 0.92; }
+</style>
+
+<script is:inline>
+  (function () {
+    var code = new URLSearchParams(location.search).get('intake_error');
+    if (!code) return;
+    var map = {
+      'missing-fields': 'Please complete all required fields and resubmit.',
+      'invalid-email': 'That email address looks invalid — please check it and resubmit.',
+      'not-configured': 'The intake form isn’t fully configured yet. Please email info@purpledirective.com.',
+      'bad-request': 'Your submission could not be read. Please try again.',
+      'auth': 'The intake mailer rejected the request. Please email info@purpledirective.com.',
+      'rate-limited': 'Too many submissions right now — please wait a moment and resubmit.',
+      'resend-down': 'The mail service is temporarily unavailable. Please try again shortly.',
+      'network': 'Something went wrong sending your intake. Please try again or email info@purpledirective.com.',
+      'unknown': 'Something went wrong. Please try again or email info@purpledirective.com.'
+    };
+    var el = document.getElementById('intake-error');
+    if (el) { el.textContent = map[code] || map['unknown']; el.style.display = 'block'; }
+  })();
+</script>
