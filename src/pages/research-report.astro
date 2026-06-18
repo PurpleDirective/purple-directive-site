@@ -6,24 +6,26 @@ import EmailCapture from '../components/EmailCapture.astro';
 <Base
   title="48-Hour Healthcare Market Research Reports"
   activePage="products"
-  description="Analyst-grade healthcare and clinical research market reports delivered in 48 hours. Flat $750 fee. Written by Tyrian Murex, working on FDA-regulated studies at a 21-hospital US academic health system."
+  description="Decision-grade healthcare and life-sciences market research, verified by a clinical-research practitioner against primary FDA, clinical-trial, and payer sources. Flat $750 fee, 48-hour turnaround. Written by Tyrian Murex."
 >
 
   <!-- Hero -->
   <div class="product-top">
     <div class="product-hero">
       <div class="product-hero-text">
-        <span class="product-badge">Research Service</span>
-        <h1>Healthcare Market Research, Delivered in 48 Hours</h1>
+        <span class="product-badge">Healthcare &amp; Life-Sciences Research</span>
+        <h1>Decision-grade healthcare market research, verified by a clinical-research practitioner.</h1>
         <p class="product-tagline">
-          You need to understand your market. You don't need a $15,000 agency and a three-week wait.
-          Written by Tyrian Murex, working on FDA-regulated studies at a 21-hospital US academic
-          health system. Structured, cited, analyst-grade reports in healthcare, life sciences,
-          and clinical operations — turned around in 48 hours.
+          AI can draft a market report in minutes — and in healthcare it will be confidently wrong:
+          fabricated citations, stale FDA approvals, reimbursement details it can't actually read. I do
+          the layer that makes it usable — every claim checked against primary FDA, clinical-trial, and
+          payer sources, with my name on the conclusions. Written by Tyrian Murex, working on
+          FDA-regulated studies at a major US academic health system. 48-hour turnaround — instead of
+          $15,000 and three weeks from an agency.
         </p>
         <div class="product-price-row">
           <span class="product-price">$750</span>
-          <span class="product-price-note">flat fee · no revisions theater · delivered as PDF</span>
+          <span class="product-price-note">flat fee · 48 hours · 20–25pp PDF + 1-page executive summary + sources appendix</span>
         </div>
         <a href="/buy/research-report?utm_source=direct&utm_medium=research-report-hero" class="buy-btn">Order a Report</a>
         <p class="buy-note">
@@ -57,6 +59,29 @@ import EmailCapture from '../components/EmailCapture.astro';
       <div class="stat"><strong>Healthcare</strong> Focus</div>
     </div>
   </div>
+
+  <!-- Why not just use AI -->
+  <section class="why-now-section">
+    <h2>Why not just run it through AI yourself?</h2>
+    <div class="why-now-grid">
+      <div class="why-now-card">
+        <h3>In healthcare, AI is wrong where it matters most</h3>
+        <p>Independent 2026 testing found up to ~17% of AI-generated <em>medical</em> citations don't actually support the claim — and you can't tell which by reading it. I open and verify every source against the primary record.</p>
+      </div>
+      <div class="why-now-card">
+        <h3>The facts move faster than the model</h3>
+        <p>FDA approvals, label changes, and reimbursement codes shift constantly; one evaluation measured 29% accuracy on FDA boxed warnings. I check the current primary source as of your report date — not a training cutoff.</p>
+      </div>
+      <div class="why-now-card">
+        <h3>It can't read what your decision rests on</h3>
+        <p>The primary literature, payer policies, and competitor filings that actually drive the decision sit behind paywalls a public-web AI never opens. I do.</p>
+      </div>
+      <div class="why-now-card">
+        <h3>You get a name, not a black box</h3>
+        <p>The AI signs nothing and owns nothing. You get a credentialed clinical-research practitioner who stakes professional judgment on the conclusions — the layer that turns information into a decision you can defend.</p>
+      </div>
+    </div>
+  </section>
 
   <!-- What You Get -->
   <section class="why-now-section">
@@ -114,7 +139,7 @@ import EmailCapture from '../components/EmailCapture.astro';
     <div class="why-now-grid">
       <div class="why-now-card">
         <h3>Practitioner-Level Clinical Research Background</h3>
-        <p>Tyrian Murex is a clinical research associate at a 21-hospital US academic health system, working on active FDA-regulated studies. When a report covers clinical trials, site operations, CRO dynamics, regulatory pathways, or reimbursement — that isn't research done for the first time. It's the day job.</p>
+        <p>Tyrian Murex is a clinical research associate at a major US academic health system, working on active FDA-regulated studies. When a report covers clinical trials, site operations, CRO dynamics, regulatory pathways, or reimbursement — that isn't research done for the first time. It's the day job.</p>
       </div>
       <div class="why-now-card">
         <h3>ICH-GCP Certification and Hands-On Regulatory Context</h3>
@@ -151,6 +176,14 @@ import EmailCapture from '../components/EmailCapture.astro';
         <h3>Consultants Needing Overflow Research Capacity</h3>
         <p>Your client asked for something you don't have time to research yourself. Subcontract the research to someone who can turn it around in 48 hours and knows the clinical space.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- Honest fit -->
+  <section class="why-now-section">
+    <div style="padding: var(--spacing-lg); border: 1px solid var(--border); border-radius: 8px;">
+      <h3 style="margin-top: 0;">When you should <em>not</em> hire me</h3>
+      <p style="margin-bottom: 0; color: var(--text-secondary);">If it's a low-stakes scan, you're already a domain expert, or no real decision rides on the answer — use the $20/month AI tools and save your money. This service is for decisions where being wrong is expensive.</p>
     </div>
   </section>
 
