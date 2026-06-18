@@ -1,0 +1,416 @@
+---
+import Base from '../layouts/Base.astro';
+import EmailCapture from '../components/EmailCapture.astro';
+// Full SOP body rendered inline (generated from SOP-008 v1.1 source). Sections 1–7.
+import sopBody from '../data/sop-008-body.html?raw';
+
+const pageUrl = "https://purpledirective.com/adverse-event-protocol-deviation-sop/";
+
+const techArticleSchema = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Adverse Events & Protocol Deviations SOP — Free ICH E6(R3) Template",
+  "description": "A free, editable Standard Operating Procedure template for adverse event, SAE, protocol deviation, exception, unanticipated problem, and non-compliance reporting at clinical research sites. Aligned to ICH E6(R3). Word + PDF, no signup.",
+  "url": pageUrl,
+  "author": { "@type": "Organization", "name": "Purple Directive", "url": "https://purpledirective.com" },
+  "publisher": { "@type": "Organization", "name": "Purple Directive", "url": "https://purpledirective.com" },
+  "datePublished": "2026-06-17",
+  "dateModified": "2026-06-17",
+  "inLanguage": "en-US",
+  "keywords": "protocol deviation SOP template, adverse event reporting SOP, clinical research site SOP template, ICH E6(R3) SOP, SAE reporting timeline, CAPA SOP",
+  "about": [
+    { "@type": "Thing", "name": "Adverse event reporting" },
+    { "@type": "Thing", "name": "Protocol deviations" },
+    { "@type": "Thing", "name": "ICH E6(R3) Good Clinical Practice" }
+  ]
+};
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Clinical Research SOP Template Bundle",
+  "url": "https://purpledirective.com/sop-bundle/",
+  "description": "13 ICH E6(R2/R3)-aligned Standard Operating Procedures for clinical research sites, with 11 companion forms. Editable Word + PDF.",
+  "brand": { "@type": "Organization", "name": "Purple Directive" },
+  "offers": {
+    "@type": "Offer",
+    "price": "249.99",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://purpledirective.com/sop-bundle/"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is this adverse event and protocol deviation SOP template really free?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The full SOP-008 template is free to read, download, and adapt — in editable Word and PDF, with no email signup. It is one of 13 SOPs in the Purple Directive bundle; this one is published in full so a site can evaluate the depth and structure before deciding on the complete library." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I edit this SOP for my own clinical research site?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Word file contains bracketed placeholders such as [Site Name] and [Institutional Policy #]. Replace the placeholders, adapt the procedures to your operations, route the document through your own QA review, and have the Principal Investigator approve and sign before implementation." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this SOP aligned to ICH E6(R3)?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. It is written against the current ICH E6(R3) framework — including Quality by Design, Critical to Quality factors, and proportionate risk-based management — while preserving the specific E6(R2) section references and the 21 CFR Part 312/812 and 45 CFR Part 46 citations that sites and sponsors still rely on." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is in the full $249.99 SOP bundle?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Thirteen ICH E6(R3)-aligned SOPs and 11 companion forms — including the AE/SAE Tracking Log that pairs with this SOP — plus cross-references that connect the procedures into a single audit-ready library. This free SOP is the standalone document; the companion form, the other 12 SOPs, and the cross-references are in the bundle." }
+    }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://purpledirective.com/" },
+    { "@type": "ListItem", "position": 2, "name": "ICH E6(R3) SOP Templates", "item": "https://purpledirective.com/ich-gcp-sop-templates/" },
+    { "@type": "ListItem", "position": 3, "name": "Adverse Event & Protocol Deviation SOP", "item": pageUrl }
+  ]
+};
+---
+
+<Base
+  title="Adverse Event & Protocol Deviation SOP — Free Template"
+  activePage="products"
+  ogType="article"
+  description="A free, editable ICH E6(R3)-aligned SOP template for adverse event, SAE, protocol deviation, and non-compliance reporting at clinical research sites. Download in Word and PDF — no signup."
+>
+
+  <script type="application/ld+json" set:html={JSON.stringify(techArticleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <!-- Hero -->
+  <div class="product-top">
+    <div class="product-hero">
+      <div class="product-hero-text">
+        <span class="product-badge">Free SOP Template · ICH E6(R3)-aligned</span>
+        <h1>Adverse Events &amp; Protocol Deviations SOP — Free, Editable Template</h1>
+        <p class="product-tagline">
+          A complete, site-ready Standard Operating Procedure for reporting adverse events, serious adverse events,
+          protocol deviations, exceptions, unanticipated problems, and non-compliance — with SAE reporting timelines,
+          CAPA steps, and the regulatory citations a sponsor or FDA inspector expects. Free to download and adapt.
+          No email required.
+        </p>
+        <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: var(--spacing-md);">
+          <a href="/sops/SOP-008-Adverse-Events-Protocol-Deviations.docx" class="buy-btn" style="max-width: 280px;" download>Download editable Word (.docx)</a>
+          <a href="/sops/SOP-008-Adverse-Events-Protocol-Deviations.pdf" class="buy-btn" style="max-width: 220px; background: transparent; color: var(--purple-primary); border: 1.5px solid var(--purple-primary);" download>Download PDF</a>
+        </div>
+        <p class="buy-note">
+          Free to use and adapt for your site — one of 13 SOPs in the
+          <a href="/sop-bundle/">full ICH E6(R3) bundle</a>. The matching AE/SAE Tracking Log and the other 12 SOPs stay in the bundle.
+        </p>
+      </div>
+      <div class="product-hero-preview">
+        <div>
+          <p style="margin: 0 0 0.5rem; font-weight: 600; text-align: center;">What this SOP covers</p>
+          <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.85rem; line-height: 1.8;">
+            <li><a href="#5-procedures">AE &amp; SAE reporting</a></li>
+            <li><a href="#sae-reporting-timeline-summary">SAE reporting timelines</a></li>
+            <li><a href="#511-corrective-and-preventive-action-capa-for-safety-events">CAPA for safety events</a></li>
+            <li><a href="#53-protocol-deviations">Protocol deviations</a></li>
+            <li><a href="#54-protocol-exceptions">Protocol exceptions</a></li>
+            <li><a href="#56-non-compliance">Non-compliance</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="product-stats">
+      <div class="stat"><strong>SOP-008</strong> v1.1</div>
+      <div class="stat-sep"></div>
+      <div class="stat"><strong>ICH E6(R3)</strong> aligned</div>
+      <div class="stat-sep"></div>
+      <div class="stat"><strong>Word + PDF</strong></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><strong>$0</strong> — no signup</div>
+    </div>
+  </div>
+
+  <!-- Positioning / how to use -->
+  <section class="why-now-section">
+    <h2>A real SOP, not a teaser</h2>
+    <div class="why-now-grid">
+      <div class="why-now-card">
+        <h3>Editable, site-ready</h3>
+        <p>The Word file uses bracketed placeholders (<code>[Site Name]</code>, <code>[Institutional Policy #]</code>). Replace them, adapt to your operations, run it through your QA, and have the PI approve. This is the same template layer a custom SOP consulting engagement would hand you — published in full.</p>
+      </div>
+      <div class="why-now-card">
+        <h3>Written against E6(R3)</h3>
+        <p>Quality by Design, Critical to Quality factors, and proportionate risk-based management are built in — alongside the E6(R2) section references and 21 CFR Part 312/812 and 45 CFR Part 46 citations that sponsors and inspectors still hold sites to.</p>
+      </div>
+      <div class="why-now-card">
+        <h3>Mapped to what FDA cites</h3>
+        <p>Adverse-event and protocol-compliance failures are among the most-cited FDA BIMO Form 483 observation categories. See the free <a href="/bimo-taxonomy/">FY2022–2024 BIMO 483 Taxonomy</a> for the specific citations this SOP is designed to prevent.</p>
+      </div>
+      <div class="why-now-card">
+        <h3>What stays in the bundle</h3>
+        <p>This SOP references a companion <strong>AE/SAE Tracking Log</strong> and cross-references other procedures (data management, monitoring, close-out). The log, the cross-references, and the other 12 SOPs are part of the <a href="/sop-bundle/">$249.99 bundle</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Disclaimer banner -->
+  <section class="why-now-section">
+    <div class="sop-disclaimer">
+      <strong>Template — read before use.</strong> This SOP is provided for informational and educational purposes only and is a customizable starting point, not legal, regulatory, or medical advice. Each site must review, adapt, and validate it against its own institutional policies, applicable regulations, IRB requirements, and sponsor protocols before implementation. Purple Directive assumes no liability for the use or misuse of this template.
+    </div>
+  </section>
+
+  <!-- The SOP document, rendered in full -->
+  <section class="why-now-section">
+    <article class="sop-doc">
+      <header class="sop-doc-head">
+        <p class="sop-doc-kicker">Standard Operating Procedure</p>
+        <h2 class="sop-doc-title">SOP-008 — Adverse Events, Protocol Deviations, Protocol Exceptions, Unanticipated Problems, and Non-Compliance</h2>
+        <p class="sop-doc-meta">Version 1.1 · ICH E6(R3)-aligned · Purple Directive</p>
+      </header>
+      <div class="sop-doc-body" set:html={sopBody} />
+    </article>
+  </section>
+
+  <!-- Bundle CTA -->
+  <section class="why-now-section cta-tinted">
+    <h2>This is 1 of 13. Get the full library.</h2>
+    <p style="max-width: 660px; margin: 0 auto 1.5rem;">
+      The complete bundle is 13 ICH E6(R3)-aligned SOPs and 11 companion forms — training, essential documents, consent, IP,
+      data management, monitoring, close-out, HIPAA — plus the AE/SAE Tracking Log that pairs with this procedure, and the
+      cross-references that turn 13 documents into one audit-ready system. $249.99 for the bundle, or $29 for a single SOP.
+    </p>
+    <a href="/sop-bundle/" class="buy-btn" style="display: inline-block;">See the SOP Bundle</a>
+    <p style="margin-top: 1rem; font-size: 0.9rem;">
+      Comparing options first? See <a href="/ich-gcp-sop-templates/">how the bundle stacks up against SOP consulting and QMS platforms</a>.
+    </p>
+  </section>
+
+  <!-- Related free resources -->
+  <section class="why-now-section">
+    <h2>More free resources</h2>
+    <div class="why-now-grid">
+      <div class="why-now-card">
+        <h3><a href="/bimo-taxonomy/">BIMO 483 Observation Taxonomy</a></h3>
+        <p>The seven FDA BIMO Form 483 observation categories at clinical investigator sites, FY2022–2024, with primary-source citations. Shows exactly which failures each SOP prevents.</p>
+      </div>
+      <div class="why-now-card">
+        <h3><a href="/how-to-read-an-fda-483/">How to Read an FDA 483</a></h3>
+        <p>A practitioner's walkthrough of an FDA Form 483 — what each observation means and how a site responds.</p>
+      </div>
+      <div class="why-now-card">
+        <h3><a href="/ich-gcp-sop-templates/">SOP Options Compared</a></h3>
+        <p>How a $249.99 template bundle compares to $5K–$15K custom SOP consulting and $10K+/year QMS platforms.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <h2>Questions</h2>
+    <details class="faq-item">
+      <summary>Is this adverse event and protocol deviation SOP template really free?</summary>
+      <p>Yes. The full SOP-008 template is free to read, download, and adapt — in editable Word and PDF, with no email signup. It is one of 13 SOPs in the Purple Directive bundle; this one is published in full so a site can evaluate the depth and structure before deciding on the complete library.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Can I edit this SOP for my own clinical research site?</summary>
+      <p>Yes. The Word file contains bracketed placeholders such as <code>[Site Name]</code> and <code>[Institutional Policy #]</code>. Replace the placeholders, adapt the procedures to your operations, route the document through your own QA review, and have the Principal Investigator approve and sign before implementation.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Is this SOP aligned to ICH E6(R3)?</summary>
+      <p>Yes. It is written against the current ICH E6(R3) framework — including Quality by Design, Critical to Quality factors, and proportionate risk-based management — while preserving the specific E6(R2) section references and the 21 CFR Part 312/812 and 45 CFR Part 46 citations that sites and sponsors still rely on.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What is in the full $249.99 SOP bundle?</summary>
+      <p>Thirteen ICH E6(R3)-aligned SOPs and 11 companion forms — including the AE/SAE Tracking Log that pairs with this SOP — plus cross-references that connect the procedures into a single audit-ready library. This free SOP is the standalone document; the companion form, the other 12 SOPs, and the cross-references are in the <a href="/sop-bundle/">bundle</a>.</p>
+    </details>
+  </section>
+
+  <!-- Email capture -->
+  <section class="why-now-section" id="subscribe">
+    <EmailCapture
+      heading="Get the next free SOP and regulatory note"
+      subheading="Occasional practitioner notes on ICH E6(R3), FDA enforcement patterns, and site-level SOPs — plus a heads-up when the next free template goes up. No hype, no pitch."
+    />
+  </section>
+
+</Base>
+
+<style>
+  /* SOP disclaimer banner */
+  .sop-disclaimer {
+    background: #fffaf0;
+    border: 1px solid var(--accent-amber);
+    border-left: 4px solid var(--accent-amber);
+    border-radius: 8px;
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+  .sop-disclaimer strong { color: var(--text-primary); }
+
+  /* The embedded SOP document */
+  .sop-doc {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: var(--spacing-xl);
+    max-width: 820px;
+  }
+
+  .sop-doc-head {
+    border-bottom: 2px solid var(--purple-tint);
+    padding-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+  }
+  .sop-doc-kicker {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--purple-primary);
+    margin: 0 0 0.35rem;
+  }
+  .sop-doc-title {
+    font-size: 1.15rem;
+    line-height: 1.35;
+    margin: 0 0 0.5rem;
+    color: var(--text-primary);
+  }
+  .sop-doc-meta {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* Body typography (rendered from markdown) */
+  .sop-doc-body :global(h2) {
+    font-size: 1.05rem;
+    color: var(--purple-primary);
+    margin: var(--spacing-lg) 0 var(--spacing-sm);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border);
+  }
+  .sop-doc-body :global(h2:first-child) {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+  .sop-doc-body :global(h3) {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    margin: var(--spacing-md) 0 0.35rem;
+  }
+  .sop-doc-body :global(h4) {
+    font-size: 0.88rem;
+    color: var(--text-primary);
+    margin: var(--spacing-md) 0 0.35rem;
+  }
+  .sop-doc-body :global(p),
+  .sop-doc-body :global(li) {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+  .sop-doc-body :global(ul),
+  .sop-doc-body :global(ol) {
+    padding-left: 1.3rem;
+    margin: 0.5rem 0;
+  }
+  .sop-doc-body :global(li) { margin-bottom: 0.3rem; }
+  .sop-doc-body :global(strong) { color: var(--text-primary); }
+
+  /* Regulatory / E6(R3) note callouts */
+  .sop-doc-body :global(blockquote) {
+    margin: var(--spacing-md) 0;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--bg-tinted);
+    border-left: 3px solid var(--purple-light);
+    border-radius: 4px;
+  }
+  .sop-doc-body :global(blockquote p) {
+    margin: 0;
+    font-size: 0.84rem;
+    color: var(--text-secondary);
+  }
+
+  /* SAE timeline table — scroll wrapper keeps wide tables from overflowing on mobile */
+  .sop-doc-body :global(.sop-table-wrap) {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: var(--spacing-md) 0;
+  }
+  .sop-doc-body :global(table) {
+    width: 100%;
+    min-width: 520px;
+    border-collapse: collapse;
+    margin: 0;
+    font-size: 0.82rem;
+  }
+  .sop-doc-body :global(th),
+  .sop-doc-body :global(td) {
+    border: 1px solid var(--border);
+    padding: 0.5rem 0.65rem;
+    text-align: left;
+    vertical-align: top;
+  }
+  .sop-doc-body :global(th) {
+    background: var(--bg-tinted);
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+  .sop-doc-body :global(td) { color: var(--text-secondary); }
+
+  /* Inline placeholder code */
+  .sop-doc-body :global(code),
+  .why-now-card code,
+  .faq-item code {
+    font-family: var(--font-mono);
+    font-size: 0.82em;
+    background: var(--bg-code);
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+  }
+
+  /* FAQ — local (mirrors sop-bundle styling) */
+  .faq-section {
+    padding: var(--spacing-xl) 0;
+    border-top: 1px solid var(--border);
+    max-width: 700px;
+  }
+  .faq-section h2 { font-size: 1.15rem; margin: 0 0 var(--spacing-lg); }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-item summary {
+    padding: var(--spacing-md) 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: "+"; font-size: 1.1rem; color: var(--text-muted); margin-left: var(--spacing-md); }
+  .faq-item[open] summary::after { content: "\2212"; }
+  .faq-item p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    padding-bottom: var(--spacing-md);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .sop-doc { padding: var(--spacing-lg); }
+  }
+</style>
