@@ -1,0 +1,23 @@
+---
+/**
+ * Redesign nav ("The Practice" flagship system).
+ * Transparent over dark heroes, solidifies over light content
+ * (logic lives in the Site layout's shared scripts).
+ * Links are root-relative so the homepage anchors work cross-page.
+ */
+---
+<nav>
+  <div class="container">
+    <a href="/" class="logo" aria-label="Purple Directive home">
+      <img src="/pd-mark-dark.svg" class="mk mk-d" alt="" aria-hidden="true" width="22" height="26" />
+      <img src="/pd-mark-light.svg" class="mk mk-l" alt="" aria-hidden="true" width="22" height="26" />
+      <span class="lt">Purple<span>Directive</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#products">Products</a></li>
+      <li><a href="/#standard">The Standard</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+    <a href="/sop-bundle" class="nav-cta">Get the SOPs</a>
+  </div>
+</nav>
