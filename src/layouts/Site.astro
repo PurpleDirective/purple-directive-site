@@ -1,0 +1,120 @@
+---
+/**
+ * Site.astro — layout for the "The Practice" flagship redesign.
+ * Self-hosts fonts (@fontsource) + bundles CSS so the strict CSP in
+ * public/_headers (script-src/font-src/style-src 'self') is satisfied
+ * with no third-party origins.
+ */
+import { social } from '../data/social';
+import '@fontsource/inter/300.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
+import '@fontsource/inter/800.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import '../styles/pd.css';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ChatWidget from '../components/ChatWidget.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  ogType?: string;
+}
+
+const {
+  title,
+  description = "Compliance-grade software and operations consulting for clinical research sites and CROs.",
+  ogImage = "/og-image.png",
+  ogType = "website",
+} = Astro.props;
+
+const fullTitle = title === "Home" ? "Purple Directive — The standard clinical research runs on" : `${title} — Purple Directive`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// "Ask Purple" widget ships hidden until the Bedrock-backed /api/chat is wired:
+// set PUBLIC_CHAT_ENABLED=true in Cloudflare Pages once the AWS Bedrock secrets
+// (AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY) are configured. Avoids launching a
+// visibly-broken chat that would 503 on first use.
+const chatEnabled = import.meta.env.PUBLIC_CHAT_ENABLED === 'true';
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#1e1040" />
+  <!-- TODO(brand): regenerate favicon PNGs from the new pd mark; SVG is current. -->
+  <link rel="icon" type="image/svg+xml" href="/pd-favicon.svg" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="192x192" href="/favicon-192.png" />
+  <link rel="canonical" href={canonicalURL} />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:type" content={ogType} />
+  <meta property="og:site_name" content="Purple Directive" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content={social.x.handle} />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
+
+  <title>{fullTitle}</title>
+  <slot name="head" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <SiteNav />
+  <main id="main">
+    <slot />
+  </main>
+  <SiteFooter />
+  {chatEnabled && <ChatWidget />}
+
+  <!-- Shared: robust in-page anchor scroll (native jump gets eaten while the 3D hub sizes the hero) -->
+  <script is:inline>
+    (function(){
+      var NAV=66;
+      function go(id){ var el=document.getElementById(id); if(!el) return;
+        var y=el.getBoundingClientRect().top+window.pageYOffset-NAV; window.scrollTo({top:y,behavior:'smooth'}); }
+      document.addEventListener('click',function(e){
+        var a=e.target.closest?e.target.closest('a[href^="#"], a[href^="/#"]'):null; if(!a) return;
+        var href=a.getAttribute('href'); var hashIndex=href.indexOf('#'); if(hashIndex<0) return;
+        var id=href.slice(hashIndex+1);
+        // only intercept if the target exists on THIS page (cross-page /#x falls through to navigation)
+        if(id && document.getElementById(id)){ e.preventDefault(); if(history.replaceState) history.replaceState(null,'','#'+id); go(id); }
+      });
+      if(location.hash.length>1){ var id=location.hash.slice(1);
+        window.addEventListener('load',function(){ setTimeout(function(){ go(id); },450); }); }
+    })();
+  </script>
+  <!-- Shared: nav blends into dark heroes, solidifies over light content -->
+  <script is:inline>
+    (function(){
+      var nav=document.querySelector('nav'); if(!nav) return;
+      var light=document.querySelectorAll('.section,.proof,.page-head');
+      function upd(){ var h=nav.offsetHeight, solid=false;
+        light.forEach(function(s){ var r=s.getBoundingClientRect(); if(r.top<h && r.bottom>0) solid=true; });
+        nav.classList.toggle('on-light', solid); }
+      upd(); window.addEventListener('scroll',upd,{passive:true}); window.addEventListener('resize',upd);
+    })();
+  </script>
+
+  <!-- PD Analytics -->
+  <script defer src="https://analytics.purpledirective.com/t.js"></script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "be7494dd3df347c1b626566b5b386d91"}'></script>
+</body>
+</html>

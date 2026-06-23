@@ -1,604 +1,292 @@
 ---
-import Base from '../layouts/Base.astro';
+import Site from '../layouts/Site.astro';
 ---
-
-<Base title="Home" activePage="home" description="Purple Directive — compliance-grade software and operations consulting for clinical research sites and CROs. SOP templates, CTMS, and regulatory infrastructure.">
-
-  <!-- Hero -->
+<Site
+  title="Home"
+  description="The standard clinical research runs on. Software, SOPs, and infrastructure for the people who run the studies — one operating standard, from your first protocol to your fiftieth."
+>
+  <!-- HERO -->
   <section class="hero">
-    <p class="tagline">Clinical Research Operations</p>
-    <h1>Purple<span class="accent">Directive</span></h1>
-    <p class="subtitle">
-      Compliance-grade software and operations consulting for sponsors, CROs, and research sites.
-      SOPs, CTMS, regulatory infrastructure — built from real site operations across Phase I–IV studies.
-    </p>
-    <div class="hero-cta">
-      <a href="#products" class="btn-primary">View Products</a>
-      <a href="/hire" class="btn-secondary">Work With Us</a>
+    <div class="atmos" aria-hidden="true"></div>
+    <div class="container">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="pip"></span>Clinical Research Operations</span>
+        <h1 class="head"><span class="ln">The Standard</span><span class="ln soft">clinical research</span><span class="ln"><span class="accent">runs on.</span></span></h1>
+        <p class="sub">Software, SOPs, and infrastructure for the people who run the studies &mdash; <b>one operating standard</b>, from your first protocol to your fiftieth.</p>
+        <div class="cta-row">
+          <a href="#products" class="btn-primary">Explore the products
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="/sop-bundle" class="btn-ghost">Get the SOP bundle &mdash; $249.99</a>
+        </div>
+      </div>
+
+      <div class="hub-wrap">
+        <div class="hub" id="hub" role="img" aria-label="Purple Directive's portfolio: a central practice with seven instruments — Nexrial, the SOP Library, Research Reports, PurpleSign, QuillPDF, Volstrin, and Consulting — orbiting one standard in three dimensions.">
+          <div class="hub-inner" id="hubInner">
+            <canvas id="hubCanvas" aria-hidden="true"></canvas>
+            <div class="core-pulse" id="corePulse" aria-hidden="true"></div>
+            <div class="core" aria-hidden="true">
+              <img src="/pd-mark-grad.svg" alt="" aria-hidden="true" width="50" height="60" />
+            </div>
+            <div id="nodes"></div>
+          </div>
+          <div class="ledger-box" aria-hidden="true">
+            <div class="ledger-cap"><span class="lp"></span>Append-only ledger</div>
+            <ul id="ledger"></ul>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Trust Indicators -->
-  <section class="trust-bar">
-    <div class="trust-item">
-      <span class="trust-num">ICH E6(R2/R3)</span>
-      <span class="trust-label">GCP Aligned</span>
-    </div>
-    <div class="trust-item">
-      <span class="trust-num">21 CFR Part 11</span>
-      <span class="trust-label">Audit Trail</span>
-    </div>
-    <div class="trust-item">
-      <span class="trust-num">Phase I–IV</span>
-      <span class="trust-label">Active Studies</span>
-    </div>
-    <div class="trust-item">
-      <span class="trust-num">FDA Inspections</span>
-      <span class="trust-label">Workflows + SOPs</span>
+  <!-- THE STANDARD — audit-trail act -->
+  <section class="audit" id="standard">
+    <div class="container">
+      <div class="section-label audit-label">The Standard, visible</div>
+      <h2 class="audit-h2">An audit trail that can't be undone.</h2>
+      <p class="audit-lede">Every record keeps who, what, when, and why &mdash; <b>appended, never overwritten</b>. This is what "designed against 21 CFR Part 11" actually looks like.</p>
+      <div class="trail" id="trail">
+        <div class="trail-rail"><div class="trail-fill" id="trailFill"></div></div>
+        <ol class="cps">
+          <li class="cp"><span class="cp-dot"></span><div class="cp-card"><span class="cp-k">Source</span><span class="cp-t">Source document captured</span><span class="cp-m">09:42:01 &middot; reyes</span></div></li>
+          <li class="cp"><span class="cp-dot"></span><div class="cp-card"><span class="cp-k">Entry</span><span class="cp-t">Data point recorded</span><span class="cp-m">09:42:18 &middot; park</span></div></li>
+          <li class="cp"><span class="cp-dot"></span><div class="cp-card"><span class="cp-k">Signature</span><span class="cp-t">Signature applied</span><span class="cp-m">09:43:05 &middot; osei</span></div></li>
+          <li class="cp"><span class="cp-dot"></span><div class="cp-card"><span class="cp-k">Audit</span><span class="cp-t">Audit entry logged</span><span class="cp-m">09:43:05 &middot; system</span></div></li>
+          <li class="cp"><span class="cp-dot"></span><div class="cp-card"><span class="cp-k">Locked</span><span class="cp-t">Record locked</span><span class="cp-m">09:43:06 &middot; system</span></div></li>
+        </ol>
+      </div>
     </div>
   </section>
 
-  <!-- Products — split layout -->
+  <!-- SEVEN INSTRUMENTS — products -->
   <section class="section" id="products">
-    <div class="split-layout">
-      <div class="split-left">
-        <h2>Products</h2>
-        <p class="split-desc">Ready-to-use tools for clinical research operations — from day-one compliance templates to full trial management software.</p>
-        <div class="split-stats">
-          <div class="split-stat">
-            <span class="split-stat-num">12</span>
-            <span class="split-stat-label">SOPs</span>
-          </div>
-          <div class="split-stat">
-            <span class="split-stat-num">11</span>
-            <span class="split-stat-label">Forms</span>
-          </div>
-          <div class="split-stat">
-            <span class="split-stat-num">95+</span>
-            <span class="split-stat-label">Pages</span>
-          </div>
-        </div>
+    <div class="container">
+      <div class="section-label">The Portfolio</div>
+      <h2>Seven instruments. One standard.</h2>
+      <p class="lede">From day-one SOP templates to trial-management software &mdash; every product built to the same bar, so the rigor never drops when you move between tools.</p>
+      <div class="inst-grid">
+        <a class="inst" href="https://nexrial.com" target="_blank" rel="noopener"><span class="ik">Software</span><h3>Nexrial <span class="arr">&rarr;</span></h3><p>Clinical trial management with a 21 CFR Part 11 audit trail and role-based access.</p></a>
+        <a class="inst" href="/sop-bundle"><span class="ik">Templates</span><h3>SOP Library <span class="arr">&rarr;</span></h3><p>13 ICH-GCP standard operating procedures across the full study lifecycle.</p></a>
+        <a class="inst" href="/research-report"><span class="ik">Research</span><h3>Research Report <span class="arr">&rarr;</span></h3><p>Analyst-grade healthcare market reports, delivered in 48 hours.</p></a>
+        <a class="inst" href="https://purplesign.app" target="_blank" rel="noopener"><span class="ik">E-signature &middot; soon</span><h3>PurpleSign <span class="arr">&rarr;</span></h3><p>Electronic signatures, designed against 21 CFR Part 11 controls.</p></a>
+        <a class="inst" href="https://quillpdf.com" target="_blank" rel="noopener"><span class="ik">Tools</span><h3>QuillPDF <span class="arr">&rarr;</span></h3><p>Free PDF tools that run in your browser &mdash; redaction stays client-side.</p></a>
+        <a class="inst" href="https://volstrin.com" target="_blank" rel="noopener"><span class="ik">Recruiting</span><h3>Volstrin <span class="arr">&rarr;</span></h3><p>Specialist recruiting for the legal sector &mdash; an adjacent regulated field.</p></a>
+        <a class="inst inst-wide" href="/consulting"><span class="ik">Services</span><h3>Consulting &mdash; regulatory infrastructure, hands-on <span class="arr">&rarr;</span></h3><p>SOP development, binder setup, IRB submission support, and compliance gap assessments &mdash; the same operators, on call.</p></a>
       </div>
-      <div class="split-right">
-        <div class="card product-card featured-card">
-          <div class="popular-badge">Most Popular</div>
-          <div class="card-label">Templates</div>
-          <h3>SOP Template Bundle</h3>
-          <p>
-            13 ICH E6(R2/R3)-aligned Standard Operating Procedures covering the full
-            study lifecycle — from staff training and site start-up through data management,
-            adverse events, monitoring, and close-out.
-          </p>
-          <div class="product-meta">
-            <span class="price">$249.99</span>
-            <span class="price-note">PDF + Word</span>
-          </div>
-          <a href="/sop-bundle" class="btn-primary btn-sm">View the Bundle</a>
-        </div>
+    </div>
+  </section>
 
-        <div class="card product-card">
-          <div class="card-label">Software</div>
-          <h3>Nexrial CTMS</h3>
-          <p>
-            Clinical Trial Management System with 21 CFR Part 11 audit trail,
-            role-based access control, encrypted backups, and multi-tenant architecture.
-          </p>
-          <div class="product-meta">
-            <span class="price">Contact</span>
-            <span class="price-note">Custom deployment</span>
-          </div>
-          <a href="https://nexrial.com" class="btn-secondary btn-sm" target="_blank" rel="noopener">Learn More</a>
+  <!-- OPERATORS — about -->
+  <section class="section" id="about" style="padding-top:0">
+    <div class="container">
+      <div class="section-label">Operators, not vendors</div>
+      <div class="band-split">
+        <div><h2>Built so a small team operates like a large one.</h2></div>
+        <div>
+          <p>Purple Directive isn't a software shop that wandered into clinical research. The people here have sat through the monitoring visits, built the binders, and answered to the inspector &mdash; so the tools assume the work you actually do.</p>
+          <p>And because one company builds all of it, the pieces fit: the SOPs line up with the trial system, the signatures line up with the audit trail. One stack, one standard, one company accountable for all of it.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- What's in the SOPs — split: sidebar + table -->
-  <section class="section section-tinted">
-    <div class="sop-split">
-      <div class="sop-sidebar">
-        <h2>What's in the Bundle</h2>
-        <p>Each SOP is built on ICH E6(R2) with E6(R3) guidance notes, referencing 21 CFR Parts 11/50/56/312 and 45 CFR Part 46.</p>
-        <p class="sop-lifecycle">Ordered by study lifecycle — from first training record to final close-out.</p>
+  <!-- PROOF -->
+  <section class="proof" id="proof">
+    <div class="container">
+      <span class="pl">Built for inspection</span>
+      <span class="pchip">ICH E6(R3)-aligned</span>
+      <span class="pchip">Implements 21 CFR Part 11 controls</span>
+      <span class="pchip">HIPAA BAA available</span>
+      <span class="pchip">Phase I&ndash;IV experience</span>
+      <span class="pchip">Your data exports anytime</span>
+    </div>
+  </section>
 
-        <div class="bundle-extras-stacked">
-          <div class="extra-item">
-            <span class="extra-icon">&#128196;</span>
-            <div>
-              <strong>Editable Word files</strong>
-              <span>Branded PDF + customizable .docx</span>
-            </div>
-          </div>
-          <div class="extra-item">
-            <span class="extra-icon">&#9745;</span>
-            <div>
-              <strong>11 companion forms</strong>
-              <span>Training logs, checklists, tracking templates</span>
-            </div>
-          </div>
-          <div class="extra-item">
-            <span class="extra-icon">&#9998;</span>
-            <div>
-              <strong>PI signature lines</strong>
-              <span>Approval sections on every SOP</span>
-            </div>
-          </div>
-        </div>
-
-        <a href="/sop-bundle" class="btn-primary btn-sm" style="margin-top: var(--spacing-md);">Get the Bundle — $249.99</a>
-      </div>
-
-      <div class="sop-table-wrap">
-        <table class="sop-table">
-          <thead>
-            <tr>
-              <th>SOP</th>
-              <th>Title</th>
-              <th>Key Coverage</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span class="sop-num">001</span></td>
-              <td>Training & Qualification</td>
-              <td>GCP training, DOA log, competency assessment</td>
-            </tr>
-            <tr>
-              <td><span class="sop-num">002</span></td>
-              <td>Essential Documents</td>
-              <td>12-tab binder, ICH E6 Sections 8.2-8.4, eTMF</td>
-            </tr>
-            <tr>
-              <td><span class="sop-num">003</span></td>
-              <td>Study Start-Up</td>
-              <td>Feasibility, CDA/NDA, budget, 1572, SIV prep</td>
-            </tr>
-            <tr>
-              <td><span class="sop-num">004</span></td>
-              <td>Informed Consent</td>
-              <td>20 ICH elements, eConsent, vulnerable populations</td>
-            </tr>
-            <tr>
-              <td><span class="sop-num">005</span></td>
-              <td>Recruitment & Retention</td>
-              <td>10 active + 8 passive methods, compensation</td>
-            </tr>
-            <tr>
-              <td><span class="sop-num">006</span></td>
-              <td>IP Management</td>
-              <td>Receipt, dispensing, unblinding, DEA compliance</td>
-            </tr>
-            <tr>
-              <td><span class="sop-num">007</span></td>
-              <td>Data Management</td>
-              <td>ALCOA+, source docs, 21 CFR Part 11</td>
-            </tr>
-            <tr>
-              <td><span class="sop-num">008</span></td>
-              <td>AE & Deviations</td>
-              <td>SAE reporting timelines, CAPA procedures</td>
-            </tr>
-            <tr>
-              <td><span class="sop-num">009</span></td>
-              <td>QC / QA</td>
-              <td>QA framework, Quality by Design, CtQ factors</td>
-            </tr>
-            <tr>
-              <td><span class="sop-num">010</span></td>
-              <td>Monitoring Visits</td>
-              <td>SQV, SIV, routine, close-out checklists</td>
-            </tr>
-            <tr>
-              <td><span class="sop-num">011</span></td>
-              <td>Remote Monitoring</td>
-              <td>Platform security, PHI, hybrid visits</td>
-            </tr>
-            <tr>
-              <td><span class="sop-num">012</span></td>
-              <td>Study Close-Out</td>
-              <td>DB lock, IP reconciliation, archival</td>
-            </tr>
-            <tr>
-              <td><span class="sop-num">013</span></td>
-              <td>HIPAA Authorization</td>
-              <td>Authorization, waiver, revocation, disclosure log</td>
-            </tr>
-          </tbody>
-        </table>
+  <!-- CTA -->
+  <section class="cta-tail">
+    <div class="container">
+      <h2>Hold your studies to The Standard.</h2>
+      <p>Start with the SOP bundle, or talk to us about the software and consulting behind it.</p>
+      <div class="cta-row">
+        <a href="#products" class="btn-primary">Explore the products</a>
+        <a href="mailto:info@purpledirective.com" class="btn-ghost">Contact us</a>
       </div>
     </div>
   </section>
 
-  <!-- Services -->
-  <section class="section section-deep">
-    <div class="section-header">
-      <h2>Services</h2>
-      <p>Consulting and engineering for clinical research operations.</p>
-    </div>
+  <!-- Baseline: build nodes + ledger. Works even if WebGL / module fails. -->
+  <script is:inline>
+  (function(){
+    window.__INSTR=[
+      {name:'Nexrial', line:'Clinical trial management · Part 11 audit trail'},
+      {name:'SOP Library', line:'13 ICH-GCP standard operating procedures'},
+      {name:'Research Report', line:'Analyst-grade market reports in 48 hours'},
+      {name:'PurpleSign', line:'E-signatures, designed against 21 CFR Part 11'},
+      {name:'QuillPDF', line:'Free, in-browser PDF tools'},
+      {name:'Volstrin', line:'Specialist legal-sector recruiting'},
+      {name:'Consulting', line:'Regulatory infrastructure, hands-on'}
+    ];
+    window.__EVENTS=['Source document verified','Audit entry logged','Signature applied','Consent recorded','Monitoring visit closed','Record locked','Deviation resolved','Query answered'];
+    window.__hover=-1;
+    var nodesLayer=document.getElementById('nodes'), hub=document.getElementById('hub'), ledger=document.getElementById('ledger');
+    if(!nodesLayer||!hub||!ledger) return;
+    window.__nodes=window.__INSTR.map(function(it,i){
+      var a=document.createElement('a'); a.href='#products'; a.className='node';
+      a.setAttribute('aria-label', it.name+' — '+it.line);
+      a.innerHTML='<span class="dot"></span><span class="nm">'+it.name+'</span><span class="chip">'+it.line+'</span>';
+      (function(idx){
+        function en(){window.__hover=idx;} function lv(){if(window.__hover===idx)window.__hover=-1;}
+        a.addEventListener('mouseenter',en); a.addEventListener('mouseleave',lv);
+        a.addEventListener('focus',en); a.addEventListener('blur',lv);
+      })(i);
+      nodesLayer.appendChild(a);
+      return {el:a, it:it};
+    });
+    window.__ringLayout=function(){
+      var r=hub.getBoundingClientRect(), cx=r.width/2, cy=r.height/2, R=Math.min(r.width,r.height)*0.33;
+      window.__nodes.forEach(function(n,i){ var a=(-Math.PI/2)+(i/window.__nodes.length)*Math.PI*2;
+        n.el.style.transform='translate('+(cx+Math.cos(a)*R)+'px,'+(cy+Math.sin(a)*R)+'px) translate(-50%,-50%)'; });
+    };
+    window.__ringLayout();
+    window.addEventListener('resize', function(){ if(!window.__hub3d) window.__ringLayout(); });
+    window.__stamp=function(ev){ var li=document.createElement('li'); var d=new Date(), p=function(n){return ('0'+n).slice(-2);};
+      li.innerHTML='<span class="t">'+p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds())+'</span><span class="ar">&#9656;</span><span class="ev">'+ev+'</span>';
+      ledger.insertBefore(li, ledger.firstChild); while(ledger.children.length>5) ledger.removeChild(ledger.lastChild); };
+    window.__stamp(window.__EVENTS[2]); window.__stamp(window.__EVENTS[1]); window.__stamp(window.__EVENTS[0]);
+  })();
+  </script>
 
-    <div class="card-grid card-grid-3">
-      <div class="card">
-        <div class="card-label">Consulting</div>
-        <h3>Regulatory Infrastructure</h3>
-        <p>
-          SOP development, regulatory binder setup, IRB submission support,
-          and compliance gap assessments for new and existing sites.
-        </p>
-      </div>
+  <!-- 3D enhancement: Three.js (bundled, same-origin). If WebGL fails, baseline ring remains. -->
+  <script>
+  import * as THREE from 'three';
+  (function(){
+    var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var hub=document.getElementById('hub'), canvas=document.getElementById('hubCanvas');
+    var corePulse=document.getElementById('corePulse'), ledger=document.getElementById('ledger');
+    var nodes=window.__nodes||[], EVENTS=window.__EVENTS;
+    if(!hub||!canvas||!ledger||!nodes.length) return;
+    var renderer;
+    try{ renderer=new THREE.WebGLRenderer({canvas:canvas, alpha:true, antialias:true}); }catch(e){ return; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+    renderer.setClearColor(0x000000,0);
+    window.__hub3d=true;
+    var scene=new THREE.Scene();
+    var camera=new THREE.PerspectiveCamera(42,1,0.1,100); camera.position.set(0,0,6);
+    var tilt=new THREE.Group(); scene.add(tilt);
+    var ring=new THREE.Group(); tilt.add(ring);
+    var R=1.96, N=nodes.length;
 
-      <div class="card">
-        <div class="card-label">Software</div>
-        <h3>Compliance-Grade Development</h3>
-        <p>
-          Custom software with audit trails, RBAC, encrypted storage,
-          and regulatory documentation. HIPAA and 21 CFR Part 11 aligned.
-        </p>
-      </div>
+    nodes.forEach(function(n,i){
+      var ang=(-Math.PI/2)+(i/N)*Math.PI*2;
+      var anchor=new THREE.Object3D(); anchor.position.set(Math.cos(ang)*R, Math.sin(ang)*R, 0); ring.add(anchor); n.anchor=anchor;
+      var geo=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,0,0), anchor.position.clone()]);
+      var mat=new THREE.LineBasicMaterial({color:0x7C3AED, transparent:true, opacity:0.16});
+      ring.add(new THREE.Line(geo,mat)); n.lineMat=mat;
+    });
 
-      <div class="card">
-        <div class="card-label">Automation</div>
-        <h3>Site Operations Automation</h3>
-        <p>
-          Workflow automation, document generation, data pipelines,
-          and reporting tools that reduce manual overhead for research coordinators.
-        </p>
-      </div>
-    </div>
-  </section>
+    function glowTex(){ var c=document.createElement('canvas'); c.width=c.height=128; var g=c.getContext('2d');
+      var grd=g.createRadialGradient(64,64,0,64,64,64); grd.addColorStop(0,'rgba(170,130,255,0.95)'); grd.addColorStop(0.35,'rgba(124,58,237,0.42)'); grd.addColorStop(1,'rgba(124,58,237,0)');
+      g.fillStyle=grd; g.fillRect(0,0,128,128); return new THREE.CanvasTexture(c); }
+    var glow=glowTex();
+    var core=new THREE.Sprite(new THREE.SpriteMaterial({map:glow, transparent:true, opacity:0.85, blending:THREE.AdditiveBlending, depthWrite:false}));
+    core.scale.set(2.2,2.2,1); scene.add(core);
 
-  <!-- Who We Serve — bento grid -->
-  <section class="section section-tinted">
-    <div class="section-header">
-      <h2>Who We Work With</h2>
-    </div>
+    var PN=42, pos=new Float32Array(PN*3);
+    for(var i=0;i<PN;i++){ var a=i/PN*Math.PI*2, rr=R*1.55+(i%4)*0.12; pos[i*3]=Math.cos(a)*rr; pos[i*3+1]=Math.sin(a)*rr; pos[i*3+2]=Math.sin(i*1.7)*0.55; }
+    var pg=new THREE.BufferGeometry(); pg.setAttribute('position', new THREE.BufferAttribute(pos,3));
+    ring.add(new THREE.Points(pg, new THREE.PointsMaterial({color:0x7C3AED, size:0.05, transparent:true, opacity:0.55, blending:THREE.AdditiveBlending, depthWrite:false})));
 
-    <div class="bento-grid">
-      <div class="audience-item bento-feature">
-        <div class="bento-icon">&#127973;</div>
-        <h3>Sponsors</h3>
-        <p>Pharmaceutical and biotech companies qualifying sites, evaluating CRO operations, or sourcing audit-ready compliance documentation for their study portfolios.</p>
-      </div>
-      <div class="audience-item">
-        <div class="bento-icon">&#128200;</div>
-        <h3>CROs</h3>
-        <p>Contract research organizations updating SOP libraries or standardizing multi-site operations.</p>
-      </div>
-      <div class="audience-item">
-        <div class="bento-icon">&#127975;</div>
-        <h3>Research Sites</h3>
-        <p>Sites building compliance infrastructure from the ground up or preparing for their first study.</p>
-      </div>
-      <div class="audience-item">
-        <div class="bento-icon">&#128300;</div>
-        <h3>Principal Investigators</h3>
-        <p>PIs establishing compliance infrastructure for sponsor-initiated or investigator-initiated studies.</p>
-      </div>
-      <div class="audience-item">
-        <div class="bento-icon">&#128188;</div>
-        <h3>Consultants &amp; Individuals</h3>
-        <p>Independent professionals who need ready-to-use templates for client engagements or career development.</p>
-      </div>
-    </div>
-  </section>
+    var packet=new THREE.Sprite(new THREE.SpriteMaterial({map:glow, transparent:true, opacity:0.95, blending:THREE.AdditiveBlending, depthWrite:false}));
+    packet.scale.set(0.5,0.5,1); packet.visible=false; ring.add(packet);
+    var pkFrom=new THREE.Vector3(), pkT=-1, pkEv='', lastSpawn=0;
 
-  <!-- CTA (dark) -->
-  <section class="cta-dark">
-    <h2>Ready to get your site operational?</h2>
-    <p>Download the SOP bundle today, or reach out to discuss custom consulting and software.</p>
-    <div class="hero-cta">
-      <a href="/sop-bundle" class="btn-primary">View the SOP Bundle — $249.99</a>
-      <a href="mailto:info@purpledirective.com" class="btn-secondary btn-on-dark">Contact Us</a>
-    </div>
-  </section>
+    var W=1,Hh=1;
+    function resize(){ var r=hub.getBoundingClientRect(); W=r.width; Hh=r.height; renderer.setSize(W,Hh,false); camera.aspect=W/Hh; camera.updateProjectionMatrix(); }
+    resize(); window.addEventListener('resize', resize);
 
-</Base>
+    var tpx=0,tpy=0,px=0,py=0;
+    if(!reduce){
+      hub.addEventListener('pointermove', function(e){ var r=hub.getBoundingClientRect(); tpx=((e.clientX-r.left)/r.width-0.5); tpy=((e.clientY-r.top)/r.height-0.5); });
+      hub.addEventListener('pointerleave', function(){ tpx=0; tpy=0; });
+    }
+    function corePop(){ corePulse.classList.remove('go'); void corePulse.offsetWidth; corePulse.classList.add('go'); }
+    function stamp(ev){ var li=document.createElement('li'); var d=new Date(), p=function(n){return ('0'+n).slice(-2);};
+      li.innerHTML='<span class="t">'+p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds())+'</span><span class="ar">&#9656;</span><span class="ev">'+ev+'</span>';
+      ledger.insertBefore(li, ledger.firstChild); while(ledger.children.length>5) ledger.removeChild(ledger.lastChild); }
+    ledger.innerHTML=''; if(reduce){ stamp(EVENTS[2]); stamp(EVENTS[1]); stamp(EVENTS[0]); } else { stamp(EVENTS[0]); }
 
-<style>
-  /* ── Buttons ── */
-  .hero-cta {
-    display: flex;
-    gap: var(--spacing-md);
-    justify-content: center;
-    margin-top: var(--spacing-lg);
-    flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    display: inline-block;
-    background: var(--purple-primary);
-    color: #fff;
-    font-family: var(--font-sans);
-    font-size: 0.88rem;
-    font-weight: 600;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background 0.2s, transform 0.2s;
-  }
-
-  .btn-primary:hover {
-    background: var(--purple-dark);
-    color: #fff;
-    transform: translateY(-1px);
-  }
-
-  .btn-secondary {
-    display: inline-block;
-    color: var(--text-secondary);
-    font-family: var(--font-sans);
-    font-size: 0.88rem;
-    font-weight: 500;
-    padding: 0.75rem 1.5rem;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    text-decoration: none;
-    transition: border-color 0.2s, color 0.2s;
-  }
-
-  .btn-secondary:hover {
-    border-color: var(--purple-primary);
-    color: var(--purple-primary);
-  }
-
-  .btn-on-dark { color: #9ca3af; border-color: #374151; }
-  .btn-on-dark:hover { color: #e5e7eb; border-color: #6b7280; }
-  .btn-sm { font-size: 0.82rem; padding: 0.55rem 1rem; margin-top: var(--spacing-sm); }
-
-  /* ── Trust bar ── */
-  .trust-bar {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--spacing-md);
-    padding: var(--spacing-lg) var(--spacing-xl);
-    border-top: 3px solid var(--purple-primary);
-    border-bottom: 1px solid var(--border);
-    background: var(--bg-card);
-    border-radius: 0 0 10px 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  }
-
-  .trust-item { text-align: center; display: flex; flex-direction: column; gap: 0.2rem; }
-  .trust-num { font-size: 1rem; font-weight: 700; color: var(--purple-primary); }
-  .trust-label { font-size: 0.7rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
-
-  /* ── Split layout (Products) ── */
-  .split-layout {
-    display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: var(--spacing-xl);
-    align-items: start;
-  }
-
-  .split-left h2 {
-    margin-top: 0;
-    font-size: 1.75rem;
-  }
-
-  .split-desc {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    line-height: 1.65;
-  }
-
-  .split-stats {
-    display: flex;
-    gap: var(--spacing-lg);
-    margin-top: var(--spacing-lg);
-    padding-top: var(--spacing-lg);
-    border-top: 1px solid var(--border);
-  }
-
-  .split-stat {
-    display: flex;
-    flex-direction: column;
-    gap: 0.1rem;
-  }
-
-  .split-stat-num {
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--purple-primary);
-    line-height: 1;
-  }
-
-  .split-stat-label {
-    font-size: 0.72rem;
-    font-weight: 500;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  .split-right {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md);
-  }
-
-  /* ── Product cards ── */
-  .product-card { display: flex; flex-direction: column; }
-  .product-card p { flex: 1; }
-
-  .featured-card {
-    border-color: var(--purple-primary);
-    border-width: 2px;
-    position: relative;
-  }
-
-  .featured-card:hover {
-    border-color: var(--purple-primary);
-    box-shadow: 0 8px 24px rgba(91, 33, 182, 0.14);
-    transform: translateY(-3px);
-  }
-
-  .popular-badge {
-    font-size: 0.65rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #fff;
-    background: var(--purple-primary);
-    padding: 0.3rem 0.75rem;
-    border-radius: 4px;
-    margin-bottom: var(--spacing-sm);
-    width: fit-content;
-  }
-
-  .product-meta { display: flex; align-items: baseline; gap: var(--spacing-sm); margin: var(--spacing-sm) 0; }
-  .price { font-size: 1.25rem; font-weight: 700; color: var(--purple-primary); }
-  .price-orig { font-size: 0.9rem; color: var(--text-muted); text-decoration: line-through; }
-  .price-note { font-size: 0.72rem; color: var(--text-muted); }
-
-  /* ── SOP split layout ── */
-  .sop-split {
-    display: grid;
-    grid-template-columns: 1fr 1.6fr;
-    gap: var(--spacing-xl);
-    align-items: start;
-  }
-
-  .sop-sidebar h2 {
-    margin-top: 0;
-    font-size: 1.5rem;
-  }
-
-  .sop-sidebar p {
-    font-size: 0.9rem;
-    line-height: 1.65;
-  }
-
-  .sop-lifecycle {
-    color: var(--purple-primary);
-    font-weight: 500;
-    font-size: 0.85rem !important;
-  }
-
-  .bundle-extras-stacked {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md);
-    margin-top: var(--spacing-lg);
-    padding-top: var(--spacing-lg);
-    border-top: 1px solid var(--border);
-  }
-
-  .extra-item { display: flex; gap: var(--spacing-sm); align-items: flex-start; }
-  .extra-icon { font-size: 1.2rem; line-height: 1.4; flex-shrink: 0; }
-  .extra-item strong { display: block; font-size: 0.85rem; color: var(--text-primary); margin-bottom: 0.15rem; }
-  .extra-item span { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.4; }
-
-  /* SOP table */
-  .sop-table-wrap {
-    overflow-x: auto;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    background: var(--bg-card);
-    margin: 0;
-  }
-
-  .sop-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
-  .sop-table thead { background: var(--bg-card); }
-  .sop-table th {
-    font-size: 0.68rem; font-weight: 600; text-transform: uppercase;
-    letter-spacing: 0.06em; color: var(--text-muted); text-align: left;
-    padding: 0.65rem 0.85rem; border-bottom: 2px solid var(--border);
-  }
-  .sop-table td { padding: 0.55rem 0.85rem; color: var(--text-secondary); border-bottom: 1px solid var(--border); }
-  .sop-table tr:last-child td { border-bottom: none; }
-  .sop-table tr:hover td { background: var(--purple-glow); }
-  .sop-num { font-weight: 700; color: var(--purple-primary); font-size: 0.78rem; }
-
-  /* ── 3-column card grid (Services) ── */
-  .card-grid-3 { grid-template-columns: repeat(3, 1fr); }
-
-  /* ── Bento grid (Who We Work With) ── */
-  .bento-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto auto;
-    gap: var(--spacing-md);
-    margin: var(--spacing-lg) 0;
-  }
-
-  .bento-feature {
-    grid-row: 1 / 3;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: var(--purple-primary) !important;
-    border-color: var(--purple-primary) !important;
-    color: #fff;
-  }
-
-  .bento-feature h3 { color: #fff; }
-  .bento-feature p { color: rgba(255,255,255,0.85); }
-  .bento-feature .bento-icon { font-size: 2rem; }
-
-  .audience-item {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: var(--spacing-lg);
-    transition: border-color 0.2s, transform 0.2s;
-  }
-
-  .audience-item:not(.bento-feature):hover {
-    border-color: var(--border-hover);
-    transform: translateY(-2px);
-  }
-
-  .bento-icon {
-    font-size: 1.5rem;
-    margin-bottom: var(--spacing-sm);
-  }
-
-  .audience-item h3 { margin-top: 0; font-size: 1rem; margin-bottom: var(--spacing-xs); }
-  .audience-item p { font-size: 0.85rem; margin-bottom: 0; }
-
-  /* ── Responsive ── */
-  @media (max-width: 768px) {
-    .split-layout {
-      grid-template-columns: 1fr;
-      gap: var(--spacing-lg);
+    var wp=new THREE.Vector3(), v=new THREE.Vector3();
+    function project(){
+      var hover=window.__hover;
+      for(var i=0;i<nodes.length;i++){
+        var n=nodes[i];
+        n.anchor.getWorldPosition(wp); v.copy(wp).project(camera);
+        var x=(v.x*0.5+0.5)*W, y=(-v.y*0.5+0.5)*Hh;
+        var df=Math.max(0,Math.min(1,(wp.z+3.0)/6.0));
+        var sc=0.82+0.36*df, op=0.6+0.4*df;
+        n.el.style.transform='translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px) translate(-50%,-50%) scale('+sc.toFixed(3)+')';
+        n.el.style.opacity=op.toFixed(2);
+        n.el.style.zIndex=String(Math.round(df*20));
+        var on=(hover===i);
+        n.lineMat.color.setHex(on?0xb69bff:0x7C3AED);
+        n.lineMat.opacity=on?0.95:0.16;
+      }
     }
 
-    .split-stats {
-      justify-content: flex-start;
+    var last=0, raf=0;
+    function frame(t){
+      var dt=Math.min(50,t-last); last=t;
+      if(!reduce) ring.rotation.z += 0.00007*dt;
+      px+=(tpx-px)*0.06; py+=(tpy-py)*0.06;
+      tilt.rotation.y = px*0.55; tilt.rotation.x = -0.5 + py*0.28;
+      if(!reduce){
+        var br=1+Math.sin(t*0.0011)*0.045; core.scale.set(2.2*br,2.2*br,1); core.material.opacity=0.74+Math.sin(t*0.0011)*0.1;
+        if(pkT<0 && t-lastSpawn>2800){ var idx=Math.floor(t*0.013)%PN; pkFrom.set(pos[idx*3],pos[idx*3+1],pos[idx*3+2]); packet.position.copy(pkFrom); packet.visible=true; packet.material.opacity=0; packet.scale.setScalar(0.5); pkT=0; pkEv=EVENTS[idx%EVENTS.length]; lastSpawn=t; }
+        else if(pkT>=0){ pkT+=dt/1900; var k=Math.min(1,pkT); var e=k*k*(3-2*k); packet.position.set(pkFrom.x*(1-e), pkFrom.y*(1-e), pkFrom.z*(1-e)); packet.material.opacity=0.95*Math.sin(k*Math.PI); packet.scale.setScalar(0.52-0.22*k); if(pkT>=1){ packet.visible=false; pkT=-1; stamp(pkEv); corePop(); } }
+      }
+      project();
+      renderer.render(scene,camera);
+      raf=requestAnimationFrame(frame);
     }
 
-    .sop-split {
-      grid-template-columns: 1fr;
-      gap: var(--spacing-lg);
-    }
+    if(reduce){ tilt.rotation.x=-0.42; project(); renderer.render(scene,camera); }
+    else if('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){ es.forEach(function(en){
+        if(en.isIntersecting){ if(!raf){ last=performance.now(); raf=requestAnimationFrame(frame); } }
+        else if(raf){ cancelAnimationFrame(raf); raf=0; }
+      }); },{threshold:0.02}).observe(hub);
+    } else { raf=requestAnimationFrame(frame); }
+  })();
+  </script>
 
-    .trust-bar {
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--spacing-lg);
-    }
-
-    .card-grid-3 {
-      grid-template-columns: 1fr;
-    }
-
-    .bento-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .bento-feature {
-      grid-column: 1 / -1;
-      grid-row: auto;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .bento-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .trust-bar { grid-template-columns: 1fr; text-align: left; }
-    .trust-item { flex-direction: row; align-items: center; gap: var(--spacing-sm); text-align: left; }
-
-    .hero-cta { flex-direction: column; align-items: stretch; }
-    .btn-primary, .btn-secondary { text-align: center; }
-  }
-</style>
+  <!-- GSAP motion layer (bundled, same-origin; graceful under reduced-motion) -->
+  <script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  (function(){
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce) return;
+    var g = gsap;
+    g.registerPlugin(ScrollTrigger);
+    var REVEAL=['.eyebrow','.head .ln','.sub','.cta-row','.hub-wrap'];
+    var tl = g.timeline({defaults:{ease:'power3.out'}, onComplete:function(){ g.set(REVEAL,{clearProps:'transform'}); }})
+      .from('.eyebrow',{y:16,opacity:0,duration:.6})
+      .from('.head .ln',{yPercent:42,opacity:0,duration:.8,stagger:.12},'-=.2')
+      .from('.sub',{y:16,opacity:0,duration:.6},'-=.4')
+      .from('.cta-row',{y:16,opacity:0,duration:.5},'-=.35')
+      .from('.hub-wrap',{opacity:0,scale:.92,duration:1.1,ease:'power2.out'},'-=.95');
+    function settle(){ try{ if(tl.progress()<1) tl.progress(1); g.set(REVEAL,{opacity:1,clearProps:'transform'}); }catch(e){} }
+    setTimeout(settle, 2600);
+    document.addEventListener('visibilitychange', function(){ if(!document.hidden) settle(); });
+    function reveal(sel,extra){ g.utils.toArray(sel).forEach(function(el){ g.from(el, Object.assign({y:26,opacity:0,duration:.7,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 84%'}}, extra||{})); }); }
+    reveal('.band-split h2'); reveal('.band-split p');
+    reveal('.audit-h2'); reveal('.audit-lede');
+    g.timeline({scrollTrigger:{trigger:'#standard', start:'top 68%', toggleActions:'play none none none'}, defaults:{ease:'power2.out'}})
+      .fromTo('#trailFill',{width:'0%'},{width:'100%',duration:2.0,ease:'none'},0)
+      .from('.audit .cp',{opacity:0,y:12,duration:.5,stagger:.38},0.2);
+    g.from('.inst',{y:28,opacity:0,duration:.6,stagger:.07,ease:'power3.out',scrollTrigger:{trigger:'.inst-grid',start:'top 82%'}});
+    g.from('.proof .pchip',{y:12,opacity:0,duration:.45,stagger:.06,ease:'power2.out',scrollTrigger:{trigger:'.proof',start:'top 88%'}});
+    reveal('.cta-tail h2'); reveal('.cta-tail p');
+  })();
+  </script>
+</Site>
