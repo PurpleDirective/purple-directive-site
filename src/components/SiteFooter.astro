@@ -1,0 +1,88 @@
+---
+/**
+ * Redesign footer. Keeps the flagship dark aesthetic but retains the
+ * legal disclaimers, PHI/HIPAA confidentiality note, and internal
+ * link columns that the regulated business requires (and that the
+ * minimal prototype footer dropped).
+ */
+import { social } from '../data/social';
+const year = new Date().getFullYear();
+---
+<footer>
+  <div class="container">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="fl">
+          <img src="/pd-mark-dark.svg" alt="" aria-hidden="true" width="20" height="24" />
+          <span class="lt">Purple<span>Directive</span></span>
+        </div>
+        <p class="foot-tagline">Compliance-grade software and operations consulting for clinical research sites and CROs.</p>
+      </div>
+
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="/sop-bundle">SOP Bundle</a></li>
+            <li><a href="/research-report">Research Report</a></li>
+            <li><a href="https://nexrial.com" rel="noopener" target="_blank">Nexrial CTMS</a></li>
+            <li><a href="/consulting">Consulting</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/hire">Services</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="mailto:info@purpledirective.com">Contact</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href={social.linkedin.url} target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href={social.github.url} target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href={social.x.url} target="_blank" rel="noopener">X (Twitter)</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <div class="legal">
+        <span>&copy; {year} Purple Directive. All rights reserved.</span>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+      <p class="foot-disclaimer">
+        Purple Directive provides software, templates, and consulting services for informational and operational purposes only. Our products and services do not constitute legal, regulatory, or medical advice. SOP templates are customizable starting points and must be reviewed, adapted, and validated against your institution's specific policies, applicable regulations (including ICH E6(R2/R3), 21 CFR Parts 11/50/56/312, and 45 CFR Part 46), IRB requirements, and sponsor protocols before implementation. Purple Directive assumes no liability for the use or misuse of any product or service.
+      </p>
+      <p class="foot-disclaimer">
+        All client engagements are subject to confidentiality obligations. Protected health information (PHI) and personally identifiable information (PII) are handled in accordance with HIPAA Privacy and Security Rules. Purple Directive does not store, transmit, or process PHI through its public-facing products.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style is:global>
+  footer .foot-top{display:grid;grid-template-columns:1.4fr 2fr;gap:var(--sp-2xl);padding-bottom:var(--sp-lg)}
+  footer .foot-brand .fl{display:flex;align-items:center;gap:.45rem;font-weight:700;color:#f9fafb;font-size:1.05rem;letter-spacing:-.02em}
+  footer .foot-brand .fl img{width:1.2rem;height:auto}
+  footer .foot-brand .fl .lt span{color:#a78bfa}
+  footer .foot-tagline{margin-top:.7rem;font-size:.82rem;line-height:1.6;color:#9ca3af;max-width:24rem}
+  footer .foot-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-lg)}
+  footer .foot-col h4{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:#cbb8ff;margin-bottom:.8rem}
+  footer .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+  footer .foot-col a{color:#9ca3af;font-size:.84rem}
+  footer .foot-col a:hover{color:#e5e7eb}
+  footer .foot-bottom{border-top:1px solid #1f2937;padding-top:var(--sp-lg)}
+  footer .foot-bottom .legal{display:flex;gap:.9rem;flex-wrap:wrap;align-items:center;font-size:.74rem;color:#6b7280;margin-bottom:1rem}
+  footer .foot-bottom .legal a{color:#9ca3af}
+  footer .foot-bottom .legal a:hover{color:#e5e7eb}
+  footer .foot-disclaimer{font-size:.68rem;line-height:1.6;color:#6b7280;max-width:none;margin-bottom:.7rem}
+  @media (max-width:760px){
+    footer .foot-top{grid-template-columns:1fr;gap:var(--sp-lg)}
+    footer .foot-cols{grid-template-columns:1fr 1fr}
+  }
+</style>
