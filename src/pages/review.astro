@@ -1,0 +1,121 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Leave a review"
+  description="Tell us how a Purple Directive product or engagement worked for you. Honest feedback shapes the next revision."
+>
+  <section class="section hero">
+    <h1>Leave a <span class="accent">review</span></h1>
+    <p class="subtitle">
+      Honest feedback shapes the next revision — and helps other sites decide. Real reviews only;
+      nothing is published without your say-so, and we approve each one by hand before it appears.
+    </p>
+  </section>
+
+  <section class="review-wrap">
+    <p id="review-error" class="form-error" style="display:none"></p>
+
+    <form class="review-form" action="/api/review-submit" method="POST">
+      <!-- honeypot: bots fill this; humans never see it -->
+      <input type="text" name="company_website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+      <label>What are you reviewing? <span class="req">*</span>
+        <select name="product" id="product-select" required>
+          <option value="" disabled>Select…</option>
+          <option value="sop">SOP templates</option>
+          <option value="consulting">Consulting engagement</option>
+        </select>
+      </label>
+
+      <label>Your rating <span class="req">*</span>
+        <select name="rating" required>
+          <option value="" disabled selected>Select…</option>
+          <option value="5">★★★★★ — Excellent</option>
+          <option value="4">★★★★☆ — Good</option>
+          <option value="3">★★★☆☆ — Okay</option>
+          <option value="2">★★☆☆☆ — Below par</option>
+          <option value="1">★☆☆☆☆ — Poor</option>
+        </select>
+      </label>
+
+      <label>Your review <span class="req">*</span>
+        <textarea name="body" required rows="5" maxlength="4000"
+          placeholder="What did you buy, what did it help you do, and what (if anything) could be better? Specifics help other practitioners."></textarea>
+      </label>
+
+      <label>Your name <span class="req">*</span>
+        <input type="text" name="name" required maxlength="120" placeholder="Name or initials — your call" />
+      </label>
+      <label>Your role / title
+        <input type="text" name="role" maxlength="120" placeholder="e.g. Site Director, CRC, PI" />
+      </label>
+      <label>Site / organization
+        <input type="text" name="organization" maxlength="160" />
+      </label>
+      <label>Your email
+        <input type="email" name="email" maxlength="160" />
+        <small>Optional. Only used if we need to verify or follow up — never published.</small>
+      </label>
+
+      <label class="consent">
+        <input type="checkbox" name="consent_publish" value="yes" />
+        <span>You may publish this review (with my name/role/organization as written above) on the site.</span>
+      </label>
+
+      <button type="submit" class="submit-btn">Submit review</button>
+      <p class="priv-note">Reviews are moderated. Nothing is published without the box above ticked, and we approve each one by hand. Your email is never shown.</p>
+    </form>
+  </section>
+</Base>
+
+<style>
+  .review-wrap { max-width: 680px; margin: 0 auto; padding: 0 1rem 3rem; }
+  .form-error {
+    background: #fdecec; border: 1px solid #e7a3a3; color: #8a1f1f;
+    padding: 0.7rem 0.9rem; border-radius: 8px; margin-bottom: 1.25rem; font-size: 0.92rem;
+  }
+  .review-form { display: flex; flex-direction: column; gap: 1.1rem; }
+  .review-form > label { display: flex; flex-direction: column; gap: 0.35rem; font-weight: 600; font-size: 0.95rem; }
+  .review-form input, .review-form textarea, .review-form select {
+    font: inherit; padding: 0.6rem 0.7rem; border: 1px solid var(--border);
+    border-radius: 8px; background: #fff; color: inherit; font-weight: 400;
+  }
+  .review-form textarea { resize: vertical; }
+  .review-form small { font-weight: 400; color: var(--text-secondary); font-size: 0.82rem; }
+  .req { color: var(--purple-primary); }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .consent { flex-direction: row !important; align-items: flex-start; gap: 0.6rem !important; font-weight: 400 !important; font-size: 0.9rem; }
+  .consent input { margin-top: 0.15rem; }
+  .priv-note { font-size: 0.85rem; color: var(--text-secondary); }
+  .submit-btn {
+    align-self: flex-start; margin-top: 0.25rem; cursor: pointer;
+    background: var(--purple-primary, #5B21B6); color: #fff; border: none;
+    padding: 0.8rem 1.6rem; border-radius: 8px; font-weight: 600; font-size: 1rem;
+  }
+  .submit-btn:hover { opacity: 0.92; }
+</style>
+
+<script is:inline>
+  // Prefill the product from ?product=sop|consulting (set by the thank-you CTAs).
+  (function () {
+    var params = new URLSearchParams(location.search);
+    var p = params.get('product');
+    var sel = document.getElementById('product-select');
+    if (sel && (p === 'sop' || p === 'consulting')) sel.value = p;
+
+    // Surface submit error codes redirected back from /api/review-submit.
+    var code = params.get('review_error');
+    if (!code) return;
+    var map = {
+      'missing-fields': 'Please complete the rating, your review, and your name.',
+      'bad-rating': 'Please choose a star rating.',
+      'invalid-email': 'That email address looks invalid — fix it or leave it blank.',
+      'bad-request': 'Your submission could not be read. Please try again.',
+      'unknown': 'Something went wrong. Please try again or email info@purpledirective.com.'
+    };
+    var el = document.getElementById('review-error');
+    if (el) { el.textContent = map[code] || map['unknown']; el.style.display = 'block'; }
+  })();
+</script>

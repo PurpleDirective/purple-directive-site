@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import EmailCapture from '../components/EmailCapture.astro';
 ---
 
 <Base
@@ -102,6 +103,13 @@ import Base from '../layouts/Base.astro';
       <button type="submit" class="submit-btn">Submit intake</button>
       <p class="priv-note">Your information is used only to produce your report. Not shared with third parties, not used to train any AI model.</p>
     </form>
+
+    <EmailCapture
+      variant="boxed"
+      source="thank-you-research"
+      heading="Get the practitioner newsletter"
+      subheading="Short, specific, monthly — FDA enforcement patterns, regulatory updates, and the operational intel that doesn't make it onto the blog."
+    />
   </section>
 </Base>
 

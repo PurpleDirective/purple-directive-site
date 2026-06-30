@@ -1,0 +1,41 @@
+<!--
+  Source for public/og-image.png (1200x630 social share card), new brand (faceted-D).
+  rsvg-convert can't rasterize SVG-in-<image>, so regenerate in two steps:
+    rsvg-convert -w 300 -h 320 public/pd-mark-grad.svg -o /tmp/mark.png
+    # point the <image> href below at /tmp/mark.png, then:
+    rsvg-convert -w 1200 -h 630 design-assets/og-card.svg -o public/og-image.png
+  Mark is composited from the real canonical asset — never AI-generated.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f5f3f8"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.30" r="0.55">
+      <stop offset="0" stop-color="#5B21B6" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#5B21B6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- new faceted-D mark: pre-rasterize public/pd-mark-grad.svg → mark.png, reference here -->
+  <image xlink:href="mark.png" x="540" y="92" width="120" height="128"/>
+
+  <!-- wordmark -->
+  <text x="600" y="332" text-anchor="middle"
+        font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="78" font-weight="700" letter-spacing="-1.5">
+    <tspan fill="#111827">Purple</tspan><tspan fill="#5B21B6">Directive</tspan>
+  </text>
+
+  <!-- tagline -->
+  <text x="600" y="404" text-anchor="middle"
+        font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" font-weight="400" fill="#4b5563">Compliance-grade software &amp; operations consulting</text>
+  <text x="600" y="446" text-anchor="middle"
+        font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" font-weight="400" fill="#4b5563">for clinical research sites and CROs</text>
+
+  <!-- accent bar -->
+  <rect x="0" y="619" width="1200" height="11" fill="#5B21B6"/>
+</svg>

@@ -1,0 +1,71 @@
+---
+/**
+ * Testimonials block — renders approved, published reviews for one product.
+ *
+ * Source of truth is src/data/testimonials.ts (the manual-approve gate).
+ * Renders nothing when there are no published testimonials for the product,
+ * so it's safe to place on a page before any reviews exist.
+ */
+import { publishedFor, type TestimonialProduct } from '../data/testimonials';
+
+interface Props {
+  product: TestimonialProduct;
+  heading?: string;
+}
+
+const { product, heading = 'What practitioners say' } = Astro.props;
+const items = publishedFor(product);
+const stars = (n: number) => '★★★★★☆☆☆☆☆'.slice(5 - Math.max(0, Math.min(5, n)), 10 - Math.max(0, Math.min(5, n)));
+---
+
+{items.length > 0 && (
+  <section class="testimonials section">
+    <div class="testimonials-inner">
+      <div class="section-label">Reviews</div>
+      <h2>{heading}</h2>
+      <div class="testimonial-grid">
+        {items.map((t) => (
+          <figure class="testimonial">
+            <div class="stars" aria-label={`${t.rating} out of 5 stars`}>{stars(t.rating)}</div>
+            <blockquote>{t.quote}</blockquote>
+            <figcaption>
+              <strong>{t.name}</strong>
+              {(t.role || t.organization) && (
+                <span class="attr">
+                  {[t.role, t.organization].filter(Boolean).join(', ')}
+                </span>
+              )}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .testimonials-inner { max-width: 980px; margin: 0 auto; padding: 0 1rem; }
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+  .testimonial {
+    margin: 0;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg-card, #fff);
+  }
+  .stars { color: var(--purple-primary); letter-spacing: 0.1em; font-size: 1rem; }
+  .testimonial blockquote {
+    margin: 0.75rem 0 1rem;
+    font-size: 1.02rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+  }
+  .testimonial figcaption { font-size: 0.9rem; color: var(--text-secondary); }
+  .testimonial figcaption strong { display: block; color: var(--text-primary); }
+  .testimonial figcaption .attr { display: block; margin-top: 0.1rem; }
+</style>

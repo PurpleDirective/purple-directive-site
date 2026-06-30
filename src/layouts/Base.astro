@@ -49,15 +49,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <nav>
     <div class="container">
       <a href="/" class="logo">
-        <svg class="logo-mark" viewBox="0 0 100 120" aria-hidden="true">
-          <defs>
-            <linearGradient id="navGrad" x1="30%" y1="0%" x2="70%" y2="100%">
-              <stop offset="0%" stop-color="#b07ce8"/>
-              <stop offset="100%" stop-color="#7a4db5"/>
-            </linearGradient>
-          </defs>
-          <path d="M 26,96 L 26,16 C 26,6 76,6 76,50 C 76,80 58,94 44,87 C 33,80 30,70 36,62 C 40,55 50,53 56,53" fill="none" stroke="url(#navGrad)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+        <img class="logo-mark" src="/pd-mark-grad.svg" alt="" aria-hidden="true" width="30" height="32" />
         <span class="logo-text">Purple<span>Directive</span></span>
       </a>
 
@@ -81,9 +73,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       <div class="footer-grid">
         <div class="footer-col footer-brand">
           <a href="/" class="footer-logo">
-            <svg class="footer-logo-mark" viewBox="0 0 100 120" aria-hidden="true">
-              <path d="M 26,96 L 26,16 C 26,6 76,6 76,50 C 76,80 58,94 44,87 C 33,80 30,70 36,62 C 40,55 50,53 56,53" fill="none" stroke="#5B21B6" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <img class="footer-logo-mark" src="/pd-mark-dark.svg" alt="" aria-hidden="true" width="26" height="28" />
             <span class="logo-text">Purple<span>Directive</span></span>
           </a>
           <p class="footer-tagline">Compliance-grade software and operations consulting for clinical research sites and CROs.</p>
