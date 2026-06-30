@@ -1,24 +1,69 @@
 ---
 import Base from '../layouts/Base.astro';
+import EmailCapture from '../components/EmailCapture.astro';
 ---
 
-<Base title="Thank You" description="Your purchase is complete. Thank you for choosing Purple Directive.">
+<Base title="Thank you for your purchase" description="Your purchase is complete. Thank you for choosing Purple Directive.">
   <section class="section hero">
     <h1>Thank you for your <span class="accent">purchase</span></h1>
     <p class="subtitle">
-      Your SOP Template Bundle is on its way. You'll receive a download link at the email address you used during checkout.
+      <span id="product-line">Your purchase is on its way.</span>
+      You'll receive a download link at the email address you used during checkout.
     </p>
-    <p class="subtitle" style="margin-top: 1rem;">
-      If you have any questions or need help customizing your templates, reach out at
-      <a href="mailto:info@purpledirective.com">info@purpledirective.com</a>.
-    </p>
-    <div style="margin-top: 2rem; text-align: center;">
+  </section>
+
+  <section class="ty-wrap">
+    <ol class="next-steps">
+      <li><strong>Check your email</strong> — your download link arrives within a couple of minutes of payment.</li>
+      <li><strong>Not there?</strong> Check spam/promotions, then email
+        <a href="mailto:info@purpledirective.com">info@purpledirective.com</a> and we'll resend it.</li>
+      <li><strong>Make it yours</strong> — every template is built to be customized to your site. Replace the
+        placeholders, adjust to your processes, and you're inspection-ready.</li>
+    </ol>
+
+    <EmailCapture
+      variant="boxed"
+      source="thank-you"
+      heading="Get the practitioner newsletter"
+      subheading="You just bought from the same desk it's written from. Short, specific, monthly — FDA enforcement patterns, regulatory updates, and operational intel that doesn't make it onto the blog."
+    />
+
+    <div class="review-cta">
+      <h3>Got a minute? Tell us how it lands.</h3>
+      <p>
+        Honest feedback shapes the next revision — and helps other sites decide. If a template saved you
+        time (or could be better), we'd genuinely like to hear it.
+      </p>
+      <a href="/review?product=sop" class="review-btn">Leave a review →</a>
+    </div>
+
+    <div class="back-row">
       <a href="/" class="back-btn">Back to Home</a>
     </div>
   </section>
 </Base>
 
 <style>
+  .ty-wrap { max-width: 720px; margin: 0 auto; padding: 0 1rem 3rem; }
+  .next-steps { line-height: 1.7; padding-left: 1.2rem; }
+  .next-steps li { margin-bottom: 0.5rem; }
+
+  .review-cta {
+    margin: var(--spacing-xl, 2rem) 0 0;
+    padding: var(--spacing-lg, 1.5rem);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .review-cta h3 { margin: 0 0 0.4rem; font-size: 1.1rem; }
+  .review-cta p { margin: 0 0 1rem; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; }
+  .review-btn {
+    display: inline-block; font-weight: 600; font-size: 0.95rem; text-decoration: none;
+    color: var(--purple-primary); border: 1px solid var(--purple-primary);
+    padding: 0.6rem 1.2rem; border-radius: 8px; transition: background 0.2s, color 0.2s;
+  }
+  .review-btn:hover { background: var(--purple-primary); color: #fff; }
+
+  .back-row { margin-top: 2rem; text-align: center; }
   .back-btn {
     display: inline-block;
     color: var(--text-secondary);
@@ -35,3 +80,24 @@ import Base from '../layouts/Base.astro';
     color: var(--purple-primary);
   }
 </style>
+
+<script is:inline>
+  // Product-aware copy. Stripe redirects here with ?session_id={CHECKOUT_SESSION_ID}
+  // (set on the SOP payment links). Ask our own /api/checkout-session for the
+  // purchased product name and personalize the line. Any failure leaves the
+  // product-agnostic default in place — never blocks or errors the page.
+  (function () {
+    var sid = new URLSearchParams(location.search).get('session_id');
+    if (!sid || !/^cs_(test|live)_[A-Za-z0-9]+$/.test(sid)) return;
+    var el = document.getElementById('product-line');
+    if (!el) return;
+    fetch('/api/checkout-session?session_id=' + encodeURIComponent(sid))
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        if (!d || !d.product) return;
+        var more = d.count && d.count > 1 ? ' (and the rest of your order)' : '';
+        el.textContent = 'Your ' + d.product + more + ' is on its way.';
+      })
+      .catch(function () { /* keep the default copy */ });
+  })();
+</script>

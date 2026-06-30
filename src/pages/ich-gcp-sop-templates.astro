@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import EmailCapture from '../components/EmailCapture.astro';
+import Testimonials from '../components/Testimonials.astro';
 
 const productSchema = {
   "@context": "https://schema.org",
@@ -241,6 +242,8 @@ const faqSchema = {
   </section>
 
   <!-- CTA -->
+  <Testimonials product="sop" heading="What practitioners say" />
+
   <section class="why-now-section cta-tinted">
     <h2>Ready to review the bundle?</h2>
     <p style="max-width: 640px; margin: 0 auto 1.5rem;">

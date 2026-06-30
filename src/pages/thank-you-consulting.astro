@@ -1,0 +1,188 @@
+---
+import Base from '../layouts/Base.astro';
+import EmailCapture from '../components/EmailCapture.astro';
+
+// Kickoff scheduling link. Consulting buyers have already paid, so this is an
+// onboarding/kickoff call (not a pre-sale scoping call). Mirrors the existing
+// calendly.com/nexrial/* pattern used on /thank-you-research.
+// NOTE: confirm this event slug exists in Calendly before go-live.
+const CALENDLY_KICKOFF = 'https://calendly.com/nexrial/consulting-kickoff';
+---
+
+<Base
+  title="Payment received — let's get started"
+  description="Your Purple Directive consulting engagement is confirmed. Complete the short intake and book your kickoff call."
+>
+  <section class="section hero">
+    <h1>Payment received — <span class="accent">welcome aboard</span></h1>
+    <p class="subtitle">
+      <span id="product-line">Your consulting engagement is confirmed.</span>
+      Two short steps and we're moving: tell us where you're stuck, then put a kickoff call on the calendar.
+    </p>
+  </section>
+
+  <section class="intake-wrap">
+    <ol class="next-steps">
+      <li><strong>Complete the intake below</strong> — about 5 minutes. It tells us your site, study stage, and what you need first.</li>
+      <li><strong>Book your kickoff call</strong> — <a href={CALENDLY_KICKOFF}>grab a time here →</a> We'll confirm scope and the fastest path to value.</li>
+      <li><strong>We get to work</strong> — operators who have run studies, doing the work alongside your team.</li>
+    </ol>
+
+    <p class="scoping-note">
+      Prefer to skip the form and talk first?
+      <a href={CALENDLY_KICKOFF}>Book the kickoff call →</a> and bring the details with you.
+    </p>
+
+    <p id="intake-error" class="intake-error" style="display:none"></p>
+
+    <form class="intake-form" action="/api/consulting-intake" method="POST">
+      <input type="hidden" name="form" value="consulting-intake" />
+      <!-- honeypot: bots fill this; humans never see it -->
+      <input type="text" name="company_website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+      <label>Your name <span class="req">*</span>
+        <input type="text" name="name" required maxlength="120" />
+      </label>
+      <label>Your email <span class="req">*</span>
+        <input type="email" name="email" required maxlength="160" />
+        <small>Where we'll reach you to coordinate.</small>
+      </label>
+      <label>Your role / title
+        <input type="text" name="role" maxlength="120" placeholder="e.g. Site Director, PI, Study Coordinator" />
+      </label>
+      <label>Site / organization <span class="req">*</span>
+        <input type="text" name="organization" required maxlength="160" />
+      </label>
+      <label>Stripe order ID <span class="req">*</span>
+        <input type="text" name="stripe_order_id" required maxlength="120" />
+        <small>From your Stripe receipt email — confirms your payment matches this intake.</small>
+      </label>
+      <label>Which engagement did you purchase? <span class="req">*</span>
+        <select name="tier" required>
+          <option value="" disabled selected>Select…</option>
+          <option value="Essential">Essential — Site Feasibility &amp; Gap Assessment</option>
+          <option value="Professional">Professional — Startup-to-Enrollment Build</option>
+          <option value="Enterprise">Enterprise — End-to-End + Custom SOPs</option>
+        </select>
+      </label>
+      <label>What stage is the study / site at? <span class="req">*</span>
+        <textarea name="study_stage" required rows="3" placeholder="Indication, phase, sponsor/CRO if relevant, and where you are: pre-study, starting up, mid-enrollment, audit coming up…"></textarea>
+      </label>
+      <label>What do you need first? <span class="req">*</span>
+        <textarea name="needs" required rows="3" placeholder="Be concrete. 'Regulatory binder + delegation log built before our SIV in 3 weeks' beats 'help with startup'."></textarea>
+      </label>
+      <label>Timeline / deadlines <span class="req">*</span>
+        <input type="text" name="timeline" required maxlength="200" placeholder="e.g. SIV on July 22; FPI target early August" />
+      </label>
+      <label>Any prior support or context we should know?
+        <textarea name="prior_support" rows="2" placeholder="Existing SOPs, consultants, what's been tried, what's broken."></textarea>
+      </label>
+      <label>Anything else?
+        <textarea name="anything_else" rows="2"></textarea>
+      </label>
+
+      <p class="docs-note">
+        Have documents to share (protocol, current SOPs, an FDA 483, a monitoring report)? You can reply to the
+        confirmation email with attachments — all confidential, mutual NDA available on request.
+      </p>
+
+      <button type="submit" class="submit-btn">Submit intake</button>
+      <p class="priv-note">Your information is used only to deliver your engagement. Not shared with third parties, not used to train any AI model.</p>
+    </form>
+
+    <EmailCapture
+      variant="boxed"
+      source="thank-you-consulting"
+      heading="Get the practitioner newsletter"
+      subheading="Short, specific, monthly — FDA enforcement patterns, regulatory updates, and operational intel from the same desk running your engagement."
+    />
+
+    <div class="review-cta">
+      <h3>Worked with us before? Tell others.</h3>
+      <p>
+        If a Purple Directive engagement moved the needle for your site, a short review helps other operators
+        decide — and tells us what to do more of.
+      </p>
+      <a href="/review?product=consulting" class="review-btn">Leave a review →</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .intake-wrap { max-width: 720px; margin: 0 auto; padding: 0 1rem 3rem; }
+  .next-steps { line-height: 1.7; padding-left: 1.2rem; }
+  .next-steps li { margin-bottom: 0.4rem; }
+  .scoping-note { margin: 1.25rem 0 2rem; }
+  .intake-error {
+    background: #fdecec; border: 1px solid #e7a3a3; color: #8a1f1f;
+    padding: 0.7rem 0.9rem; border-radius: 8px; margin-bottom: 1.25rem; font-size: 0.92rem;
+  }
+  .intake-form { display: flex; flex-direction: column; gap: 1.1rem; }
+  .intake-form label { display: flex; flex-direction: column; gap: 0.35rem; font-weight: 600; font-size: 0.95rem; }
+  .intake-form input, .intake-form textarea, .intake-form select {
+    font: inherit; padding: 0.6rem 0.7rem; border: 1px solid var(--border);
+    border-radius: 8px; background: #fff; color: inherit; font-weight: 400;
+  }
+  .intake-form textarea { resize: vertical; }
+  .intake-form small { font-weight: 400; color: var(--text-secondary); font-size: 0.82rem; }
+  .req { color: var(--purple-primary); }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .docs-note, .priv-note { font-size: 0.85rem; color: var(--text-secondary); }
+  .submit-btn {
+    align-self: flex-start; margin-top: 0.5rem; cursor: pointer;
+    background: var(--purple-primary, #5B21B6); color: #fff; border: none;
+    padding: 0.8rem 1.6rem; border-radius: 8px; font-weight: 600; font-size: 1rem;
+  }
+  .submit-btn:hover { opacity: 0.92; }
+
+  .review-cta {
+    margin: var(--spacing-xl, 2rem) 0 0;
+    padding: var(--spacing-lg, 1.5rem);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .review-cta h3 { margin: 0 0 0.4rem; font-size: 1.1rem; }
+  .review-cta p { margin: 0 0 1rem; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; }
+  .review-btn {
+    display: inline-block; font-weight: 600; font-size: 0.95rem; text-decoration: none;
+    color: var(--purple-primary); border: 1px solid var(--purple-primary);
+    padding: 0.6rem 1.2rem; border-radius: 8px; transition: background 0.2s, color 0.2s;
+  }
+  .review-btn:hover { background: var(--purple-primary); color: #fff; }
+</style>
+
+<script is:inline>
+  // Surface intake error codes redirected back from /api/consulting-intake.
+  (function () {
+    var code = new URLSearchParams(location.search).get('intake_error');
+    if (!code) return;
+    var map = {
+      'missing-fields': 'Please complete all required fields and resubmit.',
+      'invalid-email': 'That email address looks invalid — please check it and resubmit.',
+      'not-configured': 'The intake form isn’t fully configured yet. Please email info@purpledirective.com.',
+      'bad-request': 'Your submission could not be read. Please try again.',
+      'auth': 'The intake mailer rejected the request. Please email info@purpledirective.com.',
+      'rate-limited': 'Too many submissions right now — please wait a moment and resubmit.',
+      'resend-down': 'The mail service is temporarily unavailable. Please try again shortly.',
+      'network': 'Something went wrong sending your intake. Please try again or email info@purpledirective.com.',
+      'unknown': 'Something went wrong. Please try again or email info@purpledirective.com.'
+    };
+    var el = document.getElementById('intake-error');
+    if (el) { el.textContent = map[code] || map['unknown']; el.style.display = 'block'; }
+  })();
+
+  // Product-aware confirmation line from ?session_id={CHECKOUT_SESSION_ID}.
+  (function () {
+    var sid = new URLSearchParams(location.search).get('session_id');
+    if (!sid || !/^cs_(test|live)_[A-Za-z0-9]+$/.test(sid)) return;
+    var el = document.getElementById('product-line');
+    if (!el) return;
+    fetch('/api/checkout-session?session_id=' + encodeURIComponent(sid))
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        if (!d || !d.product) return;
+        el.textContent = 'Your ' + d.product + ' engagement is confirmed.';
+      })
+      .catch(function () { /* keep the default copy */ });
+  })();
+</script>
