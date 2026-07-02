@@ -65,13 +65,30 @@ import Site from '../layouts/Site.astro';
       <h2>Seven instruments. One standard.</h2>
       <p class="lede">From day-one SOP templates to trial-management software &mdash; every product built to the same bar, so the rigor never drops when you move between tools.</p>
       <div class="inst-grid">
-        <a class="inst" href="https://nexrial.com" target="_blank" rel="noopener"><span class="ik">Software</span><h3>Nexrial <span class="arr">&rarr;</span></h3><p>Clinical trial management with a 21 CFR Part 11 audit trail and role-based access.</p></a>
-        <a class="inst" href="/sop-bundle"><span class="ik">Templates</span><h3>SOP Library <span class="arr">&rarr;</span></h3><p>13 ICH-GCP standard operating procedures across the full study lifecycle.</p></a>
-        <a class="inst" href="/research-report"><span class="ik">Research</span><h3>Research Report <span class="arr">&rarr;</span></h3><p>Analyst-grade healthcare market reports, delivered in 48 hours.</p></a>
-        <a class="inst" href="https://purplesign.app" target="_blank" rel="noopener"><span class="ik">E-signature &middot; soon</span><h3>PurpleSign <span class="arr">&rarr;</span></h3><p>Electronic signatures, designed against 21 CFR Part 11 controls.</p></a>
-        <a class="inst" href="https://quillpdf.com" target="_blank" rel="noopener"><span class="ik">Tools</span><h3>QuillPDF <span class="arr">&rarr;</span></h3><p>Free PDF tools that run in your browser &mdash; redaction stays client-side.</p></a>
-        <a class="inst" href="https://volstrin.com" target="_blank" rel="noopener"><span class="ik">Recruiting</span><h3>Volstrin <span class="arr">&rarr;</span></h3><p>Specialist recruiting for the legal sector &mdash; an adjacent regulated field.</p></a>
-        <a class="inst inst-wide" href="/consulting"><span class="ik">Services</span><h3>Consulting &mdash; regulatory infrastructure, hands-on <span class="arr">&rarr;</span></h3><p>SOP development, binder setup, IRB submission support, and compliance gap assessments &mdash; the same operators, on call.</p></a>
+        <a class="inst" href="https://nexrial.com" target="_blank" rel="noopener">
+          <div class="inst-top"><span class="inst-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span><span class="ik">Software</span></div>
+          <h3>Nexrial <span class="arr">&rarr;</span></h3><p>Clinical trial management with a 21 CFR Part 11 audit trail and role-based access.</p></a>
+        <a class="inst" href="/sop-bundle">
+          <div class="inst-top"><span class="inst-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg></span><span class="ik">Templates</span></div>
+          <h3>SOP Library <span class="arr">&rarr;</span></h3><p>13 ICH-GCP standard operating procedures across the full study lifecycle.</p></a>
+        <a class="inst" href="/research-report">
+          <div class="inst-top"><span class="inst-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><rect x="7" y="11" width="3" height="6" rx=".6"/><rect x="12" y="7" width="3" height="10" rx=".6"/><rect x="17" y="13" width="3" height="4" rx=".6"/></svg></span><span class="ik">Research</span></div>
+          <h3>Research Report <span class="arr">&rarr;</span></h3><p>Analyst-grade healthcare market reports, delivered in 48 hours.</p></a>
+        <a class="inst" href="https://purplesign.app" target="_blank" rel="noopener">
+          <div class="inst-top"><span class="inst-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5Z"/></svg></span><span class="ik">E-signature</span><span class="tag tag-soon">Soon</span></div>
+          <h3>PurpleSign <span class="arr">&rarr;</span></h3><p>Electronic signatures, designed against 21 CFR Part 11 controls.</p></a>
+        <a class="inst" href="https://quillpdf.com" target="_blank" rel="noopener">
+          <div class="inst-top"><span class="inst-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></span><span class="ik">Tools</span><span class="tag tag-free">Free</span></div>
+          <h3>QuillPDF <span class="arr">&rarr;</span></h3><p>PDF tools that run in your browser &mdash; free, with redaction that stays client-side.</p></a>
+        <a class="inst" href="https://volstrin.com" target="_blank" rel="noopener">
+          <div class="inst-top"><span class="inst-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span class="ik">Recruiting</span></div>
+          <h3>Volstrin <span class="arr">&rarr;</span></h3><p>Specialist recruiting for the legal sector &mdash; an adjacent regulated field.</p></a>
+        <a class="inst inst-wide" href="/consulting">
+          <div class="inst-wide-head">
+            <div class="inst-top"><span class="inst-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-5a9 9 0 0 1 18 0v5"/><path d="M21 19a2 2 0 0 1-2 2h-1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h3Z"/><path d="M3 19a2 2 0 0 0 2 2h1a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3Z"/></svg></span><span class="ik">Services</span></div>
+            <h3>Consulting &mdash; regulatory infrastructure, hands-on <span class="arr">&rarr;</span></h3>
+          </div>
+          <p>SOP development, binder setup, IRB submission support, and compliance gap assessments &mdash; the same operators, on call.</p></a>
       </div>
     </div>
   </section>
@@ -302,9 +319,46 @@ import Site from '../layouts/Site.astro';
     g.timeline({scrollTrigger:{trigger:'#standard', start:'top 68%', toggleActions:'play none none none'}, defaults:{ease:'power2.out'}})
       .fromTo('#trailFill',{width:'0%'},{width:'100%',duration:2.0,ease:'none'},0)
       .from('.audit .cp',{opacity:0,y:12,duration:.5,stagger:.38},0.2);
-    g.from('.inst',{y:28,opacity:0,duration:.6,stagger:.07,ease:'power3.out',scrollTrigger:{trigger:'.inst-grid',start:'top 82%'}});
+    // Instrument cards reveal via IntersectionObserver, not ScrollTrigger: IO keys
+    // off real intersection (firing even for cards already in view on a deep-link
+    // load), so a jump straight to #products can never strand them hidden.
+    var instCards = g.utils.toArray('.inst');
+    if('IntersectionObserver' in window){
+      instCards.forEach(function(el){ el.style.opacity='0'; el.style.transform='translateY(28px)'; el.style.transition='opacity .55s ease, transform .55s ease'; });
+      var io = new IntersectionObserver(function(ents){
+        ents.forEach(function(e){ if(e.isIntersecting){ var el=e.target; el.style.opacity='1'; el.style.transform='none'; io.unobserve(el); } });
+      }, {rootMargin:'0px 0px -6% 0px'});
+      instCards.forEach(function(el){ io.observe(el); });
+    }
     g.from('.proof .pchip',{y:12,opacity:0,duration:.45,stagger:.06,ease:'power2.out',scrollTrigger:{trigger:'.proof',start:'top 88%'}});
     reveal('.cta-tail h2'); reveal('.cta-tail p');
+
+    // Safety net: a deep-link jump to #products lands the grid in view before the
+    // hero intro settles, so ScrollTrigger caches stale start positions and the
+    // .from() reveals never fire — leaving cards stuck hidden. Refresh once layout
+    // settles, and on deep-link loads force-reveal any card already on screen.
+    var STUCK=['.band-split h2','.band-split p','.audit-h2','.audit-lede','.proof .pchip','.cta-tail h2','.cta-tail p'];
+    function rescueInView(){
+      g.utils.toArray(STUCK.join(',')).forEach(function(el){
+        var r=el.getBoundingClientRect();
+        if(r.top<window.innerHeight*0.98 && r.bottom>0 && parseFloat(getComputedStyle(el).opacity)<0.99){
+          g.set(el,{opacity:1,clearProps:'transform'});
+        }
+      });
+    }
+    function refresh(){ try{ ScrollTrigger.refresh(); }catch(e){} }
+    window.addEventListener('load', refresh);
+    setTimeout(function(){ refresh(); rescueInView(); }, 700);
+    setTimeout(function(){ refresh(); rescueInView(); }, 2700);
+    // On a deep-link load, reveals may already be compromised — guarantee any card
+    // scrolled into view becomes visible (pristine top-down animation is unaffected).
+    if(location.hash && location.hash.length>1){
+      var ticking=false;
+      window.addEventListener('scroll', function(){
+        if(ticking) return; ticking=true;
+        requestAnimationFrame(function(){ rescueInView(); ticking=false; });
+      }, {passive:true});
+    }
   })();
   </script>
 </Site>
