@@ -76,6 +76,24 @@ import Site from '../layouts/Site.astro';
     </div>
   </section>
 
+  <!-- FREE SOP — lead magnet -->
+  <section class="section freebar" style="padding-top:0">
+    <div class="container">
+      <div class="freebar-card">
+        <div class="freebar-copy">
+          <div class="section-label">Free to start</div>
+          <h2>Read a full SOP, free.</h2>
+          <p>SOP-01 &mdash; Training &amp; Qualification of Study Staff &mdash; published in full. Read the whole procedure on the page and download it in editable Word and PDF, no signup. It's one of the 13 in the bundle, so you can judge the quality before you buy.</p>
+        </div>
+        <div class="freebar-cta">
+          <a href="/training-qualification-sop" class="btn-primary">Read the free SOP
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="/sop-bundle" class="btn-ghost">See the full bundle</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- OPERATORS — about -->
   <section class="section" id="about" style="padding-top:0">
     <div class="container">
@@ -290,3 +308,24 @@ import Site from '../layouts/Site.astro';
   })();
   </script>
 </Site>
+
+<style>
+  .freebar-card{
+    display:grid;grid-template-columns:1.4fr .9fr;gap:var(--sp-xl);align-items:center;
+    border:1px solid var(--border);border-radius:16px;
+    background:linear-gradient(120deg,var(--bg-tinted),var(--bg-card));
+    padding:var(--sp-xl);
+  }
+  .freebar-copy h2{margin:.35rem 0 .6rem}
+  .freebar-copy p{font-size:.95rem;line-height:1.62;color:var(--text-secondary);margin:0;max-width:40rem}
+  .freebar-cta{display:flex;flex-direction:column;gap:.6rem;align-items:flex-start}
+  .freebar-cta .btn-primary,.freebar-cta .btn-ghost{width:100%;justify-content:center}
+  /* .btn-ghost is built for the dark hero; recolor it for this light card */
+  .freebar-cta .btn-ghost{color:var(--purple-primary);border-color:var(--purple-primary)}
+  .freebar-cta .btn-ghost:hover{background:rgba(124,58,237,.08);border-color:var(--purple-primary)}
+  @media (max-width:760px){
+    .freebar-card{grid-template-columns:1fr;gap:var(--sp-lg);padding:var(--sp-lg)}
+    .freebar-cta{flex-direction:row;flex-wrap:wrap}
+    .freebar-cta .btn-primary,.freebar-cta .btn-ghost{width:auto}
+  }
+</style>
