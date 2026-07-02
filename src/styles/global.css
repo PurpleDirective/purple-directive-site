@@ -842,10 +842,12 @@ button:focus-visible {
 
 /* =============================================
    Shared product page components
-   Used by: sample-report, healthcare-market-research-pricing,
-   and any future product/landing page. Scoped duplicates exist
-   in sop-bundle.astro and research-report.astro — safe to
-   remove in a future cleanup once parity is verified.
+   Used by the comparison/landing pages (nexrial-vs-*,
+   best-ctms-small-clinical-sites, ich-gcp-sop-templates,
+   bimo-taxonomy, how-to-read-an-fda-483, training-qualification-sop)
+   and any future product/landing page. A scoped duplicate exists
+   in sop-bundle.astro — safe to remove in a future cleanup once
+   parity is verified.
    ============================================= */
 
 .product-top {
