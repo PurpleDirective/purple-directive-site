@@ -3,3 +3,5 @@
 /adverse-event-protocol-deviation-sop/ /training-qualification-sop 301
 /sops/SOP-008-Adverse-Events-Protocol-Deviations.docx /sop-bundle 302
 /sops/SOP-008-Adverse-Events-Protocol-Deviations.pdf /sop-bundle 302
+# SOP-008 view-only sample images retired (were fully readable); free proof is now SOP-001 in full.
+/sop-sample/* /sop-bundle 301
