@@ -97,7 +97,7 @@
       chwrap=chips.querySelector('.ch-wrap'),esc=document.getElementById('pds-esc');
   var history=[],busy=false;
   var SEED=["How much is the SOP bundle?","Is Nexrial designed for 21 CFR Part 11?",
-            "How fast is a research report, and what's in it?","Can you set up a brand-new research site?",
+            "Can you set up a brand-new research site?",
             "What does consulting actually include?"];
   SEED.forEach(function(q){var b=document.createElement('button');b.className='pds-chip';b.textContent=q;
     b.addEventListener('click',function(){ask(q);});chwrap.appendChild(b);});
