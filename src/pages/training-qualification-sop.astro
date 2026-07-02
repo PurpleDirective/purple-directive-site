@@ -6,6 +6,27 @@ import sopBody from '../data/sop-001-body.html?raw';
 
 const pageUrl = "https://purpledirective.com/training-qualification-sop/";
 
+// Split the rendered SOP body into top-level (H2) sections so the document
+// reads as a navigable set of collapsible sheets instead of one long scroll.
+type SopSection = { id: string; num: string; label: string; body: string };
+const sopSections: SopSection[] = sopBody
+  .split(/(?=<h2\b)/)
+  .map((chunk) => chunk.trim())
+  .filter((chunk) => chunk.startsWith('<h2'))
+  .map((chunk): SopSection | null => {
+    const m = chunk.match(/^<h2\s+id="([^"]*)"[^>]*>([\s\S]*?)<\/h2>([\s\S]*)$/);
+    if (!m) return null;
+    const rawTitle = m[2].replace(/<[^>]+>/g, '').trim();
+    const nm = rawTitle.match(/^(\d+)\.\s*(.*)$/);
+    return {
+      id: m[1],
+      num: nm ? nm[1] : '',
+      label: nm ? nm[2] : rawTitle,
+      body: m[3].trim(),
+    };
+  })
+  .filter((s): s is SopSection => s !== null);
+
 const techArticleSchema = {
   "@context": "https://schema.org",
   "@type": "TechArticle",
@@ -116,11 +137,11 @@ const breadcrumbSchema = {
         <div>
           <p style="margin: 0 0 0.5rem; font-weight: 600; text-align: center;">What this SOP covers</p>
           <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.85rem; line-height: 1.8;">
-            <li><a href="#4-definitions">Qualification &amp; competency standards</a></li>
-            <li><a href="#5-procedures">Initial &amp; role-specific training</a></li>
-            <li><a href="#5-procedures">Delegation of Authority (DOA) log</a></li>
-            <li><a href="#5-procedures">Retraining triggers</a></li>
-            <li><a href="#5-procedures">Training-file documentation</a></li>
+            <li><a href="#3-responsibilities">Roles &amp; qualification standards</a></li>
+            <li><a href="#41-gcp-training-requirements">Initial &amp; role-specific training</a></li>
+            <li><a href="#43-delegation-of-authority-doa-log-management">Delegation of Authority (DOA) log</a></li>
+            <li><a href="#42-protocol-specific-training">Retraining triggers</a></li>
+            <li><a href="#46-training-records-management">Training-file documentation</a></li>
           </ul>
         </div>
       </div>
@@ -166,17 +187,96 @@ const breadcrumbSchema = {
     </div>
   </section>
 
-  <!-- The SOP document, rendered in full -->
+  <!-- The SOP document, rendered as a navigable reader -->
   <section class="why-now-section">
-    <article class="sop-doc">
-      <header class="sop-doc-head">
-        <p class="sop-doc-kicker">Standard Operating Procedure</p>
-        <h2 class="sop-doc-title">SOP-001 — Training and Qualification of Study Staff</h2>
-        <p class="sop-doc-meta">Version 1.2 · ICH E6(R3)-aligned · Purple Directive</p>
-      </header>
-      <div class="sop-doc-body" set:html={sopBody} />
-    </article>
+    <div class="sop-reader">
+      <!-- Sticky contents rail -->
+      <aside class="sop-toc" aria-label="Document contents">
+        <p class="sop-toc-cap">Contents</p>
+        <nav class="sop-toc-nav">
+          {sopSections.map((s) => (
+            <a href={`#sec-${s.id}`} class="sop-toc-link" data-sec={`sec-${s.id}`}>
+              <span class="sop-toc-n">{s.num}</span>
+              <span class="sop-toc-t">{s.label}</span>
+            </a>
+          ))}
+        </nav>
+        <button type="button" id="sopToggleAll" class="sop-toc-toggle">Collapse all</button>
+        <div class="sop-toc-dls">
+          <a href="/sops/SOP-001-Training-Qualification.docx" download>&darr; Word (.docx)</a>
+          <a href="/sops/SOP-001-Training-Qualification.pdf" download>&darr; PDF</a>
+        </div>
+      </aside>
+
+      <!-- Document -->
+      <article class="sop-doc">
+        <header class="sop-doc-head">
+          <p class="sop-doc-kicker">Standard Operating Procedure</p>
+          <h2 class="sop-doc-title">SOP-001 — Training and Qualification of Study Staff</h2>
+          <p class="sop-doc-meta">Version 1.2 · ICH E6(R3)-aligned · Purple Directive</p>
+        </header>
+        <div class="sop-doc-sections">
+          {sopSections.map((s) => (
+            <details class="sop-section" id={`sec-${s.id}`} open>
+              <summary class="sop-section-head">
+                <span class="sop-sec-n">{s.num}</span>
+                <span class="sop-sec-t">{s.label}</span>
+                <span class="sop-sec-chev" aria-hidden="true"></span>
+              </summary>
+              <div class="sop-doc-body" set:html={s.body} />
+            </details>
+          ))}
+        </div>
+      </article>
+    </div>
   </section>
+
+  <script is:inline>
+    (function () {
+      var secs = Array.prototype.slice.call(document.querySelectorAll('.sop-section'));
+      var links = Array.prototype.slice.call(document.querySelectorAll('.sop-toc-link'));
+      if (!secs.length) return;
+
+      // Collapse / expand all
+      var toggle = document.getElementById('sopToggleAll');
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          var anyOpen = secs.some(function (s) { return s.open; });
+          secs.forEach(function (s) { s.open = !anyOpen; });
+          toggle.textContent = anyOpen ? 'Expand all' : 'Collapse all';
+        });
+      }
+
+      // Clicking a contents link opens its section if collapsed
+      var byId = {};
+      links.forEach(function (a) { byId[a.getAttribute('data-sec')] = a; });
+      links.forEach(function (a) {
+        a.addEventListener('click', function () {
+          var el = document.getElementById(a.getAttribute('data-sec'));
+          if (el && !el.open) el.open = true;
+        });
+      });
+
+      // Scroll-spy: highlight the section currently in view
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (!en.isIntersecting) return;
+            var a = byId[en.target.id];
+            if (!a) return;
+            links.forEach(function (x) { x.classList.remove('active'); });
+            a.classList.add('active');
+          });
+        }, { rootMargin: '-15% 0px -75% 0px', threshold: 0 });
+        secs.forEach(function (s) { io.observe(s); });
+      }
+
+      // Always print the full document
+      window.addEventListener('beforeprint', function () {
+        secs.forEach(function (s) { s.open = true; });
+      });
+    })();
+  </script>
 
   <!-- Bundle CTA -->
   <section class="why-now-section cta-tinted">
@@ -257,14 +357,139 @@ const breadcrumbSchema = {
   }
   .sop-disclaimer strong { color: var(--text-primary); }
 
+  /* Document reader: sticky contents rail + document */
+  .sop-reader {
+    display: grid;
+    grid-template-columns: 232px minmax(0, 1fr);
+    gap: var(--spacing-xl);
+    align-items: start;
+  }
+
+  /* Sticky contents rail */
+  .sop-toc {
+    position: sticky;
+    top: 88px;
+    align-self: start;
+  }
+  .sop-toc-cap {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+    color: var(--text-muted);
+    margin: 0 0 0.6rem;
+    padding-left: 0.65rem;
+  }
+  .sop-toc-nav { display: flex; flex-direction: column; }
+  .sop-toc-link {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.4rem 0.65rem;
+    font-size: 0.82rem;
+    line-height: 1.35;
+    color: var(--text-secondary);
+    border-left: 2px solid var(--border);
+    text-decoration: none;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+  }
+  .sop-toc-link:hover { color: var(--purple-primary); background: var(--bg-tinted); }
+  .sop-toc-link.active {
+    color: var(--purple-primary);
+    border-left-color: var(--purple-primary);
+    font-weight: 600;
+    background: var(--bg-tinted);
+  }
+  .sop-toc-n {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+  .sop-toc-link.active .sop-toc-n { color: var(--purple-primary); }
+  .sop-toc-toggle {
+    margin: 0.85rem 0 0 0.65rem;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .sop-toc-toggle:hover { color: var(--purple-primary); border-color: var(--purple-primary); }
+  .sop-toc-dls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin: 1rem 0 0;
+    padding: 0.85rem 0 0 0.65rem;
+    border-top: 1px solid var(--border);
+  }
+  .sop-toc-dls a {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--purple-primary);
+    text-decoration: none;
+  }
+  .sop-toc-dls a:hover { text-decoration: underline; }
+
   /* The embedded SOP document */
   .sop-doc {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: var(--spacing-xl);
-    max-width: 820px;
+    min-width: 0;
   }
+
+  /* Collapsible top-level sections */
+  .sop-section { border-top: 1px solid var(--border); }
+  .sop-section:first-child { border-top: none; }
+  .sop-section-head {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: var(--spacing-md) 0;
+    cursor: pointer;
+    list-style: none;
+    scroll-margin-top: 84px;
+  }
+  .sop-section { scroll-margin-top: 84px; }
+  .sop-section-head::-webkit-details-marker { display: none; }
+  .sop-sec-n {
+    flex-shrink: 0;
+    width: 1.7rem;
+    height: 1.7rem;
+    display: grid;
+    place-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--purple-primary);
+    background: var(--purple-tint);
+    border-radius: 6px;
+  }
+  .sop-sec-t {
+    flex: 1;
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  .sop-sec-chev {
+    flex-shrink: 0;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-right: 2px solid var(--text-muted);
+    border-bottom: 2px solid var(--text-muted);
+    transform: rotate(45deg);
+    transition: transform 0.2s;
+    margin-right: 0.2rem;
+  }
+  .sop-section[open] .sop-sec-chev { transform: rotate(-135deg); }
+  .sop-section > .sop-doc-body { padding: 0 0 var(--spacing-md) calc(1.7rem + 0.7rem); }
 
   .sop-doc-head {
     border-bottom: 2px solid var(--purple-tint);
@@ -410,7 +635,28 @@ const breadcrumbSchema = {
     margin: 0;
   }
 
+  @media (max-width: 900px) {
+    .sop-reader { grid-template-columns: 1fr; gap: var(--spacing-lg); }
+    .sop-toc {
+      position: static;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: var(--spacing-md);
+      background: var(--bg-card);
+    }
+    .sop-toc-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 0.15rem; }
+  }
   @media (max-width: 768px) {
     .sop-doc { padding: var(--spacing-lg); }
+    .sop-section > .sop-doc-body { padding-left: 0; }
+    .sop-toc-nav { grid-template-columns: 1fr; }
+  }
+
+  /* Print: always show the full document, hide the rail */
+  @media print {
+    .sop-reader { display: block; }
+    .sop-toc { display: none; }
+    .sop-sec-chev { display: none; }
+    .sop-section > .sop-doc-body { padding-left: 0; display: block; }
   }
 </style>

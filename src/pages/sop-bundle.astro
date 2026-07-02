@@ -64,18 +64,20 @@ const sops = [
     <div class="container">
       <div class="section-label">See it first</div>
       <h2>Read a full SOP, free.</h2>
-      <p class="lede" style="max-width:46rem">SOP-08 &mdash; Adverse Events &amp; Protocol Deviations &mdash; in full, all 8 pages. Read it here and judge the quality yourself. The bundle gives you this plus all 13, editable in Word with placeholders and signature lines.</p>
-      <div class="sample-doc" id="sampleDoc" aria-label="SOP-008 sample, view only">
-        <img src="/sop-sample/page-1.png" alt="SOP-008 Adverse Events, page 1" loading="lazy" draggable="false">
-        <img src="/sop-sample/page-2.png" alt="SOP-008 Adverse Events, page 2" loading="lazy" draggable="false">
-        <img src="/sop-sample/page-3.png" alt="SOP-008 Adverse Events, page 3" loading="lazy" draggable="false">
-        <img src="/sop-sample/page-4.png" alt="SOP-008 Adverse Events, page 4" loading="lazy" draggable="false">
-        <img src="/sop-sample/page-5.png" alt="SOP-008 Adverse Events, page 5" loading="lazy" draggable="false">
-        <img src="/sop-sample/page-6.png" alt="SOP-008 Adverse Events, page 6" loading="lazy" draggable="false">
-        <img src="/sop-sample/page-7.png" alt="SOP-008 Adverse Events, page 7" loading="lazy" draggable="false">
-        <img src="/sop-sample/page-8.png" alt="SOP-008 Adverse Events, page 8" loading="lazy" draggable="false">
+      <p class="lede" style="max-width:46rem">SOP-01 &mdash; Training &amp; Qualification of Study Staff &mdash; is published in full, free. Read the entire procedure on the page and download it in editable Word and PDF, no signup. It's the same depth and structure as every one of the 13 in the bundle &mdash; judge the quality yourself before you buy.</p>
+      <div class="sample-card">
+        <div class="sample-card-body">
+          <span class="sample-badge">Free &middot; SOP-01 &middot; ICH E6(R3)</span>
+          <h3>Training &amp; Qualification of Study Staff</h3>
+          <p>Five sections and three reference tables &mdash; GCP training, protocol-specific training, the Delegation of Authority log, retraining triggers, and audit-ready training files. The complete SOP, free to read and adapt.</p>
+          <div class="cta-row" style="margin-top:1.2rem">
+            <a href="/training-qualification-sop" class="btn-primary">Read the free SOP
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a href="/training-qualification-sop#subscribe" class="btn-ghost">Download Word &amp; PDF</a>
+          </div>
+        </div>
       </div>
-      <p class="sample-note">View-only sample &middot; the editable Word &amp; PDF come with the bundle.</p>
+      <p class="sample-note">The free SOP is the standalone document &middot; the other 12 SOPs and 11 companion forms come with the bundle.</p>
       <div class="cta-row" style="margin-top:1.4rem">
         <a href="/buy/sop-bundle?utm_source=direct&amp;utm_medium=lp-sample" class="btn-primary">Get all 13 &mdash; $249.99
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -157,18 +159,17 @@ const sops = [
     </div>
   </section>
 
-  <script is:inline>
-    (function(){var d=document.getElementById('sampleDoc');if(!d)return;
-      d.addEventListener('contextmenu',function(e){e.preventDefault();});
-      d.addEventListener('dragstart',function(e){e.preventDefault();});})();
-  </script>
 </Site>
 
 <style>
-  .sample-doc{max-height:580px;overflow-y:auto;border:1px solid var(--border);border-radius:14px;background:var(--bg-tinted);padding:18px 18px 4px;-webkit-user-select:none;user-select:none;margin-top:var(--sp-lg)}
-  .sample-doc img{display:block;width:100%;max-width:760px;margin:0 auto 16px;border:1px solid var(--hairline);border-radius:6px;box-shadow:0 6px 22px rgba(20,12,40,.10);-webkit-user-drag:none;pointer-events:none}
+  .sample-card{margin-top:var(--sp-lg);border:1px solid var(--border);border-radius:14px;background:linear-gradient(180deg,var(--bg-tinted),var(--bg-card));padding:var(--sp-xl);max-width:640px}
+  .sample-card-body h3{font-size:1.2rem;margin:.7rem 0 .5rem;color:var(--text-primary)}
+  .sample-card-body p{font-size:.92rem;line-height:1.6;color:var(--text-secondary);margin:0;max-width:44rem}
+  .sample-badge{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.02em;color:var(--purple-primary);background:var(--purple-tint);padding:.28rem .7rem;border-radius:999px}
   .sample-note{font-size:.82rem;color:var(--text-muted);margin:.85rem 0 0}
-  .sample-doc::-webkit-scrollbar{width:10px}.sample-doc::-webkit-scrollbar-thumb{background:#d9d2ea;border-radius:8px}
+  /* .btn-ghost is built for the dark hero; recolor it for this light card */
+  .sample-card .btn-ghost{color:var(--purple-primary);border-color:var(--purple-primary)}
+  .sample-card .btn-ghost:hover{background:rgba(124,58,237,.08);border-color:var(--purple-primary)}
 
   /* À la carte */
   .ala-list{list-style:none;margin-top:var(--sp-lg);border-top:1px solid var(--border)}
