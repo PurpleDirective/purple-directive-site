@@ -57,3 +57,7 @@ User-agent: *
 Allow: /
 
 Sitemap: https://purpledirective.com/sitemap-index.xml
+
+# AI-retrieval summary (llmstxt.org)
+# https://purpledirective.com/llms.txt
+# https://purpledirective.com/llms-full.txt

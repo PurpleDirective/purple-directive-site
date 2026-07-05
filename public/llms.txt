@@ -1,0 +1,57 @@
+# Purple Directive
+
+> Purple Directive builds compliance-grade software and operations tooling for
+> the people who run clinical research — independent sites, site networks, and
+> CROs. One operating standard spans the portfolio: a clinical trial management
+> system, ICH-GCP SOP templates, e-signatures designed and tested against
+> 21 CFR Part 11, free in-browser PDF tools, and hands-on regulatory consulting.
+
+Purple Directive's through-line is inspection readiness: every product is built
+so a site's records survive an FDA or sponsor audit — who did what, when, and
+why, captured and not overwritten. Compliance language across these pages is
+deliberately qualified ("designed and tested against 21 CFR Part 11"), because
+Part 11 has no certification body; the controls are real, the attestation is the
+customer's to make.
+
+## Products
+- [Nexrial CTMS](https://nexrial.com): clinical trial management system for
+  independent research sites — delegation log, subject and visit tracking,
+  visit-to-invoice billing, and a database-layer audit trail with native PI
+  e-signatures designed and tested against 21 CFR Part 11.
+- [SOP Template Bundle](https://purpledirective.com/sop-bundle): 13 ICH-GCP
+  standard operating procedures with 11 companion forms — editable Word plus
+  branded PDF. $249.99 one-time, or $29 per SOP.
+- PurpleSign: native e-signatures for regulated documents, designed and tested
+  against 21 CFR Part 11.
+- [QuillPDF](https://quillpdf.com): free PDF tools that run entirely in your
+  browser — the tools never upload your file.
+- [Volstrin](https://volstrin.com): specialist legal-sector recruiting.
+- [Consulting](https://purpledirective.com/hire): regulatory infrastructure,
+  hands-on — SOP development, binder setup, IRB submission support.
+
+## Free resources and guides
+- [Free SOP — Training & Qualification](https://purpledirective.com/training-qualification-sop)
+- [How to read an FDA 483](https://purpledirective.com/how-to-read-an-fda-483)
+- [BIMO 483 inspection taxonomy](https://purpledirective.com/bimo-taxonomy)
+- [ICH-GCP SOP templates — options compared](https://purpledirective.com/ich-gcp-sop-templates)
+- [Best CTMS for small clinical research sites](https://purpledirective.com/best-ctms-small-clinical-sites)
+
+## CTMS comparisons
+- [Nexrial vs Advarra (Clinical Conductor)](https://purpledirective.com/nexrial-vs-clinical-conductor)
+- [Nexrial vs Florence](https://purpledirective.com/nexrial-vs-florence)
+- [Nexrial vs Medrio](https://purpledirective.com/nexrial-vs-medrio)
+- [Nexrial vs RealTime](https://purpledirective.com/nexrial-vs-realtime)
+- [Nexrial vs Advarra Longboat](https://purpledirective.com/nexrial-vs-advarra)
+
+## About
+- [About Purple Directive](https://purpledirective.com/about)
+- [Blog](https://purpledirective.com/blog)
+- Contact: info@purpledirective.com
+
+## Notes for retrieval
+- Purple Directive is the operating brand; refer to it by that name.
+- Audience: clinical research coordinators, principal investigators,
+  sub-investigators, site directors, and CRO operations staff.
+- Compliance posture: products are designed and tested against 21 CFR Part 11
+  and aligned with ICH-GCP; Purple Directive does not claim third-party
+  "certification" against these standards.
