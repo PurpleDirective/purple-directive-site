@@ -1,5 +1,6 @@
 ---
-import Base from '../layouts/Base.astro';
+import Site from '../layouts/Site.astro';
+import '../styles/pages.css';
 import EmailCapture from '../components/EmailCapture.astro';
 
 const articleSchema = {
@@ -24,65 +25,61 @@ const articleSchema = {
 };
 ---
 
-<Base
+<Site
   title="FY2022–2024 BIMO 483 Observation Taxonomy"
-  activePage="products"
   ogType="article"
   description="Free taxonomy of FDA BIMO Form 483 observations at clinical investigator sites, FY2022–2024. Seven observation categories with verified primary-source citations, base-rate context, and trend analysis. Built from FDA BIMO Inspection Metrics and warning letter record."
 >
-
-  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  </Fragment>
 
   <!-- Hero -->
-  <div class="product-top">
-    <div class="product-hero">
-      <div class="product-hero-text">
-        <span class="product-badge">Free Resource · Published April 2026</span>
+  <section class="prod-hero">
+    <div class="container prod-hero-grid">
+      <div>
+        <div class="section-label">Free Resource · Published April 2026</div>
         <h1>FY2022–FY2024 BIMO Form 483 Observation Taxonomy</h1>
-        <p class="product-tagline">
+        <p class="lede">
           Seven FDA BIMO observation categories at US clinical investigator sites, with verified primary-source citations,
           base-rate context from FDA's fiscal year metrics, and trend analysis. Built from the FDA BIMO Inspection Metrics record
           and 42 BIMO-related warning letters (FY2019–2024). Free to read, free to share.
         </p>
-        <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: var(--spacing-md);">
-          <a href="/bimo-taxonomy-fy2022-2024.pdf" class="buy-btn" style="max-width: 260px; white-space: nowrap; border: 1.5px solid transparent;" download>Download PDF</a>
-          <a href="/bimo-taxonomy-fy2022-2024.docx" class="buy-btn" style="max-width: 260px; white-space: nowrap; background: transparent; color: var(--purple-primary); border: 1.5px solid var(--purple-primary);" download>Download Word</a>
+        <div class="cta-row">
+          <a href="/bimo-taxonomy-fy2022-2024.pdf" class="btn-primary" download>Download PDF
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg></a>
+          <a href="/bimo-taxonomy-fy2022-2024.docx" class="btn-ghost" download>Download Word</a>
         </div>
-        <p class="buy-note">
+        <p class="hero-note">
           No email required to read or download. If the taxonomy is useful, <a href="#subscribe">subscribe below</a> and I'll email future updates as FDA publishes new fiscal year metrics.
         </p>
-      </div>
-      <div class="product-hero-preview">
-        <div>
-          <p style="margin: 0 0 0.5rem; font-weight: 600; text-align: center;">Quick navigation</p>
-          <ol style="margin: 0; padding-left: 1.25rem; font-size: 0.85rem; line-height: 1.8;">
-            <li><a href="#cat-1">Protocol non-compliance</a></li>
-            <li><a href="#cat-2">Recordkeeping / case history</a></li>
-            <li><a href="#cat-3">Informed consent</a></li>
-            <li><a href="#cat-4">IP accountability</a></li>
-            <li><a href="#cat-5">AE / safety reporting</a></li>
-            <li><a href="#cat-6">IRB communication</a></li>
-            <li><a href="#cat-7">IND submission</a></li>
-          </ol>
-          <p style="margin: 0.75rem 0 0; text-align: center; font-size: 0.85rem;">
-            <a href="#base-rates">Base rates &rarr;</a>
-          </p>
+        <div class="facts">
+          <span class="fact">7 categories</span>
+          <span class="fact">42 warning letters analyzed</span>
+          <span class="fact">FY2019–2024 coverage</span>
+          <span class="fact">Primary-source citations</span>
         </div>
       </div>
+      <aside class="at-glance">
+        <p class="at-glance-cap">Quick navigation</p>
+        <ol>
+          <li><a href="#cat-1">Protocol non-compliance</a></li>
+          <li><a href="#cat-2">Recordkeeping / case history</a></li>
+          <li><a href="#cat-3">Informed consent</a></li>
+          <li><a href="#cat-4">IP accountability</a></li>
+          <li><a href="#cat-5">AE / safety reporting</a></li>
+          <li><a href="#cat-6">IRB communication</a></li>
+          <li><a href="#cat-7">IND submission</a></li>
+          <li><a href="#base-rates">Base rates &rarr;</a></li>
+        </ol>
+      </aside>
     </div>
-    <div class="product-stats">
-      <div class="stat"><strong>7</strong> categories</div>
-      <div class="stat-sep"></div>
-      <div class="stat"><strong>42</strong> warning letters analyzed</div>
-      <div class="stat-sep"></div>
-      <div class="stat"><strong>FY2019–2024</strong> coverage</div>
-      <div class="stat-sep"></div>
-      <div class="stat"><strong>Primary-source</strong> citations</div>
-    </div>
-  </div>
+  </section>
 
   <!-- Methodology -->
-  <section class="why-now-section">
+  <section class="section doc">
+    <div class="container">
+    <div class="doc-block" style="border-top:none;padding-top:0">
     <h2>Methodology Note</h2>
     <p>
       Built from primary FDA sources, verified through direct access where FDA's PDF servers allowed retrieval or through secondary analysis
@@ -103,14 +100,14 @@ const articleSchema = {
       <li>The FDA's public Form 483 observation database (top-10 lists) covers drug manufacturers under GMP, not BIMO clinical investigator inspections. Common source of confusion.</li>
       <li>Verbatim warning letter text was retrieved through search engine indexing and secondary sources where direct FDA PDF access returned 404 errors. All verbatim quotes are confirmed authentic through multi-source verification.</li>
     </ol>
-  </section>
+    </div>
 
-  <!-- Part A — categories -->
-  <section class="why-now-section">
-    <h2>Part A — Top-Level Observation Categories</h2>
-  </section>
+    <!-- Part A — categories -->
+    <div class="doc-block">
+    <h2 style="margin-bottom:0">Part A — Top-Level Observation Categories</h2>
+    </div>
 
-  <section class="why-now-section" id="cat-1">
+    <div class="doc-block" id="cat-1">
     <h2>Category 1 — Protocol Non-Compliance / Failure to Follow the Investigational Plan</h2>
     <p><strong>Primary citation:</strong> 21 CFR 312.60 — General Responsibilities of Investigators.</p>
     <p><em>"An investigator is responsible for ensuring that an investigation is conducted according to the signed investigator statement, the investigational plan, and applicable regulations."</em></p>
@@ -127,9 +124,9 @@ const articleSchema = {
       <strong>WL 654873</strong> — Robert J. Hayashi, M.D. / Washington University School of Medicine (March 14, 2023).
       Cited: <em>"Failure to conduct the clinical study in accordance with the protocol resulted in the unnecessary administration of intrathecal methotrexate and the performance of invasive procedures, such as lumbar punctures and the sedation of a pediatric subject; and the initiation of study treatment cycles for a subject, despite that subject's not meeting the treatment eligibility criterion."</em> — 21 CFR 312.60.
     </p>
-  </section>
+    </div>
 
-  <section class="why-now-section" id="cat-2">
+    <div class="doc-block" id="cat-2">
     <h2>Category 2 — Recordkeeping and Case History Inadequacies</h2>
     <p><strong>Primary citations:</strong> 21 CFR 312.62(a) (case histories), 312.62(b) (record retention), 312.68 (inspection of records).</p>
     <p><strong>Frequency:</strong> Second most common observation category in both FY2022 and FY2023 BIMO metrics.</p>
@@ -143,9 +140,9 @@ const articleSchema = {
     <p style="max-width: 760px;">
       <strong>WL 668519</strong> — Antonio E. Blanco, M.D. / Vista Health Research, LLC (September 26, 2023). Cited: <em>"The enrollment of subjects who do not meet eligibility criteria, and the failure to perform protocol-required safety imaging procedures, jeopardized subject safety and welfare and raised concerns about the reliability of the data at his site."</em> — 21 CFR 312.60 and 312.62.
     </p>
-  </section>
+    </div>
 
-  <section class="why-now-section" id="cat-3">
+    <div class="doc-block" id="cat-3">
     <h2>Category 3 — Informed Consent Failures</h2>
     <p><strong>Primary citations:</strong> 21 CFR 50.20 (general requirement), 50.25(a) (required elements), 50.27 (documentation), 312.60 (general investigator responsibility).</p>
     <p><strong>Frequency:</strong> Top-five observation category in both FY2022 and FY2023 BIMO metrics. Appears as a stand-alone citation (Part 50) and as a sub-element of 312.60 findings.</p>
@@ -159,9 +156,9 @@ const articleSchema = {
     <p style="max-width: 760px;">
       <strong>WL 660335</strong> — Mobeen Mazhar, M.D. (May 31, 2023). Failure to obtain informed consent in accordance with 21 CFR Part 50, cited under 21 CFR 312.60 and 21 CFR 50.20.
     </p>
-  </section>
+    </div>
 
-  <section class="why-now-section" id="cat-4">
+    <div class="doc-block" id="cat-4">
     <h2>Category 4 — Investigational Product Accountability Failures</h2>
     <p><strong>Primary citations:</strong> 21 CFR 312.62(a) (includes IP records), 312.57, 312.60 (encompasses IP control obligations under the signed Form FDA 1572).</p>
     <p><strong>Frequency:</strong> Top-five observation category in FY2022 and FY2023 BIMO metrics. FY2022 metrics identify it as the fourth most commonly cited category.</p>
@@ -171,9 +168,9 @@ const articleSchema = {
       <li><strong>4b. Delegation failures for IP verification.</strong> IP accountability tasks performed by staff not on the delegation of authority log.</li>
       <li><strong>4c. Dispensing records incomplete or inconsistent.</strong> Quantity dispensed, returned, and destroyed not reconciling with protocol supply tracking. High-frequency 483 observation at the VAI level.</li>
     </ul>
-  </section>
+    </div>
 
-  <section class="why-now-section" id="cat-5">
+    <div class="doc-block" id="cat-5">
     <h2>Category 5 — Adverse Event / Safety Reporting Failures</h2>
     <p><strong>Primary citations:</strong> 21 CFR 312.64(b) (investigator safety reports), 312.32 (IND safety reporting), 312.60.</p>
     <p><strong>Frequency:</strong> Top-five observation category in both FY2022 and FY2023 BIMO metrics. More frequently cited on Form 483 than generates standalone warning letters — AE failures are often bundled with 312.60 protocol non-compliance citations.</p>
@@ -183,9 +180,9 @@ const articleSchema = {
       <li><strong>5b. Failure to assess causality or relatedness.</strong> Investigator records an event but does not complete required causality assessment.</li>
       <li><strong>5c. SAEs not reported to the sponsor within the required timeframe.</strong> 21 CFR 312.64(b) requires prompt reporting. Delays — or sponsor notification only through routine CRF submission — appear across multiple inspections.</li>
     </ul>
-  </section>
+    </div>
 
-  <section class="why-now-section" id="cat-6">
+    <div class="doc-block" id="cat-6">
     <h2>Category 6 — IRB Communication Failures</h2>
     <p><strong>Primary citations:</strong> 21 CFR 312.66 (assurance of IRB review), 56.108 (IRB review of changes), 312.60.</p>
     <p><strong>Frequency:</strong> The FY2023 Goodwin analysis identified IRB-related violations as an increasing pattern in early FY2024, noting <strong>4 of 7 warning letters related to IRB activities</strong> in the FY2024 period observed through July 2024. A notable shift from prior years. <strong>Goodwin flags this as a trend to watch.</strong></p>
@@ -199,9 +196,9 @@ const articleSchema = {
     <p style="max-width: 760px;">
       <strong>WL 677324</strong> — Namita A. Goyal, M.D. (October 10, 2024). Failed to assure that an IRB complies with 21 CFR Part 56; failed to obtain IRB approval prior to changes in research activity, cited under 21 CFR 312.66. Compound violation spanning Categories 1, 4, and 6.
     </p>
-  </section>
+    </div>
 
-  <section class="why-now-section" id="cat-7">
+    <div class="doc-block" id="cat-7">
     <h2>Category 7 — Failure to Submit IND Application (Sponsor-Investigator Violations)</h2>
     <p><strong>Primary citations:</strong> 21 CFR 312.20(a) (requirement for IND), 312.2(a) (IND exemption criteria).</p>
     <p><strong>Frequency:</strong> Of 42 BIMO-related warning letters analyzed from FY2019–FY2024, <strong>13 (31%) cited failure to submit an IND</strong>, making this the second most common basis for warning letter issuance. 7 of 13 involved sponsor-investigators who were conducting investigations with unapproved drugs.</p>
@@ -211,10 +208,10 @@ const articleSchema = {
       <li><strong>7b. Lack of awareness that investigator-initiated trials require sponsor-investigator IND.</strong> Particularly common in academic settings and community oncology practices.</li>
       <li><strong>7c. Amended protocols not reflected in IND updates.</strong> Study conducted under conditions that deviate materially from the submitted IND without a protocol amendment. Ritter (2024) exemplifies: 50 additional doses administered beyond authorized IND parameters with no protocol amendment filed.</li>
     </ul>
-  </section>
+    </div>
 
-  <!-- Part B — base rates -->
-  <section class="why-now-section" id="base-rates">
+    <!-- Part B — base rates -->
+    <div class="doc-block" id="base-rates">
     <h2>Part B — Base-Rate Context</h2>
     <h3 style="font-size: 1.05rem; margin-top: var(--spacing-md);">Inspection Volume — FY2022 and FY2023</h3>
     <div class="compare-table-wrap">
@@ -272,18 +269,25 @@ const articleSchema = {
       <li><strong>Data integrity findings are escalating in severity.</strong> The Applied Therapeutics case (2024 WL) resulted in a concurrent Complete Response Letter to the drug application plus a shareholder lawsuit — illustrating FDA's willingness to use BIMO findings to invalidate NDA/BLA submissions.</li>
       <li><strong>FY2024 full metrics are not yet public.</strong> Treat FY2024 as directional data only.</li>
     </ol>
+    </div>
+
+    </div>
   </section>
 
   <!-- Email capture -->
-  <section class="why-now-section" id="subscribe">
-    <EmailCapture
-      heading="Get the next taxonomy update"
-      subheading="When FDA publishes FY2024 BIMO metrics, I'll update this taxonomy and email it to subscribers first. Monthly practitioner notes on FDA enforcement, operational intel from inside regulated workflows. No hype, no pitch."
-    />
+  <section class="section" style="padding-top:0" id="subscribe">
+    <div class="container" style="max-width:700px;margin:0 auto">
+      <EmailCapture
+        heading="Get the next taxonomy update"
+        subheading="When FDA publishes FY2024 BIMO metrics, I'll update this taxonomy and email it to subscribers first. Monthly practitioner notes on FDA enforcement, operational intel from inside regulated workflows. No hype, no pitch."
+      />
+    </div>
   </section>
 
   <!-- Source Citations -->
-  <section class="why-now-section">
+  <section class="section doc" style="padding-top:0">
+    <div class="container">
+      <div class="doc-block" style="border-top:none;padding-top:0">
     <h2>Source Citations</h2>
     <ol class="citations-list">
       <li>Food and Drug Law Institute (FDLI). <em>"Compliance Challenges for Clinical Research Sites."</em> February 2025. <a href="https://www.fdli.org/2025/02/compliance-challenges-for-clinical-research-sites/" rel="noopener nofollow">fdli.org</a></li>
@@ -301,6 +305,8 @@ const articleSchema = {
     <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1.5rem;">
       <strong>Published:</strong> 2026-04-16. Taxonomy will be updated when FDA publishes FY2024 BIMO metrics. If you spot a citation error, email <a href="mailto:info@purpledirective.com">info@purpledirective.com</a> and I'll correct it.
     </p>
+      </div>
+    </div>
   </section>
 
-</Base>
+</Site>
