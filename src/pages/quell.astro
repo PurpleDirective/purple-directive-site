@@ -1,5 +1,6 @@
 ---
-import Base from '../layouts/Base.astro';
+import Site from '../layouts/Site.astro';
+import '../styles/pages.css';
 
 // SoftwareApplication + FAQ structured data for the Quell AI-blocker extension.
 // Claims mirror the product README exactly — including the "what it does NOT do"
@@ -69,55 +70,56 @@ const faqSchema = {
   ],
 };
 ---
-<Base
+<Site
   title="Quell — turn off forced AI in your browser"
   description="Quell is a free, open-source browser extension that removes forced AI features — Google AI Overviews and AI Mode, Bing Copilot — and, optionally, cookie-consent banners. No account, no tracking, no telemetry. Made by Purple Directive."
 >
-  <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
 
-  <div class="product-top">
-    <div class="product-hero">
-      <div class="product-hero-text">
-        <span class="product-badge">Free · Open source (MIT) · Chrome & Edge</span>
+  <section class="prod-hero">
+    <div class="container prod-hero-grid">
+      <div>
+        <div class="section-label">Free · Open source (MIT) · Chrome & Edge</div>
         <h1>Turn off forced AI in your browser.</h1>
-        <p class="product-tagline">
+        <p class="lede">
           Quell quiets the web — starting with the AI features you didn't ask for.
           It removes Google AI Overviews and AI Mode and hides Bing Copilot, with
           optional cookie-banner blocking. No account, no tracking, nothing
           phoned home.
         </p>
-        <a href="#install" class="buy-btn">How to install</a>
-        <p class="buy-note">
+        <div class="cta-row">
+          <a href="#install" class="btn-primary">How to install
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+        </div>
+        <p class="hero-note">
           Free forever. Open source under MIT — read the code on
           <a href="https://github.com/PurpleDirective" rel="noopener" target="_blank">GitHub</a>.
         </p>
-      </div>
-      <div class="product-hero-preview">
-        <div>
-          <p style="margin: 0 0 0.5rem; font-weight: 600; text-align: center;">At a glance</p>
-          <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 1.8;">
-            <li><strong>Google</strong> AI Overviews + AI Mode</li>
-            <li><strong>Bing</strong> Copilot sidebar</li>
-            <li><strong>0</strong> tracking, telemetry, or accounts</li>
-            <li><strong>MIT</strong> open source</li>
-          </ul>
+        <div class="facts">
+          <span class="fact">Free forever</span>
+          <span class="fact">0 tracking</span>
+          <span class="fact">MV3 · Chrome &amp; Edge</span>
+          <span class="fact">MIT licensed</span>
         </div>
       </div>
+      <aside class="at-glance">
+        <p class="at-glance-cap">At a glance</p>
+        <ul>
+          <li><strong>Google</strong> AI Overviews + AI Mode</li>
+          <li><strong>Bing</strong> Copilot sidebar</li>
+          <li><strong>0</strong> tracking, telemetry, or accounts</li>
+          <li><strong>MIT</strong> open source</li>
+        </ul>
+      </aside>
     </div>
+  </section>
 
-    <div class="product-stats">
-      <div class="stat"><strong>Free</strong> forever</div>
-      <div class="stat-sep"></div>
-      <div class="stat"><strong>0</strong> tracking</div>
-      <div class="stat-sep"></div>
-      <div class="stat"><strong>MV3</strong> Chrome &amp; Edge</div>
-      <div class="stat-sep"></div>
-      <div class="stat"><strong>MIT</strong> licensed</div>
-    </div>
-  </div>
-
-  <section class="why-now-section" id="what-it-blocks">
+  <section class="section doc">
+    <div class="container">
+    <div class="doc-block" style="border-top:none;padding-top:0" id="what-it-blocks">
     <h2>What Quell blocks today</h2>
     <p>
       <strong>Google — AI Overviews and AI Mode.</strong> Two modes: <em>Hide</em>
@@ -136,9 +138,9 @@ const faqSchema = {
       banners. Rules derive from the open EasyList Cookie list. This is the only
       feature that needs the broad site permission, and it ships off by default.
     </p>
-  </section>
+    </div>
 
-  <section class="why-now-section" id="honest">
+    <div class="doc-block" id="honest">
     <h2>What Quell does <em>not</em> do — on purpose</h2>
     <p>
       Being straight about the limits is the point. Quell does <strong>not</strong>
@@ -148,9 +150,9 @@ const faqSchema = {
       <strong>not</strong> block ads — uBlock Origin already does that better than
       anyone, for free, and that's the tool we point you to for ads.
     </p>
-  </section>
+    </div>
 
-  <section class="why-now-section" id="why">
+    <div class="doc-block" id="why">
     <h2>Why we built it</h2>
     <p>
       Only about a third of people find new AI features in their apps useful; more
@@ -160,9 +162,9 @@ const faqSchema = {
       forever, it collects nothing, and an automated pipeline keeps the blocklist
       fresh so it doesn't rot when sites change.
     </p>
-  </section>
+    </div>
 
-  <section class="why-now-section" id="install">
+    <div class="doc-block" id="install">
     <h2>How to install</h2>
     <p>
       Quell is open source and installs as an unpacked extension today:
@@ -177,5 +179,7 @@ const faqSchema = {
       Source and instructions:
       <a href="https://github.com/PurpleDirective" rel="noopener" target="_blank">github.com/PurpleDirective</a>.
     </p>
+    </div>
+    </div>
   </section>
-</Base>
+</Site>
