@@ -21,6 +21,13 @@
   --accent-green: #059669;
   --accent-blue: #4a7ab5;
   --accent-amber: #d97706;
+  /* legacy global.css spacing aliases — keep leftover inline var(--spacing-*) valid */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 5rem;
 }
 
 /* ── Content prose (scoped so pd.css globals are untouched) ── */
@@ -83,22 +90,24 @@
 
 /* ── Section helpers ── */
 /* content sub-section divider inside a page (was .why-now-section) */
-.doc-block { padding: var(--sp-xl) 0; border-top: 1px solid var(--border); }
+.doc-block { padding: var(--sp-xl) 0; border-top: 1px solid var(--border); scroll-margin-top: 76px; }
 .doc-block:first-of-type { border-top: none; }
 .doc-block > h2 { margin-bottom: var(--sp-lg); }
 
-/* two-up card grid (was .why-now-grid / .why-now-card) */
-.why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-md); margin-top: var(--sp-lg); }
-.why-card {
+/* two-up card grid (.why-now-grid / .why-now-card) */
+.why-now-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-md); margin-top: var(--sp-lg); }
+.why-now-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: var(--sp-lg);
   transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
-.why-card:hover { border-color: #cdbff0; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(30,16,64,0.08); }
-.why-card h3 { font-size: 0.98rem; font-weight: 650; color: var(--text-primary); margin: 0 0 var(--sp-sm); }
-.why-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.65; margin: 0; max-width: none; }
+.why-now-card:hover { border-color: #cdbff0; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(30,16,64,0.08); }
+.why-now-card h3 { font-size: 0.98rem; font-weight: 650; color: var(--text-primary); margin: 0 0 var(--sp-sm); }
+.why-now-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.65; margin: 0; max-width: none; }
+.why-now-card p a { color: var(--purple-primary); font-weight: 500; }
+.why-now-card strong { color: var(--text-primary); }
 
 /* generic auto-fit card grid (was .card-grid / .card) */
 .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--sp-md); margin: var(--sp-lg) 0; }
@@ -124,6 +133,8 @@
 .at-glance ul { list-style: none; display: flex; flex-direction: column; gap: 0.15rem; padding: 0; margin: 0; }
 .at-glance li { border-top: 1px solid rgba(124,58,237,0.16); padding: 0.55rem 0; font-size: 0.86rem; color: var(--on-dark-2); line-height: 1.5; }
 .at-glance li:first-child { border-top: none; }
+.at-glance ol { list-style: decimal; padding-left: 1.2rem; margin: 0; }
+.at-glance ol li { border-top: none; padding: 0.32rem 0; }
 .at-glance li strong { color: #fff; font-weight: 600; }
 .at-glance a { color: #cbb8ff; font-weight: 500; }
 .at-glance a:hover { color: #fff; }
@@ -190,5 +201,5 @@
   .at-glance { margin-top: 0.5rem; }
 }
 @media (max-width: 760px) {
-  .why-grid { grid-template-columns: 1fr; }
+  .why-now-grid { grid-template-columns: 1fr; }
 }
