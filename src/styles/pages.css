@@ -1,0 +1,194 @@
+/* ============================================================
+   pages.css — content-page styles for the current Site.astro
+   (pd.css) design system.
+
+   Ported from the retired global.css so that content/landing
+   pages migrated off Base.astro keep their body styling —
+   comparison tables, prose, hero preview cards, citations —
+   while the chrome (nav/footer/logo) and section rhythm come
+   from pd.css. Element typography is SCOPED under `.doc` so it
+   never clobbers pd.css's flagship h2/anchor globals used by the
+   homepage. Imported per-page (deduped by the bundler).
+   ============================================================ */
+
+:root {
+  /* tokens pd.css doesn't define but ported components rely on */
+  --sp-xs: 0.25rem;
+  --bg-code: #f3f1f6;
+  --bg-secondary: #f3f4f6;
+  --border-hover: #d0cedd;
+  --purple-glow: rgba(91, 33, 182, 0.06);
+  --accent-green: #059669;
+  --accent-blue: #4a7ab5;
+  --accent-amber: #d97706;
+}
+
+/* ── Content prose (scoped so pd.css globals are untouched) ── */
+.doc h2 { margin-top: 0; }
+.doc h3 {
+  font-size: 1.1rem;
+  font-weight: 650;
+  line-height: 1.3;
+  color: var(--text-primary);
+  margin: var(--sp-lg) 0 var(--sp-sm);
+  letter-spacing: -0.01em;
+}
+.doc h4 {
+  font-size: 0.95rem;
+  font-weight: 650;
+  color: var(--text-primary);
+  margin: var(--sp-md) 0 var(--sp-xs);
+}
+.doc p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--sp-md);
+  max-width: 760px;
+}
+.doc ul, .doc ol {
+  margin: 0 0 var(--sp-md);
+  padding-left: 1.4rem;
+  color: var(--text-secondary);
+  max-width: 760px;
+}
+.doc li { margin-bottom: 0.35rem; line-height: 1.65; }
+.doc strong { color: var(--text-primary); font-weight: 650; }
+.doc a { color: var(--purple-primary); font-weight: 500; }
+.doc a:hover { color: var(--purple-light); }
+.doc blockquote {
+  border-left: 3px solid var(--purple-light);
+  padding: 0.2rem 0 0.2rem var(--sp-md);
+  margin: var(--sp-md) 0;
+  color: var(--text-secondary);
+  background: var(--bg-tinted);
+  border-radius: 4px;
+}
+.doc code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--bg-code);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  color: var(--purple-light);
+}
+.doc pre {
+  background: var(--bg-code);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: var(--sp-md);
+  overflow-x: auto;
+  margin-bottom: var(--sp-lg);
+}
+.doc pre code { background: none; padding: 0; font-size: 0.8rem; line-height: 1.6; color: var(--text-secondary); }
+
+/* ── Section helpers ── */
+/* content sub-section divider inside a page (was .why-now-section) */
+.doc-block { padding: var(--sp-xl) 0; border-top: 1px solid var(--border); }
+.doc-block:first-of-type { border-top: none; }
+.doc-block > h2 { margin-bottom: var(--sp-lg); }
+
+/* two-up card grid (was .why-now-grid / .why-now-card) */
+.why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-md); margin-top: var(--sp-lg); }
+.why-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: var(--sp-lg);
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.why-card:hover { border-color: #cdbff0; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(30,16,64,0.08); }
+.why-card h3 { font-size: 0.98rem; font-weight: 650; color: var(--text-primary); margin: 0 0 var(--sp-sm); }
+.why-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.65; margin: 0; max-width: none; }
+
+/* generic auto-fit card grid (was .card-grid / .card) */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--sp-md); margin: var(--sp-lg) 0; }
+.card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: var(--sp-lg); transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
+.card:hover { border-color: #cdbff0; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(30,16,64,0.08); }
+.card h3 { margin-top: 0; margin-bottom: var(--sp-sm); }
+.card p { font-size: 0.88rem; margin-bottom: var(--sp-sm); color: var(--text-secondary); }
+.card-label { font-size: 0.66rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--purple-primary); margin-bottom: var(--sp-xs); }
+
+/* ── Hero: preview / at-a-glance card on the dark prod-hero ── */
+.prod-hero-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: var(--sp-2xl); align-items: start; }
+.hero-note { color: var(--on-dark-muted); font-size: 0.88rem; line-height: 1.6; margin-top: 1.1rem; max-width: 40rem; }
+.hero-note a { color: #cbb8ff; font-weight: 500; }
+.hero-note a:hover { color: #fff; }
+.at-glance {
+  background: rgba(124, 58, 237, 0.07);
+  border: 1px solid rgba(124, 58, 237, 0.22);
+  border-radius: 14px;
+  padding: 1.35rem 1.4rem;
+  margin-top: 3.1rem;
+}
+.at-glance-cap { font-family: var(--font-mono); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #b69bff; margin: 0 0 0.85rem; }
+.at-glance ul { list-style: none; display: flex; flex-direction: column; gap: 0.15rem; padding: 0; margin: 0; }
+.at-glance li { border-top: 1px solid rgba(124,58,237,0.16); padding: 0.55rem 0; font-size: 0.86rem; color: var(--on-dark-2); line-height: 1.5; }
+.at-glance li:first-child { border-top: none; }
+.at-glance li strong { color: #fff; font-weight: 600; }
+.at-glance a { color: #cbb8ff; font-weight: 500; }
+.at-glance a:hover { color: #fff; }
+
+/* ── Nexrial intro strip (logo + one-liner above compare tables) ── */
+.nexrial-intro {
+  display: flex; align-items: center; gap: var(--sp-md);
+  padding: var(--sp-md) var(--sp-lg); margin: 0 0 var(--sp-lg);
+  background: var(--bg-tinted); border: 1px solid var(--border);
+  border-left: 3px solid #0d9488; border-radius: 10px;
+}
+.nexrial-intro-logo { flex-shrink: 0; height: 36px; width: auto; }
+.nexrial-intro p { margin: 0; font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary); max-width: none; }
+.nexrial-intro p a { color: #0d9488; font-weight: 600; white-space: nowrap; }
+@media (max-width: 640px) { .nexrial-intro { flex-direction: column; align-items: flex-start; gap: var(--sp-sm); } }
+
+/* ── Comparison table ── */
+.compare-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: var(--sp-lg) 0; }
+.compare-table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 0.92rem; }
+.compare-table thead tr { border-bottom: 2px solid var(--border); }
+.compare-table th { padding: 0.8rem; text-align: left; font-weight: 650; color: var(--text-primary); vertical-align: bottom; line-height: 1.3; }
+.compare-table tbody tr { border-bottom: 1px solid var(--border); }
+.compare-table tbody tr.compare-row-highlight { background: var(--purple-glow); border-left: 3px solid var(--purple-primary); }
+.compare-table td { padding: 0.8rem; color: var(--text-secondary); }
+.compare-table td:first-child { color: var(--text-primary); }
+.compare-note { font-size: 0.85rem; color: var(--text-muted); max-width: 760px; margin-top: 0.5rem; }
+
+/* ── Citations (verified-source accent) ── */
+.citations-list { list-style: decimal; max-width: 760px; border-left: 3px solid var(--purple-primary); padding-left: 1.5rem; line-height: 1.7; font-size: 0.92rem; color: var(--text-secondary); }
+.citations-list li { margin-left: 0.8rem; padding: 0.3rem 0; }
+
+/* ── Architecture / monospace diagram block ── */
+.arch-diagram { background: var(--bg-code); border: 1px solid var(--border); border-radius: 8px; padding: var(--sp-lg); font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.6; color: var(--text-secondary); overflow-x: auto; white-space: pre; margin: var(--sp-lg) 0; }
+.arch-diagram .highlight { color: var(--purple-primary); font-weight: 600; }
+
+/* ── Tinted CTA box (light) ── */
+.cta-tinted { background: linear-gradient(180deg, var(--bg-tinted), var(--bg-card)); border: 1px solid var(--border); border-radius: 16px; padding: var(--sp-xl) var(--sp-lg); text-align: center; }
+.cta-tinted h2 { font-size: 1.6rem; }
+.cta-tinted > p { max-width: 660px; margin: 0.7rem auto 1.5rem; color: var(--text-secondary); line-height: 1.65; }
+
+/* ── Blog list ── */
+.post-list { list-style: none; padding: 0; }
+.post-list li { border-bottom: 1px solid var(--border); padding: var(--sp-lg) 0; }
+.post-list li:last-child { border-bottom: none; }
+.post-list .date { font-size: 0.72rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.post-list h3 { margin: var(--sp-xs) 0; font-size: 1.15rem; }
+.post-list h3 a { color: var(--text-primary); }
+.post-list h3 a:hover { color: var(--purple-primary); }
+.post-list .summary { font-size: 0.92rem; color: var(--text-secondary); margin: 0; }
+
+/* ── Long-form prose (blog posts / legal) ── */
+.prose { max-width: 720px; }
+.prose h2 { border-bottom: 1px solid var(--border); padding-bottom: var(--sp-sm); margin: var(--sp-xl) 0 var(--sp-md); font-size: 1.5rem; }
+.prose h3 { font-size: 1.15rem; margin: var(--sp-lg) 0 var(--sp-sm); color: var(--text-primary); }
+.prose p { color: var(--text-secondary); line-height: 1.75; margin-bottom: var(--sp-md); }
+.prose ul, .prose ol { margin-bottom: var(--sp-md); padding-left: var(--sp-lg); color: var(--text-secondary); }
+.prose li { margin-bottom: var(--sp-xs); line-height: 1.7; }
+.prose strong { color: var(--text-primary); }
+.prose a { color: var(--purple-primary); font-weight: 500; }
+.prose blockquote { border-left: 3px solid var(--purple-dark); padding-left: var(--sp-md); margin: var(--sp-md) 0; color: var(--text-secondary); font-style: italic; }
+
+@media (max-width: 920px) {
+  .prod-hero-grid { grid-template-columns: 1fr; gap: var(--sp-lg); }
+  .at-glance { margin-top: 0.5rem; }
+}
+@media (max-width: 760px) {
+  .why-grid { grid-template-columns: 1fr; }
+}
