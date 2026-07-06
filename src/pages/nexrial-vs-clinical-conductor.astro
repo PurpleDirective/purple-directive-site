@@ -1,5 +1,6 @@
 ---
-import Base from '../layouts/Base.astro';
+import Site from '../layouts/Site.astro';
+import '../styles/pages.css';
 
 // Clinical Conductor is now an Advarra product. Pricing is not publicly listed.
 // Source: https://www.advarra.com/solutions-for/clinical-trial-sites/clinical-conductor-ctms/ (fetched 2026-04-23)
@@ -66,51 +67,55 @@ const breadcrumbSchema = {
 };
 ---
 
-<Base
+<Site
   title="Nexrial vs Clinical Conductor — CTMS Comparison for Small Sites (April 2026)"
-  activePage="products"
   description="Clinical Conductor (Advarra) and Nexrial are both CTMS platforms for research sites. This page compares them on pricing transparency, target buyer, compliance architecture, and fit for small independent sites."
 >
-  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
 
-  <div class="product-top">
-    <div class="product-hero">
-      <div class="product-hero-text">
-        <span class="product-badge">CTMS vs CTMS · Reviewed April 2026</span>
+  <section class="prod-hero">
+    <div class="container prod-hero-grid">
+      <div>
+        <a href="/best-ctms-small-clinical-sites" class="prod-back">&larr; Compare CTMS</a>
+        <div class="section-label">CTMS vs CTMS · Reviewed April 2026</div>
         <h1>Nexrial vs Clinical Conductor</h1>
-        <p class="product-tagline">
+        <p class="lede">
           <strong>Short answer:</strong> Both are Clinical Trial Management Systems for
           research sites. Clinical Conductor (now part of Advarra) targets site networks,
           health systems, and organizations that want a single enterprise vendor. Nexrial
           targets independent small sites that need transparent pricing, a published
           compliance posture, and a CTMS that fits under $700/month.
         </p>
-        <a href="https://calendly.com/nexrial/demo?utm_source=purpledirective.com&utm_medium=nexrial-vs-clinical-conductor" class="buy-btn" style="background-color: #0d9488;">Book a 15-min Demo</a>
-        <p class="buy-note">
+        <div class="cta-row">
+          <a href="https://calendly.com/nexrial/demo?utm_source=purpledirective.com&utm_medium=nexrial-vs-clinical-conductor" class="btn-primary">Book a 15-min Demo
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <p class="hero-note">
           Reviewed <time datetime="2026-04-23">April 23, 2026</time> by
           Tyrian Murex, Purple Directive founder. Clinical Conductor pricing is not
           publicly listed; industry ranges are sourced from third-party reports and
           should be verified with Advarra directly.
-          <!-- Source: advarra.com/solutions-for/clinical-trial-sites/clinical-conductor-ctms/ fetched 2026-04-23 -->
         </p>
       </div>
-      <div class="product-hero-preview">
-        <div>
-          <p style="margin: 0 0 0.5rem; font-weight: 600; text-align: center;">At a glance</p>
-          <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 1.8;">
-            <li><strong>Nexrial:</strong> CTMS, $299–599/mo published</li>
-            <li><strong>Clinical Conductor:</strong> CTMS, contact sales</li>
-            <li>Same category — different buyer profile</li>
-            <li>Enterprise vs. independent site fit</li>
-          </ul>
-        </div>
-      </div>
+      <aside class="at-glance">
+        <p class="at-glance-cap">At a glance</p>
+        <ul>
+          <li><strong>Nexrial:</strong> CTMS, $299–599/mo published</li>
+          <li><strong>Clinical Conductor:</strong> CTMS, contact sales</li>
+          <li>Same category — different buyer profile</li>
+          <li>Enterprise vs. independent site fit</li>
+        </ul>
+      </aside>
     </div>
-  </div>
+  </section>
 
-  <section class="why-now-section">
+  <section class="section doc">
+    <div class="container">
+    <div class="doc-block" style="border-top:none;padding-top:0">
     <h2>What each one actually is</h2>
 
     <h3>Nexrial — CTMS for independent sites</h3>
@@ -144,9 +149,9 @@ const breadcrumbSchema = {
       inquiries to their sales team. Contact Advarra directly for current pricing.
       <!-- Source: advarra.com/solutions-for/clinical-trial-sites/clinical-conductor-ctms/ fetched 2026-04-23 -->
     </p>
-  </section>
+    </div>
 
-  <section class="why-now-section">
+    <div class="doc-block">
     <div class="nexrial-intro">
       <img src="/images/nexrial-logo-wordmark.svg" alt="Nexrial CTMS" class="nexrial-intro-logo" loading="lazy" />
       <p>Nexrial is a Clinical Trial Management System purpose-built for independent research sites — audit trails, eSource, and ICH E6(R3) controls without enterprise pricing. <a href="https://nexrial.com" rel="noopener">Visit nexrial.com →</a></p>
@@ -250,9 +255,9 @@ const breadcrumbSchema = {
         </tbody>
       </table>
     </div>
-  </section>
+    </div>
 
-  <section class="why-now-section">
+    <div class="doc-block">
     <h2>When to pick which</h2>
 
     <h3>Pick Nexrial if…</h3>
@@ -272,9 +277,9 @@ const breadcrumbSchema = {
       <li>You want a single enterprise vendor (Advarra) covering CTMS, regulatory documents, and data capture</li>
       <li>Your CTMS budget allows for a quote-based engagement with a sales team</li>
     </ul>
-  </section>
+    </div>
 
-  <section class="why-now-section">
+    <div class="doc-block">
     <h2>Pricing — honest table</h2>
     <div class="compare-table-wrap">
       <table class="compare-table">
@@ -315,9 +320,9 @@ const breadcrumbSchema = {
       Contact Advarra at <a href="https://www.advarra.com" rel="noopener">advarra.com</a> for current pricing.
       Nexrial pricing is published at <a href="https://nexrial.com">nexrial.com</a>.
     </p>
-  </section>
+    </div>
 
-  <section class="why-now-section">
+    <div class="doc-block">
     <h2>FAQ</h2>
 
     <h3>Does Clinical Conductor include eReg (regulatory document management)?</h3>
@@ -356,9 +361,9 @@ const breadcrumbSchema = {
       institutions and 50,000 investigators. Clinical Conductor continues to operate as
       a distinct product within that portfolio.
     </p>
-  </section>
+    </div>
 
-  <section class="why-now-section">
+    <div class="doc-block">
     <h2>Next steps</h2>
     <p>
       If Nexrial sounds like a fit for your site, book a 30-minute demo at
@@ -371,5 +376,7 @@ const breadcrumbSchema = {
       <a href="https://www.advarra.com" rel="noopener">advarra.com</a>. We don't have
       an affiliate relationship with Advarra; the right tool matters more than referral credit.
     </p>
+    </div>
+    </div>
   </section>
-</Base>
+</Site>
