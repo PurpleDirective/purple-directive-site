@@ -1,23 +1,27 @@
 ---
-import Base from '../layouts/Base.astro';
+import Site from '../layouts/Site.astro';
+import '../styles/pages.css';
 import { social } from '../data/social';
 ---
 
-<Base title="About" activePage="about" description="Purple Directive builds compliance-grade software and operations infrastructure for clinical research. Meet the founder behind the work.">
+<Site title="About" description="Purple Directive builds compliance-grade software and operations infrastructure for clinical research. Meet the founder behind the work.">
   <!-- Hero -->
-  <section class="about-hero hero">
-    <p class="about-tagline">About Us</p>
-    <h1>We Build What Clinical Research<br/>Operations Actually Need</h1>
-    <p class="about-subtitle">
-      Purple Directive is a consultancy that builds compliance-grade software and
-      operations infrastructure for sponsors, CROs, and research sites. We work at
-      the intersection of clinical research and technology — where regulatory rigor
-      meets modern engineering.
-    </p>
+  <section class="prod-hero" style="text-align:center">
+    <div class="container">
+      <div class="section-label" style="color:#cbb8ff">About Us</div>
+      <h1 style="margin-left:auto;margin-right:auto">We Build What Clinical Research Operations Actually Need</h1>
+      <p class="lede" style="margin-left:auto;margin-right:auto">
+        Purple Directive is a consultancy that builds compliance-grade software and
+        operations infrastructure for sponsors, CROs, and research sites. We work at
+        the intersection of clinical research and technology — where regulatory rigor
+        meets modern engineering.
+      </p>
+    </div>
   </section>
 
   <!-- Origin story — split -->
   <section class="section">
+    <div class="container">
     <div class="about-split">
       <div class="about-split-left">
         <h2>How We Got Here</h2>
@@ -79,10 +83,12 @@ import { social } from '../data/social';
         </div>
       </div>
     </div>
+    </div>
   </section>
 
   <!-- Founder -->
   <section class="section section-tinted">
+    <div class="container">
     <div class="section-header">
       <h2>Founder</h2>
       <p>Founded by Tyrian Murex. Built with AI-augmented engineering by a practitioner currently doing the work — not just advising on it.</p>
@@ -108,10 +114,12 @@ import { social } from '../data/social';
         </div>
       </div>
     </div>
+    </div>
   </section>
 
   <!-- What We Build -->
   <section class="section">
+    <div class="container">
     <div class="section-header">
       <h2>What We Build</h2>
       <p>Tools and resources for clinical research sites, sponsors, and the teams who run them.</p>
@@ -134,10 +142,12 @@ import { social } from '../data/social';
         <span class="product-cta">Work With Us →</span>
       </a>
     </div>
+    </div>
   </section>
 
   <!-- Engineering Practices (AI disclosure) -->
   <section class="section section-tinted">
+    <div class="container">
     <div class="engineering-disclosure">
       <p class="engineering-label">Engineering Practices</p>
       <p>
@@ -149,10 +159,12 @@ import { social } from '../data/social';
         practices specific to each product are described on that product's site.
       </p>
     </div>
+    </div>
   </section>
 
   <!-- Principles -->
   <section class="section">
+    <div class="container">
     <div class="section-header">
       <h2>How We Work</h2>
     </div>
@@ -179,10 +191,12 @@ import { social } from '../data/social';
         <p>We'd rather deliver a working tool this week than a perfect tool next quarter. Every product we release gets better based on real use, real monitoring visits, and real feedback from coordinators in the field.</p>
       </div>
     </div>
+    </div>
   </section>
 
   <!-- Connect -->
   <section class="section section-deep">
+    <div class="container">
     <div class="connect-layout">
       <div>
         <h2>Get in Touch</h2>
@@ -223,8 +237,9 @@ import { social } from '../data/social';
         </a>
       </div>
     </div>
+    </div>
   </section>
-</Base>
+</Site>
 
 <style>
   /* Hero */

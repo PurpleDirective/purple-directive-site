@@ -1,5 +1,6 @@
 ---
-import Base from '../../layouts/Base.astro';
+import Site from '../../layouts/Site.astro';
+import '../../styles/pages.css';
 import { getCollection, render } from 'astro:content';
 import { siteConfig } from '../../data/site-config';
 import Giscus from '../../components/Giscus.astro';
@@ -31,7 +32,8 @@ const author = isViolet ? 'Violet M.' : 'Tyrian M.';
 const commentsEnabled = siteConfig.giscus.enabled && siteConfig.giscus.repoId && siteConfig.giscus.categoryId;
 ---
 
-<Base title={post.data.title} activePage="blog" description={post.data.summary}>
+<Site title={post.data.title} description={post.data.summary}>
+  <section class="section">
   <div class="blog-post-layout">
     <a href="/blog" class="back-link">&larr; All posts</a>
 
@@ -86,13 +88,14 @@ const commentsEnabled = siteConfig.giscus.enabled && siteConfig.giscus.repoId &&
       <a href="/blog" class="back-link">&larr; Back to all posts</a>
     </div>
   </div>
-</Base>
+  </section>
+</Site>
 
 <style>
   .blog-post-layout {
     max-width: 740px;
     margin: 0 auto;
-    padding: var(--spacing-xl) var(--spacing-md);
+    padding: 0 var(--spacing-md);
   }
 
   .back-link {
