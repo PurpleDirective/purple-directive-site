@@ -1,5 +1,6 @@
 ---
-import Base from '../layouts/Base.astro';
+import Site from '../layouts/Site.astro';
+import '../styles/pages.css';
 import EmailCapture from '../components/EmailCapture.astro';
 
 const productSchema = {
@@ -63,58 +64,58 @@ const faqSchema = {
 };
 ---
 
-<Base
+<Site
   title="Best CTMS for Small Clinical Research Sites — Comparison"
-  activePage="products"
   description="How Nexrial CTMS ($299 Core / $599 Pro; founding sites 50% off for life) compares to enterprise platforms (OnCore, Veeva Vault CTMS, Medidata CTMS) and mid-market options (RealTime, SimpleTrials, Advarra Longboat) for small independent clinical research sites."
 >
-
-  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
 
   <!-- Hero -->
-  <div class="product-top">
-    <div class="product-hero">
-      <div class="product-hero-text">
-        <span class="product-badge">CTMS Comparison · April 2026</span>
+  <section class="prod-hero">
+    <div class="container prod-hero-grid">
+      <div>
+        <div class="section-label">CTMS Comparison · April 2026</div>
         <h1>Best CTMS for Small Clinical Research Sites</h1>
-        <p class="product-tagline">
+        <p class="lede">
           How Nexrial compares to enterprise CTMS platforms
           (OnCore, Veeva Vault CTMS, Medidata CTMS) and mid-market options (RealTime, SimpleTrials,
           Advarra Longboat) for independent sites and small site networks — the segment that enterprise
           CTMS pricing effectively excludes.
         </p>
-        <a href="https://nexrial.com" class="buy-btn">Learn About Nexrial</a>
-        <p class="buy-note">
+        <div class="cta-row">
+          <a href="https://nexrial.com" class="btn-primary">Learn About Nexrial
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <p class="hero-note">
           Nexrial is currently in pre-release. Early access and beta site onboarding open —
           contact <a href="mailto:info@purpledirective.com">info@purpledirective.com</a>.
         </p>
-      </div>
-      <div class="product-hero-preview">
-        <div>
-          <p style="margin: 0 0 0.5rem; font-weight: 600; text-align: center;">At a glance</p>
-          <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 1.8;">
-            <li><strong>$299–$599/mo</strong> vs $10K+/yr enterprise</li>
-            <li>Designed against <strong>21 CFR Part 11</strong></li>
-            <li><strong>3–10 users</strong> small-team fit</li>
-            <li><strong>Multi-tenant</strong> SaaS</li>
-          </ul>
+        <div class="facts">
+          <span class="fact">$299–$599/month</span>
+          <span class="fact">5–25 concurrent studies</span>
+          <span class="fact">3–10 users</span>
+          <span class="fact">HIPAA BAA + 21 CFR Part 11</span>
         </div>
       </div>
+      <aside class="at-glance">
+        <p class="at-glance-cap">At a glance</p>
+        <ul>
+          <li><strong>$299–$599/mo</strong> vs $10K+/yr enterprise</li>
+          <li>Designed against <strong>21 CFR Part 11</strong></li>
+          <li><strong>3–10 users</strong> small-team fit</li>
+          <li><strong>Multi-tenant</strong> SaaS</li>
+        </ul>
+      </aside>
     </div>
-    <div class="product-stats">
-      <div class="stat"><strong>$299–$599</strong>/month</div>
-      <div class="stat-sep"></div>
-      <div class="stat"><strong>5–25</strong> concurrent studies</div>
-      <div class="stat-sep"></div>
-      <div class="stat"><strong>3–10</strong> users</div>
-      <div class="stat-sep"></div>
-      <div class="stat"><strong>HIPAA BAA</strong> + 21 CFR Part 11</div>
-    </div>
-  </div>
+  </section>
 
   <!-- Comparison table -->
-  <section class="why-now-section">
+  <section class="section doc">
+    <div class="container">
+    <div class="doc-block" style="border-top:none;padding-top:0">
     <h2>Small-site CTMS landscape</h2>
     <div class="compare-table-wrap">
       <table class="compare-table">
@@ -190,10 +191,10 @@ const faqSchema = {
     <p class="compare-note">
       <em>*Nexrial's Founding Site Program gives the first 3–5 sites 50% off for life — Core at $149/month, Pro at $299/month. After the founding cohort fills, standard pricing is Core $299/mo and Pro $599/mo, with Enterprise from $999/mo. Competitor pricing ranges reflect public information, industry reports, and vendor disclosures as of April 2026; final pricing depends on user count, module selection, and multi-year contracts. Contact vendors directly for current quotes.</em>
     </p>
-  </section>
+    </div>
 
-  <!-- Positioning -->
-  <section class="why-now-section">
+    <!-- Positioning -->
+    <div class="doc-block">
     <h2>Where Nexrial sits in the market</h2>
     <div class="why-now-grid">
       <div class="why-now-card">
@@ -221,10 +222,10 @@ const faqSchema = {
         </p>
       </div>
     </div>
-  </section>
+    </div>
 
-  <!-- When not -->
-  <section class="why-now-section">
+    <!-- When not -->
+    <div class="doc-block">
     <h2>When Nexrial is NOT the right fit</h2>
     <div class="why-now-grid">
       <div class="why-now-card">
@@ -246,34 +247,48 @@ const faqSchema = {
         </p>
       </div>
     </div>
+    </div>
+    </div>
   </section>
 
   <!-- CTA -->
-  <section class="why-now-section cta-tinted">
-    <h2>Want a demo or beta access?</h2>
-    <p style="max-width: 640px; margin: 0 auto 1.5rem;">
-      Nexrial is in pre-release. Early-access sites are onboarding now. Email <a href="mailto:info@purpledirective.com">info@purpledirective.com</a> with your site size, study volume, and timeline to request access.
-    </p>
-    <a href="mailto:info@purpledirective.com?subject=Nexrial%20CTMS%20-%20Beta%20Access%20Request" class="buy-btn" style="display: inline-block;">Request Beta Access</a>
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="cta-tinted">
+        <h2>Want a demo or beta access?</h2>
+        <p>
+          Nexrial is in pre-release. Early-access sites are onboarding now. Email <a href="mailto:info@purpledirective.com">info@purpledirective.com</a> with your site size, study volume, and timeline to request access.
+        </p>
+        <div class="cta-row" style="justify-content:center">
+          <a href="mailto:info@purpledirective.com?subject=Nexrial%20CTMS%20-%20Beta%20Access%20Request" class="btn-primary">Request Beta Access</a>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Email capture -->
-  <section class="why-now-section">
-    <EmailCapture
-      heading="Get notified at general availability"
-      subheading="Monthly practitioner notes on clinical research operations plus product updates as Nexrial moves from beta to general availability."
-    />
+  <section class="section" style="padding-top:0">
+    <div class="container" style="max-width:700px;margin:0 auto">
+      <EmailCapture
+        heading="Get notified at general availability"
+        subheading="Monthly practitioner notes on clinical research operations plus product updates as Nexrial moves from beta to general availability."
+      />
+    </div>
   </section>
 
   <!-- Methodology -->
-  <section class="why-now-section">
-    <h2>Methodology note</h2>
-    <p>
-      Competitor pricing ranges are drawn from public vendor information, industry reports, and procurement disclosures as of April 2026. CTMS vendors typically do not publish fixed pricing; actual quotes depend on user count, module selection, multi-year commitments, and negotiation. Sites evaluating CTMS options should request current quotes from each vendor of interest.
-    </p>
-    <p>
-      <strong>Published:</strong> 2026-04-16. If pricing has changed materially or a significant CTMS option is missing from this comparison, email <a href="mailto:info@purpledirective.com">info@purpledirective.com</a> and I'll update.
-    </p>
+  <section class="section doc" style="padding-top:0">
+    <div class="container">
+      <div class="doc-block" style="border-top:none;padding-top:0">
+        <h2>Methodology note</h2>
+        <p>
+          Competitor pricing ranges are drawn from public vendor information, industry reports, and procurement disclosures as of April 2026. CTMS vendors typically do not publish fixed pricing; actual quotes depend on user count, module selection, multi-year commitments, and negotiation. Sites evaluating CTMS options should request current quotes from each vendor of interest.
+        </p>
+        <p>
+          <strong>Published:</strong> 2026-04-16. If pricing has changed materially or a significant CTMS option is missing from this comparison, email <a href="mailto:info@purpledirective.com">info@purpledirective.com</a> and I'll update.
+        </p>
+      </div>
+    </div>
   </section>
 
-</Base>
+</Site>
