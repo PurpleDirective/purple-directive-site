@@ -1,10 +1,62 @@
 ---
 import Site from '../layouts/Site.astro';
+import { social } from '../data/social';
+
+// Homepage structured data. Regulatory language stays qualified per the
+// permanent truthful-language rule in memory: phrasings read "designed and
+// tested against 21 CFR Part 11", never a bare regulatory overclaim.
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://purpledirective.com/#org",
+  "name": "Purple Directive",
+  "url": "https://purpledirective.com",
+  "logo": "https://purpledirective.com/favicon-192.png",
+  "description": "Purple Directive builds compliance-grade software and operations tooling for clinical research sites and CROs — a clinical trial management system, ICH-GCP SOP templates, e-signatures designed and tested against 21 CFR Part 11, in-browser PDF tools, and hands-on regulatory consulting.",
+  "email": "info@purpledirective.com",
+  "knowsAbout": [
+    "Clinical trial management",
+    "21 CFR Part 11",
+    "ICH-GCP",
+    "Standard operating procedures for clinical research",
+    "Regulatory inspection readiness",
+    "Clinical research site operations",
+  ],
+  "sameAs": [social.linkedin.url, social.x.url, social.github.url, social.reddit.url],
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://purpledirective.com/#website",
+  "url": "https://purpledirective.com",
+  "name": "Purple Directive",
+  "publisher": { "@id": "https://purpledirective.com/#org" },
+};
+
+const productsSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Purple Directive products and services",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Nexrial CTMS", "description": "Clinical trial management system for independent research sites, with a database-layer audit trail and native PI e-signatures designed and tested against 21 CFR Part 11.", "url": "https://nexrial.com" },
+    { "@type": "ListItem", "position": 2, "name": "Clinical Research SOP Template Bundle", "description": "13 ICH-GCP-aligned standard operating procedures with 11 companion forms — editable Word plus branded PDF.", "url": "https://purpledirective.com/sop-bundle" },
+    { "@type": "ListItem", "position": 3, "name": "PurpleSign", "description": "Native e-signatures for regulated documents, designed and tested against 21 CFR Part 11.", "url": "https://purpledirective.com/#products" },
+    { "@type": "ListItem", "position": 4, "name": "QuillPDF", "description": "Free PDF tools that run entirely in your browser — the tools never upload your file.", "url": "https://quillpdf.com" },
+    { "@type": "ListItem", "position": 5, "name": "Volstrin", "description": "Specialist legal-sector recruiting.", "url": "https://volstrin.com" },
+    { "@type": "ListItem", "position": 6, "name": "Consulting", "description": "Hands-on regulatory infrastructure: SOP development, binder setup, and IRB submission support for research sites.", "url": "https://purpledirective.com/hire" },
+  ],
+};
 ---
 <Site
   title="Home"
   description="The standard clinical research runs on. Software, SOPs, and infrastructure for the people who run the studies — one operating standard, from your first protocol to your fiftieth."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(productsSchema)} />
+  </Fragment>
   <!-- HERO -->
   <section class="hero">
     <div class="atmos" aria-hidden="true"></div>

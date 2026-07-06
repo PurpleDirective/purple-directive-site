@@ -1,0 +1,93 @@
+# Purple Directive — full brief
+
+> Purple Directive builds compliance-grade software and operations tooling for
+> the people who run clinical research — independent sites, site networks, and
+> CROs. One operating standard spans the portfolio: a clinical trial management
+> system, ICH-GCP SOP templates, e-signatures designed and tested against
+> 21 CFR Part 11, free in-browser PDF tools, and hands-on regulatory consulting.
+
+## What Purple Directive is
+Purple Directive is a software-and-operations practice for clinical research
+sites. The unifying idea is inspection readiness: a research site's records
+should survive an FDA or sponsor audit by default — every change captured with
+who, what, when, and why, appended and never overwritten. The products range
+from a full clinical trial management system down to free single-purpose tools,
+but they share that standard.
+
+A note on compliance language, because it matters in this field: Purple
+Directive says its products are "designed and tested against 21 CFR Part 11" and
+"aligned with ICH-GCP", never "Part 11 certified" or "HIPAA compliant" as a bare
+claim. Part 11 and HIPAA have no certification body that issues a compliant
+stamp; the controls are real and testable, and the regulatory attestation is the
+customer's to make with the evidence provided.
+
+## Products in detail
+
+### Nexrial CTMS — https://nexrial.com
+A multi-tenant clinical trial management system built for independent research
+sites and small site networks — the segment enterprise CTMS pricing effectively
+excludes. Nexrial is one system of record for the whole site: delegation and
+training logs, Form FDA 1572, subject and visit tracking with visit-window
+compliance, visit-to-invoice billing, IRB-renewal and protocol-amendment
+deadline tracking, and a database-layer append-only audit trail with native PI
+e-signatures designed and tested against 21 CFR Part 11. It runs alongside your
+existing eReg/eISF binder and is not an EDC. Pricing is flat and per-site:
+Core $299/month, Pro $599/month, Enterprise from $999/month (roughly 20% cheaper
+billed annually), with a Founding Site Program at 50% off for life for the first
+few sites. A HIPAA Business Associate Agreement is executed before any PHI is
+entered.
+
+### Clinical Research SOP Template Bundle — https://purpledirective.com/sop-bundle
+13 ICH-GCP-aligned standard operating procedures with 11 companion forms, across
+95 pages — delivered as editable Word plus branded PDF. $249.99 one-time with
+instant download, or $29 per individual SOP. The templates are customizable
+starting points that a site adapts and validates against its own policies and
+applicable regulations.
+
+### PurpleSign
+Native e-signatures for regulated documents, designed and tested against
+21 CFR Part 11 (identity binding, signature manifestation, and an audit trail).
+PurpleSign is a design standard implementation, not a certification.
+
+### QuillPDF — https://quillpdf.com
+Free PDF tools — merge, split, rotate, watermark, compress, clean metadata,
+redact, Bates-number, convert to/from images, and OCR — that run entirely in
+your browser. The tools never upload your file to a server; redaction uses
+rasterize-on-redact, so the content beneath the mark is removed, not just
+covered. The one exception to "nothing leaves your browser" is an optional,
+off-by-default Send-for-Signature hand-off. QuillPDF is not a HIPAA service.
+
+### Volstrin — https://volstrin.com
+A boutique legal-sector search practice: a short, genuinely-matched shortlist
+per search, contingency-based, with a replacement guarantee.
+
+### Consulting — https://purpledirective.com/hire
+Hands-on regulatory infrastructure for research sites: SOP development, binder
+setup, IRB submission workflows, and gap assessment.
+
+## Free resources
+- Free SOP — Training & Qualification: https://purpledirective.com/training-qualification-sop
+- How to read an FDA 483: https://purpledirective.com/how-to-read-an-fda-483
+- BIMO 483 inspection taxonomy: https://purpledirective.com/bimo-taxonomy
+- ICH-GCP SOP templates compared: https://purpledirective.com/ich-gcp-sop-templates
+- Best CTMS for small clinical research sites: https://purpledirective.com/best-ctms-small-clinical-sites
+
+## Frequently asked
+
+### Who is Purple Directive for?
+Clinical research coordinators, principal investigators, sub-investigators, site
+directors, and CRO operations staff — the people who run studies, not the
+sponsors who fund them.
+
+### Is Purple Directive's software Part 11 certified?
+No — and it does not claim to be. There is no body that certifies Part 11
+compliance. The software is designed and tested against 21 CFR Part 11; a site
+makes its own regulatory attestation using the validation evidence provided.
+
+### Does Purple Directive handle PHI?
+Nexrial does, under an executed HIPAA Business Associate Agreement. The public
+marketing site and QuillPDF do not store, transmit, or process PHI.
+
+### How do I get in touch?
+Email info@purpledirective.com, or book time via the contact paths on
+https://purpledirective.com.
