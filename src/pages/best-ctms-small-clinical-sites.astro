@@ -14,8 +14,8 @@ const productSchema = {
   },
   "offers": {
     "@type": "AggregateOffer",
-    "lowPrice": "199",
-    "highPrice": "549",
+    "lowPrice": "299",
+    "highPrice": "999",
     "priceCurrency": "USD",
     "availability": "https://schema.org/PreOrder",
     "url": "https://nexrial.com",
@@ -32,7 +32,7 @@ const faqSchema = {
       "name": "What is the best CTMS for small clinical research sites?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The best CTMS for small clinical research sites depends on volume and budget. For sites running 5-25 concurrent studies on a budget under $700/month, a lightweight compliance-grade CTMS like Nexrial ($349 Core / $549 Pro, with a $199/month Founder tier for the first 5 sites) is often a better fit than enterprise platforms (OnCore, Veeva Vault CTMS, Medidata CTMS) which run $10,000 to $100,000+ per year. Key criteria: subject tracking, visit scheduling, document versioning, delegation log, 21 CFR Part 11 audit trails, and a user count appropriate to a small team (3-10 users, not 50+)."
+        "text": "The best CTMS for small clinical research sites depends on volume and budget. For sites running 5-25 concurrent studies on a budget under $700/month, a lightweight compliance-grade CTMS like Nexrial ($299 Core / $599 Pro, with a Founding Site Program giving the first 3–5 sites 50% off for life — $149 Core / $299 Pro) is often a better fit than enterprise platforms (OnCore, Veeva Vault CTMS, Medidata CTMS) which run $10,000 to $100,000+ per year. Key criteria: subject tracking, visit scheduling, document versioning, delegation log, 21 CFR Part 11 audit trails, and a user count appropriate to a small team (3-10 users, not 50+)."
       }
     },
     {
@@ -40,7 +40,7 @@ const faqSchema = {
       "name": "How much does a CTMS cost for a small site?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Enterprise CTMS platforms (OnCore, Veeva Vault CTMS, Medidata CTMS, Rave CTMS, DFdiscover) typically start at $10,000 to $30,000 per year for small deployments and scale into six figures for large CROs and academic networks. Mid-market options (Advarra Longboat, RealTime, SimpleTrials) run $5,000 to $20,000 per year. Small-site-focused options like Nexrial are priced at $349/month Core or $549/month Pro (with a $199/month Founder tier for the first 5 sites) — roughly one-third to one-tenth of mid-market pricing, for sites that would otherwise run their studies on spreadsheets."
+        "text": "Enterprise CTMS platforms (OnCore, Veeva Vault CTMS, Medidata CTMS, Rave CTMS, DFdiscover) typically start at $10,000 to $30,000 per year for small deployments and scale into six figures for large CROs and academic networks. Mid-market options (Advarra Longboat, RealTime, SimpleTrials) run $5,000 to $20,000 per year. Small-site-focused options like Nexrial are priced at $299/month Core or $599/month Pro (with a Founding Site Program that gives the first 3–5 sites 50% off for life — $149 Core / $299 Pro) — roughly one-third to one-tenth of mid-market pricing, for sites that would otherwise run their studies on spreadsheets."
       }
     },
     {
@@ -66,7 +66,7 @@ const faqSchema = {
 <Base
   title="Best CTMS for Small Clinical Research Sites — Comparison"
   activePage="products"
-  description="How Nexrial CTMS ($349 Core / $549 Pro / $199 Founder) compares to enterprise platforms (OnCore, Veeva Vault CTMS, Medidata CTMS) and mid-market options (RealTime, SimpleTrials, Advarra Longboat) for small independent clinical research sites."
+  description="How Nexrial CTMS ($299 Core / $599 Pro; founding sites 50% off for life) compares to enterprise platforms (OnCore, Veeva Vault CTMS, Medidata CTMS) and mid-market options (RealTime, SimpleTrials, Advarra Longboat) for small independent clinical research sites."
 >
 
   <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
@@ -94,7 +94,7 @@ const faqSchema = {
         <div>
           <p style="margin: 0 0 0.5rem; font-weight: 600; text-align: center;">At a glance</p>
           <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 1.8;">
-            <li><strong>$349–$549/mo</strong> vs $10K+/yr enterprise</li>
+            <li><strong>$299–$599/mo</strong> vs $10K+/yr enterprise</li>
             <li><strong>21 CFR Part 11</strong> compliant</li>
             <li><strong>3–10 users</strong> small-team fit</li>
             <li><strong>Multi-tenant</strong> SaaS</li>
@@ -103,7 +103,7 @@ const faqSchema = {
       </div>
     </div>
     <div class="product-stats">
-      <div class="stat"><strong>$199–$549</strong>/month</div>
+      <div class="stat"><strong>$299–$599</strong>/month</div>
       <div class="stat-sep"></div>
       <div class="stat"><strong>5–25</strong> concurrent studies</div>
       <div class="stat-sep"></div>
@@ -130,7 +130,7 @@ const faqSchema = {
         <tbody>
           <tr class="compare-row-highlight">
             <td><strong>Nexrial</strong></td>
-            <td><strong>$349 Core · $549 Pro · $199 Founder*</strong></td>
+            <td><strong>$299 Core · $599 Pro · founding 50% off*</strong></td>
             <td>Small independent, 5–25 studies</td>
             <td>SaaS, instant</td>
             <td>Yes</td>
@@ -188,7 +188,7 @@ const faqSchema = {
       </table>
     </div>
     <p class="compare-note">
-      <em>*Nexrial Founder tier ($199/month) is available to the first 5 sites only — a limited launch pricing for early partners. After that, Core ($349/mo) and Pro ($549/mo) are the standard tiers. Competitor pricing ranges reflect public information, industry reports, and vendor disclosures as of April 2026; final pricing depends on user count, module selection, and multi-year contracts. Contact vendors directly for current quotes.</em>
+      <em>*Nexrial's Founding Site Program gives the first 3–5 sites 50% off for life — Core at $149/month, Pro at $299/month. After the founding cohort fills, standard pricing is Core $299/mo and Pro $599/mo, with Enterprise from $999/mo. Competitor pricing ranges reflect public information, industry reports, and vendor disclosures as of April 2026; final pricing depends on user count, module selection, and multi-year contracts. Contact vendors directly for current quotes.</em>
     </p>
   </section>
 
@@ -205,7 +205,7 @@ const faqSchema = {
       <div class="why-now-card">
         <h3>Small-site-focused by design</h3>
         <p>
-          Nexrial is built for the 3-10 user team, the 5-25 concurrent study workload, and the $349–$549/month budget range that the small-independent-site segment can actually sustain — with a $199/month Founder tier for the first 5 sites. The feature set is the compliance-grade core — subject management, visit scheduling, delegation log, 21 CFR Part 11 audit trail, HIPAA BAA — without the enterprise-only modules (multi-site financial reconciliation, complex approval workflows, full eTMF integration) that drive platform complexity and price.
+          Nexrial is built for the 3-10 user team, the 5-25 concurrent study workload, and the $299–$599/month budget range that the small-independent-site segment can actually sustain — with a Founding Site Program that gives the first 3–5 sites 50% off for life ($149 Core / $299 Pro). The feature set is the compliance-grade core — subject management, visit scheduling, delegation log, 21 CFR Part 11 audit trail, HIPAA BAA — without the enterprise-only modules (multi-site financial reconciliation, complex approval workflows, full eTMF integration) that drive platform complexity and price.
         </p>
       </div>
       <div class="why-now-card">
