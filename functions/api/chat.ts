@@ -123,6 +123,25 @@ function json(body: unknown, status = 200): Response {
   });
 }
 
+/**
+ * Neutralize hidden-instruction smuggling in untrusted user text before it reaches
+ * the model: strip invisible/format/bidi-control chars and the Unicode Tags block
+ * (a known channel for smuggling instructions past a human/model reader), then
+ * NFKC-normalize so homoglyph/compatibility look-alikes fold to their plain form.
+ * Visible content is unchanged; only non-printing and look-alike code points move.
+ */
+function sanitizeUserText(s: string): string {
+  return s
+    // soft hyphen; zero-width space/joiners + bidi marks (U+200B-200F); word
+    // joiner + invisible math operators (U+2060-2064); line/para seps; BOM
+    .replace(/[\u00AD\u200B-\u200F\u2028\u2029\u2060-\u2064\uFEFF]/g, '')
+    // bidirectional overrides (U+202A-202E) and isolates (U+2066-2069): direction spoofing
+    .replace(/[\u202A-\u202E\u2066-\u2069]/g, '')
+    // Unicode Tags block (U+E0000-E007F): invisible instruction smuggling
+    .replace(/[\u{E0000}-\u{E007F}]/gu, '')
+    .normalize('NFKC');
+}
+
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { request, env } = context;
   const startedAt = Date.now();
@@ -202,7 +221,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     let content = (m as ClientMessage).content;
     if (role !== 'user' && role !== 'assistant') continue; // never accept client 'system'
     if (typeof content !== 'string') continue;
-    content = content.slice(0, MAX_CHARS_PER_MESSAGE).trim();
+    content = sanitizeUserText(content.slice(0, MAX_CHARS_PER_MESSAGE)).trim();
     if (!content) continue;
     totalChars += content.length;
     if (totalChars > MAX_TOTAL_CHARS) break;
