@@ -70,7 +70,7 @@ const faqSchema = {
     {
       "@type": "Question",
       "name": "Do you offer SOP customization services?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. If you need SOPs tailored to specific protocols or organizational structures, see the Purple Directive consulting services." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The bundle self-customizes with placeholder fields for site name, PI, and roles. If you need the SOPs tailored to specific protocols, systems, or organizational structures, that is a scoped Purple Directive consulting engagement starting at $497." }
     }
   ]
 };
@@ -109,6 +109,7 @@ const breadcrumbSchema = {
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a href="#inside" class="btn-ghost">See what's inside</a>
       </div>
+      <p class="hero-tailor">Running unusual protocols or systems? <a href="#tailor">Have us tailor the SOPs to your site &rarr;</a></p>
       <div class="facts">
         <span class="fact">ICH E6(R3)-aligned</span>
         <span class="fact">PDF + editable Word</span>
@@ -169,6 +170,60 @@ const breadcrumbSchema = {
     </div>
   </section>
 
+  <!-- Done-for-you customization — routes SOP tailoring into the existing PD Consulting funnel (Essential tier) so the $249.99 bundle stays clean self-serve and tailoring is a scoped, higher-value add-on. -->
+  <section class="section" id="tailor" style="padding-top:0">
+    <div class="container">
+      <div class="tailor-band">
+        <div class="tailor-main">
+          <div class="section-label">Prefer done-for-you</div>
+          <h2>Want them tailored to your site?</h2>
+          <p>The bundle is built to self-customize &mdash; drop in your site name, PI, and roles and you&rsquo;re set. If you&rsquo;d rather we tailor the procedures to your specific protocols, systems, and organizational structure &mdash; and walk them through with you before you file &mdash; we do that as a scoped engagement. Tell us what you need and we&rsquo;ll send back a plan and a quote.</p>
+          <p class="tailor-anchor">Tailoring is a Purple Directive consulting engagement &mdash; <strong>starts at $497</strong>. <a href="/consulting">See consulting &rarr;</a></p>
+        </div>
+        <div class="tailor-cta">
+          <form class="tailor-form" method="post" action="/api/sop-customization" data-sop-form>
+            <input type="hidden" name="source" value="sop-bundle" />
+            <input type="text" name="company_url" tabindex="-1" autocomplete="off" class="tf-trap" aria-hidden="true" />
+            <div class="tf-two">
+              <input name="name" required autocomplete="name" placeholder="Your name" aria-label="Your name" />
+              <input type="email" name="email" required autocomplete="email" placeholder="Work email" aria-label="Work email" />
+            </div>
+            <input name="site" autocomplete="organization" placeholder="Site / organization" aria-label="Site or organization" />
+            <input name="sops" placeholder="Which SOPs to tailor (or &ldquo;all 13&rdquo;)" aria-label="Which SOPs to tailor" />
+            <input name="context" placeholder="Protocols, systems, and timeline" aria-label="Protocols, systems, and timeline" />
+            <textarea name="message" rows="2" placeholder="Anything else we should know? (optional)" aria-label="Anything else we should know"></textarea>
+            <button type="submit" class="btn-primary">Request customization</button>
+            <small>We reply with a scoped plan &amp; quote &mdash; no charge to ask.</small>
+          </form>
+          <p class="tailor-ok" data-sop-ok hidden>Thanks &mdash; your request is in. We&rsquo;ll reply with a scoped plan and quote, usually within one business day.</p>
+          <p class="tailor-err" data-sop-err hidden></p>
+          <script is:inline>
+            (function () {
+              var p = new URLSearchParams(window.location.search);
+              var ok = p.get('sop'), err = p.get('sop_error');
+              if (ok === 'submitted') {
+                var f = document.querySelector('[data-sop-form]'); if (f) f.style.display = 'none';
+                var o = document.querySelector('[data-sop-ok]'); if (o) o.hidden = false;
+              } else if (err) {
+                var msgs = {
+                  'invalid': 'Please add your name and a valid email, then try again.',
+                  'not-configured': 'The request form is temporarily unavailable — email info@purpledirective.com and we’ll pick it up.',
+                  'auth': 'The request form is temporarily unavailable — email info@purpledirective.com.',
+                  'rate-limited': 'Too many attempts — wait a moment and try again.',
+                  'network': 'Network hiccup — try again in a moment.',
+                  'resend-down': 'Our mail service is having a moment — try again shortly, or email info@purpledirective.com.',
+                  'bad-request': 'Something went wrong submitting the form — try again?',
+                  'unknown': 'Something went wrong — please try again or email info@purpledirective.com.'
+                };
+                var e = document.querySelector('[data-sop-err]'); if (e) { e.textContent = msgs[err] || msgs.unknown; e.hidden = false; }
+              }
+            })();
+          </script>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- À la carte — preserves the $29 individual-SOP revenue path -->
   <section class="section alacarte" id="individual" style="padding-top:0">
     <div class="container">
@@ -206,7 +261,7 @@ const breadcrumbSchema = {
       <details class="faq-item"><summary>Are these aligned with the latest GCP guidelines?</summary><p>Each SOP is built on ICH E6(R2) with E6(R3) guidance notes, referencing 21 CFR Parts 11, 50, 56, and 312 as well as 45 CFR Part 46 where applicable.</p></details>
       <details class="faq-item"><summary>Can I read a full SOP before buying?</summary><p>Yes. <a href="/training-qualification-sop">SOP-01 &mdash; Training &amp; Qualification of Study Staff</a> is published in full and free &mdash; the complete procedure, downloadable in editable Word and PDF with no signup, at the same depth as every SOP in the bundle.</p></details>
       <details class="faq-item"><summary>How do I receive the files?</summary><p>Immediately after purchase you receive an email with a download link that does not expire. Any trouble, email <a href="mailto:info@purpledirective.com">info@purpledirective.com</a>.</p></details>
-      <details class="faq-item"><summary>Do you offer customization services?</summary><p>Yes. If you need SOPs tailored to specific protocols or organizational structures, see our <a href="/consulting">consulting services</a>.</p></details>
+      <details class="faq-item"><summary>Do you offer customization services?</summary><p>Yes. The bundle self-customizes with placeholder fields, but if you&rsquo;d rather we tailor the procedures to your specific protocols, systems, and org structure, that&rsquo;s a scoped Purple Directive consulting engagement &mdash; it <strong>starts at $497</strong>. <a href="#tailor">Request customization</a> or <a href="/consulting">see consulting</a>.</p></details>
     </div>
   </section>
 
@@ -242,6 +297,29 @@ const breadcrumbSchema = {
   /* .btn-ghost is built for the dark hero; recolor it for this light card */
   .sample-card .btn-ghost{color:var(--purple-primary);border-color:var(--purple-primary)}
   .sample-card .btn-ghost:hover{background:rgba(124,58,237,.08);border-color:var(--purple-primary)}
+
+  /* Hero tailoring link + done-for-you band */
+  .hero-tailor{margin:.9rem 0 0;font-size:.86rem;color:var(--text-secondary)}
+  .hero-tailor a{color:var(--purple-primary);font-weight:600}
+  .tailor-band{display:flex;gap:var(--sp-xl);align-items:flex-start;flex-wrap:wrap;border:1px solid var(--border);border-radius:14px;background:var(--bg-tinted);padding:var(--sp-xl)}
+  .tailor-main{flex:1 1 340px;min-width:0}
+  .tailor-main h2{margin:.3rem 0 .6rem}
+  .tailor-main>p{font-size:.92rem;line-height:1.65;color:var(--text-secondary);margin:0;max-width:44rem}
+  .tailor-anchor{margin-top:.85rem !important;font-size:.9rem !important;color:var(--text-primary) !important}
+  .tailor-anchor a{color:var(--purple-primary);font-weight:600}
+  .tailor-cta{flex:1 1 340px;max-width:420px;min-width:0}
+  .tailor-form{display:flex;flex-direction:column;gap:.5rem}
+  .tf-two{display:flex;gap:.5rem}
+  .tf-two input{flex:1 1 0;min-width:0}
+  .tf-trap{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+  .tailor-form input:not(.tf-trap),.tailor-form textarea{width:100%;padding:.6rem .75rem;border:1px solid var(--border);border-radius:7px;font-family:var(--font-sans);font-size:.88rem;background:var(--bg-card);color:var(--text-primary)}
+  .tailor-form input:focus-visible,.tailor-form textarea:focus-visible{outline:2px solid var(--purple-primary);outline-offset:1px;border-color:var(--purple-primary)}
+  .tailor-form textarea{resize:vertical}
+  .tailor-form .btn-primary{width:100%;justify-content:center;margin-top:.15rem}
+  .tailor-form small{font-size:.78rem;color:var(--text-muted)}
+  .tailor-ok{font-size:.9rem;color:#166534;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:.7rem .85rem;margin:0;line-height:1.55}
+  .tailor-err{font-size:.86rem;color:#b91c1c;margin:.4rem 0 0}
+  @media (max-width:640px){.tailor-cta{max-width:none}.tf-two{flex-direction:column}}
 
   /* À la carte */
   .ala-list{list-style:none;margin-top:var(--sp-lg);border-top:1px solid var(--border)}
