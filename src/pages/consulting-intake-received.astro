@@ -1,0 +1,35 @@
+---
+import Site from '../layouts/Site.astro';
+---
+
+<Site title="Intake received" description="Your Purple Directive consulting intake has been received.">
+  <section class="section hero">
+    <h1>Intake <span class="accent">received</span></h1>
+    <p class="subtitle">
+      Thank you. We'll review your intake and confirm scope and next steps shortly.
+      If you haven't already, book your kickoff call so we can get moving —
+      <a href="https://calendly.com/nexrial/consulting-kickoff">grab a time here →</a>
+    </p>
+    <div style="margin-top: 2rem; text-align: center;">
+      <a href="/" class="back-btn">Back to Home</a>
+    </div>
+  </section>
+</Site>
+
+<style>
+  .back-btn {
+    display: inline-block;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.7rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .back-btn:hover {
+    border-color: var(--purple-primary);
+    color: var(--purple-primary);
+  }
+</style>

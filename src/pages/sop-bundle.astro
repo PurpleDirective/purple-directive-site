@@ -1,6 +1,7 @@
 ---
 import Site from '../layouts/Site.astro';
 import EmailCapture from '../components/EmailCapture.astro';
+import Testimonials from '../components/Testimonials.astro';
 
 const sops = [
   ['SOP-01', 'Training', '/buy/sop-001', 'Training & Qualification of Study Staff'],
@@ -250,6 +251,8 @@ const breadcrumbSchema = {
       <span class="pchip">Editable &amp; customizable</span>
     </div>
   </section>
+
+  <Testimonials product="sop" heading="What practitioners say" />
 
   <!-- FAQ -->
   <section class="section faq" style="padding-top:var(--sp-2xl)">
