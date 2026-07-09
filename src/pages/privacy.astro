@@ -1,10 +1,12 @@
 ---
-import Base from '../layouts/Base.astro';
+import Site from '../layouts/Site.astro';
+import '../styles/pages.css';
 ---
 
-<Base title="Privacy Policy" activePage="" description="Purple Directive privacy policy — how we handle your data when you use our website and purchase our products.">
-
-  <section class="legal-page">
+<Site title="Privacy Policy" description="Purple Directive privacy policy — how we handle your data when you use our website and purchase our products.">
+  <section class="section">
+    <div class="container">
+    <div class="legal-page">
     <h1>Privacy Policy</h1>
     <p class="legal-updated">Last updated: March 24, 2026</p>
 
@@ -25,7 +27,7 @@ import Base from '../layouts/Base.astro';
 
     <h3>When You Make a Purchase</h3>
     <p>
-      Purchases are processed through Stripe, a PCI-compliant payment processor. When you
+      Purchases are processed through Stripe, a PCI-DSS Level 1 certified payment processor. When you
       purchase a product, Stripe collects your payment information (card number, billing
       address, email). We do not store your payment details on our servers. We receive your
       name and email address from Stripe in order to deliver your purchase.
@@ -95,14 +97,15 @@ import Base from '../layouts/Base.astro';
       Questions about this privacy policy? Email us at
       <a href="mailto:info@purpledirective.com">info@purpledirective.com</a>.
     </p>
+    </div>
+    </div>
   </section>
-
-</Base>
+</Site>
 
 <style>
   .legal-page {
     max-width: 680px;
-    padding: var(--spacing-xl) 0;
+    padding: var(--spacing-md) 0;
   }
 
   .legal-page h1 {

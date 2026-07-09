@@ -1,9 +1,9 @@
 ---
-import Base from '../layouts/Base.astro';
+import Site from '../layouts/Site.astro';
 import EmailCapture from '../components/EmailCapture.astro';
 ---
 
-<Base title="Thank you for your purchase" description="Your purchase is complete. Thank you for choosing Purple Directive.">
+<Site title="Thank you for your purchase" description="Your purchase is complete. Thank you for choosing Purple Directive.">
   <section class="section hero">
     <h1>Thank you for your <span class="accent">purchase</span></h1>
     <p class="subtitle">
@@ -41,7 +41,7 @@ import EmailCapture from '../components/EmailCapture.astro';
       <a href="/" class="back-btn">Back to Home</a>
     </div>
   </section>
-</Base>
+</Site>
 
 <style>
   .ty-wrap { max-width: 720px; margin: 0 auto; padding: 0 1rem 3rem; }

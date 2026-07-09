@@ -1,0 +1,185 @@
+---
+import Site from '../layouts/Site.astro';
+import '../styles/pages.css';
+
+// SoftwareApplication + FAQ structured data for the Quell AI-blocker extension.
+// Claims mirror the product README exactly — including the "what it does NOT do"
+// honesty. No store URL is asserted here because Quell installs unpacked / from
+// source today; add the Chrome Web Store URL when the listing is live.
+const appSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Quell",
+  "applicationCategory": "BrowserApplication",
+  "operatingSystem": "Chrome, Edge (Manifest V3)",
+  "url": "https://purpledirective.com/quell",
+  "description": "Free, open-source browser extension that removes forced AI features — Google AI Overviews and AI Mode, Bing Copilot — plus optional cookie-consent banners. No account, no tracking, no telemetry.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "license": "https://opensource.org/licenses/MIT",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Purple Directive",
+    "url": "https://purpledirective.com",
+  },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I turn off Google's AI Overviews?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Install Quell, a free browser extension. It offers two modes: Hide surgically removes the AI Overviews and AI Mode blocks while keeping the rest of Google, and Clean Web forces Google's classic web results (udm=14), which is selector-proof and never breaks. You can also do this manually by adding &udm=14 to a Google search URL, but Quell makes it the default.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a free AI blocker for Chrome?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Quell's blocking core is free forever, requires no account, and collects nothing. Many other AI blockers are paywalled with dark patterns or are fragile single-site hacks; Quell keeps its blocklist fresh with an automated pipeline so it doesn't rot when sites change. It works in Chrome and Edge.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "Does Quell track me or send my browsing anywhere?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Quell has no analytics, no remote storage, and no telemetry. Your settings live in your browser's local storage on your own machine. The base install requests only storage, declarativeNetRequest (rule-based blocking that can't read your traffic), and scripting. The broad all-sites permission is optional and requested only if you turn on the cookie-banner feature.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "Does Quell delete my data from AI companies' servers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — and no browser extension can. Quell hides forced AI features in your browser, on your device. Sending opt-out signals and surfacing each platform's opt-out controls is planned for a later phase, but Quell will never claim to erase data from a company's servers.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use Quell to block ads?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Quell does not block ads and is not on a path to. uBlock Origin already does that better than anyone, for free — that's the tool we recommend for ads. Quell focuses on forced AI features and other opt-in annoyances.",
+      },
+    },
+  ],
+};
+---
+<Site
+  title="Quell — turn off forced AI in your browser"
+  description="Quell is a free, open-source browser extension that removes forced AI features — Google AI Overviews and AI Mode, Bing Copilot — and, optionally, cookie-consent banners. No account, no tracking, no telemetry. Made by Purple Directive."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <section class="prod-hero">
+    <div class="container prod-hero-grid">
+      <div>
+        <div class="section-label">Free · Open source (MIT) · Chrome & Edge</div>
+        <h1>Turn off forced AI in your browser.</h1>
+        <p class="lede">
+          Quell quiets the web — starting with the AI features you didn't ask for.
+          It removes Google AI Overviews and AI Mode and hides Bing Copilot, with
+          optional cookie-banner blocking. No account, no tracking, nothing
+          phoned home.
+        </p>
+        <div class="cta-row">
+          <a href="#install" class="btn-primary">How to install
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+        </div>
+        <p class="hero-note">
+          Free forever. Open source under MIT — read the code on
+          <a href="https://github.com/PurpleDirective" rel="noopener" target="_blank">GitHub</a>.
+        </p>
+        <div class="facts">
+          <span class="fact">Free forever</span>
+          <span class="fact">0 tracking</span>
+          <span class="fact">MV3 · Chrome &amp; Edge</span>
+          <span class="fact">MIT licensed</span>
+        </div>
+      </div>
+      <aside class="at-glance">
+        <p class="at-glance-cap">At a glance</p>
+        <ul>
+          <li><strong>Google</strong> AI Overviews + AI Mode</li>
+          <li><strong>Bing</strong> Copilot sidebar</li>
+          <li><strong>0</strong> tracking, telemetry, or accounts</li>
+          <li><strong>MIT</strong> open source</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section doc">
+    <div class="container">
+    <div class="doc-block" style="border-top:none;padding-top:0" id="what-it-blocks">
+    <h2>What Quell blocks today</h2>
+    <p>
+      <strong>Google — AI Overviews and AI Mode.</strong> Two modes: <em>Hide</em>
+      surgically removes the AI blocks and keeps the rest of Google;
+      <em>Clean Web</em> forces Google's classic web results
+      (<code>udm=14</code>), which is selector-proof and never breaks.
+    </p>
+    <p>
+      <strong>Bing — Copilot.</strong> Hides the Copilot sidebar and its entry
+      points.
+    </p>
+    <p>
+      <strong>Cookie banners (beta, opt-in).</strong> Blocks the major consent
+      platforms — OneTrust, Cookiebot, Quantcast, Sourcepoint, Didomi,
+      Usercentrics, TrustArc — at the network layer, and hides common first-party
+      banners. Rules derive from the open EasyList Cookie list. This is the only
+      feature that needs the broad site permission, and it ships off by default.
+    </p>
+    </div>
+
+    <div class="doc-block" id="honest">
+    <h2>What Quell does <em>not</em> do — on purpose</h2>
+    <p>
+      Being straight about the limits is the point. Quell does <strong>not</strong>
+      delete your data from any AI company's servers — no browser tool can. It does
+      <strong>not</strong> stop AI globally; it works in your browser, on your
+      device. It does <strong>not</strong> track you or phone home. And it does
+      <strong>not</strong> block ads — uBlock Origin already does that better than
+      anyone, for free, and that's the tool we point you to for ads.
+    </p>
+    </div>
+
+    <div class="doc-block" id="why">
+    <h2>Why we built it</h2>
+    <p>
+      Only about a third of people find new AI features in their apps useful; more
+      than 40% call them an annoyance (Prophet 2026; Stanford HAI 2026). The
+      existing "AI blockers" are mostly paywalled with dark patterns or fragile
+      single-site hacks. Quell is the honest one: the blocking core is free
+      forever, it collects nothing, and an automated pipeline keeps the blocklist
+      fresh so it doesn't rot when sites change.
+    </p>
+    </div>
+
+    <div class="doc-block" id="install">
+    <h2>How to install</h2>
+    <p>
+      Quell is open source and installs as an unpacked extension today:
+    </p>
+    <ol>
+      <li>Open <code>chrome://extensions</code> (or <code>edge://extensions</code>).</li>
+      <li>Enable <strong>Developer mode</strong>.</li>
+      <li>Choose <strong>Load unpacked</strong> and select Quell's <code>extension/</code> folder from the source.</li>
+      <li>Pin Quell, run a Google search, and open the popup to toggle modes.</li>
+    </ol>
+    <p class="buy-note">
+      Source and instructions:
+      <a href="https://github.com/PurpleDirective" rel="noopener" target="_blank">github.com/PurpleDirective</a>.
+    </p>
+    </div>
+    </div>
+  </section>
+</Site>

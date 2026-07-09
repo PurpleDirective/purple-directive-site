@@ -1,0 +1,788 @@
+---
+import Site from '../layouts/Site.astro';
+import EmailCapture from '../components/EmailCapture.astro';
+// Full SOP body rendered inline (generated from SOP-001 v1.2 source). Sections 1–5.
+import sopBody from '../data/sop-001-body.html?raw';
+
+const pageUrl = "https://purpledirective.com/training-qualification-sop/";
+
+// Split the rendered SOP body into top-level (H2) sections so the document
+// reads as a navigable set of collapsible sheets instead of one long scroll.
+type SopSection = { id: string; num: string; label: string; body: string };
+const sopSections: SopSection[] = sopBody
+  .split(/(?=<h2\b)/)
+  .map((chunk) => chunk.trim())
+  .filter((chunk) => chunk.startsWith('<h2'))
+  .map((chunk): SopSection | null => {
+    const m = chunk.match(/^<h2\s+id="([^"]*)"[^>]*>([\s\S]*?)<\/h2>([\s\S]*)$/);
+    if (!m) return null;
+    const rawTitle = m[2].replace(/<[^>]+>/g, '').trim();
+    const nm = rawTitle.match(/^(\d+)\.\s*(.*)$/);
+    return {
+      id: m[1],
+      num: nm ? nm[1] : '',
+      label: nm ? nm[2] : rawTitle,
+      body: m[3].trim(),
+    };
+  })
+  .filter((s): s is SopSection => s !== null);
+
+const techArticleSchema = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Training & Qualification of Study Staff SOP — Free ICH E6(R3) Template",
+  "description": "A free, editable Standard Operating Procedure template for training, qualifying, and documenting the competency of clinical research site staff — GCP training, delegation of authority, training files. Aligned to ICH E6(R3). Word + PDF, no signup.",
+  "url": pageUrl,
+  "author": { "@type": "Organization", "name": "Purple Directive", "url": "https://purpledirective.com" },
+  "publisher": { "@type": "Organization", "name": "Purple Directive", "url": "https://purpledirective.com" },
+  "datePublished": "2026-07-02",
+  "dateModified": "2026-07-02",
+  "inLanguage": "en-US",
+  "keywords": "training SOP template clinical research, staff qualification SOP, delegation of authority log SOP, GCP training requirements, ICH E6(R3) SOP template, clinical research site training file",
+  "about": [
+    { "@type": "Thing", "name": "Clinical research staff training" },
+    { "@type": "Thing", "name": "Delegation of authority" },
+    { "@type": "Thing", "name": "ICH E6(R3) Good Clinical Practice" }
+  ]
+};
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Clinical Research SOP Template Bundle",
+  "url": "https://purpledirective.com/sop-bundle/",
+  "description": "13 ICH E6(R2/R3)-aligned Standard Operating Procedures for clinical research sites, with 11 companion forms. Editable Word + PDF.",
+  "brand": { "@type": "Organization", "name": "Purple Directive" },
+  "offers": {
+    "@type": "Offer",
+    "price": "249.99",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://purpledirective.com/sop-bundle/"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is this training and qualification SOP template really free?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The full SOP-001 template is free to read, download, and adapt — in editable Word and PDF, with no email signup. It is one of 13 SOPs in the Purple Directive bundle; this one is published in full so a site can evaluate the depth and structure before deciding on the complete library." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I edit this SOP for my own clinical research site?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Word file contains bracketed placeholders such as [Site Name] and [Institutional Policy #]. Replace the placeholders, adapt the procedures to your operations, route the document through your own QA review, and have the Principal Investigator approve and sign before implementation." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this SOP aligned to ICH E6(R3)?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. It is written against the current ICH E6(R3) framework — where the delegation standard moved from qualified by education, training, and experience to demonstrably qualified, with the documentation to prove it — while preserving the 21 CFR Part 11, 50, 56, and 312 citations that sites and sponsors still rely on." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is in the full $249.99 SOP bundle?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Thirteen ICH E6(R3)-aligned SOPs and 11 companion forms — including the Staff Training Record Log that pairs with this SOP — plus cross-references that connect the procedures into a single audit-ready library. This free SOP is the standalone document; the companion log, the other 12 SOPs, and the cross-references are in the bundle." }
+    },
+    {
+      "@type": "Question",
+      "name": "Where can I find a free ICH GCP SOP template?",
+      "acceptedAnswer": { "@type": "Answer", "text": "This page is one. The full Training and Qualification SOP (SOP-001) is a free, editable ICH GCP / ICH E6(R3) SOP template — readable in full above and downloadable in Word and PDF with no signup. It is one of 13 SOPs in the Purple Directive clinical research SOP template bundle; the other 12 SOPs and the 11 companion forms are in the $249.99 bundle." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there an E6(R3) SOP checklist for a clinical research site?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The 13-SOP bundle works as one. It covers the procedures a sponsor or FDA inspector expects across the full study lifecycle — training, essential documents, consent, investigational product, data management, adverse events, monitoring, and close-out — each written against ICH E6(R3). This free Training and Qualification SOP is the first item on that list; the full set and how it compares to SOP consulting are on the bundle and comparison pages." }
+    }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://purpledirective.com/" },
+    { "@type": "ListItem", "position": 2, "name": "ICH E6(R3) SOP Templates", "item": "https://purpledirective.com/ich-gcp-sop-templates/" },
+    { "@type": "ListItem", "position": 3, "name": "Training & Qualification SOP", "item": pageUrl }
+  ]
+};
+---
+
+<Site
+  title="Free Training & Qualification SOP Template — ICH E6(R3)"
+  ogType="article"
+  description="A free, editable ICH E6(R3)-aligned SOP template for training, qualifying, and documenting clinical research site staff — GCP training, delegation of authority, training files. Download in Word and PDF — no signup."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(techArticleSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <!-- Hero -->
+  <section class="prod-hero">
+    <div class="container prod-hero-grid">
+      <div>
+        <a href="/sop-bundle" class="prod-back">&larr; SOP Bundle</a>
+        <div class="section-label">Free SOP Template &middot; ICH E6(R3)-aligned</div>
+        <h1>Training &amp; Qualification of Study Staff SOP — Free, Editable Template</h1>
+        <p class="lede">
+          A complete, site-ready Standard Operating Procedure for training, qualifying, and maintaining the
+          competency of everyone on your Delegation of Authority log — initial GCP training, role-specific
+          qualification, retraining triggers, and the training-file documentation a sponsor or FDA inspector
+          asks for first. Free to download and adapt. No email required.
+        </p>
+        <div class="cta-row">
+          <a href="/sops/SOP-001-Training-Qualification.docx" class="btn-primary" download>Download editable Word
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg></a>
+          <a href="/sops/SOP-001-Training-Qualification.pdf" class="btn-ghost" download>Download PDF</a>
+        </div>
+        <p class="hero-note">
+          Free to use and adapt for your site — one of 13 SOPs in the
+          <a href="/sop-bundle/">full ICH E6(R3) bundle</a>. The matching Staff Training Record Log and the other 12 SOPs stay in the bundle.
+        </p>
+        <div class="facts">
+          <span class="fact">SOP-001 v1.2</span>
+          <span class="fact">ICH E6(R3)-aligned</span>
+          <span class="fact">Word + PDF</span>
+          <span class="fact">$0 — no signup</span>
+        </div>
+      </div>
+      <aside class="hero-covers">
+        <p class="hero-covers-cap">What this SOP covers</p>
+        <ul>
+          <li><a href="#3-responsibilities">Roles &amp; qualification standards</a></li>
+          <li><a href="#41-gcp-training-requirements">Initial &amp; role-specific training</a></li>
+          <li><a href="#43-delegation-of-authority-doa-log-management">Delegation of Authority (DOA) log</a></li>
+          <li><a href="#42-protocol-specific-training">Retraining triggers</a></li>
+          <li><a href="#46-training-records-management">Training-file documentation</a></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Positioning / how to use -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Why this one is free</div>
+      <h2>A real SOP, not a teaser.</h2>
+      <div class="feat-grid why-cards">
+        <div class="feat">
+          <h3>Editable, site-ready</h3>
+          <p>The Word file uses bracketed placeholders (<code>[Site Name]</code>, <code>[Institutional Policy #]</code>). Replace them, adapt to your operations, run it through your QA, and have the PI approve. This is the same template layer a custom SOP consulting engagement would hand you — published in full.</p>
+        </div>
+        <div class="feat">
+          <h3>Written against E6(R3)</h3>
+          <p>E6(R3) tightened the delegation standard: staff must be demonstrably qualified for each delegated task, and the documentation has to show it. This SOP builds that chain — qualification, training, DOA entry, training file — alongside the 21 CFR Part 11, 50, 56, and 312 citations sponsors still hold sites to.</p>
+        </div>
+        <div class="feat">
+          <h3>The first thing a monitor pulls</h3>
+          <p>Training files and the DOA log are on almost every monitoring-visit checklist, and gaps there are among the most common findings at investigator sites. See the free <a href="/bimo-taxonomy/">FY2022–2024 BIMO 483 Taxonomy</a> for the citation patterns this SOP is designed to prevent.</p>
+        </div>
+        <div class="feat">
+          <h3>What stays in the bundle</h3>
+          <p>This SOP references a companion <strong>Staff Training Record Log</strong> and cross-references other procedures (essential documents, quality control, close-out). The log, the cross-references, and the other 12 SOPs are part of the <a href="/sop-bundle/">$249.99 bundle</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Disclaimer banner -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="sop-disclaimer">
+        <strong>Template — read before use.</strong> This SOP is provided for informational and educational purposes only and is a customizable starting point, not legal, regulatory, or medical advice. Each site must review, adapt, and validate it against its own institutional policies, applicable regulations, IRB requirements, and sponsor protocols before implementation. Purple Directive assumes no liability for the use or misuse of this template.
+      </div>
+    </div>
+  </section>
+
+  <!-- The SOP document, rendered as a navigable reader -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="sop-reader">
+        <!-- Sticky contents rail -->
+        <aside class="sop-toc" aria-label="Document contents">
+          <p class="sop-toc-cap">Contents</p>
+          <nav class="sop-toc-nav">
+            {sopSections.map((s) => (
+              <a href={`#sec-${s.id}`} class="sop-toc-link" data-sec={`sec-${s.id}`}>
+                <span class="sop-toc-n">{s.num}</span>
+                <span class="sop-toc-t">{s.label}</span>
+              </a>
+            ))}
+          </nav>
+          <button type="button" id="sopToggleAll" class="sop-toc-toggle">Collapse all</button>
+          <div class="sop-toc-dls">
+            <a href="/sops/SOP-001-Training-Qualification.docx" download>&darr; Word</a>
+            <a href="/sops/SOP-001-Training-Qualification.pdf" download>&darr; PDF</a>
+          </div>
+        </aside>
+
+        <!-- Document -->
+        <article class="sop-doc">
+          <header class="sop-doc-head">
+            <p class="sop-doc-kicker">Standard Operating Procedure</p>
+            <h2 class="sop-doc-title">SOP-001 — Training and Qualification of Study Staff</h2>
+            <p class="sop-doc-meta">Version 1.2 · ICH E6(R3)-aligned · Purple Directive</p>
+          </header>
+          <div class="sop-doc-sections">
+            {sopSections.map((s) => (
+              <details class="sop-section" id={`sec-${s.id}`} open>
+                <summary class="sop-section-head">
+                  <span class="sop-sec-n">{s.num}</span>
+                  <span class="sop-sec-t">{s.label}</span>
+                  <span class="sop-sec-chev" aria-hidden="true"></span>
+                </summary>
+                <div class="sop-doc-body" set:html={s.body} />
+              </details>
+            ))}
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      var secs = Array.prototype.slice.call(document.querySelectorAll('.sop-section'));
+      var links = Array.prototype.slice.call(document.querySelectorAll('.sop-toc-link'));
+      if (!secs.length) return;
+
+      // Collapse / expand all
+      var toggle = document.getElementById('sopToggleAll');
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          var anyOpen = secs.some(function (s) { return s.open; });
+          secs.forEach(function (s) { s.open = !anyOpen; });
+          toggle.textContent = anyOpen ? 'Expand all' : 'Collapse all';
+        });
+      }
+
+      // Clicking a contents link opens its section if collapsed
+      var byId = {};
+      links.forEach(function (a) { byId[a.getAttribute('data-sec')] = a; });
+      links.forEach(function (a) {
+        a.addEventListener('click', function () {
+          var el = document.getElementById(a.getAttribute('data-sec'));
+          if (el && !el.open) el.open = true;
+        });
+      });
+
+      // Scroll-spy: highlight the section currently in view
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (!en.isIntersecting) return;
+            var a = byId[en.target.id];
+            if (!a) return;
+            links.forEach(function (x) { x.classList.remove('active'); });
+            a.classList.add('active');
+          });
+        }, { rootMargin: '-15% 0px -75% 0px', threshold: 0 });
+        secs.forEach(function (s) { io.observe(s); });
+      }
+
+      // Always print the full document
+      window.addEventListener('beforeprint', function () {
+        secs.forEach(function (s) { s.open = true; });
+      });
+    })();
+  </script>
+
+  <!-- Bundle CTA -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="bundle-cta">
+        <h2>This is 1 of 13. Get the full library.</h2>
+        <p>
+          The complete bundle is 13 ICH E6(R3)-aligned SOPs and 11 companion forms — essential documents, consent, IP,
+          adverse events, data management, monitoring, close-out, HIPAA — plus the Staff Training Record Log that pairs
+          with this procedure, and the cross-references that turn 13 documents into one audit-ready system. $249.99 for
+          the bundle, or $29 for a single SOP.
+        </p>
+        <div class="cta-row" style="justify-content:center">
+          <a href="/sop-bundle/" class="btn-primary">See the SOP Bundle
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <p class="bundle-cta-note">
+          Comparing options first? See <a href="/ich-gcp-sop-templates/">how the bundle stacks up against SOP consulting and QMS platforms</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related free resources -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-label">More free resources</div>
+      <h2>Keep going, on the house.</h2>
+      <div class="feat-grid why-cards" style="grid-template-columns:repeat(3,1fr)">
+        <div class="feat">
+          <h3><a href="/bimo-taxonomy/">BIMO 483 Observation Taxonomy</a></h3>
+          <p>The seven FDA BIMO Form 483 observation categories at clinical investigator sites, FY2022–2024, with primary-source citations. Shows exactly which failures each SOP prevents.</p>
+        </div>
+        <div class="feat">
+          <h3><a href="/how-to-read-an-fda-483/">How to Read an FDA 483</a></h3>
+          <p>A practitioner's walkthrough of an FDA Form 483 — what each observation means and how a site responds.</p>
+        </div>
+        <div class="feat">
+          <h3><a href="/ich-gcp-sop-templates/">SOP Options Compared</a></h3>
+          <p>How a $249.99 template bundle compares to $5K–$15K custom SOP consulting and $10K+/year QMS platforms.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq" style="padding-top:0">
+    <div class="container" style="max-width:700px;margin:0 auto">
+      <div class="section-label">Questions</div>
+      <h2 style="margin-bottom:var(--sp-lg)">Before you download.</h2>
+      <details class="faq-item">
+        <summary>Is this training and qualification SOP template really free?</summary>
+        <p>Yes. The full SOP-001 template is free to read, download, and adapt — in editable Word and PDF, with no email signup. It is one of 13 SOPs in the Purple Directive bundle; this one is published in full so a site can evaluate the depth and structure before deciding on the complete library.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I edit this SOP for my own clinical research site?</summary>
+        <p>Yes. The Word file contains bracketed placeholders such as <code>[Site Name]</code> and <code>[Institutional Policy #]</code>. Replace the placeholders, adapt the procedures to your operations, route the document through your own QA review, and have the Principal Investigator approve and sign before implementation.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is this SOP aligned to ICH E6(R3)?</summary>
+        <p>Yes. It is written against the current ICH E6(R3) framework — where the delegation standard moved from qualified by education, training, and experience to <em>demonstrably</em> qualified, with the documentation to prove it — while preserving the 21 CFR Part 11, 50, 56, and 312 citations that sites and sponsors still rely on.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What is in the full $249.99 SOP bundle?</summary>
+        <p>Thirteen ICH E6(R3)-aligned SOPs and 11 companion forms — including the Staff Training Record Log that pairs with this SOP — plus cross-references that connect the procedures into a single audit-ready library. This free SOP is the standalone document; the companion log, the other 12 SOPs, and the cross-references are in the <a href="/sop-bundle/">bundle</a>.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Where can I find a free ICH GCP SOP template?</summary>
+        <p>This page is one. The full Training and Qualification SOP (SOP-001) is a free, editable ICH GCP / ICH E6(R3) SOP template — readable in full above and downloadable in Word and PDF with no signup. It is one of 13 SOPs in the Purple Directive <a href="/sop-bundle/">clinical research SOP template bundle</a>; the other 12 SOPs and the 11 companion forms are in the $249.99 bundle.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is there an E6(R3) SOP checklist for a clinical research site?</summary>
+        <p>The 13-SOP bundle works as one. It covers the procedures a sponsor or FDA inspector expects across the full study lifecycle — training, essential documents, consent, investigational product, data management, adverse events, monitoring, and close-out — each written against ICH E6(R3). This free Training and Qualification SOP is the first item on that list; the full set is on the <a href="/sop-bundle/">bundle page</a> and how it compares to SOP consulting is on the <a href="/ich-gcp-sop-templates/">SOP options comparison</a>.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Email capture -->
+  <section class="section" id="subscribe" style="padding-top:0">
+    <div class="container" style="max-width:700px;margin:0 auto">
+      <EmailCapture
+        heading="Get practitioner notes on E6(R3) and site SOPs"
+        subheading="Occasional practitioner notes on ICH E6(R3), FDA enforcement patterns, and site-level SOPs. No hype, no pitch."
+      />
+    </div>
+  </section>
+
+</Site>
+
+<style>
+  /* Hero: two-column — pitch + at-a-glance coverage card (light-on-dark) */
+  .prod-hero-grid {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: var(--sp-2xl);
+    align-items: start;
+  }
+  .hero-note {
+    color: var(--on-dark-muted);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin-top: 1.1rem;
+    max-width: 40rem;
+  }
+  .hero-note a { color: #cbb8ff; font-weight: 500; }
+  .hero-note a:hover { color: #fff; }
+  .hero-covers {
+    background: rgba(124, 58, 237, 0.07);
+    border: 1px solid rgba(124, 58, 237, 0.22);
+    border-radius: 14px;
+    padding: 1.35rem 1.4rem;
+    margin-top: 3.1rem;
+  }
+  .hero-covers-cap {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #b69bff;
+    margin: 0 0 0.85rem;
+  }
+  .hero-covers ul { list-style: none; display: flex; flex-direction: column; gap: 0.15rem; }
+  .hero-covers li { border-top: 1px solid rgba(124, 58, 237, 0.16); }
+  .hero-covers li:first-child { border-top: none; }
+  .hero-covers a {
+    display: block;
+    padding: 0.6rem 0;
+    font-size: 0.86rem;
+    font-weight: 500;
+    color: var(--on-dark-2);
+  }
+  .hero-covers a:hover { color: #fff; }
+
+  /* Why-this-is-free / resource cards: bordered, hover-lift (mirrors .inst) */
+  .why-cards .feat {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--bg-card);
+    padding: 1.45rem 1.4rem;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+  .why-cards .feat::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0;
+    height: 3px; width: 100%;
+    background: linear-gradient(90deg, var(--purple-light), var(--purple-primary));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .why-cards .feat:hover::before { transform: scaleX(1); }
+  .why-cards .feat:hover { border-color: #cdbff0; transform: translateY(-3px); box-shadow: 0 14px 32px rgba(30, 16, 64, 0.1); }
+  .why-cards .feat h3 { font-size: 1.05rem; font-weight: 650; margin-bottom: 0.45rem; color: var(--text-primary); }
+  .why-cards .feat h3 a { color: var(--purple-primary); }
+  .why-cards .feat p { font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary); margin: 0; }
+  .why-cards .feat p a { color: var(--purple-primary); font-weight: 500; }
+  .why-cards .feat p a:hover { text-decoration: underline; }
+  .why-cards .feat strong { color: var(--text-primary); }
+
+  /* SOP disclaimer banner */
+  .sop-disclaimer {
+    background: #fffaf0;
+    border: 1px solid #f0c674;
+    border-left: 4px solid #d97706;
+    border-radius: 8px;
+    padding: var(--sp-md) var(--sp-lg);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+  .sop-disclaimer strong { color: var(--text-primary); }
+
+  /* Bundle CTA — tinted callout card */
+  .bundle-cta {
+    text-align: center;
+    background: linear-gradient(180deg, var(--bg-tinted), var(--bg-card));
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: var(--sp-xl) var(--sp-lg);
+  }
+  .bundle-cta h2 { font-size: 1.6rem; }
+  .bundle-cta > p { max-width: 660px; margin: 0.7rem auto 1.5rem; color: var(--text-secondary); font-size: 0.98rem; line-height: 1.65; }
+  .bundle-cta .bundle-cta-note { margin-top: 1.1rem; font-size: 0.9rem; color: var(--text-muted); }
+  .bundle-cta .bundle-cta-note a { color: var(--purple-primary); font-weight: 500; }
+
+  /* Document reader: sticky contents rail + document */
+  .sop-reader {
+    display: grid;
+    grid-template-columns: 232px minmax(0, 1fr);
+    gap: var(--sp-xl);
+    align-items: start;
+  }
+
+  /* Sticky contents rail */
+  .sop-toc {
+    position: sticky;
+    top: 76px;
+    align-self: start;
+  }
+  .sop-toc-cap {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+    color: var(--text-muted);
+    margin: 0 0 0.6rem;
+    padding-left: 0.65rem;
+  }
+  .sop-toc-nav { display: flex; flex-direction: column; }
+  .sop-toc-link {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.4rem 0.65rem;
+    font-size: 0.82rem;
+    line-height: 1.35;
+    color: var(--text-secondary);
+    border-left: 2px solid var(--border);
+    text-decoration: none;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+  }
+  .sop-toc-link:hover { color: var(--purple-primary); background: var(--bg-tinted); }
+  .sop-toc-link.active {
+    color: var(--purple-primary);
+    border-left-color: var(--purple-primary);
+    font-weight: 600;
+    background: var(--bg-tinted);
+  }
+  .sop-toc-n {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+  .sop-toc-link.active .sop-toc-n { color: var(--purple-primary); }
+  .sop-toc-toggle {
+    margin: 0.85rem 0 0 0.65rem;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .sop-toc-toggle:hover { color: var(--purple-primary); border-color: var(--purple-primary); }
+  .sop-toc-dls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin: 1rem 0 0;
+    padding: 0.85rem 0 0 0.65rem;
+    border-top: 1px solid var(--border);
+  }
+  .sop-toc-dls a {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--purple-primary);
+    text-decoration: none;
+  }
+  .sop-toc-dls a:hover { text-decoration: underline; }
+
+  /* The embedded SOP document */
+  .sop-doc {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: var(--sp-xl);
+    min-width: 0;
+  }
+
+  /* Collapsible top-level sections */
+  .sop-section { border-top: 1px solid var(--border); scroll-margin-top: 76px; }
+  .sop-section:first-child { border-top: none; }
+  .sop-section-head {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: var(--sp-md) 0;
+    cursor: pointer;
+    list-style: none;
+    scroll-margin-top: 76px;
+  }
+  .sop-section-head::-webkit-details-marker { display: none; }
+  .sop-sec-n {
+    flex-shrink: 0;
+    width: 1.7rem;
+    height: 1.7rem;
+    display: grid;
+    place-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--purple-primary);
+    background: var(--purple-tint);
+    border-radius: 6px;
+  }
+  .sop-sec-t {
+    flex: 1;
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  .sop-sec-chev {
+    flex-shrink: 0;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-right: 2px solid var(--text-muted);
+    border-bottom: 2px solid var(--text-muted);
+    transform: rotate(45deg);
+    transition: transform 0.2s;
+    margin-right: 0.2rem;
+  }
+  .sop-section[open] .sop-sec-chev { transform: rotate(-135deg); }
+  .sop-section > .sop-doc-body { padding: 0 0 var(--sp-md) calc(1.7rem + 0.7rem); }
+
+  .sop-doc-head {
+    border-bottom: 2px solid var(--purple-tint);
+    padding-bottom: var(--sp-md);
+    margin-bottom: var(--sp-lg);
+  }
+  .sop-doc-kicker {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--purple-primary);
+    margin: 0 0 0.35rem;
+  }
+  .sop-doc-title {
+    font-size: 1.15rem;
+    line-height: 1.35;
+    margin: 0 0 0.5rem;
+    color: var(--text-primary);
+  }
+  .sop-doc-meta {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* Body typography (rendered from markdown) */
+  .sop-doc-body :global(h2) {
+    font-size: 1.05rem;
+    color: var(--purple-primary);
+    margin: var(--sp-lg) 0 var(--sp-sm);
+    padding-top: var(--sp-md);
+    border-top: 1px solid var(--border);
+  }
+  .sop-doc-body :global(h2:first-child) {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+  .sop-doc-body :global(h3) {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    margin: var(--sp-md) 0 0.35rem;
+  }
+  .sop-doc-body :global(h4) {
+    font-size: 0.88rem;
+    color: var(--text-primary);
+    margin: var(--sp-md) 0 0.35rem;
+  }
+  .sop-doc-body :global(p),
+  .sop-doc-body :global(li) {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+  .sop-doc-body :global(ul),
+  .sop-doc-body :global(ol) {
+    padding-left: 1.3rem;
+    margin: 0.5rem 0;
+  }
+  .sop-doc-body :global(li) { margin-bottom: 0.3rem; }
+  .sop-doc-body :global(strong) { color: var(--text-primary); }
+
+  /* Regulatory / E6(R3) note callouts */
+  .sop-doc-body :global(blockquote) {
+    margin: var(--sp-md) 0;
+    padding: var(--sp-sm) var(--sp-md);
+    background: var(--bg-tinted);
+    border-left: 3px solid var(--purple-light);
+    border-radius: 4px;
+  }
+  .sop-doc-body :global(blockquote p) {
+    margin: 0;
+    font-size: 0.84rem;
+    color: var(--text-secondary);
+  }
+
+  /* Tables — scroll wrapper keeps wide tables from overflowing on mobile */
+  .sop-doc-body :global(.sop-table-wrap) {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: var(--sp-md) 0;
+  }
+  .sop-doc-body :global(table) {
+    width: 100%;
+    min-width: 520px;
+    border-collapse: collapse;
+    margin: 0;
+    font-size: 0.82rem;
+  }
+  .sop-doc-body :global(th),
+  .sop-doc-body :global(td) {
+    border: 1px solid var(--border);
+    padding: 0.5rem 0.65rem;
+    text-align: left;
+    vertical-align: top;
+  }
+  .sop-doc-body :global(th) {
+    background: var(--bg-tinted);
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+  .sop-doc-body :global(td) { color: var(--text-secondary); }
+
+  /* Inline placeholder code */
+  .sop-doc-body :global(code),
+  .why-cards code,
+  .faq-item code {
+    font-family: var(--font-mono);
+    font-size: 0.82em;
+    background: var(--bg-tinted);
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+  }
+
+  /* FAQ — mirrors sop-bundle styling */
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-item summary {
+    padding: var(--sp-md) 0;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--sp-md);
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: "+"; font-size: 1.1rem; color: var(--text-muted); flex-shrink: 0; margin-left: var(--sp-md); }
+  .faq-item[open] summary::after { content: "\2212"; }
+  .faq-item p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    padding-bottom: var(--sp-md);
+    margin: 0;
+  }
+  .faq-item a { color: var(--purple-primary); font-weight: 500; }
+
+  @media (max-width: 920px) {
+    .prod-hero-grid { grid-template-columns: 1fr; gap: var(--sp-lg); }
+    .hero-covers { margin-top: 0.5rem; }
+    .why-cards { grid-template-columns: 1fr 1fr !important; }
+  }
+  @media (max-width: 900px) {
+    .sop-reader { grid-template-columns: 1fr; gap: var(--sp-lg); }
+    .sop-toc {
+      position: static;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: var(--sp-md);
+      background: var(--bg-card);
+    }
+    .sop-toc-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 0.15rem; }
+  }
+  @media (max-width: 760px) {
+    .why-cards { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 768px) {
+    .sop-doc { padding: var(--sp-lg); }
+    .sop-section > .sop-doc-body { padding-left: 0; }
+    .sop-toc-nav { grid-template-columns: 1fr; }
+  }
+
+  /* Print: always show the full document, hide the rail */
+  @media print {
+    .sop-reader { display: block; }
+    .sop-toc { display: none; }
+    .sop-sec-chev { display: none; }
+    .sop-section > .sop-doc-body { padding-left: 0; display: block; }
+  }
+</style>

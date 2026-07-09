@@ -1,5 +1,6 @@
 ---
-import Base from '../../layouts/Base.astro';
+import Site from '../../layouts/Site.astro';
+import '../../styles/pages.css';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog')).sort(
@@ -7,8 +8,9 @@ const posts = (await getCollection('blog')).sort(
 );
 ---
 
-<Base title="Blog" activePage="blog" description="How we build compliance-grade software and operations for clinical research — lessons, decisions, and what we learned the hard way.">
+<Site title="Blog" description="How we build compliance-grade software and operations for clinical research — lessons, decisions, and what we learned the hard way.">
   <section class="section">
+    <div class="container">
     <div class="blog-header">
       <div>
         <h1>Blog</h1>
@@ -63,8 +65,9 @@ const posts = (await getCollection('blog')).sort(
         )}
       </>
     )}
+    </div>
   </section>
-</Base>
+</Site>
 
 <style>
   .blog-header {
@@ -74,7 +77,7 @@ const posts = (await getCollection('blog')).sort(
     margin-bottom: var(--spacing-xl);
   }
 
-  .blog-header h1 { margin-bottom: var(--spacing-sm); }
+  .blog-header h1 { margin-bottom: var(--spacing-sm); font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; }
   .blog-header p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0; }
 
   .blog-count {

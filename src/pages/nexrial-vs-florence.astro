@@ -1,5 +1,6 @@
 ---
-import Base from '../layouts/Base.astro';
+import Site from '../layouts/Site.astro';
+import '../styles/pages.css';
 
 // Florence Healthcare pricing is not publicly listed.
 // Sources:
@@ -42,7 +43,7 @@ const faqSchema = {
       "name": "How does Florence Healthcare pricing compare to Nexrial?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Nexrial publishes pricing transparently: $349/month Core, $549/month Pro, and $199/month Founder (first 5 sites). Florence Healthcare pricing is not publicly listed — their pricing page returns a 404, and all product pages direct visitors to request a demo or contact sales. No pricing tiers or cost estimates appear anywhere on florencehc.com as of April 2026."
+        "text": "Nexrial publishes pricing transparently: $299/month Core, $599/month Pro, and a Founding Site Program at 50% off for life for the first 3–5 sites ($149 Core / $299 Pro). Florence Healthcare pricing is not publicly listed — their pricing page returns a 404, and all product pages direct visitors to request a demo or contact sales. No pricing tiers or cost estimates appear anywhere on florencehc.com as of April 2026."
       }
     },
     {
@@ -75,21 +76,23 @@ const breadcrumbSchema = {
 };
 ---
 
-<Base
+<Site
   title="Nexrial vs Florence Healthcare (eBinders / eTMF) — CTMS Comparison (April 2026)"
-  activePage="products"
   description="Florence Healthcare is a site enablement platform for eISF, eTMF, and eConsent — not a full CTMS. Nexrial is a full CTMS for independent sites: visit scheduling, delegation logs, IRB tracking, invoicing, and native Part 11 e-signature. This page explains the difference."
 >
-  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
 
-  <div class="product-top">
-    <div class="product-hero">
-      <div class="product-hero-text">
-        <span class="product-badge">CTMS vs. Site Enablement Platform · Reviewed April 2026</span>
+  <section class="prod-hero">
+    <div class="container prod-hero-grid">
+      <div>
+        <a href="/best-ctms-small-clinical-sites" class="prod-back">&larr; Compare CTMS</a>
+        <div class="section-label">CTMS vs. Site Enablement Platform · Reviewed April 2026</div>
         <h1>Nexrial vs Florence Healthcare</h1>
-        <p class="product-tagline">
+        <p class="lede">
           <strong>Short answer:</strong> Florence Healthcare (eBinders, eTMF, eConsent, SiteLink)
           is a site enablement platform — it organizes regulatory documents, enables remote
           monitoring, and digitizes consent. It is not a full CTMS. Nexrial covers operations
@@ -97,30 +100,32 @@ const breadcrumbSchema = {
           deviation tracking, IRB submissions, SOP management, and invoice management —
           all with a native Part 11 audit trail and published pricing.
         </p>
-        <a href="https://calendly.com/nexrial/demo?utm_source=purpledirective.com&utm_medium=nexrial-vs-florence" class="buy-btn" style="background-color: #0d9488;">Book a 15-min Demo</a>
-        <p class="buy-note">
+        <div class="cta-row">
+          <a href="https://calendly.com/nexrial/demo?utm_source=purpledirective.com&utm_medium=nexrial-vs-florence" class="btn-primary">Book a 15-min Demo
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <p class="hero-note">
           Reviewed <time datetime="2026-04-23">April 23, 2026</time> by
           Tyrian Murex, Purple Directive founder. Florence Healthcare pricing is not
           publicly listed — no pricing figures are asserted for Florence on this page.
           Florence's pricing page (florencehc.com/pricing) returned 404 as of April 23, 2026.
-          <!-- Sources: florencehc.com, florencehc.com/products, florencehc.com/ebinders — all fetched 2026-04-23 -->
         </p>
       </div>
-      <div class="product-hero-preview">
-        <div>
-          <p style="margin: 0 0 0.5rem; font-weight: 600; text-align: center;">At a glance</p>
-          <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 1.8;">
-            <li><strong>Nexrial:</strong> Full CTMS, $199–549/mo published</li>
-            <li><strong>Florence:</strong> eISF/eTMF/eConsent platform, contact sales</li>
-            <li>Different functional scope</li>
-            <li>Different pricing transparency</li>
-          </ul>
-        </div>
-      </div>
+      <aside class="at-glance">
+        <p class="at-glance-cap">At a glance</p>
+        <ul>
+          <li><strong>Nexrial:</strong> Full CTMS, $299–599/mo published</li>
+          <li><strong>Florence:</strong> eISF/eTMF/eConsent platform, contact sales</li>
+          <li>Different functional scope</li>
+          <li>Different pricing transparency</li>
+        </ul>
+      </aside>
     </div>
-  </div>
+  </section>
 
-  <section class="why-now-section">
+  <section class="section doc">
+    <div class="container">
+    <div class="doc-block" style="border-top:none;padding-top:0">
     <h2>What each one actually is</h2>
 
     <h3>Nexrial — full CTMS for independent research sites</h3>
@@ -135,8 +140,9 @@ const breadcrumbSchema = {
       defenses.
     </p>
     <p>
-      Pricing is published: <strong>$349/month Core, $549/month Pro, $199/month Founder</strong>
-      (first five sites). No sales call required to evaluate cost.
+      Pricing is published: <strong>$299/month Core, $599/month Pro</strong>, plus a
+      Founding Site Program — 50% off for life for the first 3–5 sites ($149 Core / $299 Pro).
+      No sales call required to evaluate cost.
     </p>
 
     <h3>Florence Healthcare — site enablement platform (eISF, eTMF, eConsent)</h3>
@@ -176,9 +182,9 @@ const breadcrumbSchema = {
       <a href="https://florencehc.com" rel="noopener">florencehc.com</a> for a quote.
       <!-- Sources: florencehc.com, florencehc.com/products, florencehc.com/ebinders — fetched 2026-04-23 -->
     </p>
-  </section>
+    </div>
 
-  <section class="why-now-section">
+    <div class="doc-block">
     <div class="nexrial-intro">
       <img src="/images/nexrial-logo-wordmark.svg" alt="Nexrial CTMS" class="nexrial-intro-logo" loading="lazy" />
       <p>Nexrial is a Clinical Trial Management System purpose-built for independent research sites — audit trails, eSource, and ICH E6(R3) controls without enterprise pricing. <a href="https://nexrial.com" rel="noopener">Visit nexrial.com →</a></p>
@@ -267,7 +273,7 @@ const breadcrumbSchema = {
           <tr>
             <td>HIPAA BAA</td>
             <td>✅ Template ready; signed per tenant</td>
-            <td>✅ Available (platform is HIPAA compliant per florencehc.com)</td>
+            <td>✅ Available (Florence's stated HIPAA posture, per florencehc.com)</td>
           </tr>
           <tr>
             <td>EMR/EHR integration</td>
@@ -282,9 +288,9 @@ const breadcrumbSchema = {
         </tbody>
       </table>
     </div>
-  </section>
+    </div>
 
-  <section class="why-now-section">
+    <div class="doc-block">
     <h2>When to pick which</h2>
 
     <h3>Pick Nexrial if…</h3>
@@ -313,9 +319,9 @@ const breadcrumbSchema = {
       cost and complexity of two platforms is justified depends on your sponsor requirements
       and the volume of remote monitoring visits you host.
     </p>
-  </section>
+    </div>
 
-  <section class="why-now-section">
+    <div class="doc-block">
     <h2>Pricing — honest table</h2>
     <div class="compare-table-wrap">
       <table class="compare-table">
@@ -328,19 +334,19 @@ const breadcrumbSchema = {
         </thead>
         <tbody>
           <tr class="compare-row-highlight">
-            <td><strong>Nexrial Founder</strong></td>
-            <td><strong>$199/month</strong></td>
-            <td>First 5 sites only · full platform · published</td>
+            <td><strong>Nexrial Founding</strong></td>
+            <td><strong>50% off for life</strong></td>
+            <td>First 3–5 sites only · Core $149 / Pro $299 · full platform · published</td>
           </tr>
           <tr class="compare-row-highlight">
             <td><strong>Nexrial Core</strong></td>
-            <td><strong>$349/month</strong></td>
-            <td>Up to 10 users · up to 3 concurrent studies · published</td>
+            <td><strong>$299/month</strong></td>
+            <td>Unlimited users · up to 25 active studies · published</td>
           </tr>
           <tr class="compare-row-highlight">
             <td><strong>Nexrial Pro</strong></td>
-            <td><strong>$549/month</strong></td>
-            <td>Up to 25 users · unlimited studies · advanced audit reports · published</td>
+            <td><strong>$599/month</strong></td>
+            <td>Unlimited users · up to 100 active studies · advanced audit reports · published</td>
           </tr>
           <tr>
             <td>Florence eBinders / SiteLink / eConsent / eTMF</td>
@@ -356,9 +362,9 @@ const breadcrumbSchema = {
       Contact Florence at <a href="https://florencehc.com" rel="noopener">florencehc.com</a>.
       Nexrial pricing is published at <a href="https://nexrial.com">nexrial.com</a>.
     </p>
-  </section>
+    </div>
 
-  <section class="why-now-section">
+    <div class="doc-block">
     <h2>FAQ</h2>
 
     <h3>Does Florence Healthcare replace a CTMS?</h3>
@@ -398,9 +404,9 @@ const breadcrumbSchema = {
       mandate. Check with your monitor whether SiteLink connectivity is required before
       evaluating your eISF options.
     </p>
-  </section>
+    </div>
 
-  <section class="why-now-section">
+    <div class="doc-block">
     <h2>Next steps</h2>
     <p>
       If Nexrial is a fit for your independent research site, book a 30-minute demo at
@@ -412,5 +418,7 @@ const breadcrumbSchema = {
       Healthcare at <a href="https://florencehc.com" rel="noopener">florencehc.com</a>.
       We have no affiliate relationship with Florence Healthcare.
     </p>
+    </div>
+    </div>
   </section>
-</Base>
+</Site>

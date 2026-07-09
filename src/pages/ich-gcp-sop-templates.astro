@@ -1,5 +1,6 @@
 ---
-import Base from '../layouts/Base.astro';
+import Site from '../layouts/Site.astro';
+import '../styles/pages.css';
 import EmailCapture from '../components/EmailCapture.astro';
 import Testimonials from '../components/Testimonials.astro';
 
@@ -70,58 +71,58 @@ const faqSchema = {
 };
 ---
 
-<Base
+<Site
   title="ICH E6(R3) SOP Templates — Purple Directive vs. Custom SOP Consulting"
-  activePage="products"
   description="How Purple Directive's $249.99 13-SOP bundle compares to custom SOP consulting ($5K-$15K), QMS platforms ($10K-$100K+), and other template libraries. Built against ICH E6(R3), editable Word + PDF."
 >
-
-  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
 
   <!-- Hero -->
-  <div class="product-top">
-    <div class="product-hero">
-      <div class="product-hero-text">
-        <span class="product-badge">SOP Library Comparison · April 2026</span>
+  <section class="prod-hero">
+    <div class="container prod-hero-grid">
+      <div>
+        <div class="section-label">SOP Library Comparison · April 2026</div>
         <h1>ICH E6(R3) SOP Templates for Clinical Research Sites</h1>
-        <p class="product-tagline">
+        <p class="lede">
           How my $249.99 13-SOP bundle compares to custom SOP consulting ($5K–$15K),
           quality management system platforms ($10K–$100K+/year), and other template libraries.
           Every SOP is written against ICH E6(R3) and covers the seven 483 observation categories
           FDA BIMO inspections are currently citing.
         </p>
-        <a href="/sop-bundle/" class="buy-btn">See the SOP Bundle</a>
-        <p class="buy-note">
+        <div class="cta-row">
+          <a href="/sop-bundle/" class="btn-primary">See the SOP Bundle
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <p class="hero-note">
           Or read the free <a href="/bimo-taxonomy/">FY2022–2024 BIMO 483 Observation Taxonomy</a> first —
           it shows exactly which site failures each SOP is designed to prevent.
         </p>
-      </div>
-      <div class="product-hero-preview">
-        <div>
-          <p style="margin: 0 0 0.5rem; font-weight: 600; text-align: center;">At a glance</p>
-          <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 1.8;">
-            <li><strong>$249.99</strong> vs $5K–$15K consulting</li>
-            <li><strong>13 SOPs</strong> + 11 companion forms</li>
-            <li><strong>ICH E6(R3)</strong> aligned</li>
-            <li><strong>Editable Word</strong> + PDF</li>
-          </ul>
+        <div class="facts">
+          <span class="fact">13 SOPs</span>
+          <span class="fact">11 companion forms</span>
+          <span class="fact">95+ pages</span>
+          <span class="fact">$249.99 / $29 per SOP</span>
         </div>
       </div>
+      <aside class="at-glance">
+        <p class="at-glance-cap">At a glance</p>
+        <ul>
+          <li><strong>$249.99</strong> vs $5K–$15K consulting</li>
+          <li><strong>13 SOPs</strong> + 11 companion forms</li>
+          <li><strong>ICH E6(R3)</strong> aligned</li>
+          <li><strong>Editable Word</strong> + PDF</li>
+        </ul>
+      </aside>
     </div>
-    <div class="product-stats">
-      <div class="stat"><strong>13</strong> SOPs</div>
-      <div class="stat-sep"></div>
-      <div class="stat"><strong>11</strong> companion forms</div>
-      <div class="stat-sep"></div>
-      <div class="stat"><strong>95+</strong> pages</div>
-      <div class="stat-sep"></div>
-      <div class="stat"><strong>$249.99</strong> / $29 per SOP</div>
-    </div>
-  </div>
+  </section>
 
   <!-- Comparison table -->
-  <section class="why-now-section">
+  <section class="section doc">
+    <div class="container">
+    <div class="doc-block" style="border-top:none;padding-top:0">
     <h2>How SOP options compare</h2>
     <div class="compare-table-wrap">
       <table class="compare-table">
@@ -183,10 +184,10 @@ const faqSchema = {
     <p class="compare-note">
       <em>Consulting prices are industry ranges — firms rarely publish fixed prices for SOP-library engagements. Platform pricing is subscription-based with tiered feature sets.</em>
     </p>
-  </section>
+    </div>
 
-  <!-- The positioning -->
-  <section class="why-now-section">
+    <!-- The positioning -->
+    <div class="doc-block">
     <h2>Where Purple Directive sits in the SOP market</h2>
     <div class="why-now-grid">
       <div class="why-now-card">
@@ -214,10 +215,10 @@ const faqSchema = {
         </p>
       </div>
     </div>
-  </section>
+    </div>
 
-  <!-- Not for -->
-  <section class="why-now-section">
+    <!-- Not for -->
+    <div class="doc-block">
     <h2>When a different option is the better fit</h2>
     <div class="why-now-grid">
       <div class="why-now-card">
@@ -239,29 +240,40 @@ const faqSchema = {
         </p>
       </div>
     </div>
+    </div>
+    </div>
   </section>
 
   <!-- CTA -->
   <Testimonials product="sop" heading="What practitioners say" />
 
-  <section class="why-now-section cta-tinted">
-    <h2>Ready to review the bundle?</h2>
-    <p style="max-width: 640px; margin: 0 auto 1.5rem;">
-      $249.99 full bundle · $29 per individual SOP · 95+ pages · 13 ICH E6(R3)-aligned SOPs plus 11 companion forms · Editable Word and PDF.
-    </p>
-    <a href="/sop-bundle/" class="buy-btn" style="display: inline-block;">See the SOP Bundle</a>
-    <p style="margin-top: 1rem; font-size: 0.9rem;">
-      Or start with the free <a href="/bimo-taxonomy/">BIMO 483 Observation Taxonomy</a> —
-      it shows the specific site failures each SOP is designed to prevent.
-    </p>
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="cta-tinted">
+        <h2>Ready to review the bundle?</h2>
+        <p>
+          $249.99 full bundle · $29 per individual SOP · 95+ pages · 13 ICH E6(R3)-aligned SOPs plus 11 companion forms · Editable Word and PDF.
+        </p>
+        <div class="cta-row" style="justify-content:center">
+          <a href="/sop-bundle/" class="btn-primary">See the SOP Bundle
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">
+          Or start with the free <a href="/bimo-taxonomy/">BIMO 483 Observation Taxonomy</a> —
+          it shows the specific site failures each SOP is designed to prevent.
+        </p>
+      </div>
+    </div>
   </section>
 
   <!-- Email capture -->
-  <section class="why-now-section">
-    <EmailCapture
-      heading="Stay updated on ICH & FDA changes"
-      subheading="Monthly practitioner notes on FDA enforcement patterns, ICH updates, and the operational intel that doesn't fit on a product page."
-    />
+  <section class="section" style="padding-top:0">
+    <div class="container" style="max-width:700px;margin:0 auto">
+      <EmailCapture
+        heading="Stay updated on ICH & FDA changes"
+        subheading="Monthly practitioner notes on FDA enforcement patterns, ICH updates, and the operational intel that doesn't fit on a product page."
+      />
+    </div>
   </section>
 
-</Base>
+</Site>

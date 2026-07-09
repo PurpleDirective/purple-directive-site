@@ -1,5 +1,6 @@
 ---
-import Base from '../layouts/Base.astro';
+import Site from '../layouts/Site.astro';
+import '../styles/pages.css';
 
 const productSchema = {
   "@context": "https://schema.org",
@@ -46,7 +47,7 @@ const faqSchema = {
       "name": "How much does Nexrial cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Nexrial is priced transparently: $349/month Core, $549/month Pro, and $199/month Founder tier for the first 5 sites. Pricing is per site, not per study. A small research site running 5-25 concurrent studies on a budget under $700/month fits the target profile. See https://nexrial.com for current pricing."
+        "text": "Nexrial is priced transparently: $299/month Core, $599/month Pro, and a Founding Site Program at 50% off for life for the first 3–5 sites ($149 Core / $299 Pro). Pricing is per site, not per study. A small research site running 5-25 concurrent studies on a budget under $700/month fits the target profile. See https://nexrial.com for current pricing."
       }
     }
   ]
@@ -63,49 +64,54 @@ const breadcrumbSchema = {
 };
 ---
 
-<Base
+<Site
   title="Nexrial vs Medrio — CTMS or EDC? Honest Comparison (April 2026)"
-  activePage="products"
   description="Nexrial is a Clinical Trial Management System (CTMS) for site operations. Medrio is primarily an Electronic Data Capture (EDC) platform. They solve different problems. This page explains when to pick which — and why many sites run both."
 >
-  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
 
-  <div class="product-top">
-    <div class="product-hero">
-      <div class="product-hero-text">
-        <span class="product-badge">CTMS vs EDC · Reviewed April 2026</span>
+  <section class="prod-hero">
+    <div class="container prod-hero-grid">
+      <div>
+        <a href="/best-ctms-small-clinical-sites" class="prod-back">&larr; Compare CTMS</a>
+        <div class="section-label">CTMS vs EDC · Reviewed April 2026</div>
         <h1>Nexrial vs Medrio</h1>
-        <p class="product-tagline">
+        <p class="lede">
           <strong>Short answer:</strong> Nexrial is a CTMS built for clinical research site
           operations. Medrio is primarily an EDC built for sponsor-led data capture. They
           are not direct competitors — they solve different problems. Many sites use both.
           This page explains when to pick which.
         </p>
-        <a href="https://calendly.com/nexrial/demo?utm_source=purpledirective.com&utm_medium=nexrial-vs-medrio" class="buy-btn" style="background-color: #0d9488;">Book a 15-min Demo</a>
-        <p class="buy-note">
+        <div class="cta-row">
+          <a href="https://calendly.com/nexrial/demo?utm_source=purpledirective.com&utm_medium=nexrial-vs-medrio" class="btn-primary">Book a 15-min Demo
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <p class="hero-note">
           Reviewed <time datetime="2026-04-18">April 18, 2026</time> by
           Tyrian Murex, Purple Directive founder. Medrio pricing is quote-based and not
           publicly listed; ranges shown reflect industry reporting and should be verified
           with Medrio directly.
         </p>
       </div>
-      <div class="product-hero-preview">
-        <div>
-          <p style="margin: 0 0 0.5rem; font-weight: 600; text-align: center;">At a glance</p>
-          <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 1.8;">
-            <li><strong>Nexrial:</strong> CTMS, $199–549/mo</li>
-            <li><strong>Medrio:</strong> EDC-first, quote-based</li>
-            <li>Different jobs to be done</li>
-            <li>Common to use both</li>
-          </ul>
-        </div>
-      </div>
+      <aside class="at-glance">
+        <p class="at-glance-cap">At a glance</p>
+        <ul>
+          <li><strong>Nexrial:</strong> CTMS, $299–599/mo</li>
+          <li><strong>Medrio:</strong> EDC-first, quote-based</li>
+          <li>Different jobs to be done</li>
+          <li>Common to use both</li>
+        </ul>
+      </aside>
     </div>
-  </div>
+  </section>
 
-  <section class="why-now-section">
+  <section class="section doc">
+    <div class="container">
+    <div class="doc-block" style="border-top:none;padding-top:0">
     <h2>What each one actually is</h2>
 
     <h3>Nexrial — Clinical Trial Management System (CTMS)</h3>
@@ -119,7 +125,8 @@ const breadcrumbSchema = {
     <p>
       Nexrial targets small independent sites and small site networks running 5–25
       concurrent studies on a budget under $700/month. Pricing is published:
-      <strong>$349/month Core, $549/month Pro, $199/month Founder</strong> (first five sites).
+      <strong>$299/month Core, $599/month Pro</strong>, plus a Founding Site Program —
+      50% off for life for the first 3–5 sites ($149 Core / $299 Pro).
     </p>
 
     <h3>Medrio — primarily Electronic Data Capture (EDC)</h3>
@@ -136,9 +143,9 @@ const breadcrumbSchema = {
       Industry reports place it in the mid-market range — verify directly with
       Medrio for current numbers.
     </p>
-  </section>
+    </div>
 
-  <section class="why-now-section">
+    <div class="doc-block">
     <div class="nexrial-intro">
       <img src="/images/nexrial-logo-wordmark.svg" alt="Nexrial CTMS" class="nexrial-intro-logo" loading="lazy" />
       <p>Nexrial is a Clinical Trial Management System purpose-built for independent research sites — audit trails, eSource, and ICH E6(R3) controls without enterprise pricing. <a href="https://nexrial.com" rel="noopener">Visit nexrial.com →</a></p>
@@ -232,9 +239,9 @@ const breadcrumbSchema = {
         </tbody>
       </table>
     </div>
-  </section>
+    </div>
 
-  <section class="why-now-section">
+    <div class="doc-block">
     <h2>When to pick which</h2>
 
     <h3>Pick Nexrial if…</h3>
@@ -262,9 +269,9 @@ const breadcrumbSchema = {
       Nexrial and Medrio do not overlap in the functions that matter most — they can sit
       side by side.
     </p>
-  </section>
+    </div>
 
-  <section class="why-now-section">
+    <div class="doc-block">
     <h2>Pricing — honest table</h2>
     <div class="compare-table-wrap">
       <table class="compare-table">
@@ -277,19 +284,19 @@ const breadcrumbSchema = {
         </thead>
         <tbody>
           <tr class="compare-row-highlight">
-            <td><strong>Nexrial Founder</strong></td>
-            <td><strong>$199/month</strong></td>
-            <td>First 5 sites only · full platform · published</td>
+            <td><strong>Nexrial Founding</strong></td>
+            <td><strong>50% off for life</strong></td>
+            <td>First 3–5 sites only · Core $149 / Pro $299 · full platform · published</td>
           </tr>
           <tr class="compare-row-highlight">
             <td><strong>Nexrial Core</strong></td>
-            <td><strong>$349/month</strong></td>
-            <td>Up to 10 users · published</td>
+            <td><strong>$299/month</strong></td>
+            <td>Unlimited users · up to 25 active studies · published</td>
           </tr>
           <tr class="compare-row-highlight">
             <td><strong>Nexrial Pro</strong></td>
-            <td><strong>$549/month</strong></td>
-            <td>Up to 25 users · advanced audit + compliance reports · published</td>
+            <td><strong>$599/month</strong></td>
+            <td>Unlimited users · up to 100 active studies · advanced audit + compliance reports · published</td>
           </tr>
           <tr>
             <td>Medrio — site tier</td>
@@ -309,9 +316,9 @@ const breadcrumbSchema = {
       Contact Medrio directly for current pricing. Nexrial pricing is published on
       <a href="https://nexrial.com">nexrial.com</a>.
     </p>
-  </section>
+    </div>
 
-  <section class="why-now-section">
+    <div class="doc-block">
     <h2>FAQ</h2>
 
     <h3>Can Nexrial replace Medrio for data capture?</h3>
@@ -349,9 +356,9 @@ const breadcrumbSchema = {
       Part 11 is a design standard, not a certification — see
       <a href="https://nexrial.com/trust">nexrial.com/trust</a> for live control posture.
     </p>
-  </section>
+    </div>
 
-  <section class="why-now-section">
+    <div class="doc-block">
     <h2>Next steps</h2>
     <p>
       If you think Nexrial fits your site, email
@@ -366,5 +373,7 @@ const breadcrumbSchema = {
       affiliate relationship; we'd rather see sites in the right tool than in the
       wrong one.
     </p>
+    </div>
+    </div>
   </section>
-</Base>
+</Site>

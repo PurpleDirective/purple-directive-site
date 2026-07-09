@@ -1,5 +1,6 @@
 ---
-import Base from '../layouts/Base.astro';
+import Site from '../layouts/Site.astro';
+import '../styles/pages.css';
 
 // Advarra pricing is not publicly listed for any CTMS product (OnCore or Clinical Conductor).
 // Sources:
@@ -38,7 +39,7 @@ const faqSchema = {
       "name": "How does Advarra pricing compare to Nexrial?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Nexrial publishes pricing transparently: $349/month Core, $549/month Pro, and $199/month Founder (first 5 sites). Advarra pricing for OnCore and Clinical Conductor is not publicly listed — all pricing requires a sales engagement. Advarra targets institutions with procurement processes, not independent sites evaluating software on a public pricing page."
+        "text": "Nexrial publishes pricing transparently: $299/month Core, $599/month Pro, and a Founding Site Program at 50% off for life for the first 3–5 sites ($149 Core / $299 Pro). Advarra pricing for OnCore and Clinical Conductor is not publicly listed — all pricing requires a sales engagement. Advarra targets institutions with procurement processes, not independent sites evaluating software on a public pricing page."
       }
     },
     {
@@ -71,21 +72,23 @@ const breadcrumbSchema = {
 };
 ---
 
-<Base
+<Site
   title="Nexrial vs Advarra (OnCore / Clinical Conductor) — CTMS Comparison (April 2026)"
-  activePage="products"
   description="Advarra (OnCore, Clinical Conductor) is an enterprise research technology platform for academic medical centers and large site networks. Nexrial targets independent small sites with published pricing. This page explains who each product is actually built for."
 >
-  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
 
-  <div class="product-top">
-    <div class="product-hero">
-      <div class="product-hero-text">
-        <span class="product-badge">CTMS · Enterprise vs. Independent Site · Reviewed April 2026</span>
+  <section class="prod-hero">
+    <div class="container prod-hero-grid">
+      <div>
+        <a href="/best-ctms-small-clinical-sites" class="prod-back">&larr; Compare CTMS</a>
+        <div class="section-label">CTMS · Enterprise vs. Independent Site · Reviewed April 2026</div>
         <h1>Nexrial vs Advarra</h1>
-        <p class="product-tagline">
+        <p class="lede">
           <strong>Short answer:</strong> Advarra (OnCore, Clinical Conductor) is an
           enterprise platform primarily built for academic medical centers, cancer
           centers, and large site networks. Nexrial is built for independent small
@@ -93,8 +96,11 @@ const breadcrumbSchema = {
           and no enterprise procurement process. These products serve different
           organizational profiles.
         </p>
-        <a href="https://calendly.com/nexrial/demo?utm_source=purpledirective.com&utm_medium=nexrial-vs-advarra" class="buy-btn" style="background-color: #0d9488;">Book a 15-min Demo</a>
-        <p class="buy-note">
+        <div class="cta-row">
+          <a href="https://calendly.com/nexrial/demo?utm_source=purpledirective.com&utm_medium=nexrial-vs-advarra" class="btn-primary">Book a 15-min Demo
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <p class="hero-note">
           Reviewed <time datetime="2026-04-23">April 23, 2026</time> by
           Tyrian Murex, Purple Directive founder. Advarra pricing is not publicly
           listed for any CTMS product; no pricing figures are asserted for Advarra
@@ -102,21 +108,21 @@ const breadcrumbSchema = {
           <!-- Source: advarra.com/solutions-for/clinical-trial-sites/ fetched 2026-04-23 -->
         </p>
       </div>
-      <div class="product-hero-preview">
-        <div>
-          <p style="margin: 0 0 0.5rem; font-weight: 600; text-align: center;">At a glance</p>
-          <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 1.8;">
-            <li><strong>Nexrial:</strong> CTMS, $199–549/mo published</li>
-            <li><strong>Advarra:</strong> Enterprise platform, contact sales</li>
-            <li>Different organizational scale</li>
-            <li>Different procurement process</li>
-          </ul>
-        </div>
-      </div>
+      <aside class="at-glance">
+        <p class="at-glance-cap">At a glance</p>
+        <ul>
+          <li><strong>Nexrial:</strong> CTMS, $299–599/mo published</li>
+          <li><strong>Advarra:</strong> Enterprise platform, contact sales</li>
+          <li>Different organizational scale</li>
+          <li>Different procurement process</li>
+        </ul>
+      </aside>
     </div>
-  </div>
+  </section>
 
-  <section class="why-now-section">
+  <section class="section doc">
+    <div class="container">
+    <div class="doc-block" style="border-top:none;padding-top:0">
     <h2>What each one actually is</h2>
 
     <h3>Nexrial — CTMS for independent research sites</h3>
@@ -131,8 +137,9 @@ const breadcrumbSchema = {
       defenses.
     </p>
     <p>
-      Pricing is published: <strong>$349/month Core, $549/month Pro, $199/month Founder</strong>
-      (first five sites). No sales call required to evaluate cost.
+      Pricing is published: <strong>$299/month Core, $599/month Pro</strong>, plus a
+      Founding Site Program — 50% off for life for the first 3–5 sites ($149 Core / $299 Pro).
+      No sales call required to evaluate cost.
     </p>
 
     <h3>Advarra — enterprise research technology platform</h3>
@@ -151,7 +158,7 @@ const breadcrumbSchema = {
         <strong>Clinical Conductor CTMS</strong> — built for site networks, health
         systems, and multi-site independent organizations. Supports financial oversight,
         patient recruitment, and research portfolio management. Add-on modules include
-        CCText (HIPAA-compliant participant messaging), CCPay (subject reimbursements
+        CCText (Advarra's HIPAA-messaging add-on), CCPay (subject reimbursements
         via debit card), and Epic EHR integration.
       </li>
     </ul>
@@ -165,9 +172,9 @@ const breadcrumbSchema = {
       directly for a quote.
       <!-- Source: advarra.com/solutions-for/clinical-trial-sites/clinical-conductor-ctms/ and /solutions-for/clinical-trial-sites/ fetched 2026-04-23 -->
     </p>
-  </section>
+    </div>
 
-  <section class="why-now-section">
+    <div class="doc-block">
     <div class="nexrial-intro">
       <img src="/images/nexrial-logo-wordmark.svg" alt="Nexrial CTMS" class="nexrial-intro-logo" loading="lazy" />
       <p>Nexrial is a Clinical Trial Management System purpose-built for independent research sites — audit trails, eSource, and ICH E6(R3) controls without enterprise pricing. <a href="https://nexrial.com" rel="noopener">Visit nexrial.com →</a></p>
@@ -226,7 +233,7 @@ const breadcrumbSchema = {
           <tr>
             <td>Participant SMS messaging</td>
             <td>⚠️ Not native (planned)</td>
-            <td>✅ CCText add-on (HIPAA-compliant)</td>
+            <td>✅ CCText add-on (Advarra HIPAA messaging)</td>
           </tr>
           <tr>
             <td>Subject reimbursements (debit card)</td>
@@ -266,9 +273,9 @@ const breadcrumbSchema = {
         </tbody>
       </table>
     </div>
-  </section>
+    </div>
 
-  <section class="why-now-section">
+    <div class="doc-block">
     <h2>When to pick which</h2>
 
     <h3>Pick Nexrial if…</h3>
@@ -288,9 +295,9 @@ const breadcrumbSchema = {
       <li>Your organization requires ISO 27001 and SOC 2 Type 2 certification from day one of your CTMS contract</li>
       <li>Your procurement process involves an enterprise vendor engagement with SLA and dedicated onboarding</li>
     </ul>
-  </section>
+    </div>
 
-  <section class="why-now-section">
+    <div class="doc-block">
     <h2>Pricing — honest table</h2>
     <div class="compare-table-wrap">
       <table class="compare-table">
@@ -303,19 +310,19 @@ const breadcrumbSchema = {
         </thead>
         <tbody>
           <tr class="compare-row-highlight">
-            <td><strong>Nexrial Founder</strong></td>
-            <td><strong>$199/month</strong></td>
-            <td>First 5 sites only · full platform · published</td>
+            <td><strong>Nexrial Founding</strong></td>
+            <td><strong>50% off for life</strong></td>
+            <td>First 3–5 sites only · Core $149 / Pro $299 · full platform · published</td>
           </tr>
           <tr class="compare-row-highlight">
             <td><strong>Nexrial Core</strong></td>
-            <td><strong>$349/month</strong></td>
-            <td>Up to 10 users · up to 3 concurrent studies · published</td>
+            <td><strong>$299/month</strong></td>
+            <td>Unlimited users · up to 25 active studies · published</td>
           </tr>
           <tr class="compare-row-highlight">
             <td><strong>Nexrial Pro</strong></td>
-            <td><strong>$549/month</strong></td>
-            <td>Up to 25 users · unlimited studies · advanced audit reports · published</td>
+            <td><strong>$599/month</strong></td>
+            <td>Unlimited users · up to 100 active studies · advanced audit reports · published</td>
           </tr>
           <tr>
             <td>Advarra OnCore</td>
@@ -336,9 +343,9 @@ const breadcrumbSchema = {
       Contact Advarra at <a href="https://www.advarra.com" rel="noopener">advarra.com</a>.
       Nexrial pricing is published at <a href="https://nexrial.com">nexrial.com</a>.
     </p>
-  </section>
+    </div>
 
-  <section class="why-now-section">
+    <div class="doc-block">
     <h2>FAQ</h2>
 
     <h3>Does Advarra's eReg replace the need for a CTMS regulatory binder?</h3>
@@ -377,9 +384,9 @@ const breadcrumbSchema = {
       eSource — is a differentiator for health systems that want a single clinical
       research vendor. Nexrial does not offer IRB services; it is a CTMS point solution.
     </p>
-  </section>
+    </div>
 
-  <section class="why-now-section">
+    <div class="doc-block">
     <h2>Next steps</h2>
     <p>
       If Nexrial is a fit for your independent research site, book a 30-minute demo at
@@ -392,5 +399,7 @@ const breadcrumbSchema = {
       <a href="https://www.advarra.com" rel="noopener">advarra.com</a>. We have no
       affiliate relationship with Advarra.
     </p>
+    </div>
+    </div>
   </section>
-</Base>
+</Site>

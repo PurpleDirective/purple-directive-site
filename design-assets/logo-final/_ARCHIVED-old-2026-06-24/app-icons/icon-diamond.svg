@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <!-- Gem facets -->
+    <radialGradient id="gemBase" cx="40%" cy="32%" r="65%" fx="36%" fy="28%">
+      <stop offset="0%"   style="stop-color:#D4C4EC;stop-opacity:0.98"/>
+      <stop offset="15%"  style="stop-color:#B0A0D8;stop-opacity:0.97"/>
+      <stop offset="40%"  style="stop-color:#8870B8"/>
+      <stop offset="70%"  style="stop-color:#6050A0"/>
+      <stop offset="100%" style="stop-color:#3C2870"/>
+    </radialGradient>
+    <linearGradient id="faceTopL" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#E0D0F8;stop-opacity:0.55"/>
+      <stop offset="100%" style="stop-color:#9880C8;stop-opacity:0.05"/>
+    </linearGradient>
+    <linearGradient id="faceTopR" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   style="stop-color:#C0B0E0;stop-opacity:0.30"/>
+      <stop offset="100%" style="stop-color:#7870B8;stop-opacity:0.05"/>
+    </linearGradient>
+    <linearGradient id="faceBotL" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%"   style="stop-color:#200F3C;stop-opacity:0.55"/>
+      <stop offset="100%" style="stop-color:#604898;stop-opacity:0.05"/>
+    </linearGradient>
+    <linearGradient id="faceBotR" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%"   style="stop-color:#140A28;stop-opacity:0.65"/>
+      <stop offset="100%" style="stop-color:#503880;stop-opacity:0.08"/>
+    </linearGradient>
+    <!-- Background -->
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   style="stop-color:#40288A;stop-opacity:0.30"/>
+      <stop offset="50%"  style="stop-color:#200C50;stop-opacity:0.18"/>
+      <stop offset="100%" style="stop-color:#06040C;stop-opacity:0"/>
+    </radialGradient>
+    <!-- Outer glow ring for gem -->
+    <radialGradient id="gemGlowRing" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   style="stop-color:#8860C8;stop-opacity:0.20"/>
+      <stop offset="60%"  style="stop-color:#6040A0;stop-opacity:0.10"/>
+      <stop offset="100%" style="stop-color:#4020808;stop-opacity:0"/>
+    </radialGradient>
+    <filter id="gemShadow">
+      <feDropShadow dx="0" dy="8" stdDeviation="24" flood-color="#0A0618" flood-opacity="0.7"/>
+    </filter>
+    <filter id="gemGlowFilter">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="outerGlow">
+      <feGaussianBlur stdDeviation="20" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background square -->
+  <rect width="1024" height="1024" fill="#06040C" rx="160"/>
+
+  <!-- Background glow -->
+  <circle cx="512" cy="512" r="450" fill="url(#bgGlow)"/>
+
+  <!-- Outer halo (behind gem) -->
+  <circle cx="512" cy="512" r="200" fill="url(#gemGlowRing)" filter="url(#outerGlow)"/>
+
+  <!-- Gem shadow -->
+  <polygon points="512,312 712,512 512,712 312,512"
+    fill="#1A1030" filter="url(#gemShadow)" opacity="0.8"/>
+
+  <!-- Main gem diamond — 200px radius for boldness -->
+  <polygon points="512,312 712,512 512,712 312,512"
+    fill="url(#gemBase)" filter="url(#gemGlowFilter)"/>
+
+  <!-- 4 quadrant faces -->
+  <polygon points="512,312 312,512 512,512" fill="url(#faceTopL)"/>
+  <polygon points="512,312 712,512 512,512" fill="url(#faceTopR)"/>
+  <polygon points="312,512 512,712 512,512" fill="url(#faceBotL)"/>
+  <polygon points="712,512 512,712 512,512" fill="url(#faceBotR)"/>
+
+  <!-- Primary facet cross -->
+  <line x1="512" y1="312" x2="512" y2="712" stroke="#3A2060" stroke-width="1.5" opacity="0.40"/>
+  <line x1="312" y1="512" x2="712" y2="512" stroke="#3A2060" stroke-width="1.5" opacity="0.40"/>
+
+  <!-- Secondary facet grid (inner) -->
+  <line x1="452" y1="392" x2="572" y2="392" stroke="#5A3888" stroke-width="0.9" opacity="0.22"/>
+  <line x1="412" y1="452" x2="612" y2="452" stroke="#5A3888" stroke-width="0.7" opacity="0.16"/>
+  <line x1="412" y1="572" x2="612" y2="572" stroke="#28184A" stroke-width="0.7" opacity="0.20"/>
+  <line x1="452" y1="632" x2="572" y2="632" stroke="#28184A" stroke-width="0.9" opacity="0.25"/>
+  <line x1="392" y1="452" x2="392" y2="572" stroke="#5A3888" stroke-width="0.7" opacity="0.16"/>
+  <line x1="452" y1="412" x2="452" y2="612" stroke="#5A3888" stroke-width="0.6" opacity="0.12"/>
+  <line x1="572" y1="412" x2="572" y2="612" stroke="#28184A" stroke-width="0.6" opacity="0.14"/>
+  <line x1="632" y1="452" x2="632" y2="572" stroke="#28184A" stroke-width="0.7" opacity="0.18"/>
+
+  <!-- 3D highlights -->
+  <line x1="512" y1="314" x2="314" y2="512" stroke="#E0D0F8" stroke-width="1.8" opacity="0.20"/>
+  <line x1="514" y1="314" x2="710" y2="510" stroke="#C0B0E0" stroke-width="0.9" opacity="0.09"/>
+  <line x1="314" y1="514" x2="510" y2="710" stroke="#180C28" stroke-width="1.0" opacity="0.20"/>
+  <line x1="514" y1="710" x2="710" y2="514" stroke="#100820" stroke-width="1.2" opacity="0.28"/>
+
+  <!-- Top-left specular highlight -->
+  <path d="M 420,420 L 480,420 L 480,480 L 420,480 Z" fill="#D0C0EC" opacity="0.06"/>
+  <circle cx="434" cy="434" r="6" fill="#F0E8FF" opacity="0.16"/>
+  <circle cx="448" cy="440" r="2.5" fill="#FFFFFF" opacity="0.18"/>
+</svg>

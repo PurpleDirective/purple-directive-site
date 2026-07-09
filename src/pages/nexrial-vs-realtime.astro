@@ -1,5 +1,6 @@
 ---
-import Base from '../layouts/Base.astro';
+import Site from '../layouts/Site.astro';
+import '../styles/pages.css';
 
 // RealTime CTMS pricing is not publicly listed.
 // realtimesoftware.com returns client-rendered pages that do not expose pricing via fetch (verified 2026-04-23).
@@ -35,7 +36,7 @@ const faqSchema = {
       "name": "How does RealTime CTMS pricing compare to Nexrial?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Nexrial publishes pricing transparently: $349/month Core, $549/month Pro, and $199/month Founder tier (first 5 sites). RealTime CTMS pricing is not publicly listed — contact RealTime Software directly for a quote. Industry sources suggest RealTime targets the independent site and site-network market at a quote-based price point."
+        "text": "Nexrial publishes pricing transparently: $299/month Core, $599/month Pro, and a Founding Site Program at 50% off for life for the first 3–5 sites ($149 Core / $299 Pro). RealTime CTMS pricing is not publicly listed — contact RealTime Software directly for a quote. Industry sources suggest RealTime targets the independent site and site-network market at a quote-based price point."
       }
     },
     {
@@ -43,7 +44,7 @@ const faqSchema = {
       "name": "Is RealTime CTMS or Nexrial better for an independent research site?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Both target the independent research site market. RealTime has an established presence in the community-based research site space with a longer track record. Nexrial offers published pricing, a native PI e-signature delegation log, database-level Part 11 audit trail (three independent defenses), and a compliance architecture built specifically for FDA inspection readiness. Nexrial's Founder tier at $199/month is designed for sites evaluating their first formal CTMS."
+        "text": "Both target the independent research site market. RealTime has an established presence in the community-based research site space with a longer track record. Nexrial offers published pricing, a native PI e-signature delegation log, database-level Part 11 audit trail (three independent defenses), and a compliance architecture built specifically for FDA inspection readiness. Nexrial's Founding Site Program — 50% off for life (Core $149 / Pro $299) — is designed for sites evaluating their first formal CTMS."
       }
     },
     {
@@ -68,50 +69,55 @@ const breadcrumbSchema = {
 };
 ---
 
-<Base
+<Site
   title="Nexrial vs RealTime CTMS — Comparison for Independent Research Sites (April 2026)"
-  activePage="products"
   description="RealTime CTMS and Nexrial are both designed for independent clinical research sites. This page compares them on pricing transparency, compliance architecture, feature scope, and fit for small sites."
 >
-  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
 
-  <div class="product-top">
-    <div class="product-hero">
-      <div class="product-hero-text">
-        <span class="product-badge">CTMS vs CTMS · Reviewed April 2026</span>
+  <section class="prod-hero">
+    <div class="container prod-hero-grid">
+      <div>
+        <a href="/best-ctms-small-clinical-sites" class="prod-back">&larr; Compare CTMS</a>
+        <div class="section-label">CTMS vs CTMS · Reviewed April 2026</div>
         <h1>Nexrial vs RealTime CTMS</h1>
-        <p class="product-tagline">
+        <p class="lede">
           <strong>Short answer:</strong> Both are CTMS platforms targeting research sites
           and site networks. RealTime has an established presence in the
           community-based site market. Nexrial is purpose-built for independent sites
           that want published pricing, a native PI e-signature workflow, and a
           compliance posture designed for FDA inspection readiness from day one.
         </p>
-        <a href="https://calendly.com/nexrial/demo?utm_source=purpledirective.com&utm_medium=nexrial-vs-realtime" class="buy-btn" style="background-color: #0d9488;">Book a 15-min Demo</a>
-        <p class="buy-note">
+        <div class="cta-row">
+          <a href="https://calendly.com/nexrial/demo?utm_source=purpledirective.com&utm_medium=nexrial-vs-realtime" class="btn-primary">Book a 15-min Demo
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <p class="hero-note">
           Reviewed <time datetime="2026-04-23">April 23, 2026</time> by
           Tyrian Murex, Purple Directive founder. RealTime CTMS pricing is not publicly
           listed; no pricing figures are claimed for RealTime on this page. Contact
           RealTime Software directly for a quote.
         </p>
       </div>
-      <div class="product-hero-preview">
-        <div>
-          <p style="margin: 0 0 0.5rem; font-weight: 600; text-align: center;">At a glance</p>
-          <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 1.8;">
-            <li><strong>Nexrial:</strong> CTMS, $199–549/mo published</li>
-            <li><strong>RealTime:</strong> CTMS, contact sales</li>
-            <li>Same category, same buyer</li>
-            <li>Differentiated on pricing transparency</li>
-          </ul>
-        </div>
-      </div>
+      <aside class="at-glance">
+        <p class="at-glance-cap">At a glance</p>
+        <ul>
+          <li><strong>Nexrial:</strong> CTMS, $299–599/mo published</li>
+          <li><strong>RealTime:</strong> CTMS, contact sales</li>
+          <li>Same category, same buyer</li>
+          <li>Differentiated on pricing transparency</li>
+        </ul>
+      </aside>
     </div>
-  </div>
+  </section>
 
-  <section class="why-now-section">
+  <section class="section doc">
+    <div class="container">
+    <div class="doc-block" style="border-top:none;padding-top:0">
     <h2>What each one actually is</h2>
 
     <h3>Nexrial — CTMS built for small independent sites</h3>
@@ -126,8 +132,9 @@ const breadcrumbSchema = {
       level.
     </p>
     <p>
-      Pricing is published: <strong>$349/month Core, $549/month Pro, $199/month Founder</strong>
-      (first five sites). No quote required to evaluate cost.
+      Pricing is published: <strong>$299/month Core, $599/month Pro</strong>, plus a
+      Founding Site Program — 50% off for life for the first 3–5 sites ($149 Core / $299 Pro).
+      No quote required to evaluate cost.
     </p>
 
     <h3>RealTime CTMS — established CTMS for community research sites</h3>
@@ -143,9 +150,9 @@ const breadcrumbSchema = {
       RealTime CTMS pricing is not publicly listed. Contact RealTime Software directly
       for current pricing.
     </p>
-  </section>
+    </div>
 
-  <section class="why-now-section">
+    <div class="doc-block">
     <div class="nexrial-intro">
       <img src="/images/nexrial-logo-wordmark.svg" alt="Nexrial CTMS" class="nexrial-intro-logo" loading="lazy" />
       <p>Nexrial is a Clinical Trial Management System purpose-built for independent research sites — audit trails, eSource, and ICH E6(R3) controls without enterprise pricing. <a href="https://nexrial.com" rel="noopener">Visit nexrial.com →</a></p>
@@ -238,9 +245,9 @@ const breadcrumbSchema = {
       RealTime CTMS capabilities are sourced from publicly available product descriptions.
       Verify current feature availability with RealTime Software directly.
     </p>
-  </section>
+    </div>
 
-  <section class="why-now-section">
+    <div class="doc-block">
     <h2>When to pick which</h2>
 
     <h3>Pick Nexrial if…</h3>
@@ -248,7 +255,7 @@ const breadcrumbSchema = {
       <li>You want to evaluate CTMS cost without scheduling a sales call — pricing is published</li>
       <li>You need a delegation log with native PI e-signature and PDF export as a core workflow (not a bolt-on)</li>
       <li>You want a compliance posture designed specifically for FDA inspection readiness, with a formal validation package available</li>
-      <li>Your site is early-stage or running on a constrained budget — the Founder tier ($199/month) is designed for that</li>
+      <li>Your site is early-stage or running on a constrained budget — the Founding Site Program (50% off for life — Core $149 / Pro $299) is designed for that</li>
     </ul>
 
     <h3>Pick RealTime CTMS if…</h3>
@@ -258,9 +265,9 @@ const breadcrumbSchema = {
       <li>Your site's operational workflow is closer to what RealTime's interface was built around, and migration friction is a concern</li>
       <li>Your preferred procurement process involves a vendor sales relationship from the start</li>
     </ul>
-  </section>
+    </div>
 
-  <section class="why-now-section">
+    <div class="doc-block">
     <h2>Pricing — honest table</h2>
     <div class="compare-table-wrap">
       <table class="compare-table">
@@ -273,19 +280,19 @@ const breadcrumbSchema = {
         </thead>
         <tbody>
           <tr class="compare-row-highlight">
-            <td><strong>Nexrial Founder</strong></td>
-            <td><strong>$199/month</strong></td>
-            <td>First 5 sites only · full platform · published</td>
+            <td><strong>Nexrial Founding</strong></td>
+            <td><strong>50% off for life</strong></td>
+            <td>First 3–5 sites only · Core $149 / Pro $299 · full platform · published</td>
           </tr>
           <tr class="compare-row-highlight">
             <td><strong>Nexrial Core</strong></td>
-            <td><strong>$349/month</strong></td>
-            <td>Up to 10 users · up to 3 concurrent studies · published</td>
+            <td><strong>$299/month</strong></td>
+            <td>Unlimited users · up to 25 active studies · published</td>
           </tr>
           <tr class="compare-row-highlight">
             <td><strong>Nexrial Pro</strong></td>
-            <td><strong>$549/month</strong></td>
-            <td>Up to 25 users · unlimited studies · advanced audit reports · published</td>
+            <td><strong>$599/month</strong></td>
+            <td>Unlimited users · up to 100 active studies · advanced audit reports · published</td>
           </tr>
           <tr>
             <td>RealTime CTMS</td>
@@ -300,9 +307,9 @@ const breadcrumbSchema = {
       are claimed on this page for RealTime. Contact RealTime Software directly.
       Nexrial pricing is published at <a href="https://nexrial.com">nexrial.com</a>.
     </p>
-  </section>
+    </div>
 
-  <section class="why-now-section">
+    <div class="doc-block">
     <h2>FAQ</h2>
 
     <h3>Can Nexrial import data from RealTime CTMS?</h3>
@@ -327,13 +334,13 @@ const breadcrumbSchema = {
 
     <h3>What happens if Nexrial raises prices later?</h3>
     <p>
-      Founding site customers lock in the $199/month rate for the life of their
-      subscription at that tier. Core and Pro pricing is published on nexrial.com; any
+      Founding site customers lock in 50% off for life (Core $149 / Pro $299) for the
+      life of their subscription. Standard Core and Pro pricing is published on nexrial.com; any
       price changes would be communicated to existing customers with advance notice.
     </p>
-  </section>
+    </div>
 
-  <section class="why-now-section">
+    <div class="doc-block">
     <h2>Next steps</h2>
     <p>
       If Nexrial looks like a fit, book a 30-minute demo at
@@ -346,5 +353,7 @@ const breadcrumbSchema = {
       <a href="https://realtimesoftware.com" rel="noopener">realtimesoftware.com</a>.
       We'd rather see sites in the right tool.
     </p>
+    </div>
+    </div>
   </section>
-</Base>
+</Site>

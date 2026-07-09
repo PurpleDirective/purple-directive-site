@@ -1,5 +1,5 @@
 ---
-import Base from '../layouts/Base.astro';
+import Site from '../layouts/Site.astro';
 import EmailCapture from '../components/EmailCapture.astro';
 
 // Kickoff scheduling link. Consulting buyers have already paid, so this is an
@@ -9,7 +9,7 @@ import EmailCapture from '../components/EmailCapture.astro';
 const CALENDLY_KICKOFF = 'https://calendly.com/nexrial/consulting-kickoff';
 ---
 
-<Base
+<Site
   title="Payment received — let's get started"
   description="Your Purple Directive consulting engagement is confirmed. Complete the short intake and book your kickoff call."
 >
@@ -106,7 +106,7 @@ const CALENDLY_KICKOFF = 'https://calendly.com/nexrial/consulting-kickoff';
       <a href="/review?product=consulting" class="review-btn">Leave a review →</a>
     </div>
   </section>
-</Base>
+</Site>
 
 <style>
   .intake-wrap { max-width: 720px; margin: 0 auto; padding: 0 1rem 3rem; }

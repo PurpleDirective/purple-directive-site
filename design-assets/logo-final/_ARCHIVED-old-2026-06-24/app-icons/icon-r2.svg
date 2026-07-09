@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!--
+    R2: Filled emblem interpretation — closer to a physical stamp/seal.
+    Outer teardrop as a filled shape with an inner oval window cut out (evenodd).
+    Matches physical object where the raised stroke creates a visible wall.
+    Small gem in bottom-right as subtle accent.
+    V1 coloring.
+  -->
+  <defs>
+    <radialGradient id="r2_bg" cx="50%" cy="50%" r="60%">
+      <stop offset="0%"   style="stop-color:#1A0C3A;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#060410;stop-opacity:1"/>
+    </radialGradient>
+    <!-- The filled emblem -->
+    <linearGradient id="r2_emblem" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#382070"/>
+      <stop offset="100%" stop-color="#201050"/>
+    </linearGradient>
+    <!-- Emblem edge glow -->
+    <filter id="r2_edgeGlow">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <!-- Gem -->
+    <radialGradient id="r2_gem" cx="40%" cy="32%" r="65%">
+      <stop offset="0%"   style="stop-color:#D4C4EC;stop-opacity:0.98"/>
+      <stop offset="40%"  style="stop-color:#8870B8"/>
+      <stop offset="100%" style="stop-color:#3C2870"/>
+    </radialGradient>
+    <linearGradient id="r2_gtl" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E0D0F8;stop-opacity:0.55"/>
+      <stop offset="100%" style="stop-color:#9880C8;stop-opacity:0.05"/>
+    </linearGradient>
+    <linearGradient id="r2_gbr" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#140A28;stop-opacity:0.65"/>
+      <stop offset="100%" style="stop-color:#503880;stop-opacity:0.08"/>
+    </linearGradient>
+    <filter id="r2_gemGlow">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1024" height="1024" fill="url(#r2_bg)" rx="160"/>
+
+  <!--
+    Filled PD emblem using fill-rule="evenodd"
+    Outer shape: large teardrop pointing right, centered in icon
+    Inner shape: oval window revealing background (the D counter)
+
+    The filled area (outer - inner) reads as the PD mark.
+    Outer teardrop: center ~(490,512), pointing right to ~(790,512), rounded left ~(210,512)
+    Inner oval: centered at (575,512), ~200px×150px
+  -->
+
+  <!-- Emblem body: outer - inner (evenodd) -->
+  <path
+    fill-rule="evenodd"
+    d="
+      M 210,512
+      C 210,374 340,290 480,290
+      C 580,290 680,340 740,420
+      C 770,460 790,485 790,512
+      C 790,539 770,564 740,604
+      C 680,684 580,734 480,734
+      C 340,734 210,650 210,512 Z
+
+      M 490,455
+      C 520,440 570,438 610,450
+      C 650,462 680,486 685,512
+      C 680,538 650,562 610,574
+      C 570,586 520,584 490,569
+      C 460,554 445,534 445,512
+      C 445,490 460,470 490,455 Z
+    "
+    fill="url(#r2_emblem)"
+    opacity="0.72"
+  />
+
+  <!-- Outer edge stroke — bright purple outline gives the emblem definition -->
+  <path
+    d="
+      M 210,512
+      C 210,374 340,290 480,290
+      C 580,290 680,340 740,420
+      C 770,460 790,485 790,512
+      C 790,539 770,564 740,604
+      C 680,684 580,734 480,734
+      C 340,734 210,650 210,512 Z
+    "
+    fill="none"
+    stroke="#6040B8"
+    stroke-width="3"
+    opacity="0.45"
+    filter="url(#r2_edgeGlow)"
+  />
+  <!-- Inner oval edge -->
+  <path
+    d="
+      M 490,455
+      C 520,440 570,438 610,450
+      C 650,462 680,486 685,512
+      C 680,538 650,562 610,574
+      C 570,586 520,584 490,569
+      C 460,554 445,534 445,512
+      C 445,490 460,470 490,455 Z
+    "
+    fill="none"
+    stroke="#6040B8"
+    stroke-width="2.5"
+    opacity="0.38"
+    filter="url(#r2_edgeGlow)"
+  />
+
+  <!-- Small gem — bottom-right corner accent -->
+  <polygon points="840,730 880,770 840,810 800,770"
+    fill="url(#r2_gem)" filter="url(#r2_gemGlow)"/>
+  <polygon points="840,730 800,770 840,770" fill="url(#r2_gtl)"/>
+  <polygon points="880,770 840,810 840,770" fill="url(#r2_gbr)"/>
+  <line x1="840" y1="731" x2="840" y2="809" stroke="#3A2060" stroke-width="0.8" opacity="0.35"/>
+  <line x1="801" y1="770" x2="879" y2="770" stroke="#3A2060" stroke-width="0.8" opacity="0.35"/>
+  <line x1="840" y1="732" x2="802" y2="770" stroke="#E0D0F8" stroke-width="1.0" opacity="0.20"/>
+</svg>

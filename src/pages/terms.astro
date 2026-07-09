@@ -1,10 +1,12 @@
 ---
-import Base from '../layouts/Base.astro';
+import Site from '../layouts/Site.astro';
+import '../styles/pages.css';
 ---
 
-<Base title="Terms of Service" activePage="" description="Purple Directive terms of service — terms governing your use of our website, products, and consulting services.">
-
-  <section class="legal-page">
+<Site title="Terms of Service" description="Purple Directive terms of service — terms governing your use of our website, products, and consulting services.">
+  <section class="section">
+    <div class="container">
+    <div class="legal-page">
     <h1>Terms of Service</h1>
     <p class="legal-updated">Last updated: March 24, 2026</p>
 
@@ -104,14 +106,15 @@ import Base from '../layouts/Base.astro';
       Questions about these terms? Email us at
       <a href="mailto:info@purpledirective.com">info@purpledirective.com</a>.
     </p>
+    </div>
+    </div>
   </section>
-
-</Base>
+</Site>
 
 <style>
   .legal-page {
     max-width: 680px;
-    padding: var(--spacing-xl) 0;
+    padding: var(--spacing-md) 0;
   }
 
   .legal-page h1 {

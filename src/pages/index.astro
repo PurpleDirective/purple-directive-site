@@ -1,10 +1,62 @@
 ---
 import Site from '../layouts/Site.astro';
+import { social } from '../data/social';
+
+// Homepage structured data. Regulatory language stays qualified per the
+// permanent truthful-language rule in memory: phrasings read "designed and
+// tested against 21 CFR Part 11", never a bare regulatory overclaim.
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://purpledirective.com/#org",
+  "name": "Purple Directive",
+  "url": "https://purpledirective.com",
+  "logo": "https://purpledirective.com/favicon-192.png",
+  "description": "Purple Directive builds compliance-grade software and operations tooling for clinical research sites and CROs — a clinical trial management system, ICH-GCP SOP templates, e-signatures designed and tested against 21 CFR Part 11, in-browser PDF tools, and hands-on regulatory consulting.",
+  "email": "info@purpledirective.com",
+  "knowsAbout": [
+    "Clinical trial management",
+    "21 CFR Part 11",
+    "ICH-GCP",
+    "Standard operating procedures for clinical research",
+    "Regulatory inspection readiness",
+    "Clinical research site operations",
+  ],
+  "sameAs": [social.linkedin.url, social.x.url, social.github.url, social.reddit.url],
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://purpledirective.com/#website",
+  "url": "https://purpledirective.com",
+  "name": "Purple Directive",
+  "publisher": { "@id": "https://purpledirective.com/#org" },
+};
+
+const productsSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Purple Directive products and services",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Nexrial CTMS", "description": "Clinical trial management system for independent research sites, with a database-layer audit trail and native PI e-signatures designed and tested against 21 CFR Part 11.", "url": "https://nexrial.com" },
+    { "@type": "ListItem", "position": 2, "name": "Clinical Research SOP Template Bundle", "description": "13 ICH-GCP-aligned standard operating procedures with 11 companion forms — editable Word plus branded PDF.", "url": "https://purpledirective.com/sop-bundle" },
+    { "@type": "ListItem", "position": 3, "name": "PurpleSign", "description": "Native e-signatures for regulated documents, designed and tested against 21 CFR Part 11.", "url": "https://purpledirective.com/#products" },
+    { "@type": "ListItem", "position": 4, "name": "QuillPDF", "description": "Free PDF tools that run entirely in your browser — the tools never upload your file.", "url": "https://quillpdf.com" },
+    { "@type": "ListItem", "position": 5, "name": "Volstrin", "description": "Specialist legal-sector recruiting.", "url": "https://volstrin.com" },
+    { "@type": "ListItem", "position": 6, "name": "Consulting", "description": "Hands-on regulatory infrastructure: SOP development, binder setup, and IRB submission support for research sites.", "url": "https://purpledirective.com/hire" },
+  ],
+};
 ---
 <Site
   title="Home"
   description="The standard clinical research runs on. Software, SOPs, and infrastructure for the people who run the studies — one operating standard, from your first protocol to your fiftieth."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(productsSchema)} />
+  </Fragment>
   <!-- HERO -->
   <section class="hero">
     <div class="atmos" aria-hidden="true"></div>
@@ -21,7 +73,7 @@ import Site from '../layouts/Site.astro';
       </div>
 
       <div class="hub-wrap">
-        <div class="hub" id="hub" role="img" aria-label="Purple Directive's portfolio: a central practice with seven instruments — Nexrial, the SOP Library, Research Reports, PurpleSign, QuillPDF, Volstrin, and Consulting — orbiting one standard in three dimensions.">
+        <div class="hub" id="hub" role="img" aria-label="Purple Directive's portfolio: a central practice with six instruments — Nexrial, the SOP Library, PurpleSign, QuillPDF, Volstrin, and Consulting — orbiting one standard in three dimensions.">
           <div class="hub-inner" id="hubInner">
             <canvas id="hubCanvas" aria-hidden="true"></canvas>
             <div class="core-pulse" id="corePulse" aria-hidden="true"></div>
@@ -58,20 +110,52 @@ import Site from '../layouts/Site.astro';
     </div>
   </section>
 
-  <!-- SEVEN INSTRUMENTS — products -->
+  <!-- SIX INSTRUMENTS — products -->
   <section class="section" id="products">
     <div class="container">
       <div class="section-label">The Portfolio</div>
-      <h2>Seven instruments. One standard.</h2>
+      <h2>Six instruments. One standard.</h2>
       <p class="lede">From day-one SOP templates to trial-management software &mdash; every product built to the same bar, so the rigor never drops when you move between tools.</p>
       <div class="inst-grid">
-        <a class="inst" href="https://nexrial.com" target="_blank" rel="noopener"><span class="ik">Software</span><h3>Nexrial <span class="arr">&rarr;</span></h3><p>Clinical trial management with a 21 CFR Part 11 audit trail and role-based access.</p></a>
-        <a class="inst" href="/sop-bundle"><span class="ik">Templates</span><h3>SOP Library <span class="arr">&rarr;</span></h3><p>13 ICH-GCP standard operating procedures across the full study lifecycle.</p></a>
-        <a class="inst" href="/research-report"><span class="ik">Research</span><h3>Research Report <span class="arr">&rarr;</span></h3><p>Analyst-grade healthcare market reports, delivered in 48 hours.</p></a>
-        <a class="inst" href="https://purplesign.app" target="_blank" rel="noopener"><span class="ik">E-signature &middot; soon</span><h3>PurpleSign <span class="arr">&rarr;</span></h3><p>Electronic signatures, designed against 21 CFR Part 11 controls.</p></a>
-        <a class="inst" href="https://quillpdf.com" target="_blank" rel="noopener"><span class="ik">Tools</span><h3>QuillPDF <span class="arr">&rarr;</span></h3><p>Free PDF tools that run in your browser &mdash; redaction stays client-side.</p></a>
-        <a class="inst" href="https://volstrin.com" target="_blank" rel="noopener"><span class="ik">Recruiting</span><h3>Volstrin <span class="arr">&rarr;</span></h3><p>Specialist recruiting for the legal sector &mdash; an adjacent regulated field.</p></a>
-        <a class="inst inst-wide" href="/consulting"><span class="ik">Services</span><h3>Consulting &mdash; regulatory infrastructure, hands-on <span class="arr">&rarr;</span></h3><p>SOP development, binder setup, IRB submission support, and compliance gap assessments &mdash; the same operators, on call.</p></a>
+        <a class="inst" href="https://nexrial.com" target="_blank" rel="noopener">
+          <div class="inst-top"><span class="inst-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span><span class="ik">Software</span></div>
+          <h3>Nexrial <span class="arr">&rarr;</span></h3><p>Clinical trial management with a 21 CFR Part 11 audit trail and role-based access.</p></a>
+        <a class="inst" href="/sop-bundle">
+          <div class="inst-top"><span class="inst-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg></span><span class="ik">Templates</span></div>
+          <h3>SOP Library <span class="arr">&rarr;</span></h3><p>13 ICH-GCP standard operating procedures across the full study lifecycle.</p></a>
+        <a class="inst" href="https://purplesign.app" target="_blank" rel="noopener">
+          <div class="inst-top"><span class="inst-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5Z"/></svg></span><span class="ik">E-signature</span><span class="tag tag-soon">Soon</span></div>
+          <h3>PurpleSign <span class="arr">&rarr;</span></h3><p>Electronic signatures, designed against 21 CFR Part 11 controls.</p></a>
+        <a class="inst" href="https://quillpdf.com" target="_blank" rel="noopener">
+          <div class="inst-top"><span class="inst-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></span><span class="ik">Tools</span><span class="tag tag-free">Free</span></div>
+          <h3>QuillPDF <span class="arr">&rarr;</span></h3><p>PDF tools that run in your browser &mdash; free, with redaction that stays client-side.</p></a>
+        <a class="inst" href="https://volstrin.com" target="_blank" rel="noopener">
+          <div class="inst-top"><span class="inst-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span class="ik">Recruiting</span></div>
+          <h3>Volstrin <span class="arr">&rarr;</span></h3><p>Specialist recruiting for the legal sector &mdash; an adjacent regulated field.</p></a>
+        <a class="inst inst-wide" href="/consulting">
+          <div class="inst-wide-head">
+            <div class="inst-top"><span class="inst-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-5a9 9 0 0 1 18 0v5"/><path d="M21 19a2 2 0 0 1-2 2h-1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h3Z"/><path d="M3 19a2 2 0 0 0 2 2h1a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3Z"/></svg></span><span class="ik">Services</span></div>
+            <h3>Consulting &mdash; regulatory infrastructure, hands-on <span class="arr">&rarr;</span></h3>
+          </div>
+          <p>SOP development, binder setup, IRB submission support, and compliance gap assessments &mdash; the same operators, on call.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FREE SOP — lead magnet -->
+  <section class="section freebar" style="padding-top:0">
+    <div class="container">
+      <div class="freebar-card">
+        <div class="freebar-copy">
+          <div class="section-label">Free to start</div>
+          <h2>Read a full SOP, free.</h2>
+          <p>SOP-01 &mdash; Training &amp; Qualification of Study Staff &mdash; published in full. Read the whole procedure on the page and download it in editable Word and PDF, no signup. It's one of the 13 in the bundle, so you can judge the quality before you buy.</p>
+        </div>
+        <div class="freebar-cta">
+          <a href="/training-qualification-sop" class="btn-primary">Read the free SOP
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="/sop-bundle" class="btn-ghost">See the full bundle</a>
+        </div>
       </div>
     </div>
   </section>
@@ -120,7 +204,6 @@ import Site from '../layouts/Site.astro';
     window.__INSTR=[
       {name:'Nexrial', line:'Clinical trial management · Part 11 audit trail'},
       {name:'SOP Library', line:'13 ICH-GCP standard operating procedures'},
-      {name:'Research Report', line:'Analyst-grade market reports in 48 hours'},
       {name:'PurpleSign', line:'E-signatures, designed against 21 CFR Part 11'},
       {name:'QuillPDF', line:'Free, in-browser PDF tools'},
       {name:'Volstrin', line:'Specialist legal-sector recruiting'},
@@ -284,9 +367,67 @@ import Site from '../layouts/Site.astro';
     g.timeline({scrollTrigger:{trigger:'#standard', start:'top 68%', toggleActions:'play none none none'}, defaults:{ease:'power2.out'}})
       .fromTo('#trailFill',{width:'0%'},{width:'100%',duration:2.0,ease:'none'},0)
       .from('.audit .cp',{opacity:0,y:12,duration:.5,stagger:.38},0.2);
-    g.from('.inst',{y:28,opacity:0,duration:.6,stagger:.07,ease:'power3.out',scrollTrigger:{trigger:'.inst-grid',start:'top 82%'}});
+    // Instrument cards reveal via IntersectionObserver, not ScrollTrigger: IO keys
+    // off real intersection (firing even for cards already in view on a deep-link
+    // load), so a jump straight to #products can never strand them hidden.
+    var instCards = g.utils.toArray('.inst');
+    if('IntersectionObserver' in window){
+      instCards.forEach(function(el){ el.style.opacity='0'; el.style.transform='translateY(28px)'; el.style.transition='opacity .55s ease, transform .55s ease'; });
+      var io = new IntersectionObserver(function(ents){
+        ents.forEach(function(e){ if(e.isIntersecting){ var el=e.target; el.style.opacity='1'; el.style.transform='none'; io.unobserve(el); } });
+      }, {rootMargin:'0px 0px -6% 0px'});
+      instCards.forEach(function(el){ io.observe(el); });
+    }
     g.from('.proof .pchip',{y:12,opacity:0,duration:.45,stagger:.06,ease:'power2.out',scrollTrigger:{trigger:'.proof',start:'top 88%'}});
     reveal('.cta-tail h2'); reveal('.cta-tail p');
+
+    // Safety net: a deep-link jump to #products lands the grid in view before the
+    // hero intro settles, so ScrollTrigger caches stale start positions and the
+    // .from() reveals never fire — leaving cards stuck hidden. Refresh once layout
+    // settles, and on deep-link loads force-reveal any card already on screen.
+    var STUCK=['.band-split h2','.band-split p','.audit-h2','.audit-lede','.proof .pchip','.cta-tail h2','.cta-tail p'];
+    function rescueInView(){
+      g.utils.toArray(STUCK.join(',')).forEach(function(el){
+        var r=el.getBoundingClientRect();
+        if(r.top<window.innerHeight*0.98 && r.bottom>0 && parseFloat(getComputedStyle(el).opacity)<0.99){
+          g.set(el,{opacity:1,clearProps:'transform'});
+        }
+      });
+    }
+    function refresh(){ try{ ScrollTrigger.refresh(); }catch(e){} }
+    window.addEventListener('load', refresh);
+    setTimeout(function(){ refresh(); rescueInView(); }, 700);
+    setTimeout(function(){ refresh(); rescueInView(); }, 2700);
+    // On a deep-link load, reveals may already be compromised — guarantee any card
+    // scrolled into view becomes visible (pristine top-down animation is unaffected).
+    if(location.hash && location.hash.length>1){
+      var ticking=false;
+      window.addEventListener('scroll', function(){
+        if(ticking) return; ticking=true;
+        requestAnimationFrame(function(){ rescueInView(); ticking=false; });
+      }, {passive:true});
+    }
   })();
   </script>
 </Site>
+
+<style>
+  .freebar-card{
+    display:grid;grid-template-columns:1.4fr .9fr;gap:var(--sp-xl);align-items:center;
+    border:1px solid var(--border);border-radius:16px;
+    background:linear-gradient(120deg,var(--bg-tinted),var(--bg-card));
+    padding:var(--sp-xl);
+  }
+  .freebar-copy h2{margin:.35rem 0 .6rem}
+  .freebar-copy p{font-size:.95rem;line-height:1.62;color:var(--text-secondary);margin:0;max-width:40rem}
+  .freebar-cta{display:flex;flex-direction:column;gap:.6rem;align-items:flex-start}
+  .freebar-cta .btn-primary,.freebar-cta .btn-ghost{width:100%;justify-content:center}
+  /* .btn-ghost is built for the dark hero; recolor it for this light card */
+  .freebar-cta .btn-ghost{color:var(--purple-primary);border-color:var(--purple-primary)}
+  .freebar-cta .btn-ghost:hover{background:rgba(124,58,237,.08);border-color:var(--purple-primary)}
+  @media (max-width:760px){
+    .freebar-card{grid-template-columns:1fr;gap:var(--sp-lg);padding:var(--sp-lg)}
+    .freebar-cta{flex-direction:row;flex-wrap:wrap}
+    .freebar-cta .btn-primary,.freebar-cta .btn-ghost{width:auto}
+  }
+</style>

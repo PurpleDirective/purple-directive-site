@@ -1,0 +1,18 @@
+# SOP-008 free page retired 2026-07-02 (one free SOP only: SOP-001).
+/adverse-event-protocol-deviation-sop /training-qualification-sop 301
+/adverse-event-protocol-deviation-sop/ /training-qualification-sop 301
+/sops/SOP-008-Adverse-Events-Protocol-Deviations.docx /sop-bundle 302
+/sops/SOP-008-Adverse-Events-Protocol-Deviations.pdf /sop-bundle 302
+# SOP-008 view-only sample images retired (were fully readable); free proof is now SOP-001 in full.
+/sop-sample/* /sop-bundle 301
+# Research Report product dropped 2026-07-02 — old links land on home.
+/research-report / 301
+/research-report/ / 301
+/sample-report / 301
+/sample-report/ / 301
+/healthcare-market-research-pricing / 301
+/healthcare-market-research-pricing/ / 301
+/research-intake-received / 301
+/research-intake-received/ / 301
+/thank-you-research / 301
+/thank-you-research/ / 301

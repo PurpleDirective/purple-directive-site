@@ -1,5 +1,6 @@
 ---
-import Base from '../layouts/Base.astro';
+import Site from '../layouts/Site.astro';
+import '../styles/pages.css';
 import EmailCapture from '../components/EmailCapture.astro';
 
 const articleSchema = {
@@ -24,60 +25,60 @@ const articleSchema = {
 };
 ---
 
-<Base
+<Site
   title="How to Read an FDA Form 483 — Practitioner's Guide"
-  activePage="products"
   ogType="article"
   description="A practitioner's guide to reading FDA Form 483. What each section means, severity classifications (NAI/VAI/OAI), the 15-day response window, and what a warning letter escalation looks like. With verified examples from recent clinical investigator 483s."
 >
-
-  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  </Fragment>
 
   <!-- Hero -->
-  <div class="product-top">
-    <div class="product-hero">
-      <div class="product-hero-text">
-        <span class="product-badge">Practitioner's Guide · Free</span>
+  <section class="prod-hero">
+    <div class="container prod-hero-grid">
+      <div>
+        <div class="section-label">Practitioner's Guide · Free</div>
         <h1>How to Read an FDA Form 483</h1>
-        <p class="product-tagline">
+        <p class="lede">
           A Form 483 is not a verdict — it's a conversation. Most sites that receive one respond, correct,
           and never hear from FDA again. The ones that escalate to warning letters usually made one of three
           specific mistakes in the response. This guide walks through what each section of a 483 actually
           means, how to interpret severity classifications, and what a strong response looks like.
         </p>
-        <a href="#what-is-a-483" class="buy-btn">Start Reading</a>
-        <p class="buy-note">
+        <div class="cta-row">
+          <a href="#what-is-a-483" class="btn-primary">Start Reading
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+        </div>
+        <p class="hero-note">
           No signup required. About 8 minutes to read. Written by Tyrian Murex, working on
           FDA-regulated oncology studies at a US academic health system (personal capacity).
         </p>
-      </div>
-      <div class="product-hero-preview">
-        <div>
-          <p style="margin: 0 0 0.5rem; font-weight: 600; text-align: center;">In this guide</p>
-          <ol style="margin: 0; padding-left: 1.25rem; font-size: 0.85rem; line-height: 1.8;">
-            <li><a href="#what-is-a-483">What a 483 is (and isn't)</a></li>
-            <li><a href="#anatomy">The anatomy of the form</a></li>
-            <li><a href="#classifications">NAI / VAI / OAI severity</a></li>
-            <li><a href="#response">The 15-day response window</a></li>
-            <li><a href="#warning-letter">When a 483 escalates</a></li>
-            <li><a href="#common-mistakes">Three common response mistakes</a></li>
-          </ol>
+        <div class="facts">
+          <span class="fact">~8 min read</span>
+          <span class="fact">6 sections</span>
+          <span class="fact">Verified examples</span>
+          <span class="fact">Free forever</span>
         </div>
       </div>
+      <aside class="at-glance">
+        <p class="at-glance-cap">In this guide</p>
+        <ol>
+          <li><a href="#what-is-a-483">What a 483 is (and isn't)</a></li>
+          <li><a href="#anatomy">The anatomy of the form</a></li>
+          <li><a href="#classifications">NAI / VAI / OAI severity</a></li>
+          <li><a href="#response">The 15-day response window</a></li>
+          <li><a href="#warning-letter">When a 483 escalates</a></li>
+          <li><a href="#common-mistakes">Three common response mistakes</a></li>
+        </ol>
+      </aside>
     </div>
-    <div class="product-stats">
-      <div class="stat"><strong>~8 min</strong> read</div>
-      <div class="stat-sep"></div>
-      <div class="stat"><strong>6</strong> sections</div>
-      <div class="stat-sep"></div>
-      <div class="stat"><strong>Verified</strong> examples</div>
-      <div class="stat-sep"></div>
-      <div class="stat"><strong>Free</strong> forever</div>
-    </div>
-  </div>
+  </section>
 
   <!-- What is a 483 -->
-  <section class="why-now-section" id="what-is-a-483">
+  <section class="section doc">
+    <div class="container">
+    <div class="doc-block" id="what-is-a-483" style="border-top:none;padding-top:0">
     <h2>What a Form 483 is (and isn't)</h2>
     <p>
       A Form FDA 483 — formally titled <em>"Inspectional Observations"</em> — is issued at the conclusion of an FDA inspection when the investigator observes conditions that, in their judgment, may constitute violations of the Federal Food, Drug, and Cosmetic Act (FD&C Act) and related regulations.
@@ -91,10 +92,10 @@ const articleSchema = {
     <p>
       What a 483 <em>does</em> do is start a clock. You have <strong>15 business days</strong> (per FDA's 2020 draft guidance on responses) to submit a written response. The quality of that response is often what determines whether the 483 closes out quietly or escalates to a warning letter.
     </p>
-  </section>
+    </div>
 
-  <!-- Anatomy -->
-  <section class="why-now-section" id="anatomy">
+    <!-- Anatomy -->
+    <div class="doc-block" id="anatomy">
     <h2>The anatomy of the form</h2>
     <p>
       Every Form 483 has the same basic structure. Understanding which part means what is the first step to reading one accurately.
@@ -121,10 +122,10 @@ const articleSchema = {
     <p>
       The recipient signs to acknowledge receipt, not to agree with the observations. This is an important distinction — signing does not waive the right to respond or contest the observations.
     </p>
-  </section>
+    </div>
 
-  <!-- Classifications -->
-  <section class="why-now-section" id="classifications">
+    <!-- Classifications -->
+    <div class="doc-block" id="classifications">
     <h2>NAI / VAI / OAI — what the severity classification means</h2>
     <p>
       The 483 itself does not carry a severity label. The severity is assigned internally by FDA after review, in the <strong>Establishment Inspection Report (EIR)</strong>. There are three classifications:
@@ -163,10 +164,10 @@ const articleSchema = {
     <p>
       You usually learn your classification from the EIR, which is released 45 days or more after the inspection. Until then, the 483 itself is the only signal — and severity signals in the 483 include: repeated observations, observations that cite subject safety, observations that imply data integrity concerns, and observations that reference previous inspections with similar findings.
     </p>
-  </section>
+    </div>
 
-  <!-- Response -->
-  <section class="why-now-section" id="response">
+    <!-- Response -->
+    <div class="doc-block" id="response">
     <h2>The 15-day response window</h2>
     <p>
       FDA's current guidance (in the September 2019 draft and the associated enforcement practice) is to submit a written response within 15 business days of receiving the 483. Responses submitted within this window are reviewed before any enforcement decision; responses submitted outside the window may not be considered before a warning letter issues.
@@ -184,10 +185,10 @@ const articleSchema = {
     <p>
       FDA at a June 2024 Society of Clinical Research Associates conference emphasized that effective 483 responses use the <em>"5 Cs"</em>: clear, concise, compelling, complete, and compliant. Responses that argue extensively, delay action, or fail to address every observation are the ones that tend to trigger escalation.
     </p>
-  </section>
+    </div>
 
-  <!-- Warning letter -->
-  <section class="why-now-section" id="warning-letter">
+    <!-- Warning letter -->
+    <div class="doc-block" id="warning-letter">
     <h2>When a 483 escalates to a warning letter</h2>
     <p>
       Warning letters are the most common formal enforcement action following an OAI-classified inspection. Between FY2022 and FY2024, FDA issued approximately 6, 11, and 12 warning letters respectively to clinical investigators, sponsors, and IRBs following BIMO inspections.
@@ -203,10 +204,10 @@ const articleSchema = {
     <p>
       For a detailed breakdown of the specific failure patterns that have escalated to warning letters in recent fiscal years, with verified examples, see our <a href="/bimo-taxonomy/">FY2022–2024 BIMO 483 Observation Taxonomy</a>.
     </p>
-  </section>
+    </div>
 
-  <!-- Common mistakes -->
-  <section class="why-now-section" id="common-mistakes">
+    <!-- Common mistakes -->
+    <div class="doc-block" id="common-mistakes">
     <h2>Three common response mistakes that trigger escalation</h2>
     <div class="why-now-grid">
       <div class="why-now-card">
@@ -234,10 +235,10 @@ const articleSchema = {
         </p>
       </div>
     </div>
-  </section>
+    </div>
 
-  <!-- Resources -->
-  <section class="why-now-section">
+    <!-- Resources -->
+    <div class="doc-block">
     <h2>Related resources</h2>
     <div class="why-now-grid">
       <div class="why-now-card">
@@ -248,39 +249,31 @@ const articleSchema = {
         <p style="margin-top: 0.5rem;"><a href="/bimo-taxonomy/">Read the taxonomy &rarr;</a></p>
       </div>
       <div class="why-now-card">
-        <h3>Oncology 483 Pattern Sample</h3>
-        <p>
-          Focused application to US oncology clinical trial sites — three cases from recent enforcement, with direct links to the underlying warning letters.
-        </p>
-        <p style="margin-top: 0.5rem;"><a href="/sample-report/">Read the sample &rarr;</a></p>
-      </div>
-      <div class="why-now-card">
         <h3>Clinical Research SOP Template Bundle</h3>
         <p>
           13 ICH E6(R3)-aligned SOPs operationally calibrated to address each failure category in the BIMO taxonomy. $249.99 bundle, $29 individual.
         </p>
         <p style="margin-top: 0.5rem;"><a href="/sop-bundle/">See the SOP bundle &rarr;</a></p>
       </div>
-      <div class="why-now-card">
-        <h3>Custom Healthcare Market Research Report</h3>
-        <p>
-          Apply this depth of analysis to your specific research question — a custom 20–30 page report delivered in 48 hours. $750 flat.
-        </p>
-        <p style="margin-top: 0.5rem;"><a href="/research-report/">See the Research Report &rarr;</a></p>
-      </div>
+    </div>
+    </div>
     </div>
   </section>
 
   <!-- Email capture -->
-  <section class="why-now-section">
-    <EmailCapture
-      heading="Practitioner notes"
-      subheading="Monthly notes on FDA enforcement patterns, regulatory shifts, and operational intel from inside FDA-regulated clinical research work. Short, specific, no hype."
-    />
+  <section class="section" style="padding-top:0">
+    <div class="container" style="max-width:700px;margin:0 auto">
+      <EmailCapture
+        heading="Practitioner notes"
+        subheading="Monthly notes on FDA enforcement patterns, regulatory shifts, and operational intel from inside FDA-regulated clinical research work. Short, specific, no hype."
+      />
+    </div>
   </section>
 
   <!-- Methodology -->
-  <section class="why-now-section">
+  <section class="section doc" style="padding-top:0">
+    <div class="container">
+      <div class="doc-block" style="border-top:none;padding-top:0">
     <h2>Methodology note</h2>
     <p>
       This guide is built from direct review of FDA policy documents, BIMO Inspection Metrics (FY2022–FY2023), and representative warning letters from the FDA public warning letters database. Verbatim quotes are sourced to specific warning letters and identified with warning letter numbers. Severity classification percentages are derived from FY2023 BIMO metrics directly.
@@ -291,6 +284,8 @@ const articleSchema = {
     <p style="font-size: 0.85rem; color: var(--text-muted);">
       <strong>Published:</strong> 2026-04-16. If you spot an error or have suggestions for clarification, email <a href="mailto:info@purpledirective.com">info@purpledirective.com</a>.
     </p>
+      </div>
+    </div>
   </section>
 
-</Base>
+</Site>

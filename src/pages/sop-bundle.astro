@@ -18,18 +18,89 @@ const sops = [
   ['SOP-12', 'Study Close-Out', '/buy/sop-012', 'Study Close-Out'],
   ['SOP-13', 'HIPAA Authorization', '/buy/sop-013', 'HIPAA Authorization for Use & Disclosure of PHI'],
 ];
+
+const pageUrl = "https://purpledirective.com/sop-bundle/";
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Clinical Research SOP Template Bundle",
+  "url": pageUrl,
+  "category": "Clinical research site SOP templates",
+  "description": "13 ICH E6(R3)-aligned Standard Operating Procedures for clinical research sites, with 11 companion forms. Editable Word and branded PDF. $249.99 one-time, or $29 per SOP.",
+  "brand": { "@type": "Organization", "name": "Purple Directive", "url": "https://purpledirective.com" },
+  "image": "https://purpledirective.com/images/sop-previews/bundle-cover.png",
+  "offers": {
+    "@type": "Offer",
+    "price": "249.99",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": pageUrl
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What format are the SOP templates in?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Every SOP comes as a branded PDF and an editable Word file. Companion forms are in both formats. Everything is packaged in a single download." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I customize these SOPs for my clinical research site?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Word files have placeholder fields for your site name, PI, dates, and version numbers. Replace the bracketed placeholders and you have site-specific SOPs ready for PI sign-off." }
+    },
+    {
+      "@type": "Question",
+      "name": "Are these SOP templates aligned with ICH E6(R3)?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Each SOP is built on ICH E6(R2) with E6(R3) guidance notes, referencing 21 CFR Parts 11, 50, 56, and 312 as well as 45 CFR Part 46 where applicable." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I receive the files?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Immediately after purchase you receive an email with a download link that does not expire. Any trouble, email info@purpledirective.com." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I read a full SOP before buying?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. SOP-001 (Training and Qualification of Study Staff) is published in full and free at purpledirective.com/training-qualification-sop — the complete procedure, downloadable in editable Word and PDF with no signup, at the same depth as every SOP in the bundle." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer SOP customization services?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The bundle self-customizes with placeholder fields for site name, PI, and roles. If you need the SOPs tailored to specific protocols, systems, or organizational structures, that is a scoped Purple Directive consulting engagement starting at $497." }
+    }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://purpledirective.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Clinical Research SOP Templates", "item": pageUrl }
+  ]
+};
 ---
 <Site
-  title="SOP Library"
-  description="13 ICH E6(R3)-aligned Standard Operating Procedures for clinical research sites — editable Word + branded PDF, plus 11 companion forms. $249.99, instant download, or $29 per SOP."
+  title="Clinical Research SOP Template Bundle — ICH E6(R3)"
+  description="A 13-SOP ICH E6(R3) template bundle for clinical research sites — editable Word + branded PDF, plus 11 companion forms. $249.99 one-time, instant download, or $29 per SOP."
   ogImage="/images/sop-previews/bundle-cover.png"
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
   <section class="prod-hero">
     <div class="container">
       <a href="/#products" class="prod-back">&larr; All products</a>
-      <div class="section-label">SOP Library</div>
+      <div class="section-label">Clinical Research SOP Templates</div>
       <h1>13 SOPs. 11 forms. 95 pages.</h1>
-      <p class="lede">Every procedure your site needs, from training through close-out &mdash; ICH&nbsp;E6(R3)-aligned, editable in Word, signature-ready, and yours to download the moment you check out.</p>
+      <p class="lede">Every SOP your clinical research site needs, from training through close-out &mdash; ICH&nbsp;E6(R3)-aligned, editable in Word, signature-ready, and yours to download the moment you check out.</p>
       <div class="price-row">
         <span class="price">$249.99</span>
         <span class="price-note">one-time &middot; instant download &middot; or $29 per SOP</span>
@@ -39,6 +110,7 @@ const sops = [
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a href="#inside" class="btn-ghost">See what's inside</a>
       </div>
+      <p class="hero-tailor">Running unusual protocols or systems? <a href="#tailor">Have us tailor the SOPs to your site &rarr;</a></p>
       <div class="facts">
         <span class="fact">ICH E6(R3)-aligned</span>
         <span class="fact">PDF + editable Word</span>
@@ -65,18 +137,20 @@ const sops = [
     <div class="container">
       <div class="section-label">See it first</div>
       <h2>Read a full SOP, free.</h2>
-      <p class="lede" style="max-width:46rem">SOP-08 &mdash; Adverse Events &amp; Protocol Deviations &mdash; in full, all 8 pages. Read it here and judge the quality yourself. The bundle gives you this plus all 13, editable in Word with placeholders and signature lines.</p>
-      <div class="sample-doc" id="sampleDoc" aria-label="SOP-008 sample, view only">
-        <img src="/sop-sample/page-1.png" alt="SOP-008 Adverse Events, page 1" loading="lazy" draggable="false">
-        <img src="/sop-sample/page-2.png" alt="SOP-008 Adverse Events, page 2" loading="lazy" draggable="false">
-        <img src="/sop-sample/page-3.png" alt="SOP-008 Adverse Events, page 3" loading="lazy" draggable="false">
-        <img src="/sop-sample/page-4.png" alt="SOP-008 Adverse Events, page 4" loading="lazy" draggable="false">
-        <img src="/sop-sample/page-5.png" alt="SOP-008 Adverse Events, page 5" loading="lazy" draggable="false">
-        <img src="/sop-sample/page-6.png" alt="SOP-008 Adverse Events, page 6" loading="lazy" draggable="false">
-        <img src="/sop-sample/page-7.png" alt="SOP-008 Adverse Events, page 7" loading="lazy" draggable="false">
-        <img src="/sop-sample/page-8.png" alt="SOP-008 Adverse Events, page 8" loading="lazy" draggable="false">
+      <p class="lede" style="max-width:46rem">SOP-01 &mdash; Training &amp; Qualification of Study Staff &mdash; is published in full, free. Read the entire procedure on the page and download it in editable Word and PDF, no signup. It's the same depth and structure as every one of the 13 in the bundle &mdash; judge the quality yourself before you buy.</p>
+      <div class="sample-card">
+        <div class="sample-card-body">
+          <span class="sample-badge">Free &middot; SOP-01 &middot; ICH E6(R3)</span>
+          <h3>Training &amp; Qualification of Study Staff</h3>
+          <p>Five sections and three reference tables &mdash; GCP training, protocol-specific training, the Delegation of Authority log, retraining triggers, and audit-ready training files. The complete SOP, free to read and adapt.</p>
+          <div class="cta-row" style="margin-top:1.2rem">
+            <a href="/training-qualification-sop" class="btn-primary">Read the free SOP
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a href="/training-qualification-sop#subscribe" class="btn-ghost">Download Word &amp; PDF</a>
+          </div>
+        </div>
       </div>
-      <p class="sample-note">View-only sample &middot; the editable Word &amp; PDF come with the bundle.</p>
+      <p class="sample-note">The free SOP is the standalone document &middot; the other 12 SOPs and 11 companion forms come with the bundle.</p>
       <div class="cta-row" style="margin-top:1.4rem">
         <a href="/buy/sop-bundle?utm_source=direct&amp;utm_medium=lp-sample" class="btn-primary">Get all 13 &mdash; $249.99
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -93,6 +167,60 @@ const sops = [
         <div class="feat"><h3>Customizable placeholders</h3><p>Drop in your site name, PI, and roles. Placeholders are marked throughout so nothing gets missed.</p></div>
         <div class="feat"><h3>PI signature lines</h3><p>Approval and signature blocks built in, so each procedure is inspection-ready the day you adopt it.</p></div>
         <div class="feat"><h3>11 companion forms</h3><p>Logs, trackers, and checklists that pair with the procedures &mdash; the working documents, not just the policy.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Done-for-you customization — routes SOP tailoring into the existing PD Consulting funnel (Essential tier) so the $249.99 bundle stays clean self-serve and tailoring is a scoped, higher-value add-on. -->
+  <section class="section" id="tailor" style="padding-top:0">
+    <div class="container">
+      <div class="tailor-band">
+        <div class="tailor-main">
+          <div class="section-label">Prefer done-for-you</div>
+          <h2>Want them tailored to your site?</h2>
+          <p>The bundle is built to self-customize &mdash; drop in your site name, PI, and roles and you&rsquo;re set. If you&rsquo;d rather we tailor the procedures to your specific protocols, systems, and organizational structure &mdash; and walk them through with you before you file &mdash; we do that as a scoped engagement. Tell us what you need and we&rsquo;ll send back a plan and a quote.</p>
+          <p class="tailor-anchor">Tailoring is a Purple Directive consulting engagement &mdash; <strong>starts at $497</strong>. <a href="/consulting">See consulting &rarr;</a></p>
+        </div>
+        <div class="tailor-cta">
+          <form class="tailor-form" method="post" action="/api/sop-customization" data-sop-form>
+            <input type="hidden" name="source" value="sop-bundle" />
+            <input type="text" name="company_url" tabindex="-1" autocomplete="off" class="tf-trap" aria-hidden="true" />
+            <div class="tf-two">
+              <input name="name" required autocomplete="name" placeholder="Your name" aria-label="Your name" />
+              <input type="email" name="email" required autocomplete="email" placeholder="Work email" aria-label="Work email" />
+            </div>
+            <input name="site" autocomplete="organization" placeholder="Site / organization" aria-label="Site or organization" />
+            <input name="sops" placeholder="Which SOPs to tailor (or &ldquo;all 13&rdquo;)" aria-label="Which SOPs to tailor" />
+            <input name="context" placeholder="Protocols, systems, and timeline" aria-label="Protocols, systems, and timeline" />
+            <textarea name="message" rows="2" placeholder="Anything else we should know? (optional)" aria-label="Anything else we should know"></textarea>
+            <button type="submit" class="btn-primary">Request customization</button>
+            <small>We reply with a scoped plan &amp; quote &mdash; no charge to ask.</small>
+          </form>
+          <p class="tailor-ok" data-sop-ok hidden>Thanks &mdash; your request is in. We&rsquo;ll reply with a scoped plan and quote, usually within one business day.</p>
+          <p class="tailor-err" data-sop-err hidden></p>
+          <script is:inline>
+            (function () {
+              var p = new URLSearchParams(window.location.search);
+              var ok = p.get('sop'), err = p.get('sop_error');
+              if (ok === 'submitted') {
+                var f = document.querySelector('[data-sop-form]'); if (f) f.style.display = 'none';
+                var o = document.querySelector('[data-sop-ok]'); if (o) o.hidden = false;
+              } else if (err) {
+                var msgs = {
+                  'invalid': 'Please add your name and a valid email, then try again.',
+                  'not-configured': 'The request form is temporarily unavailable — email info@purpledirective.com and we’ll pick it up.',
+                  'auth': 'The request form is temporarily unavailable — email info@purpledirective.com.',
+                  'rate-limited': 'Too many attempts — wait a moment and try again.',
+                  'network': 'Network hiccup — try again in a moment.',
+                  'resend-down': 'Our mail service is having a moment — try again shortly, or email info@purpledirective.com.',
+                  'bad-request': 'Something went wrong submitting the form — try again?',
+                  'unknown': 'Something went wrong — please try again or email info@purpledirective.com.'
+                };
+                var e = document.querySelector('[data-sop-err]'); if (e) { e.textContent = msgs[err] || msgs.unknown; e.hidden = false; }
+              }
+            })();
+          </script>
+        </div>
       </div>
     </div>
   </section>
@@ -131,11 +259,12 @@ const sops = [
     <div class="container" style="max-width:680px;margin:0 auto">
       <div class="section-label">Questions</div>
       <h2 style="margin-bottom:var(--sp-lg)">Before you buy.</h2>
-      <details class="faq-item"><summary>What format are the files in?</summary><p>Every SOP comes as a branded PDF and an editable Word (.docx) file. Companion forms are in both formats. Everything is packaged in a single download.</p></details>
+      <details class="faq-item"><summary>What format are the files in?</summary><p>Every SOP comes as a branded PDF and an editable Word file. Companion forms are in both formats. Everything is packaged in a single download.</p></details>
       <details class="faq-item"><summary>Can I customize these for my site?</summary><p>Yes. The Word files have placeholder fields for your site name, PI, dates, and version numbers. Replace the bracketed placeholders and you have site-specific SOPs ready for PI sign-off.</p></details>
       <details class="faq-item"><summary>Are these aligned with the latest GCP guidelines?</summary><p>Each SOP is built on ICH E6(R2) with E6(R3) guidance notes, referencing 21 CFR Parts 11, 50, 56, and 312 as well as 45 CFR Part 46 where applicable.</p></details>
+      <details class="faq-item"><summary>Can I read a full SOP before buying?</summary><p>Yes. <a href="/training-qualification-sop">SOP-01 &mdash; Training &amp; Qualification of Study Staff</a> is published in full and free &mdash; the complete procedure, downloadable in editable Word and PDF with no signup, at the same depth as every SOP in the bundle.</p></details>
       <details class="faq-item"><summary>How do I receive the files?</summary><p>Immediately after purchase you receive an email with a download link that does not expire. Any trouble, email <a href="mailto:info@purpledirective.com">info@purpledirective.com</a>.</p></details>
-      <details class="faq-item"><summary>Do you offer customization services?</summary><p>Yes. If you need SOPs tailored to specific protocols or organizational structures, see our <a href="/consulting">consulting services</a>.</p></details>
+      <details class="faq-item"><summary>Do you offer customization services?</summary><p>Yes. The bundle self-customizes with placeholder fields, but if you&rsquo;d rather we tailor the procedures to your specific protocols, systems, and org structure, that&rsquo;s a scoped Purple Directive consulting engagement &mdash; it <strong>starts at $497</strong>. <a href="#tailor">Request customization</a> or <a href="/consulting">see consulting</a>.</p></details>
     </div>
   </section>
 
@@ -160,18 +289,40 @@ const sops = [
     </div>
   </section>
 
-  <script is:inline>
-    (function(){var d=document.getElementById('sampleDoc');if(!d)return;
-      d.addEventListener('contextmenu',function(e){e.preventDefault();});
-      d.addEventListener('dragstart',function(e){e.preventDefault();});})();
-  </script>
 </Site>
 
 <style>
-  .sample-doc{max-height:580px;overflow-y:auto;border:1px solid var(--border);border-radius:14px;background:var(--bg-tinted);padding:18px 18px 4px;-webkit-user-select:none;user-select:none;margin-top:var(--sp-lg)}
-  .sample-doc img{display:block;width:100%;max-width:760px;margin:0 auto 16px;border:1px solid var(--hairline);border-radius:6px;box-shadow:0 6px 22px rgba(20,12,40,.10);-webkit-user-drag:none;pointer-events:none}
+  .sample-card{margin-top:var(--sp-lg);border:1px solid var(--border);border-radius:14px;background:linear-gradient(180deg,var(--bg-tinted),var(--bg-card));padding:var(--sp-xl);max-width:640px}
+  .sample-card-body h3{font-size:1.2rem;margin:.7rem 0 .5rem;color:var(--text-primary)}
+  .sample-card-body p{font-size:.92rem;line-height:1.6;color:var(--text-secondary);margin:0;max-width:44rem}
+  .sample-badge{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.02em;color:var(--purple-primary);background:var(--purple-tint);padding:.28rem .7rem;border-radius:999px}
   .sample-note{font-size:.82rem;color:var(--text-muted);margin:.85rem 0 0}
-  .sample-doc::-webkit-scrollbar{width:10px}.sample-doc::-webkit-scrollbar-thumb{background:#d9d2ea;border-radius:8px}
+  /* .btn-ghost is built for the dark hero; recolor it for this light card */
+  .sample-card .btn-ghost{color:var(--purple-primary);border-color:var(--purple-primary)}
+  .sample-card .btn-ghost:hover{background:rgba(124,58,237,.08);border-color:var(--purple-primary)}
+
+  /* Hero tailoring link + done-for-you band */
+  .hero-tailor{margin:.9rem 0 0;font-size:.86rem;color:var(--text-secondary)}
+  .hero-tailor a{color:var(--purple-primary);font-weight:600}
+  .tailor-band{display:flex;gap:var(--sp-xl);align-items:flex-start;flex-wrap:wrap;border:1px solid var(--border);border-radius:14px;background:var(--bg-tinted);padding:var(--sp-xl)}
+  .tailor-main{flex:1 1 340px;min-width:0}
+  .tailor-main h2{margin:.3rem 0 .6rem}
+  .tailor-main>p{font-size:.92rem;line-height:1.65;color:var(--text-secondary);margin:0;max-width:44rem}
+  .tailor-anchor{margin-top:.85rem !important;font-size:.9rem !important;color:var(--text-primary) !important}
+  .tailor-anchor a{color:var(--purple-primary);font-weight:600}
+  .tailor-cta{flex:1 1 340px;max-width:420px;min-width:0}
+  .tailor-form{display:flex;flex-direction:column;gap:.5rem}
+  .tf-two{display:flex;gap:.5rem}
+  .tf-two input{flex:1 1 0;min-width:0}
+  .tf-trap{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+  .tailor-form input:not(.tf-trap),.tailor-form textarea{width:100%;padding:.6rem .75rem;border:1px solid var(--border);border-radius:7px;font-family:var(--font-sans);font-size:.88rem;background:var(--bg-card);color:var(--text-primary)}
+  .tailor-form input:focus-visible,.tailor-form textarea:focus-visible{outline:2px solid var(--purple-primary);outline-offset:1px;border-color:var(--purple-primary)}
+  .tailor-form textarea{resize:vertical}
+  .tailor-form .btn-primary{width:100%;justify-content:center;margin-top:.15rem}
+  .tailor-form small{font-size:.78rem;color:var(--text-muted)}
+  .tailor-ok{font-size:.9rem;color:#166534;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:.7rem .85rem;margin:0;line-height:1.55}
+  .tailor-err{font-size:.86rem;color:#b91c1c;margin:.4rem 0 0}
+  @media (max-width:640px){.tailor-cta{max-width:none}.tf-two{flex-direction:column}}
 
   /* À la carte */
   .ala-list{list-style:none;margin-top:var(--sp-lg);border-top:1px solid var(--border)}

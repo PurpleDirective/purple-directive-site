@@ -1,82 +1,30 @@
 ---
-import Base from '../layouts/Base.astro';
+import Site from '../layouts/Site.astro';
+import '../styles/pages.css';
 ---
 
-<Base
+<Site
   title="Check Your Email — Practitioner Notes"
   description="One more step to subscribe to Practitioner Notes from Purple Directive."
 >
-  <section class="section hero">
-    <p class="eyebrow">Almost there</p>
-    <h1>Check your inbox to <span class="accent">confirm</span></h1>
-    <p class="subtitle">
-      We just sent you an email with a confirmation link. Click the link to
-      finish subscribing to <strong>Practitioner Notes</strong> — monthly
-      observations from inside FDA-regulated clinical research operations.
-    </p>
-    <p class="subtitle" style="margin-top: 1rem; font-size: 0.92rem;">
-      Didn't get the email? Check your spam folder, then add
-      <code>practitioner-notes@mail.beehiiv.com</code> to your contacts so
-      future issues land in your inbox. If it still hasn't arrived in 5
-      minutes, email <a href="mailto:info@purpledirective.com">info@purpledirective.com</a>.
-    </p>
-    <div style="margin-top: 2rem; text-align: center;">
-      <a href="/" class="back-btn">Back to Home</a>
+  <section class="prod-hero" style="text-align:center">
+    <div class="container">
+      <div class="section-label" style="color:#cbb8ff">Almost there</div>
+      <h1 style="margin-left:auto;margin-right:auto">Check your inbox to <span style="color:#b69bff">confirm</span></h1>
+      <p class="lede" style="margin-left:auto;margin-right:auto">
+        We just sent you an email with a confirmation link. Click the link to
+        finish subscribing to <strong style="color:#fff">Practitioner Notes</strong> — monthly
+        observations from inside FDA-regulated clinical research operations.
+      </p>
+      <p class="lede" style="margin:1rem auto 0;font-size:0.92rem">
+        Didn't get the email? Check your spam folder, then add
+        <code style="font-family:var(--font-mono);font-size:0.88rem;background:rgba(124,58,237,0.14);padding:0.1em 0.35em;border-radius:4px;color:#cbb8ff">practitioner-notes@mail.beehiiv.com</code> to your contacts so
+        future issues land in your inbox. If it still hasn't arrived in 5
+        minutes, email <a href="mailto:info@purpledirective.com" style="color:#cbb8ff;font-weight:500">info@purpledirective.com</a>.
+      </p>
+      <div class="cta-row" style="justify-content:center;margin-top:2rem">
+        <a href="/" class="btn-ghost">Back to Home</a>
+      </div>
     </div>
   </section>
-</Base>
-
-<style>
-  .hero {
-    text-align: center;
-    max-width: 720px;
-    margin: 0 auto;
-    padding-top: var(--spacing-xl);
-    padding-bottom: var(--spacing-xl);
-  }
-
-  .eyebrow {
-    font-size: 0.72rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--purple-primary);
-    margin-bottom: var(--spacing-sm);
-  }
-
-  .accent {
-    color: var(--purple-primary);
-  }
-
-  .subtitle {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
-    max-width: 560px;
-    margin: var(--spacing-md) auto 0;
-  }
-
-  .subtitle code {
-    font-family: var(--font-mono, 'SF Mono', monospace);
-    font-size: 0.88rem;
-    background: var(--bg-card);
-    padding: 0.1em 0.35em;
-    border-radius: 4px;
-  }
-
-  .back-btn {
-    display: inline-block;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-
-  .back-btn:hover {
-    border-color: var(--purple-primary);
-    color: var(--text-primary);
-  }
-</style>
+</Site>
