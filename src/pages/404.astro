@@ -36,19 +36,20 @@ import Site from '../layouts/Site.astro';
     justify-content: center;
     flex-wrap: wrap;
   }
+  /* on the dark hero, not the light-section palette */
   .back-btn {
     display: inline-block;
-    color: var(--text-secondary);
+    color: var(--on-dark-2);
     font-size: 0.9rem;
     font-weight: 500;
     padding: 0.7rem 1.5rem;
-    border: 1px solid var(--border);
+    border: 1px solid rgba(124, 58, 237, 0.4);
     border-radius: 8px;
     text-decoration: none;
     transition: border-color 0.2s, color 0.2s;
   }
   .back-btn:hover {
-    border-color: var(--purple-primary);
-    color: var(--purple-primary);
+    border-color: var(--purple-light);
+    color: #fff;
   }
 </style>
