@@ -1,0 +1,47 @@
+---
+import Site from '../layouts/Site.astro';
+import '../styles/pages.css';
+---
+
+<Site title="Page Not Found" description="The page you're looking for doesn't exist.">
+  <section class="section">
+    <div class="container">
+      <div class="nf">
+        <p class="nf-code">404</p>
+        <h1>Page not found</h1>
+        <p class="nf-sub">
+          The page you're looking for doesn't exist or has moved.
+        </p>
+        <a href="/" class="btn-primary">Back to the homepage</a>
+      </div>
+    </div>
+  </section>
+</Site>
+
+<style>
+  .nf {
+    max-width: 520px;
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .nf-code {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--purple-primary);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .nf h1 {
+    font-size: 1.6rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .nf-sub {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-lg);
+  }
+</style>
