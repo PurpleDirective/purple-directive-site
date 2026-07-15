@@ -10,9 +10,16 @@ import '../styles/pages.css';
         <p class="nf-code">404</p>
         <h1>Page not found</h1>
         <p class="nf-sub">
-          The page you're looking for doesn't exist or has moved.
+          The page you're looking for doesn't exist or has moved. If you followed a
+          download link from a purchase email and landed here, email
+          <a href="mailto:info@purpledirective.com">info@purpledirective.com</a> and
+          we'll resend it.
         </p>
-        <a href="/" class="btn-primary">Back to the homepage</a>
+        <div class="nf-links">
+          <a href="/" class="btn-primary">Back to the homepage</a>
+          <a href="/sop-bundle" class="nf-alt">SOP Templates</a>
+          <a href="/consulting" class="nf-alt">Consulting</a>
+        </div>
       </div>
     </div>
   </section>
@@ -43,5 +50,35 @@ import '../styles/pages.css';
     font-size: 0.9rem;
     color: var(--text-secondary);
     margin-bottom: var(--spacing-lg);
+  }
+
+  .nf-sub a {
+    color: var(--purple-primary);
+    font-weight: 500;
+  }
+
+  .nf-links {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .nf-alt {
+    display: inline-block;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.7rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .nf-alt:hover {
+    border-color: var(--purple-primary);
+    color: var(--purple-primary);
   }
 </style>
