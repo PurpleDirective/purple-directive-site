@@ -1,0 +1,54 @@
+---
+import Site from '../layouts/Site.astro';
+---
+
+<Site title="Page not found" description="That page doesn't exist. Find what you were looking for from the Purple Directive home page.">
+  <section class="section hero">
+    <div class="code-label">404</div>
+    <h1>That page doesn't <span class="accent">exist</span></h1>
+    <p class="subtitle">
+      The link may be mistyped or out of date. If you followed a download link from a purchase
+      email and landed here, email <a href="mailto:info@purpledirective.com">info@purpledirective.com</a>
+      and we'll resend it.
+    </p>
+    <div class="link-row">
+      <a href="/" class="btn-primary">Back to Home</a>
+      <a href="/sop-bundle" class="back-btn">SOP Templates</a>
+      <a href="/consulting" class="back-btn">Consulting</a>
+    </div>
+  </section>
+</Site>
+
+<style>
+  .code-label {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--purple-primary);
+    margin-bottom: 0.6rem;
+  }
+  .subtitle a { color: var(--purple-primary); font-weight: 500; }
+  .link-row {
+    margin-top: 2rem;
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .back-btn {
+    display: inline-block;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.7rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .back-btn:hover {
+    border-color: var(--purple-primary);
+    color: var(--purple-primary);
+  }
+</style>
