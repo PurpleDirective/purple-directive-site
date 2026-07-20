@@ -1,0 +1,49 @@
+# Cloudflare Pages configuration for purpledirective.com (project:
+# purple-directive-site). First committed 2026-07-20 (TASK-0720-101) — before
+# that, bindings lived only in the CF dashboard and this file existed only as
+# an untracked local note, which meant the config was not reproducible from
+# the repo (see 6.Infra/AI-DATA-COLLECTION-AUDIT.md for why that bit us).
+#
+# This file was seeded from `wrangler pages download config` (an exact replica
+# of the live project's runtime config) plus the FEEDBACK_DB binding. With a
+# committed wrangler.toml, Pages treats THIS file as the source of truth for
+# Functions bindings/vars — add new bindings here, not in the dashboard.
+# Secrets (RESEND_API_KEY, FEEDBACK_ADMIN_KEY, …) stay encrypted in the
+# dashboard / `wrangler pages secret put` and are unaffected by this file.
+# Build settings (build command, NODE_VERSION for builds) also remain in the
+# dashboard — this file governs Functions runtime only.
+#
+# Top-level keys apply to preview deployments; [env.production] to production.
+# A named env does NOT inherit top-level bindings — list production's fully.
+
+name = "purple-directive-site"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-03-03"
+
+[vars]
+BEEHIIV_PUBLICATION_ID = "pub_6f5579d5-0f7c-4690-b671-41753cf7b391"
+NODE_VERSION = "20"
+
+# Anonymous product-feedback intake (/feedback → functions/api/feedback.ts;
+# schema: functions/api/_feedback-schema.sql). Bound for preview AND production.
+[[d1_databases]]
+binding = "FEEDBACK_DB"
+database_name = "pd-feedback"
+database_id = "b4089385-6c78-4952-9017-fe6ee64f2b08"
+
+[env.production.vars]
+BEEHIIV_PUBLICATION_ID = "pub_6f5579d5-0f7c-4690-b671-41753cf7b391"
+NODE_VERSION = "20"
+PUBLIC_CHAT_ENABLED = "true"
+
+# Full-interaction log for the public site assistant (functions/api/chat.ts).
+# Production-only, matching the live dashboard config this file replaced.
+[[env.production.d1_databases]]
+binding = "CHAT_LOG_DB"
+database_name = "pd-chat-logs"
+database_id = "1404adbd-68c9-40fb-838e-c0e57458f8ff"
+
+[[env.production.d1_databases]]
+binding = "FEEDBACK_DB"
+database_name = "pd-feedback"
+database_id = "b4089385-6c78-4952-9017-fe6ee64f2b08"

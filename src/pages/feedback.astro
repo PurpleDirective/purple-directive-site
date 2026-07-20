@@ -1,0 +1,138 @@
+---
+import Site from '../layouts/Site.astro';
+---
+
+<Site
+  title="Feedback"
+  description="Tell us what's broken, confusing, or missing in any Purple Directive product. Anonymous by default — no account, no tracking."
+>
+  <section class="section hero">
+    <h1>Send us <span class="accent">feedback</span></h1>
+    <p class="subtitle">
+      Complaints, bugs, confusing bits, improvement ideas — about any of our products, or us.
+      Goes straight to the internal team; nothing you write here is ever shown publicly
+      unless you explicitly say we may quote you.
+    </p>
+  </section>
+
+  <section class="feedback-wrap">
+    <p id="feedback-error" class="form-error" style="display:none"></p>
+
+    <form class="feedback-form" action="/api/feedback" method="POST">
+      <!-- honeypot: bots fill this; humans never see it -->
+      <input type="text" name="company_website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <input type="hidden" name="page" id="page-field" value="" />
+
+      <label>What is this about? <span class="req">*</span>
+        <select name="product" id="product-select" required>
+          <option value="" disabled selected>Select…</option>
+          <option value="sops">SOP Bundle</option>
+          <option value="nexrial">Nexrial CTMS</option>
+          <option value="quillpdf">QuillPDF</option>
+          <option value="quell">Quell</option>
+          <option value="purplesign">PurpleSign</option>
+          <option value="misam">Misam</option>
+          <option value="volstrin">Volstrin</option>
+          <option value="general">General / something else</option>
+        </select>
+      </label>
+
+      <label>Your feedback <span class="req">*</span>
+        <textarea name="message" required rows="6" maxlength="4000"
+          placeholder="What happened, what you expected, or what you'd change. Blunt is fine — blunt is useful."></textarea>
+      </label>
+
+      <label>Email — only if you want a reply
+        <input type="email" name="email" maxlength="160" />
+        <small>Anonymous by default. No account, no tracking. Leave email only if you want a reply.</small>
+      </label>
+
+      <label class="consent">
+        <input type="checkbox" name="quotable" id="quotable-box" value="yes" />
+        <span>You may quote me publicly (name/role optional below). Praise and criticism both count.</span>
+      </label>
+
+      <label id="name-role-label" style="display:none">Name / role for the quote
+        <input type="text" name="name_role" maxlength="200" placeholder='e.g. "CRC, academic site" — or leave blank to be quoted anonymously' />
+      </label>
+
+      <button type="submit" class="submit-btn">Send feedback</button>
+      <p class="priv-note">
+        We store your message, the product it's about, and your email if you gave one — never
+        your IP address or browser details. Feedback goes to the internal team only.
+      </p>
+    </form>
+  </section>
+</Site>
+
+<style>
+  .feedback-wrap { max-width: 680px; margin: 0 auto; padding: 0 1rem 3rem; }
+  .form-error {
+    background: #fdecec; border: 1px solid #e7a3a3; color: #8a1f1f;
+    padding: 0.7rem 0.9rem; border-radius: 8px; margin-bottom: 1.25rem; font-size: 0.92rem;
+  }
+  .feedback-form { display: flex; flex-direction: column; gap: 1.1rem; }
+  .feedback-form > label { display: flex; flex-direction: column; gap: 0.35rem; font-weight: 600; font-size: 0.95rem; }
+  .feedback-form input, .feedback-form textarea, .feedback-form select {
+    font: inherit; padding: 0.6rem 0.7rem; border: 1px solid var(--border);
+    border-radius: 8px; background: #fff; color: inherit; font-weight: 400;
+  }
+  .feedback-form textarea { resize: vertical; }
+  .feedback-form small { font-weight: 400; color: var(--text-secondary); font-size: 0.82rem; }
+  .req { color: var(--purple-primary); }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .consent { flex-direction: row !important; align-items: flex-start; gap: 0.6rem !important; font-weight: 400 !important; font-size: 0.9rem; }
+  .consent input { margin-top: 0.15rem; }
+  .priv-note { font-size: 0.85rem; color: var(--text-secondary); }
+  .submit-btn {
+    align-self: flex-start; margin-top: 0.25rem; cursor: pointer;
+    background: var(--purple-primary, #5B21B6); color: #fff; border: none;
+    padding: 0.8rem 1.6rem; border-radius: 8px; font-weight: 600; font-size: 1rem;
+  }
+  .submit-btn:hover { opacity: 0.92; }
+</style>
+
+<script is:inline>
+  // Prefill the product from ?product= (every product deep-links here, e.g.
+  // /feedback?product=sops from the SOP delivery email).
+  (function () {
+    var params = new URLSearchParams(location.search);
+    var p = (params.get('product') || '').toLowerCase();
+    var valid = ['sops', 'nexrial', 'quillpdf', 'quell', 'purplesign', 'misam', 'volstrin', 'general'];
+    var sel = document.getElementById('product-select');
+    if (sel && valid.indexOf(p) !== -1) sel.value = p;
+
+    // Record the page the visitor came from (path only — no query strings).
+    var pageField = document.getElementById('page-field');
+    if (pageField && document.referrer) {
+      try {
+        var ref = new URL(document.referrer);
+        if (ref.host === location.host) pageField.value = ref.pathname;
+      } catch (e) { /* leave blank */ }
+    }
+
+    // Show the attribution field only when the quote box is ticked.
+    var box = document.getElementById('quotable-box');
+    var nameLabel = document.getElementById('name-role-label');
+    if (box && nameLabel) {
+      box.addEventListener('change', function () {
+        nameLabel.style.display = box.checked ? '' : 'none';
+      });
+    }
+
+    // Surface submit error codes redirected back from /api/feedback.
+    var code = params.get('feedback_error');
+    if (!code) return;
+    var map = {
+      'missing-product': 'Please pick what your feedback is about.',
+      'missing-message': 'Please write your feedback before sending.',
+      'invalid-email': 'That email address looks invalid — fix it or leave it blank.',
+      'rate-limited': 'That’s a lot of feedback in a short time — please wait a few minutes and try again.',
+      'unavailable': 'We couldn’t save your feedback just now. Please try again, or email info@purpledirective.com.',
+      'bad-request': 'Your submission could not be read. Please try again.',
+      'unknown': 'Something went wrong. Please try again or email info@purpledirective.com.'
+    };
+    var el = document.getElementById('feedback-error');
+    if (el) { el.textContent = map[code] || map['unknown']; el.style.display = 'block'; }
+  })();
+</script>
