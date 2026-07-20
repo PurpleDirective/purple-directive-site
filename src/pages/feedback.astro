@@ -23,7 +23,7 @@ import Site from '../layouts/Site.astro';
       <input type="text" name="company_website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
       <input type="hidden" name="page" id="page-field" value="" />
 
-      <label>What is this about? <span class="req">*</span>
+      <label><span class="lt">What is this about? <span class="req">*</span></span>
         <select name="product" id="product-select" required>
           <option value="" disabled selected>Select…</option>
           <option value="sops">SOP Bundle</option>
@@ -37,7 +37,7 @@ import Site from '../layouts/Site.astro';
         </select>
       </label>
 
-      <label>Your feedback <span class="req">*</span>
+      <label><span class="lt">Your feedback <span class="req">*</span></span>
         <textarea name="message" required rows="6" maxlength="4000"
           placeholder="What happened, what you expected, or what you'd change. Blunt is fine — blunt is useful."></textarea>
       </label>
