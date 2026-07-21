@@ -38,6 +38,7 @@
  */
 import { AwsClient } from 'aws4fetch';
 import { SYSTEM_PROMPT } from './_chat-system-prompt';
+import { scrubMessagesJson, scrubPhi } from './_phi-scrub';
 
 interface Env {
   AWS_ACCESS_KEY_ID?: string;
@@ -168,6 +169,9 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     body: unknown,
     extra: Partial<LogRecord> = {},
   ): Response => {
+    // PHI scrub applies to the STORED copy only — the client `body` (and thus the
+    // visitor's reply) is untouched. No PHI is expected here, but the D1 log is a
+    // training-corpus source, so we redact defensively before persistence.
     logInteraction(context, env, {
       ts: meta.ts,
       request_id: meta.request_id,
@@ -178,8 +182,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       model: modelId,
       region,
       turn_count: extra.turn_count ?? null,
-      messages_json: extra.messages_json ?? '[]',
-      reply: extra.reply ?? null,
+      messages_json: scrubMessagesJson(extra.messages_json ?? '[]'),
+      reply: extra.reply != null ? scrubPhi(extra.reply) : null,
       stop_reason: extra.stop_reason ?? null,
       status,
       outcome,
