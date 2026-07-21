@@ -1,0 +1,4 @@
+Contact: mailto:admin@purpledirective.com
+Expires: 2027-05-04T23:59:59.000Z
+Preferred-Languages: en
+Canonical: https://purpledirective.com/.well-known/security.txt
