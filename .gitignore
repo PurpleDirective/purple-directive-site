@@ -22,3 +22,8 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# design/preview scratch + agent worktrees (not shipped source)
+.claude/worktrees/
+previews/
+previews-archive/
