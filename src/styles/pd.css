@@ -97,6 +97,17 @@
 
   /* ── Light sections ── */
   .section{padding:var(--sp-2xl) 0}
+  /* Utility hero (404, thank-you, review, intake-received): these pages put
+     h1/.subtitle directly inside `.section.hero` without the homepage hero's
+     `.container` scaffolding, so the atmosphere overlays (z-index 1) render
+     ON TOP of the text and the text keeps light-background body colors on
+     the dark gradient. Lift and recolor. */
+  .section.hero{padding-left:var(--sp-lg);padding-right:var(--sp-lg)}
+  .section.hero>*{position:relative;z-index:2}
+  .section.hero h1{color:var(--on-dark)}
+  .section.hero .subtitle{color:var(--on-dark-2);max-width:42rem;margin-top:.6rem}
+  .section.hero .subtitle a{color:#cbb8ff;font-weight:500}
+  .section.hero .subtitle a:hover{color:#fff}
   .section-label{font-family:var(--font-mono);font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--purple-primary);margin-bottom:.7rem}
   h2{font-size:1.85rem;font-weight:700;letter-spacing:-.025em;line-height:1.15;color:var(--text-primary)}
   .lede{color:var(--text-secondary);max-width:42rem;font-size:1.02rem;margin-top:.6rem}

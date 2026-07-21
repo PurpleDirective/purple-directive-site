@@ -4,12 +4,13 @@ import '../styles/pages.css';
 
 // SoftwareApplication + FAQ structured data for the Quell AI-blocker extension.
 // Claims mirror the product README exactly — including the "what it does NOT do"
-// honesty. No store URL is asserted here because Quell installs unpacked / from
-// source today; add the Chrome Web Store URL when the listing is live.
+// honesty. Listing live on the Chrome Web Store since 2026-07-17 (v0.4.1).
+const CWS_URL = "https://chromewebstore.google.com/detail/hipifmmjmbnkhfajkbmcjkajlfjiehho";
 const appSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "Quell",
+  "installUrl": CWS_URL,
   "applicationCategory": "BrowserApplication",
   "operatingSystem": "Chrome, Edge (Manifest V3)",
   "url": "https://purpledirective.com/quell",
@@ -91,8 +92,9 @@ const faqSchema = {
           phoned home.
         </p>
         <div class="cta-row">
-          <a href="#install" class="btn-primary">How to install
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+          <a href={CWS_URL} class="btn-primary" rel="noopener" target="_blank">Add to Chrome — free
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="#install" class="btn-ghost">Other ways to install</a>
         </div>
         <p class="hero-note">
           Free forever. Open source under MIT — read the code on
@@ -167,7 +169,12 @@ const faqSchema = {
     <div class="doc-block" id="install">
     <h2>How to install</h2>
     <p>
-      Quell is open source and installs as an unpacked extension today:
+      The easy way: <a href={CWS_URL} rel="noopener" target="_blank">install Quell
+      from the Chrome Web Store</a> — one click, works on Chrome and Edge, updates
+      automatically.
+    </p>
+    <p>
+      Prefer to build from source? Quell is open source and also installs unpacked:
     </p>
     <ol>
       <li>Open <code>chrome://extensions</code> (or <code>edge://extensions</code>).</li>
@@ -177,7 +184,7 @@ const faqSchema = {
     </ol>
     <p class="buy-note">
       Source and instructions:
-      <a href="https://github.com/PurpleDirective" rel="noopener" target="_blank">github.com/PurpleDirective</a>.
+      <a href="https://github.com/PurpleDirective/quell" rel="noopener" target="_blank">github.com/PurpleDirective/quell</a>.
     </p>
     </div>
     </div>

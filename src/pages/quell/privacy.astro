@@ -1,0 +1,116 @@
+---
+import Site from '../../layouts/Site.astro';
+import '../../styles/pages.css';
+---
+
+<Site title="Quell Privacy Policy" description="Privacy policy for Quell, the browser extension by Purple Directive. Quell collects nothing — no analytics, no telemetry, no accounts, no servers.">
+  <section class="section">
+    <div class="container">
+    <div class="legal-page">
+    <h1>Quell Privacy Policy</h1>
+    <p class="legal-updated">Effective date: July 6, 2026 · Last updated: July 14, 2026</p>
+
+    <p>
+      Quell is a browser extension by Purple Directive that hides unwanted content
+      (AI feature blocks, cookie-consent pop-ups) locally in your browser. This policy
+      covers the Quell extension only; the
+      <a href="/privacy">Purple Directive website privacy policy</a> covers this website.
+    </p>
+
+    <h2>What Quell Collects</h2>
+    <p>
+      <strong>Nothing.</strong> Quell has no analytics, no telemetry, no accounts, and no servers.
+    </p>
+
+    <h2>What Quell Stores</h2>
+    <p>
+      Your settings (which features are on or off, sites where you've paused blocking)
+      and a running count of blocked elements are stored in your browser's local
+      extension storage (<code>chrome.storage.local</code>) on your device. This data never
+      leaves your machine and is deleted when you uninstall the extension.
+    </p>
+
+    <h2>What Quell Can Access</h2>
+    <ul>
+      <li>Google and Bing search result pages, to hide AI feature blocks there.</li>
+      <li>
+        If — and only if — you enable the optional Cookie banners feature, Quell can
+        run on the pages you visit to hide consent banners. It reads nothing and
+        sends nothing; the access exists solely to inject hiding rules.
+      </li>
+    </ul>
+
+    <h2>Network Activity</h2>
+    <p>
+      The published extension makes no network requests. Blocklists ship inside the
+      extension package and are updated through normal extension updates.
+    </p>
+
+    <h2>Changes &amp; Contact</h2>
+    <p>
+      Material changes to this policy will be reflected in the extension's changelog
+      and on this page. Questions:
+      <a href="mailto:support@purpledirective.com">support@purpledirective.com</a>.
+    </p>
+    </div>
+    </div>
+  </section>
+</Site>
+
+<style>
+  .legal-page {
+    max-width: 680px;
+    padding: var(--spacing-md) 0;
+  }
+
+  .legal-page h1 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .legal-updated {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .legal-page h2 {
+    font-size: 1.05rem;
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-sm);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border);
+  }
+
+  .legal-page h2:first-of-type {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .legal-page p,
+  .legal-page li {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .legal-page ul {
+    padding-left: 1.5rem;
+    margin: var(--spacing-sm) 0;
+  }
+
+  .legal-page li {
+    margin-bottom: 0.3rem;
+  }
+
+  .legal-page a {
+    color: var(--purple-primary);
+  }
+
+  .legal-page code {
+    font-size: 0.82rem;
+    background: var(--bg-tinted);
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+  }
+</style>
