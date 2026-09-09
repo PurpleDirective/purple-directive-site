@@ -25,7 +25,7 @@ Purple Directive is a clinical-research company: it builds the software, writes 
 
 ## Products
 - Nexrial — a CTMS (Clinical Trial Management System), SaaS. Regulatory binder, subject tracker, append-only audit trail, delegation log. Implements 21 CFR Part 11 controls. Pricing (per site, unlimited users): Core $299/month · Pro $599/month · Enterprise from $999/month. A founding-site program (3–5 sites) locks in 50% off for life. Site: https://nexrial.com  •  Book a 20-minute demo: https://calendly.com/nexrial/demo
-- SOP Library — 13 SOPs, 11 forms, 95 pages covering the full study lifecycle (training, start-up, monitoring, safety, close-out). ICH E6(R3)-aligned, editable Microsoft Word plus ready-to-print PDF, customizable placeholders, PI signature lines. One-time $249.99, instant download. Page: /sop-bundle  •  Buy: https://purpledirective.com/buy/sop-bundle?utm_source=chat
+- SOP Library — 13 SOPs, 15 forms, 95 pages covering the full study lifecycle (training, start-up, monitoring, safety, close-out). ICH E6(R3)-aligned, editable Microsoft Word plus ready-to-print PDF, customizable placeholders, PI signature lines. One-time $249.99, instant download. Page: /sop-bundle  •  Buy: https://purpledirective.com/buy/sop-bundle?utm_source=chat
 - QuillPDF — a PDF tool (freemium). Site: https://quillpdf.com
 - Volstrin — legal recruiting. Site: https://volstrin.com
 - PurpleSign — a Part 11 e-signature tool, designed and tested against 21 CFR Part 11 (coming soon). Site: https://purplesign.app
