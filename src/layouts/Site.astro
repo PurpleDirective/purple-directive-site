@@ -117,7 +117,8 @@ const chatEnabled = import.meta.env.PUBLIC_CHAT_ENABLED === 'true';
        sessionStorage, and removed from the address bar. A click on a /buy/
        link sends buy_click with a fresh join key and adds j=<key> to that
        link; the /buy worker puts the key on the Stripe checkout so the sale
-       joins back to this visit. Runs before t.js (which is deferred).
+       joins back to this visit. Runs before c.js (which is deferred) and is
+       independent of it — this script posts to /api/event directly.
        Contract: PurpleDirective repo, infra/stripe-fulfillment/README.md -->
   <script is:inline>
     (function(){
@@ -162,16 +163,15 @@ const chatEnabled = import.meta.env.PUBLIC_CHAT_ENABLED === 'true';
       document.addEventListener('auxclick',onClick,true);
     })();
   </script>
-  <script defer src="https://analytics.purpledirective.com/t.js"></script>
   <!-- pd-analytics v2 client (clicks, scroll depth, engagement time, JS errors,
-       failed requests, web vitals, masked session recordings). Standard mode
-       here — this is the marketing site, no patient/tenant data ever reaches
-       it. NOTE: per infra/services/pd-analytics/README.md ("Embed snippets"),
-       t.js and c.js both send a pageview beacon on load — running both here
-       double-counts pageviews until this site fully migrates off t.js/the
-       go_arrival+buy_click inline script above onto c.js's own attribution
-       path. Flagged, not resolved, in this change: task instructions were to
-       add c.js while keeping t.js and the inline attribution script working. -->
+       failed requests, web vitals, masked session recordings) — replaces
+       t.js, which sent the same pageview beacon and would double-count
+       pageviews if loaded alongside c.js (both send one on load; Fable
+       review on PR #45, 2026-09-25). c.js's pageview fields are t.js-
+       compatible, so nothing downstream needs to change. Standard mode —
+       this is the marketing site, no patient/tenant data ever reaches it.
+       The go_arrival/buy_click inline script above is untouched: it posts
+       directly to /api/event and never depended on t.js. -->
   <script defer src="https://analytics.purpledirective.com/c.js"
           data-site="purpledirective.com" data-privacy="standard" data-record="masked"></script>
   <!-- Cloudflare Web Analytics -->
