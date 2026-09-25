@@ -67,7 +67,8 @@ import '../../styles/pages.css';
         <strong>your browser</strong> copies those settings to your own account so your
         other computers get them. That sync is run by your browser's maker under their
         privacy terms; Purple Directive never receives it and cannot read it. If you are
-        not signed in, or sync is off, the settings stay on this device.
+        not signed in, or sync is off, the settings stay on this device. Firefox for Android
+        does not sync extension settings, so there they always stay on the device.
       </li>
       <li>
         <strong>Three switches stay on each device</strong> and are never synced: other
@@ -137,7 +138,7 @@ import '../../styles/pages.css';
     <p>
       Material changes to this policy will be reflected in the extension's changelog
       and on this page. Questions:
-      <a href="mailto:support@purpledirective.com">support@purpledirective.com</a>.
+      <Fragment set:html={'<!--email_off--><a href="mailto:support@purpledirective.com">support@purpledirective.com</a><!--/email_off-->'} />.
     </p>
     </div>
     </div>
