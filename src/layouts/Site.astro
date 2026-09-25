@@ -163,6 +163,17 @@ const chatEnabled = import.meta.env.PUBLIC_CHAT_ENABLED === 'true';
     })();
   </script>
   <script defer src="https://analytics.purpledirective.com/t.js"></script>
+  <!-- pd-analytics v2 client (clicks, scroll depth, engagement time, JS errors,
+       failed requests, web vitals, masked session recordings). Standard mode
+       here — this is the marketing site, no patient/tenant data ever reaches
+       it. NOTE: per infra/services/pd-analytics/README.md ("Embed snippets"),
+       t.js and c.js both send a pageview beacon on load — running both here
+       double-counts pageviews until this site fully migrates off t.js/the
+       go_arrival+buy_click inline script above onto c.js's own attribution
+       path. Flagged, not resolved, in this change: task instructions were to
+       add c.js while keeping t.js and the inline attribution script working. -->
+  <script defer src="https://analytics.purpledirective.com/c.js"
+          data-site="purpledirective.com" data-privacy="standard" data-record="masked"></script>
   <!-- Cloudflare Web Analytics -->
   <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "be7494dd3df347c1b626566b5b386d91"}'></script>
 </body>
