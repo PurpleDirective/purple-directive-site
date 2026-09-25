@@ -8,7 +8,7 @@ import '../../styles/pages.css';
     <div class="container">
     <div class="legal-page">
     <h1>Quell Privacy Policy</h1>
-    <p class="legal-updated">Effective date: July 6, 2026 · Last updated: July 14, 2026</p>
+    <p class="legal-updated">Effective date: September 10, 2026 · Last updated: September 24, 2026</p>
 
     <p>
       Quell is a browser extension by Purple Directive that hides unwanted content
@@ -32,11 +32,31 @@ import '../../styles/pages.css';
 
     <h2>What Quell Can Access</h2>
     <ul>
-      <li>Google and Bing search result pages, to hide AI feature blocks there.</li>
+      <li>
+        Google and Bing search result pages, to hide AI feature blocks there. This is
+        the only site access Quell is installed with.
+      </li>
+      <li>
+        If — and only if — you enable the optional DuckDuckGo / Brave / Yahoo engines,
+        Quell can run on those three search sites and nowhere else, to hide AI feature
+        blocks there. On DuckDuckGo and Brave you may instead choose "off at the
+        source", which adds those engines' own "no AI answer" parameter to the search
+        URL you are already loading — that request goes to the search engine, as your
+        search already did, and nowhere else. Quell only adds that parameter when it is
+        absent; a value you set yourself is never overwritten.
+      </li>
       <li>
         If — and only if — you enable the optional Cookie banners feature, Quell can
         run on the pages you visit to hide consent banners. It reads nothing and
         sends nothing; the access exists solely to inject hiding rules.
+      </li>
+      <li>
+        If — and only if — you additionally enable "Reject instead of hide" (off by
+        default), Quell will click the <em>Reject all</em> button on consent banners it
+        recognises. This is the one place Quell acts on a page rather than only
+        hiding part of it, which is why it is a separate opt-in switch. It only ever
+        activates controls belonging to a recognised consent platform, never a
+        site's own buttons.
       </li>
     </ul>
 
