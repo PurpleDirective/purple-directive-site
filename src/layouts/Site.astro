@@ -111,8 +111,69 @@ const chatEnabled = import.meta.env.PUBLIC_CHAT_ENABLED === 'true';
     })();
   </script>
 
-  <!-- PD Analytics -->
-  <script defer src="https://analytics.purpledirective.com/t.js"></script>
+  <!-- PD Analytics: short-link arrival and buy-click join. No cookies.
+       A /go/<slug> link lands with #g=<click id>. The id is sent once as
+       go_arrival under this visitor's own daily hash, kept for this tab in
+       sessionStorage, and removed from the address bar. A click on a /buy/
+       link sends buy_click with a fresh join key and adds j=<key> to that
+       link; the /buy worker puts the key on the Stripe checkout so the sale
+       joins back to this visit. Runs before c.js (which is deferred) and is
+       independent of it — this script posts to /api/event directly.
+       Contract: PurpleDirective repo, infra/stripe-fulfillment/README.md -->
+  <script is:inline>
+    (function(){
+      var E='https://analytics.purpledirective.com/api/event';
+      var A='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      function send(o){
+        try{
+          var b=JSON.stringify(o);
+          if(navigator.sendBeacon&&navigator.sendBeacon(E,b)) return;
+          fetch(E,{method:'POST',body:b,keepalive:true,headers:{'Content-Type':'text/plain'}}).catch(function(){});
+        }catch(e){}
+      }
+      function key(n){
+        var v=new Uint8Array(n),r='';
+        crypto.getRandomValues(v);
+        for(var i=0;i<n;i++) r+=A[v[i]%A.length];
+        return r;
+      }
+      var g=null, m=/^#g=([A-Za-z0-9]{16})$/.exec(location.hash);
+      if(m){
+        g=m[1];
+        try{ sessionStorage.setItem('_pdg',g); }catch(e){}
+        send({event:'go_arrival',path:location.pathname,props:{g:g}});
+        try{ history.replaceState(history.state,'',location.pathname+location.search); }catch(e){}
+      }else{
+        try{ g=sessionStorage.getItem('_pdg'); }catch(e){}
+      }
+      function onClick(ev){
+        var a=ev.target&&ev.target.closest?ev.target.closest('a[href]'):null;
+        if(!a) return;
+        var u; try{ u=new URL(a.href,location.href); }catch(e){ return; }
+        var s=/^\/buy\/([a-z0-9-]+)\/?$/.exec(u.pathname);
+        if(!s||u.origin!==location.origin) return;
+        var j=key(12);
+        u.searchParams.set('j',j);
+        a.href=u.toString();
+        var p={slug:s[1],j:j};
+        if(g) p.g=g;
+        send({event:'buy_click',path:location.pathname,props:p});
+      }
+      document.addEventListener('click',onClick,true);
+      document.addEventListener('auxclick',onClick,true);
+    })();
+  </script>
+  <!-- pd-analytics v2 client (clicks, scroll depth, engagement time, JS errors,
+       failed requests, web vitals, masked session recordings) — replaces
+       t.js, which sent the same pageview beacon and would double-count
+       pageviews if loaded alongside c.js (both send one on load; Fable
+       review on PR #45, 2026-09-25). c.js's pageview fields are t.js-
+       compatible, so nothing downstream needs to change. Standard mode —
+       this is the marketing site, no patient/tenant data ever reaches it.
+       The go_arrival/buy_click inline script above is untouched: it posts
+       directly to /api/event and never depended on t.js. -->
+  <script defer src="https://analytics.purpledirective.com/c.js"
+          data-site="purpledirective.com" data-privacy="standard" data-record="masked"></script>
   <!-- Cloudflare Web Analytics -->
   <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "be7494dd3df347c1b626566b5b386d91"}'></script>
 </body>
