@@ -8,7 +8,7 @@ import '../styles/pages.css';
     <div class="container">
     <div class="legal-page">
     <h1>Privacy Policy</h1>
-    <p class="legal-updated">Last updated: March 24, 2026</p>
+    <p class="legal-updated">Last updated: September 25, 2026</p>
 
     <p>
       Purple Directive ("we", "us", "our") operates the website purpledirective.com.
@@ -20,9 +20,47 @@ import '../styles/pages.css';
 
     <h3>When You Visit Our Site</h3>
     <p>
-      We use Cloudflare Web Analytics, a privacy-first analytics service that does not use
-      cookies, does not track individual visitors, and does not collect personal information.
-      It measures aggregate page views and referral sources only.
+      We use two analytics tools. Neither sets cookies, and neither is used for advertising.
+    </p>
+    <p>
+      <strong>Our own analytics.</strong> A small tracker served from
+      analytics.purpledirective.com, running on our own server, records for each page view:
+    </p>
+    <ul>
+      <li>the page path (for example <code>/sop-bundle</code>)</li>
+      <li>the site that referred you, as a host name only (for example linkedin.com)</li>
+      <li>campaign tags in the link you followed (<code>utm_source</code>, <code>utm_medium</code>, <code>utm_campaign</code>)</li>
+      <li>your country, as reported by Cloudflare's network</li>
+      <li>device type, browser and operating system, read from your browser's user agent</li>
+      <li>
+        a visitor ID: a one-way hash of your IP address, your browser's user agent and
+        the current date. Because the date is part of it, the ID changes every day, so
+        visits on different days cannot be linked. Your IP address itself is not stored.
+      </li>
+      <li>
+        whether the page is the first of your visit, noted in your browser's session
+        storage for that tab only (cleared when the tab closes)
+      </li>
+    </ul>
+    <p>
+      <strong>Clicks, masked session recordings and error reports.</strong> To find where
+      pages confuse people or break, we also collect which links and buttons are clicked,
+      masked recordings of how a page was used, and reports of errors in the page. None of
+      this includes health information.
+    </p>
+    <p>
+      <strong>Short links.</strong> Links we share in posts and emails look like
+      purpledirective.com/go/&hellip;. When you follow one, our server records the click
+      with the campaign the link was made for (for example, a LinkedIn post) and a random
+      click ID, then sends you to the page with that ID after a <code>#</code> in the
+      address. The page reads the ID once, sends it with your visit so the visit can be
+      matched to the link, keeps it in session storage for that tab, and removes it from
+      the address bar. The ID is random and says nothing about you.
+    </p>
+    <p>
+      <strong>Cloudflare Web Analytics.</strong> Cloudflare, which hosts this site, also
+      provides Cloudflare Web Analytics. It does not use cookies and reports aggregate page
+      views and referral sources.
     </p>
 
     <h3>When You Make a Purchase</h3>
@@ -31,6 +69,14 @@ import '../styles/pages.css';
       purchase a product, Stripe collects your payment information (card number, billing
       address, email). We do not store your payment details on our servers. We receive your
       name and email address from Stripe in order to deliver your purchase.
+    </p>
+    <p>
+      When you click a buy button, our analytics records the click with a random join key,
+      and the same key goes to Stripe with your checkout. Our record of the sale keeps that
+      key, the campaign tags of the link you used, and your answer to &ldquo;How did you
+      hear about us?&rdquo; if you gave one, so we can tell which pages and posts lead to
+      sales. If you start a checkout and do not finish it, we record that the checkout
+      expired, with the same campaign details and without your name or email address.
     </p>
 
     <h3>When You Contact Us</h3>
@@ -43,7 +89,8 @@ import '../styles/pages.css';
     <ul>
       <li>To deliver products you purchase (email with download link)</li>
       <li>To respond to support requests or inquiries</li>
-      <li>To understand aggregate site traffic (no individual tracking)</li>
+      <li>To understand how people find and use the site, and which pages, posts and links lead to purchases</li>
+      <li>To find and fix pages that break or confuse people</li>
     </ul>
     <p>We do not sell, rent, or share your personal information with third parties for marketing purposes.</p>
 
@@ -53,22 +100,24 @@ import '../styles/pages.css';
         <tr><th>Service</th><th>Purpose</th><th>Data Shared</th></tr>
       </thead>
       <tbody>
-        <tr><td>Stripe</td><td>Payment processing</td><td>Payment details, email, name</td></tr>
-        <tr><td>Cloudflare</td><td>Hosting, analytics, security</td><td>Aggregate traffic data (no PII)</td></tr>
+        <tr><td>Stripe</td><td>Payment processing</td><td>Payment details, email, name; the checkout's campaign tags and random join key</td></tr>
+        <tr><td>Cloudflare</td><td>Hosting, security, Cloudflare Web Analytics, short-link and buy-link redirects</td><td>Traffic passes through its network; analytics reported in aggregate</td></tr>
         <tr><td>Microsoft 365</td><td>Email delivery</td><td>Your email address (for purchase delivery)</td></tr>
       </tbody>
     </table>
 
     <h2>Data Retention</h2>
     <p>
-      Purchase records (name, email, transaction ID) are retained for accounting and tax
-      purposes. You may request deletion of your data by emailing
+      Purchase records (name, email, transaction ID, and how you found us) are retained for
+      accounting and tax purposes. Analytics records are kept on our own server. You may request deletion of your data by emailing
       <a href="mailto:info@purpledirective.com">info@purpledirective.com</a>.
     </p>
 
     <h2>Cookies</h2>
     <p>
-      Our website does not set first-party cookies. Stripe may set cookies during the
+      Our website does not set first-party cookies. Our analytics uses your browser's session
+      storage, which is cleared when you close the tab, to note whether a page is the first of
+      your visit and to hold a short-link click ID. Stripe may set cookies during the
       checkout process on their domain. Cloudflare may set a security cookie
       (<code>__cf_bm</code>) to distinguish humans from bots.
     </p>
