@@ -3,67 +3,135 @@ import Site from '../../layouts/Site.astro';
 import '../../styles/pages.css';
 ---
 
-<Site title="Quell Privacy Policy" description="Privacy policy for Quell, the browser extension by Purple Directive. Quell collects nothing — no analytics, no telemetry, no accounts, no servers.">
+<Site title="Quell Privacy Policy" description="Privacy policy for Quell, the browser extension by Purple Directive. Quell sends nothing unless you choose to report a broken site — then only that site's domain and the Quell version.">
   <section class="section">
     <div class="container">
     <div class="legal-page">
     <h1>Quell Privacy Policy</h1>
-    <p class="legal-updated">Effective date: September 10, 2026 · Last updated: September 24, 2026</p>
+    <p class="legal-updated">Effective date: September 25, 2026 · Last updated: September 25, 2026</p>
 
     <p>
-      Quell is a browser extension by Purple Directive that hides unwanted content
-      (AI feature blocks, cookie-consent pop-ups) locally in your browser. This policy
-      covers the Quell extension only; the
+      Quell is a browser extension by Purple Directive that hides content you did
+      not ask for — AI answers on search engines, cookie-consent banners and, if you
+      switch it on, newsletter pop-ups, chat widgets and "open in app" banners. It
+      does this in your browser. This policy covers Quell for Chrome, Microsoft Edge
+      and Firefox (desktop and Android); the
       <a href="/privacy">Purple Directive website privacy policy</a> covers this website.
     </p>
 
-    <h2>What Quell Collects</h2>
+    <h2>What Quell Sends to Purple Directive</h2>
     <p>
-      <strong>Nothing.</strong> Quell has no analytics, no telemetry, no accounts, and no servers.
+      <strong>Nothing, unless you press "This site looks broken" and then "Send report".</strong>
+    </p>
+    <p>
+      That report contains exactly two things, and Quell shows them to you before
+      anything is sent:
+    </p>
+    <ul>
+      <li>
+        the <strong>domain</strong> of the site you are on (for example
+        <code>shop.example.com</code>) — not the page address, not the path or search
+        terms, not any page content;
+      </li>
+      <li>the <strong>Quell version</strong> (for example <code>0.6.0</code>).</li>
+    </ul>
+    <p>
+      No identifier, account, cookie or browsing history is attached. Like any web
+      request, the report reaches our server from your IP address; the server does
+      not log or store IP addresses. To limit how often reports can be sent, it
+      turns the address into a one-way, salted hash and uses that hash as the key of
+      a rate-limit counter that covers 60 seconds (five reports per minute); it keeps
+      nothing else about the request. What it stores is a count per domain, per Quell
+      version, per day. Those counts are deleted after 180 days. We use them only to
+      find and fix sites Quell breaks.
+    </p>
+    <p>On Firefox, the browser itself also asks your permission the first time you send a report.</p>
+    <p>
+      Quell has no analytics, no telemetry and no accounts, and it never sends your
+      browsing anywhere else.
+    </p>
+    <p>
+      <strong>How the stores list this.</strong> Because a reported domain is a piece of
+      your browsing, Quell's store listings declare it: on the Chrome Web Store and
+      Microsoft Edge Add-ons as <em>web history</em> (limited to the domain you choose to
+      report), on Firefox Add-ons as optional <em>browsing activity</em> plus
+      <em>technical data</em> (the version number). It is used only to fix site breakage.
+      It is never sold, never shared, and never used for anything unrelated to Quell or
+      to determine creditworthiness or for lending.
     </p>
 
-    <h2>What Quell Stores</h2>
-    <p>
-      Your settings (which features are on or off, sites where you've paused blocking)
-      and a running count of blocked elements are stored in your browser's local
-      extension storage (<code>chrome.storage.local</code>) on your device. This data never
-      leaves your machine and is deleted when you uninstall the extension.
-    </p>
+    <h2>Where Your Settings Are Kept</h2>
+    <ul>
+      <li>
+        <strong>Your choices</strong> (which features are on or off, sites where you have
+        paused Quell) are saved in your browser's extension <strong>sync</strong> storage.
+        If you are signed in to your browser (a Google account in Chrome, a Microsoft
+        account in Edge, a Mozilla account in Firefox) and sync is on,
+        <strong>your browser</strong> copies those settings to your own account so your
+        other computers get them. That sync is run by your browser's maker under their
+        privacy terms; Purple Directive never receives it and cannot read it. If you are
+        not signed in, or sync is off, the settings stay on this device.
+      </li>
+      <li>
+        <strong>Three switches stay on each device</strong> and are never synced: other
+        search engines, cookie banners and pop-ups. They need site access that your
+        browser grants on each device separately.
+      </li>
+      <li>A running <strong>count of hidden items</strong> stays on this device.</li>
+    </ul>
+    <p>All of it is removed when you uninstall Quell (synced copies are removed by your browser's sync).</p>
 
     <h2>What Quell Can Access</h2>
     <ul>
       <li>
-        Google and Bing search result pages, to hide AI feature blocks there. This is
-        the only site access Quell is installed with.
+        <strong>Google and Bing search result pages</strong>, to hide AI features there.
+        This is the only site access Quell is installed with. (Firefox may ask you to
+        allow it.)
       </li>
       <li>
-        If — and only if — you enable the optional DuckDuckGo / Brave / Yahoo engines,
-        Quell can run on those three search sites and nowhere else, to hide AI feature
-        blocks there. On DuckDuckGo and Brave you may instead choose "off at the
-        source", which adds those engines' own "no AI answer" parameter to the search
-        URL you are already loading — that request goes to the search engine, as your
-        search already did, and nowhere else. Quell only adds that parameter when it is
-        absent; a value you set yourself is never overwritten.
+        <strong>DuckDuckGo, Brave Search and Yahoo Search</strong> — only if you switch
+        them on, which asks your browser for access to those three sites and nothing
+        else. On DuckDuckGo and Brave you may instead choose "off at the source", which
+        adds that engine's own "no AI answer" setting to the search address you are
+        already loading; that request goes to the search engine, as your search already
+        did. Quell only adds that setting when it is absent — a value you set yourself
+        is never overwritten.
       </li>
       <li>
-        If — and only if — you enable the optional Cookie banners feature, Quell can
-        run on the pages you visit to hide consent banners. It reads nothing and
-        sends nothing; the access exists solely to inject hiding rules.
+        <strong>All sites</strong> — only if you switch on Cookie banners or Pop-ups.
+        Quell then runs on the pages you visit to hide those elements. When you switch
+        both of them off, Quell gives this access back to your browser; switching either
+        one on again asks for it again. It looks at a page only to decide what to hide —
+        for example, never hiding the page's own article, a sign-in or checkout form, or
+        your cart — does that on your device, keeps nothing and sends nothing from those
+        pages.
       </li>
       <li>
-        If — and only if — you additionally enable "Reject instead of hide" (off by
-        default), Quell will click the <em>Reject all</em> button on consent banners it
-        recognises. This is the one place Quell acts on a page rather than only
-        hiding part of it, which is why it is a separate opt-in switch. It only ever
-        activates controls belonging to a recognised consent platform, never a
-        site's own buttons.
+        If you additionally switch on <strong>"Say reject all for me"</strong> (off by
+        default), Quell clicks the <em>Reject all</em> button of consent banners it
+        recognises. It checks that consent tool's own saved-choice cookie first, on your
+        device, so a choice you have already made is left alone. For the consent tool to
+        record your refusal it has to load, so with this switch on Quell no longer blocks
+        the consent tools it can answer for you (OneTrust, Cookiebot, Didomi, Osano);
+        they load from their providers as the site intended. Quell sends them nothing
+        itself. It only ever presses controls belonging to a recognised consent tool,
+        never a site's own buttons.
       </li>
     </ul>
 
     <h2>Network Activity</h2>
     <p>
-      The published extension makes no network requests. Blocklists ship inside the
-      extension package and are updated through normal extension updates.
+      Apart from a breakage report you choose to send, Quell makes no network requests
+      of its own. Its blocklists ship inside the extension and are updated through
+      normal extension updates.
+    </p>
+
+    <h2>Earlier Versions</h2>
+    <p>
+      Versions before 0.6.0 have no report button and send nothing, and they keep all
+      settings on this device only (no sync). They have fewer features, so some of the
+      access described above does not exist in them; none of them has any access
+      beyond what this policy describes.
     </p>
 
     <h2>Changes &amp; Contact</h2>
