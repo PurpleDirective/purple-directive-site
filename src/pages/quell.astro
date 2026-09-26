@@ -12,7 +12,7 @@ const appSchema = {
   "name": "Quell",
   "installUrl": CWS_URL,
   "applicationCategory": "BrowserApplication",
-  "operatingSystem": "Chrome, Edge (Manifest V3)",
+  "operatingSystem": "Web browser (Manifest V3)",
   "url": "https://purpledirective.com/quell",
   "description": "Free, open-source browser extension that removes forced AI features — Google AI Overviews and AI Mode, Bing Copilot — plus optional cookie-consent banners. No account and no analytics.",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -41,7 +41,7 @@ const faqSchema = {
       "name": "Is there a free AI blocker for Chrome?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Quell's blocking core is free forever, requires no account, and collects no analytics. Many other AI blockers are paywalled with dark patterns or are fragile single-site hacks; Quell keeps its blocklist fresh with an automated pipeline so it doesn't rot when sites change. It works in Chrome and Edge.",
+        "text": "Yes. Quell's blocking core is free forever, requires no account, and collects no analytics. Many other AI blockers are paywalled with dark patterns or are fragile single-site hacks; Quell keeps its blocklist fresh with an automated pipeline so it doesn't rot when sites change.",
       },
     },
     {
@@ -83,7 +83,7 @@ const faqSchema = {
   <section class="prod-hero">
     <div class="container prod-hero-grid">
       <div>
-        <div class="section-label">Free · Open source (MIT) · Chrome & Edge</div>
+        <div class="section-label">Free · Open source (MIT) · Browser extension</div>
         <h1>Turn off forced AI in your browser.</h1>
         <p class="lede">
           Quell quiets the web — starting with the AI features you didn't ask for.
@@ -102,7 +102,7 @@ const faqSchema = {
         <div class="facts">
           <span class="fact">Free forever</span>
           <span class="fact">No analytics</span>
-          <span class="fact">MV3 · Chrome &amp; Edge</span>
+          <span class="fact">Manifest V3</span>
           <span class="fact">MIT licensed</span>
         </div>
       </div>
@@ -168,14 +168,13 @@ const faqSchema = {
     <h2>How to install</h2>
     <p>
       The easy way: <a href={CWS_URL} rel="noopener" target="_blank">install Quell
-      from the Chrome Web Store</a> — one click, works on Chrome and Edge, updates
-      automatically.
+      from the Chrome Web Store</a> — one click, updates automatically.
     </p>
     <p>
       Prefer to build from source? Quell is open source and also installs unpacked:
     </p>
     <ol>
-      <li>Open <code>chrome://extensions</code> (or <code>edge://extensions</code>).</li>
+      <li>Open <code>chrome://extensions</code>.</li>
       <li>Enable <strong>Developer mode</strong>.</li>
       <li>Choose <strong>Load unpacked</strong> and select Quell's <code>extension/</code> folder from the source.</li>
       <li>Pin Quell, run a Google search, and open the popup to toggle modes.</li>
