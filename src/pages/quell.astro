@@ -12,9 +12,9 @@ const appSchema = {
   "name": "Quell",
   "installUrl": CWS_URL,
   "applicationCategory": "BrowserApplication",
-  "operatingSystem": "Chrome, Edge (Manifest V3)",
+  "operatingSystem": "Web browser (Manifest V3)",
   "url": "https://purpledirective.com/quell",
-  "description": "Free, open-source browser extension that removes forced AI features — Google AI Overviews and AI Mode, Bing Copilot — plus optional cookie-consent banners. No account, no tracking, no telemetry.",
+  "description": "Free, open-source browser extension that removes forced AI features — Google AI Overviews and AI Mode, Bing Copilot — plus optional cookie-consent banners. No account and no analytics.",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
   "license": "https://opensource.org/licenses/MIT",
   "publisher": {
@@ -41,7 +41,7 @@ const faqSchema = {
       "name": "Is there a free AI blocker for Chrome?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Quell's blocking core is free forever, requires no account, and collects nothing. Many other AI blockers are paywalled with dark patterns or are fragile single-site hacks; Quell keeps its blocklist fresh with an automated pipeline so it doesn't rot when sites change. It works in Chrome and Edge.",
+        "text": "Yes. Quell's blocking core is free forever, requires no account, and collects no analytics. Many other AI blockers are paywalled with dark patterns or are fragile single-site hacks; Quell keeps its blocklist fresh with an automated pipeline so it doesn't rot when sites change.",
       },
     },
     {
@@ -49,7 +49,7 @@ const faqSchema = {
       "name": "Does Quell track me or send my browsing anywhere?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. Quell has no analytics, no remote storage, and no telemetry. Your settings live in your browser's local storage on your own machine. The base install requests only storage, declarativeNetRequest (rule-based blocking that can't read your traffic), and scripting. The broad all-sites permission is optional and requested only if you turn on the cookie-banner feature.",
+        "text": "No. Quell does not collect analytics or track what you browse. Your settings are stored in your browser, which may sync them across your devices. The only thing Quell sends us is a report about a broken site, and only if you choose to send one. The Quell privacy policy has the details.",
       },
     },
     {
@@ -57,7 +57,7 @@ const faqSchema = {
       "name": "Does Quell delete my data from AI companies' servers?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No — and no browser extension can. Quell hides forced AI features in your browser, on your device. Sending opt-out signals and surfacing each platform's opt-out controls is planned for a later phase, but Quell will never claim to erase data from a company's servers.",
+        "text": "No — and no browser extension can. Quell hides forced AI features in your browser, on your device. Sending opt-out signals and surfacing each platform's opt-out controls is planned for a later phase, but Quell does not claim to erase data from a company's servers.",
       },
     },
     {
@@ -73,7 +73,7 @@ const faqSchema = {
 ---
 <Site
   title="Quell — turn off forced AI in your browser"
-  description="Quell is a free, open-source browser extension that removes forced AI features — Google AI Overviews and AI Mode, Bing Copilot — and, optionally, cookie-consent banners. No account, no tracking, no telemetry. Made by Purple Directive."
+  description="Quell is a free, open-source browser extension that removes forced AI features — Google AI Overviews and AI Mode, Bing Copilot — and, optionally, cookie-consent banners. No account and no analytics. Made by Purple Directive."
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
@@ -83,13 +83,12 @@ const faqSchema = {
   <section class="prod-hero">
     <div class="container prod-hero-grid">
       <div>
-        <div class="section-label">Free · Open source (MIT) · Chrome & Edge</div>
+        <div class="section-label">Free · Open source (MIT) · Browser extension</div>
         <h1>Turn off forced AI in your browser.</h1>
         <p class="lede">
           Quell quiets the web — starting with the AI features you didn't ask for.
           It removes Google AI Overviews and AI Mode and hides Bing Copilot, with
-          optional cookie-banner blocking. No account, no tracking, nothing
-          phoned home.
+          optional cookie-banner blocking. No account and no analytics.
         </p>
         <div class="cta-row">
           <a href={CWS_URL} class="btn-primary" rel="noopener" target="_blank">Add to Chrome — free
@@ -102,8 +101,8 @@ const faqSchema = {
         </p>
         <div class="facts">
           <span class="fact">Free forever</span>
-          <span class="fact">0 tracking</span>
-          <span class="fact">MV3 · Chrome &amp; Edge</span>
+          <span class="fact">No analytics</span>
+          <span class="fact">Manifest V3</span>
           <span class="fact">MIT licensed</span>
         </div>
       </div>
@@ -112,7 +111,7 @@ const faqSchema = {
         <ul>
           <li><strong>Google</strong> AI Overviews + AI Mode</li>
           <li><strong>Bing</strong> Copilot sidebar</li>
-          <li><strong>0</strong> tracking, telemetry, or accounts</li>
+          <li><strong>No</strong> analytics or accounts</li>
           <li><strong>MIT</strong> open source</li>
         </ul>
       </aside>
@@ -137,8 +136,7 @@ const faqSchema = {
       <strong>Cookie banners (beta, opt-in).</strong> Blocks the major consent
       platforms — OneTrust, Cookiebot, Quantcast, Sourcepoint, Didomi,
       Usercentrics, TrustArc — at the network layer, and hides common first-party
-      banners. Rules derive from the open EasyList Cookie list. This is the only
-      feature that needs the broad site permission, and it ships off by default.
+      banners. Rules derive from the open EasyList Cookie list. It is off by default.
     </p>
     </div>
 
@@ -148,7 +146,7 @@ const faqSchema = {
       Being straight about the limits is the point. Quell does <strong>not</strong>
       delete your data from any AI company's servers — no browser tool can. It does
       <strong>not</strong> stop AI globally; it works in your browser, on your
-      device. It does <strong>not</strong> track you or phone home. And it does
+      device. It does <strong>not</strong> collect analytics or track what you browse. And it does
       <strong>not</strong> block ads — uBlock Origin already does that better than
       anyone, for free, and that's the tool we point you to for ads.
     </p>
@@ -161,7 +159,7 @@ const faqSchema = {
       than 40% call them an annoyance (Prophet 2026; Stanford HAI 2026). The
       existing "AI blockers" are mostly paywalled with dark patterns or fragile
       single-site hacks. Quell is the honest one: the blocking core is free
-      forever, it collects nothing, and an automated pipeline keeps the blocklist
+      forever, it collects no analytics, and an automated pipeline keeps the blocklist
       fresh so it doesn't rot when sites change.
     </p>
     </div>
@@ -170,14 +168,13 @@ const faqSchema = {
     <h2>How to install</h2>
     <p>
       The easy way: <a href={CWS_URL} rel="noopener" target="_blank">install Quell
-      from the Chrome Web Store</a> — one click, works on Chrome and Edge, updates
-      automatically.
+      from the Chrome Web Store</a> — one click, updates automatically.
     </p>
     <p>
       Prefer to build from source? Quell is open source and also installs unpacked:
     </p>
     <ol>
-      <li>Open <code>chrome://extensions</code> (or <code>edge://extensions</code>).</li>
+      <li>Open <code>chrome://extensions</code>.</li>
       <li>Enable <strong>Developer mode</strong>.</li>
       <li>Choose <strong>Load unpacked</strong> and select Quell's <code>extension/</code> folder from the source.</li>
       <li>Pin Quell, run a Google search, and open the popup to toggle modes.</li>

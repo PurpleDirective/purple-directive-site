@@ -3,151 +3,169 @@ import Site from '../layouts/Site.astro';
 import '../styles/pages.css';
 ---
 
-<Site title="Privacy Policy" description="Purple Directive privacy policy — how we handle your data when you use our website and purchase our products.">
+<Site title="Privacy Policy" description="How Purple Directive collects, uses and shares information when you use purpledirective.com.">
   <section class="section">
     <div class="container">
     <div class="legal-page">
     <h1>Privacy Policy</h1>
-    <p class="legal-updated">Last updated: September 25, 2026</p>
+    <p class="legal-updated">Version 2.0.0 · Effective September 26, 2026</p>
 
     <p>
-      Purple Directive ("we", "us", "our") operates the website purpledirective.com.
-      This page describes how we collect, use, and protect your information when you visit
-      our site or purchase our products.
+      This policy explains how Purple Directive ("we", "us") collects, uses and shares
+      information when you use purpledirective.com and its related services (the
+      "Services"). Quell, our browser extension, has its own
+      <a href="/quell/privacy/">privacy policy</a>.
     </p>
 
-    <h2>Information We Collect</h2>
+    <h2>About purpledirective.com</h2>
+    <p>
+      On purpledirective.com we publish articles and tools, sell clinical research documents
+      such as SOP templates, and offer consulting. You can buy documents, sign up for our
+      newsletter, send us feedback, a review or a consulting request, and ask questions
+      through Ask Purple, our chat assistant. These features need the information you give
+      them, such as your name, email address, organization and message. Messages you send to
+      Ask Purple are processed by service providers that help generate its answers. If you
+      let us publish a review, we may show it with the name and role you give us.
+    </p>
+    <p>
+      If we work with you under a separate agreement, such as a consulting statement of work,
+      that agreement governs information you share with us for that work where it differs
+      from this policy. Please do not send health information about yourself or anyone else
+      through the site's forms or chat.
+    </p>
 
-    <h3>When You Visit Our Site</h3>
+    <h2>Information we collect</h2>
     <p>
-      We use two analytics tools. Neither sets cookies, and neither is used for advertising.
+      <strong>Information you give us.</strong> Such as your name, email address,
+      organization, order and billing details, messages you send us (including through the
+      chat assistant), and content you upload, create or share through the Services. If you
+      buy something, you give payment and billing information, which our payment providers
+      process.
     </p>
     <p>
-      <strong>Our own analytics.</strong> A small tracker served from
-      analytics.purpledirective.com, running on our own server, records for each page view:
+      <strong>Information we collect automatically.</strong> When you use the Services, we
+      and our service providers may collect information such as device, browser and
+      connection information (including IP address), pages and features you use, the date
+      and time of your visits, and the page or link that referred you. We may use cookies and
+      similar technologies, including analytics tools that record how visitors interact with
+      pages, to do this.
     </p>
+    <p>
+      <strong>Information from other sources.</strong> Such as payment providers, services
+      you choose to connect to the Services, and publicly available sources.
+    </p>
+
+    <h2>How we use information</h2>
+    <p>We may use information to:</p>
     <ul>
-      <li>the page path (for example <code>/sop-bundle</code>)</li>
-      <li>the site that referred you, as a host name only (for example linkedin.com)</li>
-      <li>campaign tags in the link you followed (<code>utm_source</code>, <code>utm_medium</code>, <code>utm_campaign</code>)</li>
-      <li>your country, as reported by Cloudflare's network</li>
-      <li>device type, browser and operating system, read from your browser's user agent</li>
-      <li>
-        a visitor ID: a one-way hash of your IP address, your browser's user agent and
-        the current date. Because the date is part of it, the ID changes every day, so
-        visits on different days cannot be linked. Your IP address itself is not stored.
-      </li>
-      <li>
-        whether the page is the first of your visit, noted in your browser's session
-        storage for that tab only (cleared when the tab closes)
-      </li>
+      <li>provide, operate and maintain the Services;</li>
+      <li>process transactions and send related notices, such as receipts and the documents you buy;</li>
+      <li>respond to your requests and provide support;</li>
+      <li>understand how the Services are used, and improve them and develop new features;</li>
+      <li>communicate with you about the Services and, where permitted, about products we think may interest you;</li>
+      <li>keep the Services secure and prevent fraud and abuse;</li>
+      <li>comply with law and enforce our terms; and</li>
+      <li>for other purposes we describe when we collect the information, or with your consent.</li>
     </ul>
     <p>
-      <strong>Clicks, masked session recordings and error reports.</strong> To find where
-      pages confuse people or break, we also collect which links and buttons are clicked,
-      and reports of errors in the page. We may also record a masked replay of how a page
-      was used for a sample of visits: page text and anything typed are always hidden, and
-      a replay may show page images (this site has no accounts, cart, or checkout — nothing
-      personal is ever shown on a page here in the first place). None of this includes
-      health information.
-    </p>
-    <p>
-      <strong>Short links.</strong> Links we share in posts and emails look like
-      purpledirective.com/go/&hellip;. When you follow one, our server records the click
-      with the campaign the link was made for (for example, a LinkedIn post) and a random
-      click ID, then sends you to the page with that ID after a <code>#</code> in the
-      address. The page reads the ID once, sends it with your visit so the visit can be
-      matched to the link, keeps it in session storage for that tab, and removes it from
-      the address bar. The ID is random and says nothing about you.
-    </p>
-    <p>
-      <strong>Cloudflare Web Analytics.</strong> Cloudflare, which hosts this site, also
-      provides Cloudflare Web Analytics. It does not use cookies and reports aggregate page
-      views and referral sources.
+      We may also create aggregated or de-identified information and use it for any lawful
+      purpose.
     </p>
 
-    <h3>When You Make a Purchase</h3>
-    <p>
-      Purchases are processed through Stripe, a PCI-DSS Level 1 certified payment processor. When you
-      purchase a product, Stripe collects your payment information (card number, billing
-      address, email). We do not store your payment details on our servers. We receive your
-      name and email address from Stripe in order to deliver your purchase.
-    </p>
-    <p>
-      When you click a buy button, our analytics records the click with a random join key,
-      and the same key goes to Stripe with your checkout. Our record of the sale keeps that
-      key, the campaign tags of the link you used, and your answer to &ldquo;How did you
-      hear about us?&rdquo; if you gave one, so we can tell which pages and posts lead to
-      sales. If you start a checkout and do not finish it, we record that the checkout
-      expired, with the same campaign details and without your name or email address.
-    </p>
-
-    <h3>When You Contact Us</h3>
-    <p>
-      If you email us at info@purpledirective.com or use our contact form, we receive
-      your name, email address, and message content. We use this only to respond to your inquiry.
-    </p>
-
-    <h2>How We Use Your Information</h2>
+    <h2>How we share information</h2>
+    <p>We do not sell your personal information.</p>
+    <p>We may share information:</p>
     <ul>
-      <li>To deliver products you purchase (email with download link)</li>
-      <li>To respond to support requests or inquiries</li>
-      <li>To understand how people find and use the site, and which pages, posts and links lead to purchases</li>
-      <li>To find and fix pages that break or confuse people</li>
+      <li>
+        <strong>With service providers</strong> that help us operate the Services, such as
+        hosting, security, payment processing, communications, customer support, analytics
+        and the chat assistant. They may use it only to provide services to us.
+      </li>
+      <li>
+        <strong>At your direction or with your consent</strong>, such as when you share
+        content with others, connect another service, or let us publish your review.
+      </li>
+      <li>
+        <strong>For legal reasons</strong>, when we believe it is needed to comply with law or
+        legal process, enforce our terms, or protect the rights, property or safety of our
+        users, the public or us.
+      </li>
+      <li>
+        <strong>In a business transfer</strong>, such as a merger, acquisition, financing or
+        sale of assets, subject to this policy.
+      </li>
+      <li>
+        <strong>In aggregated or de-identified form</strong>, which does not identify you.
+      </li>
     </ul>
-    <p>We do not sell, rent, or share your personal information with third parties for marketing purposes.</p>
 
-    <h2>Third-Party Services</h2>
-    <table class="legal-table">
-      <thead>
-        <tr><th>Service</th><th>Purpose</th><th>Data Shared</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Stripe</td><td>Payment processing</td><td>Payment details, email, name; the checkout's campaign tags and random join key</td></tr>
-        <tr><td>Cloudflare</td><td>Hosting, security, Cloudflare Web Analytics, short-link and buy-link redirects</td><td>Traffic passes through its network; analytics reported in aggregate</td></tr>
-        <tr><td>Microsoft 365</td><td>Email delivery</td><td>Your email address (for purchase delivery)</td></tr>
-      </tbody>
-    </table>
-
-    <h2>Data Retention</h2>
+    <h2>Cookies and similar technologies</h2>
     <p>
-      Purchase records (name, email, transaction ID, and how you found us) are retained for
-      accounting and tax purposes. Analytics records are kept on our own server. You may request deletion of your data by emailing
-      <a href="mailto:info@purpledirective.com">info@purpledirective.com</a>.
+      We and our service providers use cookies and similar technologies to keep the Services
+      working, remember your preferences, understand how the Services are used, and keep them
+      secure. You can control cookies through your browser settings; some features may not
+      work without them. Browsers' "Do Not Track" signals have no common standard. Some of
+      our tools may collect less when a browser sends one, but we do not promise a particular
+      response.
     </p>
 
-    <h2>Cookies</h2>
+    <h2>How long we keep information</h2>
     <p>
-      Our website does not set first-party cookies. Our analytics uses your browser's session
-      storage, which is cleared when you close the tab, to note whether a page is the first of
-      your visit and to hold a short-link click ID. Stripe may set cookies during the
-      checkout process on their domain. Cloudflare may set a security cookie
-      (<code>__cf_bm</code>) to distinguish humans from bots.
+      We keep information for as long as we need it for the purposes described in this
+      policy, such as providing the Services, meeting legal, tax and accounting obligations,
+      resolving disputes and enforcing our agreements. How long depends on the type of
+      information and why we have it. When we no longer need it, we delete it or de-identify
+      it.
     </p>
 
-    <h2>Security</h2>
+    <h2>How we protect information</h2>
     <p>
-      All connections to purpledirective.com are encrypted via TLS (HTTPS). Payment
-      processing is handled entirely by Stripe's PCI DSS Level 1 certified infrastructure.
-      We do not store credit card numbers or CVVs.
+      We use reasonable administrative, technical and physical measures designed to protect
+      information. No method of transmission or storage is completely secure, so we cannot
+      guarantee the security of information.
     </p>
 
-    <h2>Children's Privacy</h2>
+    <h2>Your choices and rights</h2>
     <p>
-      Our products and services are intended for clinical research professionals.
-      We do not knowingly collect information from children under 13.
+      You can review and update information you have given us by contacting us. You can opt
+      out of marketing emails, including our newsletter, using the link in them; we may still
+      send you messages about your purchases or requests.
+    </p>
+    <p>
+      Depending on where you live, you may have the right to know about, access, correct,
+      delete or get a copy of your personal information, and to opt out of certain uses, such
+      as targeted advertising. To make a request, email
+      <a href="mailto:info@purpledirective.com">info@purpledirective.com</a>. We may need to
+      verify your identity before acting on it. Where the law allows, an authorized agent may
+      make a request for you. If we decline your request, you may appeal by replying to our
+      decision. We will not discriminate against you for exercising these rights.
     </p>
 
-    <h2>Changes to This Policy</h2>
+    <h2>Children</h2>
     <p>
-      We may update this policy from time to time. Changes will be posted on this page
-      with an updated "Last updated" date.
+      The Services are not directed to children under 13, and we do not knowingly collect
+      personal information from them. If you believe a child has given us personal
+      information, contact us and we will take steps to delete it.
     </p>
 
-    <h2>Contact</h2>
+    <h2>Where information is processed</h2>
     <p>
-      Questions about this privacy policy? Email us at
-      <a href="mailto:info@purpledirective.com">info@purpledirective.com</a>.
+      We are based in the United States. Information may be processed in the United States
+      and other countries where we or our service providers operate, which may have different
+      data protection laws from where you live.
+    </p>
+
+    <h2>Changes to this policy</h2>
+    <p>
+      We may update this policy from time to time. When we do, we will post the new version
+      here and update the version and effective date above. If a change is material, we will
+      also give notice through the Services or by other appropriate means.
+    </p>
+
+    <h2>Contact us</h2>
+    <p>
+      Questions or requests about this policy:
+      <a href="mailto:info@purpledirective.com">info@purpledirective.com</a>. Purple Directive.
     </p>
     </div>
     </div>
@@ -215,29 +233,5 @@ import '../styles/pages.css';
     background: var(--bg-tinted);
     padding: 0.1rem 0.4rem;
     border-radius: 3px;
-  }
-
-  .legal-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.82rem;
-    margin: var(--spacing-md) 0;
-  }
-
-  .legal-table th {
-    text-align: left;
-    font-size: 0.72rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--text-muted);
-    padding: 0.6rem 0.8rem;
-    border-bottom: 2px solid var(--border);
-  }
-
-  .legal-table td {
-    padding: 0.6rem 0.8rem;
-    color: var(--text-secondary);
-    border-bottom: 1px solid var(--border);
   }
 </style>

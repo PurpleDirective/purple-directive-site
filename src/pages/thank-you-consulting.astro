@@ -53,9 +53,9 @@ const CALENDLY_KICKOFF = 'https://calendly.com/nexrial/consulting-kickoff';
       <label>Site / organization <span class="req">*</span>
         <input type="text" name="organization" required maxlength="160" />
       </label>
-      <label>Stripe order ID <span class="req">*</span>
+      <label>Order ID <span class="req">*</span>
         <input type="text" name="stripe_order_id" required maxlength="120" />
-        <small>From your Stripe receipt email — confirms your payment matches this intake.</small>
+        <small>From your payment receipt email — confirms your payment matches this intake.</small>
       </label>
       <label>Which engagement did you purchase? <span class="req">*</span>
         <select name="tier" required>
@@ -87,7 +87,7 @@ const CALENDLY_KICKOFF = 'https://calendly.com/nexrial/consulting-kickoff';
       </p>
 
       <button type="submit" class="submit-btn">Submit intake</button>
-      <p class="priv-note">Your information is used only to deliver your engagement. Not shared with third parties, not used to train any AI model.</p>
+      <p class="priv-note">We use your information to deliver your engagement, as our <a href="/privacy/">Privacy Policy</a> describes.</p>
     </form>
 
     <EmailCapture
