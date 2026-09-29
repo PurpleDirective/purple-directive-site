@@ -3,3 +3,18 @@
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
+
+# Not for search: confirmation pages and the site's own API. Robots.txt asks
+# well-behaved crawlers to stay out; these headers cover the ones that ignore it.
+/thank-you*
+  X-Robots-Tag: noindex, nofollow
+/consulting-intake-received*
+  X-Robots-Tag: noindex, nofollow
+/feedback-received*
+  X-Robots-Tag: noindex, nofollow
+/review-received*
+  X-Robots-Tag: noindex, nofollow
+/newsletter-confirm*
+  X-Robots-Tag: noindex, nofollow
+/api/*
+  X-Robots-Tag: noindex, nofollow
