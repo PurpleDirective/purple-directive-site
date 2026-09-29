@@ -24,6 +24,8 @@ interface Props {
   description?: string;
   ogImage?: string;
   ogType?: string;
+  // Confirmation and thank-you pages: kept out of search results and the sitemap.
+  noindex?: boolean;
 }
 
 const {
@@ -31,6 +33,7 @@ const {
   description = "Compliance-grade software and operations consulting for clinical research sites and CROs.",
   ogImage = "/og-image.png",
   ogType = "website",
+  noindex = false,
 } = Astro.props;
 
 const fullTitle = title === "Home" ? "Purple Directive — The standard clinical research runs on" : `${title} — Purple Directive`;
@@ -54,6 +57,7 @@ const chatEnabled = import.meta.env.PUBLIC_CHAT_ENABLED === 'true';
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" sizes="192x192" href="/favicon-192.png" />
   <link rel="canonical" href={canonicalURL} />
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
 
   <!-- Open Graph -->
   <meta property="og:title" content={fullTitle} />
