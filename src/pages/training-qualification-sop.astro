@@ -3,6 +3,7 @@ import Site from '../layouts/Site.astro';
 import EmailCapture from '../components/EmailCapture.astro';
 // Full SOP body rendered inline (generated from SOP-001 v1.2 source). Sections 1–5.
 import sopBody from '../data/sop-001-body.html?raw';
+import Reviews from '../components/Reviews.astro';
 
 const pageUrl = "https://purpledirective.com/training-qualification-sop/";
 
@@ -313,6 +314,8 @@ const breadcrumbSchema = {
       </div>
     </div>
   </section>
+
+  <Reviews product="sops" item="sop-001" heading="What people say about SOP-001" ldName="SOP-001 — Training and Qualification of Study Staff" ldUrl={pageUrl} />
 
   <!-- Related free resources -->
   <section class="section" style="padding-top:0">

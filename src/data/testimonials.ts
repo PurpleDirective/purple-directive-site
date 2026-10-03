@@ -1,24 +1,19 @@
 /**
- * Approved testimonials — the manual-approve gate for on-site reviews.
+ * Hand-curated consulting testimonials (rendered by
+ * src/components/Testimonials.astro on /consulting).
  *
- * Reviews submitted at /review land in the REVIEWS_DB D1 table as
- * status='pending' (see functions/api/review-submit.ts). NOTHING a visitor
- * submits is shown automatically. To publish a real review:
+ * Product reviews (SOPs and other products) no longer come from here: they are
+ * submitted at /review, moderated in the shared reviews Worker and rendered by
+ * src/components/Reviews.astro. Consulting is not a product in that Worker, so
+ * consulting quotes are still added here by hand, for example from a /feedback
+ * entry whose sender ticked "You may quote me publicly".
  *
- *   1. Read it in D1:  wrangler d1 execute pd-reviews --remote \
- *        --command "SELECT * FROM reviews WHERE status='pending' ORDER BY ts DESC"
- *   2. Confirm consent_publish = 1 (the submitter ticked "OK to publish").
- *   3. Add an entry below with `published: true` and commit. The commit is the
- *      approval — review copy is version-controlled, attributable, and reversible.
- *   4. (optional) Mark it approved in D1 to keep the inbox tidy.
- *
- * Only `published: true` entries with a matching `product` render on a page
- * (see src/components/Testimonials.astro). Keep claims true: every published
- * entry must be a real review from a real buyer who consented to publication.
- * Do not invent testimonials.
+ * Only `published: true` entries render. Every entry must be a real quote from
+ * a real client who agreed to be quoted. Do not invent testimonials. The
+ * commit is the approval.
  */
 
-export type TestimonialProduct = 'sop' | 'consulting';
+export type TestimonialProduct = 'consulting';
 
 export interface Testimonial {
   /** Which product page(s) this renders on. */

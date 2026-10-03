@@ -2,7 +2,7 @@
 import Site from '../layouts/Site.astro';
 import '../styles/pages.css';
 import EmailCapture from '../components/EmailCapture.astro';
-import Testimonials from '../components/Testimonials.astro';
+import Reviews from '../components/Reviews.astro';
 
 const productSchema = {
   "@context": "https://schema.org",
@@ -76,7 +76,7 @@ const faqSchema = {
   description="How Purple Directive's $249.99 13-SOP bundle compares to custom SOP consulting ($5K-$15K), QMS platforms ($10K-$100K+), and other template libraries. Built against ICH E6(R3), editable Word + PDF."
 >
   <Fragment slot="head">
-    <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+    <script type="application/ld+json" id="product-ld" set:html={JSON.stringify(productSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   </Fragment>
 
@@ -245,7 +245,7 @@ const faqSchema = {
   </section>
 
   <!-- CTA -->
-  <Testimonials product="sop" heading="What practitioners say" />
+  <Reviews product="sops" showItem heading="What buyers say" />
 
   <section class="section" style="padding-top:0">
     <div class="container">
