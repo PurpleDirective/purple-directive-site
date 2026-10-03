@@ -1,0 +1,292 @@
+---
+/**
+ * Customer reviews for one product (and optionally one item), read in the
+ * browser from the reviews Worker on this same origin:
+ *   GET /api/reviews/public?product=<key>[&item=<id>]
+ *
+ * The section stays hidden unless the response has count > 0, so there is no
+ * rating UI and no structured data when there are no published reviews.
+ * When there are, it shows every review the Worker returns, newest first
+ * (never sorted or filtered by stars), with each label and any reply, and
+ * adds schema.org AggregateRating + Review built from that response only:
+ *   - ldTarget: id of a Product JSON-LD <script> already on the page; the
+ *     rating is added to that node, or
+ *   - ldName / ldUrl: a separate Product node is added for this item.
+ * Review text is inserted as text, never as HTML.
+ */
+interface Props {
+  product: string;
+  item?: string;
+  /** Show which item each review is about (pages that list every item). */
+  showItem?: boolean;
+  heading?: string;
+  ldTarget?: string;
+  ldName?: string;
+  ldUrl?: string;
+}
+
+const { product, item, showItem = false, heading = 'What buyers say', ldTarget, ldName, ldUrl } = Astro.props;
+const writeHref = `/review?product=${encodeURIComponent(product)}${item ? `&item=${encodeURIComponent(item)}` : ''}`;
+---
+
+<section
+  class="pd-reviews section"
+  hidden
+  data-product={product}
+  data-item={item || ''}
+  data-show-item={showItem ? '1' : ''}
+  data-ld-target={ldTarget || ''}
+  data-ld-name={ldName || ''}
+  data-ld-url={ldUrl || ''}
+  aria-labelledby={`reviews-h-${product}`}
+>
+  <div class="container">
+    <div class="rv-inner">
+      <div class="section-label">Reviews</div>
+      <h2 id={`reviews-h-${product}`}>{heading}</h2>
+      <div class="rv-summary"></div>
+      <ul class="rv-list"></ul>
+      <button type="button" class="rv-more" hidden>Show more reviews</button>
+      <p class="rv-foot">
+        Newest first. Every review is checked against our <a href="/review-policy">review policy</a> before it appears.
+        <a href={writeHref}>Write a review</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { findProduct, findItem } from '../data/review-products';
+
+  interface Reply { body: string; created_at: string }
+  interface Review {
+    id: string; item: string | null; rating: number; title: string | null; body: string;
+    display_name: string; verified: boolean; insider: boolean; incentivized: boolean;
+    created_at: string; replies: Reply[];
+  }
+  interface Payload {
+    count: number; average: number | null; distribution: Record<string, number>;
+    reviews: Review[]; next_offset: number | null;
+  }
+
+  const PAGE = 10;
+
+  function el<K extends keyof HTMLElementTagNameMap>(tag: K, cls?: string, text?: string): HTMLElementTagNameMap[K] {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined) e.textContent = text;
+    return e;
+  }
+
+  function fmtDate(iso: string): string {
+    const d = new Date(iso);
+    if (isNaN(d.getTime())) return '';
+    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
+  }
+
+  function stars(value: number, label: string): HTMLElement {
+    const wrap = el('span', 'rv-stars');
+    wrap.setAttribute('role', 'img');
+    wrap.setAttribute('aria-label', label);
+    const base = el('span', 'rv-stars-base', '★★★★★');
+    const fill = el('span', 'rv-stars-fill', '★★★★★');
+    fill.style.width = `${Math.max(0, Math.min(5, value)) * 20}%`;
+    base.setAttribute('aria-hidden', 'true');
+    fill.setAttribute('aria-hidden', 'true');
+    wrap.append(base, fill);
+    return wrap;
+  }
+
+  async function load(product: string, item: string, offset: number): Promise<Payload | null> {
+    const q = new URLSearchParams({ product, limit: String(PAGE), offset: String(offset) });
+    if (item) q.set('item', item);
+    try {
+      const res = await fetch(`/api/reviews/public?${q}`, { headers: { Accept: 'application/json' } });
+      if (!res.ok || !(res.headers.get('Content-Type') || '').includes('application/json')) return null;
+      const data = await res.json();
+      if (!data || typeof data.count !== 'number' || !Array.isArray(data.reviews)) return null;
+      return data as Payload;
+    } catch {
+      return null;
+    }
+  }
+
+  function renderSummary(box: HTMLElement, data: Payload) {
+    box.replaceChildren();
+    const avg = data.average ?? 0;
+    const head = el('div', 'rv-avg');
+    head.append(
+      stars(avg, `Average ${avg.toFixed(1)} out of 5 stars`),
+      el('span', 'rv-avg-num', `${avg.toFixed(1)} out of 5`),
+      el('span', 'rv-avg-count', `${data.count} ${data.count === 1 ? 'review' : 'reviews'}`),
+    );
+    const dist = el('ul', 'rv-dist');
+    dist.setAttribute('aria-label', 'Ratings breakdown');
+    for (let s = 5; s >= 1; s--) {
+      const n = Number(data.distribution?.[s] || 0);
+      const row = el('li');
+      const bar = el('span', 'rv-bar');
+      const fill = el('span', 'rv-bar-fill');
+      fill.style.width = data.count ? `${(n / data.count) * 100}%` : '0%';
+      bar.append(fill);
+      bar.setAttribute('aria-hidden', 'true');
+      row.append(el('span', 'rv-dist-k', `${s} star`), bar, el('span', 'rv-dist-n', String(n)));
+      row.setAttribute('aria-label', `${s} star: ${n}`);
+      dist.append(row);
+    }
+    box.append(head, dist);
+  }
+
+  function renderReview(r: Review, product: string, showItem: boolean): HTMLElement {
+    const li = el('li', 'rv-item');
+    const top = el('div', 'rv-top');
+    top.append(stars(r.rating, `${r.rating} out of 5 stars`));
+    if (r.title) top.append(el('strong', 'rv-title', r.title));
+    li.append(top);
+
+    const meta = el('div', 'rv-meta');
+    meta.append(el('span', 'rv-name', r.display_name));
+    const date = fmtDate(r.created_at);
+    if (date) meta.append(el('span', 'rv-date', date));
+    if (showItem && r.item) {
+      const it = findItem(findProduct(product), r.item);
+      meta.append(el('span', 'rv-tag rv-tag-item', it ? it.short : r.item));
+    }
+    const labels: [boolean, string, string][] = [
+      [r.verified, 'Verified purchase', 'We confirmed this reviewer placed an order.'],
+      [r.insider, 'Insider', 'The reviewer has a connection to Purple Directive.'],
+      [r.incentivized, 'Incentivized', 'The reviewer received something for writing a review.'],
+    ];
+    for (const [on, text, why] of labels) {
+      if (!on) continue;
+      const t = el('span', 'rv-tag', text);
+      t.title = why;
+      meta.append(t);
+    }
+    li.append(meta, el('p', 'rv-body', r.body));
+
+    for (const rep of r.replies || []) {
+      const box = el('div', 'rv-reply');
+      const rd = fmtDate(rep.created_at);
+      box.append(el('div', 'rv-reply-h', rd ? `Reply from Purple Directive · ${rd}` : 'Reply from Purple Directive'));
+      box.append(el('p', 'rv-body', rep.body));
+      li.append(box);
+    }
+    return li;
+  }
+
+  function addSchema(sec: HTMLElement, data: Payload) {
+    if (!(data.count > 0) || data.average == null) return;
+    const aggregateRating = {
+      '@type': 'AggregateRating',
+      ratingValue: data.average,
+      reviewCount: data.count,
+      bestRating: 5,
+      worstRating: 1,
+    };
+    const review = data.reviews.map((r) => ({
+      '@type': 'Review',
+      author: { '@type': 'Person', name: r.display_name },
+      datePublished: String(r.created_at).slice(0, 10),
+      ...(r.title ? { name: r.title } : {}),
+      reviewBody: r.body,
+      reviewRating: { '@type': 'Rating', ratingValue: r.rating, bestRating: 5, worstRating: 1 },
+    }));
+
+    const targetId = sec.dataset.ldTarget;
+    if (targetId) {
+      const node = document.getElementById(targetId);
+      if (!node) return;
+      try {
+        const obj = JSON.parse(node.textContent || '{}');
+        obj.aggregateRating = aggregateRating;
+        obj.review = review;
+        node.textContent = JSON.stringify(obj);
+      } catch {
+        /* leave the existing schema as it is */
+      }
+      return;
+    }
+    const name = sec.dataset.ldName;
+    const url = sec.dataset.ldUrl;
+    if (!name || !url) return;
+    const s = document.createElement('script');
+    s.type = 'application/ld+json';
+    s.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name,
+      url,
+      brand: { '@type': 'Organization', name: 'Purple Directive' },
+      aggregateRating,
+      review,
+    });
+    document.head.append(s);
+  }
+
+  async function init(sec: HTMLElement) {
+    const product = sec.dataset.product || '';
+    const item = sec.dataset.item || '';
+    const showItem = sec.dataset.showItem === '1';
+    if (!product) return;
+    const data = await load(product, item, 0);
+    if (!data || !(data.count > 0) || data.reviews.length === 0) return;
+
+    const list = sec.querySelector<HTMLElement>('.rv-list');
+    const summary = sec.querySelector<HTMLElement>('.rv-summary');
+    const more = sec.querySelector<HTMLButtonElement>('.rv-more');
+    if (!list || !summary || !more) return;
+
+    renderSummary(summary, data);
+    for (const r of data.reviews) list.append(renderReview(r, product, showItem));
+    sec.hidden = false;
+    addSchema(sec, data);
+
+    let next = data.next_offset;
+    more.hidden = next == null;
+    more.addEventListener('click', async () => {
+      if (next == null) return;
+      more.disabled = true;
+      const page = await load(product, item, next);
+      more.disabled = false;
+      if (!page) return;
+      for (const r of page.reviews) list.append(renderReview(r, product, showItem));
+      next = page.next_offset;
+      more.hidden = next == null;
+    });
+  }
+
+  document.querySelectorAll<HTMLElement>('.pd-reviews[data-product]').forEach((sec) => { init(sec); });
+</script>
+
+<style is:global>
+  .pd-reviews .rv-inner { max-width: 760px; margin: 0 auto; }
+  .pd-reviews .rv-summary { display: flex; flex-wrap: wrap; gap: 1rem 2.5rem; align-items: center; margin: 1.25rem 0 1.5rem; }
+  .pd-reviews .rv-avg { display: flex; flex-wrap: wrap; align-items: baseline; gap: .4rem .75rem; }
+  .pd-reviews .rv-avg .rv-stars { font-size: 1.25rem; }
+  .pd-reviews .rv-avg-num { font-weight: 700; color: var(--text-primary); }
+  .pd-reviews .rv-avg-count { color: var(--text-secondary); font-size: .9rem; }
+  .pd-reviews .rv-dist { list-style: none; margin: 0; padding: 0; display: grid; gap: .2rem; min-width: 220px; }
+  .pd-reviews .rv-dist li { display: grid; grid-template-columns: 3.4rem 1fr 2rem; align-items: center; gap: .5rem; font-size: .8rem; color: var(--text-secondary); }
+  .pd-reviews .rv-bar { height: 6px; border-radius: 3px; background: var(--bg-tinted, #f5f3f8); overflow: hidden; }
+  .pd-reviews .rv-bar-fill { display: block; height: 100%; background: var(--purple-primary); }
+  .pd-reviews .rv-dist-n { text-align: right; }
+  .pd-reviews .rv-stars { position: relative; display: inline-block; line-height: 1; letter-spacing: .08em; color: var(--border); }
+  .pd-reviews .rv-stars-fill { position: absolute; left: 0; top: 0; overflow: hidden; white-space: nowrap; color: var(--purple-primary); }
+  .pd-reviews .rv-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); }
+  .pd-reviews .rv-item { padding: 1.25rem 0; border-bottom: 1px solid var(--border); }
+  .pd-reviews .rv-top { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .75rem; }
+  .pd-reviews .rv-title { color: var(--text-primary); font-size: 1rem; }
+  .pd-reviews .rv-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .75rem; margin-top: .4rem; font-size: .82rem; color: var(--text-secondary); }
+  .pd-reviews .rv-name { font-weight: 600; color: var(--text-primary); }
+  .pd-reviews .rv-tag { font-size: .72rem; padding: .1rem .5rem; border: 1px solid var(--border); border-radius: 999px; color: var(--text-secondary); background: var(--bg-card, #fff); }
+  .pd-reviews .rv-body { margin: .6rem 0 0; line-height: 1.6; color: var(--text-primary); white-space: pre-line; overflow-wrap: anywhere; }
+  .pd-reviews .rv-reply { margin: .9rem 0 0 1rem; padding: .7rem .9rem; background: var(--bg-tinted, #f5f3f8); border-radius: 8px; }
+  .pd-reviews .rv-reply-h { font-size: .78rem; font-weight: 600; color: var(--text-secondary); }
+  .pd-reviews .rv-reply .rv-body { margin-top: .3rem; font-size: .92rem; }
+  .pd-reviews .rv-more { margin-top: 1rem; font: inherit; font-size: .9rem; padding: .55rem 1.1rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-card, #fff); color: var(--text-primary); cursor: pointer; }
+  .pd-reviews .rv-more:hover { border-color: var(--purple-primary); color: var(--purple-primary); }
+  .pd-reviews .rv-foot { margin-top: 1.25rem; font-size: .82rem; color: var(--text-secondary); }
+  .pd-reviews .rv-foot a { color: var(--purple-primary); font-weight: 500; }
+  .pd-reviews[hidden], .pd-reviews .rv-more[hidden] { display: none !important; }
+</style>

@@ -1,71 +1,100 @@
 ---
 import Site from '../layouts/Site.astro';
+import { reviewProducts } from '../data/review-products';
 ---
 
 <Site
   title="Leave a review"
-  description="Tell us how a Purple Directive product or engagement worked for you. Honest feedback shapes the next revision."
+  description="Tell other clinical research sites how a Purple Directive product worked for you."
 >
+  <!-- Runs before the analytics scripts (they are deferred): a verified-purchase
+       token arrives in the fragment (#t=…). Keep it in memory only and remove
+       it from the address bar so no script, log or page URL ever sees it. -->
+  <script is:inline>
+    (function () {
+      var t = null;
+      try {
+        if (location.hash.length > 1) {
+          t = new URLSearchParams(location.hash.slice(1)).get('t');
+          if (history.replaceState) history.replaceState(null, '', location.pathname + location.search);
+        }
+      } catch (e) { t = null; }
+      window.__pdReviewToken = t || null;
+    })();
+  </script>
+
   <section class="section hero">
     <h1>Leave a <span class="accent">review</span></h1>
     <p class="subtitle">
-      Honest feedback shapes the next revision — and helps other sites decide. Real reviews only;
-      nothing is published without your say-so, and we approve each one by hand before it appears.
+      Tell other research sites how it worked for you. We publish positive and negative reviews alike.
+      A person checks each one against our <a href="/review-policy">review policy</a> before it appears.
     </p>
   </section>
 
   <section class="review-wrap">
-    <p id="review-error" class="form-error" style="display:none"></p>
+    <p id="review-error" class="form-error" role="alert" hidden></p>
+    <p id="review-verified" class="form-note" hidden>This review will show as a verified purchase.</p>
 
-    <form class="review-form" action="/api/review-submit" method="POST">
-      <!-- honeypot: bots fill this; humans never see it -->
+    <form class="review-form" id="review-form" novalidate>
+      <!-- honeypot: bots fill this; people never see it -->
       <input type="text" name="company_website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
-      <label>What are you reviewing? <span class="req">*</span>
-        <select name="product" id="product-select" required>
-          <option value="" disabled>Select…</option>
-          <option value="sop">SOP templates</option>
-          <option value="consulting">Consulting engagement</option>
+      <label><span class="lt">What are you reviewing? <span class="req">*</span></span>
+        <select name="target" id="target-select" required>
+          <option value="" disabled selected>Select…</option>
+          {reviewProducts.map((p) => (
+            <optgroup label={p.label}>
+              {p.items.map((i) => <option value={`${p.key}|${i.id}`}>{i.label}</option>)}
+              <option value={`${p.key}|`}>{p.label} in general</option>
+            </optgroup>
+          ))}
         </select>
       </label>
 
-      <label>Your rating <span class="req">*</span>
+      <label><span class="lt">Your rating <span class="req">*</span></span>
         <select name="rating" required>
           <option value="" disabled selected>Select…</option>
-          <option value="5">★★★★★ — Excellent</option>
-          <option value="4">★★★★☆ — Good</option>
-          <option value="3">★★★☆☆ — Okay</option>
-          <option value="2">★★☆☆☆ — Below par</option>
-          <option value="1">★☆☆☆☆ — Poor</option>
+          <option value="5">★★★★★ Excellent</option>
+          <option value="4">★★★★☆ Good</option>
+          <option value="3">★★★☆☆ Okay</option>
+          <option value="2">★★☆☆☆ Below par</option>
+          <option value="1">★☆☆☆☆ Poor</option>
         </select>
       </label>
 
-      <label>Your review <span class="req">*</span>
-        <textarea name="body" required rows="5" maxlength="4000"
-          placeholder="What did you buy, what did it help you do, and what (if anything) could be better? Specifics help other practitioners."></textarea>
+      <label>Title
+        <input type="text" name="title" maxlength="80" placeholder="Optional" />
       </label>
 
-      <label>Your name <span class="req">*</span>
-        <input type="text" name="name" required maxlength="120" placeholder="Name or initials — your call" />
+      <label><span class="lt">Your review <span class="req">*</span></span>
+        <textarea name="body" required rows="6" maxlength="2000"
+          placeholder="What did you use it for, what worked, and what could be better?"></textarea>
+        <small>Please leave out health information and anyone's contact details.</small>
       </label>
-      <label>Your role / title
-        <input type="text" name="role" maxlength="120" placeholder="e.g. Site Director, CRC, PI" />
+
+      <label><span class="lt">Name shown with your review <span class="req">*</span></span>
+        <input type="text" name="display_name" required maxlength="60" placeholder="Name or initials" />
       </label>
-      <label>Site / organization
-        <input type="text" name="organization" maxlength="160" />
-      </label>
+
       <label>Your email
-        <input type="email" name="email" maxlength="160" />
-        <small>Optional. Only used if we need to verify or follow up — never published.</small>
+        <input type="email" name="contact_email" maxlength="254" />
+        <small>Optional. Never shown. We use it only about this review and delete it after 90 days.</small>
       </label>
 
       <label class="consent">
-        <input type="checkbox" name="consent_publish" value="yes" />
-        <span>You may publish this review (with my name/role/organization as written above) on the site.</span>
+        <input type="checkbox" name="insider" />
+        <span>I work for Purple Directive, or have a personal or business connection to it.</span>
+      </label>
+      <label class="consent">
+        <input type="checkbox" name="incentivized" />
+        <span>I received something for writing this review, such as a discount or free access.</span>
       </label>
 
-      <button type="submit" class="submit-btn">Submit review</button>
-      <p class="priv-note">Reviews are moderated. Nothing is published without the box above ticked, and we approve each one by hand. Your email is never shown.</p>
+      <button type="submit" class="submit-btn" id="review-submit">Submit review</button>
+      <p class="priv-note">
+        By submitting, you agree we may publish your review with the name above.
+        See our <a href="/review-policy">review policy</a> and <a href="/privacy">privacy policy</a>.
+      </p>
     </form>
   </section>
 </Site>
@@ -76,6 +105,11 @@ import Site from '../layouts/Site.astro';
     background: #fdecec; border: 1px solid #e7a3a3; color: #8a1f1f;
     padding: 0.7rem 0.9rem; border-radius: 8px; margin-bottom: 1.25rem; font-size: 0.92rem;
   }
+  .form-note {
+    background: var(--purple-tint, #ede9fe); color: var(--purple-dark, #4c1d95);
+    padding: 0.7rem 0.9rem; border-radius: 8px; margin-bottom: 1.25rem; font-size: 0.92rem;
+  }
+  .form-error[hidden], .form-note[hidden] { display: none; }
   .review-form { display: flex; flex-direction: column; gap: 1.1rem; }
   .review-form > label { display: flex; flex-direction: column; gap: 0.35rem; font-weight: 600; font-size: 0.95rem; }
   .review-form input, .review-form textarea, .review-form select {
@@ -89,33 +123,149 @@ import Site from '../layouts/Site.astro';
   .consent { flex-direction: row !important; align-items: flex-start; gap: 0.6rem !important; font-weight: 400 !important; font-size: 0.9rem; }
   .consent input { margin-top: 0.15rem; }
   .priv-note { font-size: 0.85rem; color: var(--text-secondary); }
+  .priv-note a { color: var(--purple-primary); }
   .submit-btn {
     align-self: flex-start; margin-top: 0.25rem; cursor: pointer;
     background: var(--purple-primary, #5B21B6); color: #fff; border: none;
     padding: 0.8rem 1.6rem; border-radius: 8px; font-weight: 600; font-size: 1rem;
   }
   .submit-btn:hover { opacity: 0.92; }
+  .submit-btn:disabled { opacity: 0.6; cursor: default; }
 </style>
 
-<script is:inline>
-  // Prefill the product from ?product=sop|consulting (set by the thank-you CTAs).
-  (function () {
-    var params = new URLSearchParams(location.search);
-    var p = params.get('product');
-    var sel = document.getElementById('product-select');
-    if (sel && (p === 'sop' || p === 'consulting')) sel.value = p;
+<script>
+  import { findProduct } from '../data/review-products';
 
-    // Surface submit error codes redirected back from /api/review-submit.
-    var code = params.get('review_error');
-    if (!code) return;
-    var map = {
-      'missing-fields': 'Please complete the rating, your review, and your name.',
-      'bad-rating': 'Please choose a star rating.',
-      'invalid-email': 'That email address looks invalid — fix it or leave it blank.',
-      'bad-request': 'Your submission could not be read. Please try again.',
-      'unknown': 'Something went wrong. Please try again or email info@purpledirective.com.'
+  const ITEM_RE = /^[a-z0-9][a-z0-9._-]{0,99}$/;
+  const FALLBACK = 'Something went wrong. Please try again later, or email info@purpledirective.com.';
+
+  const form = document.getElementById('review-form') as HTMLFormElement | null;
+  const select = document.getElementById('target-select') as HTMLSelectElement | null;
+  const errBox = document.getElementById('review-error');
+  const verifiedNote = document.getElementById('review-verified');
+  const button = document.getElementById('review-submit') as HTMLButtonElement | null;
+
+  let token: string | null = (window as unknown as { __pdReviewToken?: string | null }).__pdReviewToken || null;
+
+  function showError(msg: string) {
+    if (!errBox) return;
+    errBox.textContent = msg;
+    errBox.hidden = false;
+    errBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function dropToken() {
+    token = null;
+    if (verifiedNote) verifiedNote.hidden = true;
+    if (select) select.disabled = false;
+  }
+
+  // Prefill from ?product=&item= (review links from product emails and pages).
+  if (select) {
+    const params = new URLSearchParams(location.search);
+    const product = findProduct(params.get('product'));
+    const rawItem = params.get('item') || '';
+    if (product) {
+      const value = `${product.key}|${ITEM_RE.test(rawItem) ? rawItem : ''}`;
+      if (!Array.from(select.options).some((o) => o.value === value) && token) {
+        // A verified link for an item this page does not list: keep it exact,
+        // because the token is signed for that item.
+        const group = select.querySelector(`optgroup[label="${product.label}"]`) || select;
+        const opt = document.createElement('option');
+        opt.value = value;
+        opt.textContent = rawItem;
+        group.append(opt);
+      }
+      if (Array.from(select.options).some((o) => o.value === value)) select.value = value;
+    }
+    if (token) {
+      if (product && select.value) {
+        // The token is signed for this product and item, so they cannot change.
+        select.disabled = true;
+        if (verifiedNote) verifiedNote.hidden = false;
+      } else {
+        token = null;
+      }
+    }
+  }
+
+  const messages: Record<string, string> = {
+    bad_rating: 'Please choose a star rating.',
+    body_required: 'Please write your review.',
+    body_too_long: 'Your review is too long. Please keep it under 2,000 characters.',
+    display_name_required: 'Please add the name to show with your review.',
+    display_name_too_long: 'Please keep the name under 60 characters.',
+    title_too_long: 'Please keep the title under 80 characters.',
+    contact_email_invalid: 'That email address looks wrong. Fix it or leave it blank.',
+    unknown_product: 'Please choose what you are reviewing.',
+    bad_item: 'Please choose what you are reviewing.',
+  };
+
+  form?.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    if (!form || !select || !button) return;
+    if (errBox) errBox.hidden = true;
+
+    const fd = new FormData(form);
+    const str = (k: string) => String(fd.get(k) ?? '').trim();
+    const [product, item] = (select.value || '').split('|');
+    const rating = parseInt(str('rating'), 10);
+
+    if (!product) return showError(messages.unknown_product);
+    if (!(rating >= 1 && rating <= 5)) return showError(messages.bad_rating);
+    if (!str('body')) return showError(messages.body_required);
+    if (!str('display_name')) return showError(messages.display_name_required);
+
+    const payload: Record<string, unknown> = {
+      product,
+      item: item || null,
+      rating,
+      title: str('title') || null,
+      body: str('body'),
+      display_name: str('display_name'),
+      contact_email: str('contact_email') || null,
+      insider: fd.get('insider') !== null,
+      incentivized: fd.get('incentivized') !== null,
+      company_website: String(fd.get('company_website') ?? ''),
     };
-    var el = document.getElementById('review-error');
-    if (el) { el.textContent = map[code] || map['unknown']; el.style.display = 'block'; }
-  })();
+    if (token) payload.token = token;
+
+    button.disabled = true;
+    let res: Response;
+    let data: { error?: string; field?: string } = {};
+    try {
+      res = await fetch('/api/reviews/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if ((res.headers.get('Content-Type') || '').includes('application/json')) data = await res.json().catch(() => ({}));
+    } catch {
+      button.disabled = false;
+      return showError(FALLBACK);
+    }
+    button.disabled = false;
+
+    if (res.status === 202) {
+      location.assign('/review-received');
+      return;
+    }
+    const code = data.error || '';
+    if (res.status === 400) {
+      if (code === 'token_expired') {
+        dropToken();
+        return showError('Your review link has expired, so this review cannot show as a verified purchase. Submit again to post it without that label.');
+      }
+      if (code === 'token_invalid' || code === 'token_unconfigured') {
+        dropToken();
+        return showError('We could not check your review link, so this review cannot show as a verified purchase. Submit again to post it without that label.');
+      }
+      return showError(messages[code] || 'Please check the form and try again.');
+    }
+    if (res.status === 409) return showError('A review has already been submitted for this order. Thank you.');
+    if (res.status === 413) return showError('Your review is too long. Please shorten it and try again.');
+    if (res.status === 429) return showError('Too many reviews from your connection just now. Please wait a minute and try again.');
+    if (res.status === 403) return showError('Please reload the page and try again.');
+    return showError(FALLBACK);
+  });
 </script>

@@ -12,7 +12,7 @@
  * a timestamp — NEVER the IP or user-agent (QuillPDF feedback-store pattern).
  * The rate limiter keeps only a peppered daily-rotating hash of the IP.
  *
- * Mirrors the validation/redirect pattern in ./review-submit.ts (honeypot,
+ * Follows the site form pattern (honeypot,
  * required-field check, error-code redirect, same-origin guard).
  *
  * Env (Cloudflare Pages → Settings → Environment → Production + Preview):

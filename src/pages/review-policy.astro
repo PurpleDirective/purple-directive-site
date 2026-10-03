@@ -1,0 +1,99 @@
+---
+import Site from '../layouts/Site.astro';
+import '../styles/pages.css';
+---
+
+<Site title="Review Policy" description="How Purple Directive publishes and moderates customer reviews.">
+  <section class="section">
+    <div class="container">
+    <div class="legal-page">
+    <h1>Review Policy</h1>
+    <p class="legal-updated">Version 1.0.0 · Effective October 2, 2026</p>
+
+    <h2>What we publish</h2>
+    <p>
+      We publish every review that follows the rules on this page, positive or negative. A
+      person reads each review before it appears, so there can be a short wait after you
+      submit one.
+    </p>
+
+    <h2>Negative reviews stay up</h2>
+    <p>
+      We never remove, hide or hold back a review because it is negative, gives a low star
+      rating or criticizes us. Reviews are listed newest first, never by star rating, and the
+      average rating counts every published review. We also track how often we reject
+      reviews at each star rating, so we can check that rejections do not lean towards low
+      ratings.
+    </p>
+
+    <h2>What we reject</h2>
+    <p>We reject a review for one of these six reasons, and only these:</p>
+    <ul>
+      <li><strong>Spam.</strong> Advertising, links to other businesses, or text generated in bulk.</li>
+      <li><strong>Abuse.</strong> Threats, harassment, hate speech, or obscene content aimed at a person or group. Harsh criticism of a product or of us is not abuse.</li>
+      <li><strong>Off topic.</strong> The review is not about the product or the experience of buying and using it.</li>
+      <li><strong>Personal information.</strong> Contact details or other identifying information, such as an email address, phone number, home address or account number, yours or anyone else's.</li>
+      <li><strong>Health information.</strong> Health information about any person, such as a patient's name, date of birth, medical record number or treatment.</li>
+      <li><strong>Duplicate.</strong> The same person has already posted the same review for the same product.</li>
+    </ul>
+    <p>
+      If we reject a review for personal or health information, we delete its text straight
+      away. If you bought the product, you can then submit a new review without that
+      information. We may also take down a published review later for one of the same six
+      reasons, for example if someone points out personal information we missed.
+    </p>
+
+    <h2>Labels on reviews</h2>
+    <ul>
+      <li><strong>Verified purchase.</strong> We confirmed the reviewer placed an order for the product. You can review each order once.</li>
+      <li><strong>Insider.</strong> The reviewer has a connection to Purple Directive, for example as an employee, contractor or relative of someone who works on the product. Reviewers tell us this when they submit, and we add the label when we know of a connection they did not mention. A label reviewers give their own review is never removed.</li>
+      <li><strong>Incentivized.</strong> The reviewer received something for writing a review, such as a discount or free access. We never make an incentive depend on the review being positive, and these reviews follow the same rules as any other.</li>
+    </ul>
+
+    <h2>Our replies</h2>
+    <p>We may post a public reply under a review. A reply never changes the review itself.</p>
+
+    <h2>What we keep</h2>
+    <p>
+      We show your display name, star rating, title, review text, the date and any labels
+      above. If you give an email address, it is never shown; we use it only about your
+      review and delete it 90 days after you submit. We do not store your IP address or
+      browser details with your review. The text of a rejected review is deleted 90 days after
+      it was rejected, or straight away for personal or health information. We keep only its
+      star rating and the reason, so we can keep checking that moderation stays fair. Our
+      <a href="/privacy/">privacy policy</a> covers the rest of the site.
+    </p>
+
+    <h2>Reporting a review</h2>
+    <p>
+      If you think a published review breaks these rules, or it contains your personal or
+      health information, email <a href="mailto:info@purpledirective.com">info@purpledirective.com</a>
+      with a link to the review and what is wrong with it. We will check it against this
+      policy, and act first on anything with personal or health information.
+    </p>
+
+    <h2>Changes to this policy</h2>
+    <p>When we change this policy we will update the version and date at the top of this page.</p>
+    </div>
+    </div>
+  </section>
+</Site>
+
+<style>
+  .legal-page { max-width: 680px; padding: var(--spacing-md) 0; }
+  .legal-page h1 { font-size: 1.5rem; margin-bottom: var(--spacing-xs); }
+  .legal-updated { font-size: 0.78rem; color: var(--text-muted); margin-bottom: var(--spacing-xl); }
+  .legal-page h2 {
+    font-size: 1.05rem;
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-sm);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border);
+  }
+  .legal-page h2:first-of-type { border-top: none; padding-top: 0; }
+  .legal-page p, .legal-page li { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; }
+  .legal-page ul { padding-left: 1.5rem; margin: var(--spacing-sm) 0; }
+  .legal-page li { margin-bottom: 0.3rem; }
+  .legal-page li strong { color: var(--text-primary); }
+  .legal-page a { color: var(--purple-primary); }
+</style>
