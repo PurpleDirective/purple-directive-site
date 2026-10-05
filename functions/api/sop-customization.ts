@@ -13,7 +13,9 @@
  *   RESEND_API_KEY   required, secret. From pass: purpledirective/resend/api-key
  *   SOP_INTAKE_TO    optional. Recipient inbox; defaults to info@purpledirective.com
  *   SOP_INTAKE_FROM  optional. Verified Resend sender; defaults to
- *                    "Purple Directive <info@purpledirective.com>"
+ *                    "SOP Requests <noreply@purpledirective.com>". Never an
+ *                    address of the receiving mailbox (info@ is one): the
+ *                    inbox files mail from itself as a sent copy, marked read.
  *
  * Local dev: this does NOT run under `npm run dev` (Astro static server).
  * Test with `npx wrangler pages dev ./dist` after `npm run build`, with
@@ -95,7 +97,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   }
 
   const to = env.SOP_INTAKE_TO || 'info@purpledirective.com';
-  const from = env.SOP_INTAKE_FROM || 'Purple Directive <info@purpledirective.com>';
+  const from = env.SOP_INTAKE_FROM || 'SOP Requests <noreply@purpledirective.com>';
 
   const rows = ([
     ['Name', name],
