@@ -22,7 +22,10 @@
  * RESEND_API_KEY in a .dev.vars file.
  */
 
-interface Env {
+import { isBot, botRefusal } from './_bot';
+import { alertOperator, type AlertEnv } from './_alert';
+
+interface Env extends AlertEnv {
   RESEND_API_KEY?: string;
   SOP_INTAKE_TO?: string;
   SOP_INTAKE_FROM?: string;
@@ -67,8 +70,12 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     return new Response('Forbidden', { status: 403 });
   }
 
+  // Crawlers and scripted clients stop here, as they do on the buy links.
+  if (isBot(request.headers.get('user-agent') ?? '')) return botRefusal();
+
   // Fail loud with a clear message if the secret isn't set yet.
   if (!env.RESEND_API_KEY) {
+    context.waitUntil(alertOperator(env, 'SOP tailoring', 'the mail key is not set'));
     return redirectBack(referer, 'not-configured', true);
   }
 
@@ -82,7 +89,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     ctx = String(form.get('context') ?? '').trim();
     message = String(form.get('message') ?? '').trim();
     source = String(form.get('source') ?? '').trim();
-    trap = String(form.get('company_url') ?? '').trim(); // honeypot
+    trap = String(form.get('hp_ref') ?? '').trim(); // honeypot
   } catch {
     return redirectBack(referer, 'bad-request', true);
   }
@@ -130,6 +137,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       body: JSON.stringify({ from, to: [to], reply_to: email, subject: `SOP customization request — ${name}${site ? ' (' + site + ')' : ''}`, html, text }),
     });
   } catch {
+    context.waitUntil(alertOperator(env, 'SOP tailoring', 'the mail service could not be reached'));
     return redirectBack(referer, 'network', true);
   }
 
@@ -137,6 +145,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     return redirectBack(referer, 'submitted', false);
   }
 
+  context.waitUntil(alertOperator(env, 'SOP tailoring', `the mail service answered ${resp.status}`));
   let slug = 'unknown';
   if (resp.status === 401 || resp.status === 403) slug = 'auth';
   else if (resp.status === 429) slug = 'rate-limited';

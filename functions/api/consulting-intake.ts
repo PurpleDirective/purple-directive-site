@@ -16,7 +16,10 @@
  * `npx wrangler pages dev ./dist` after `npm run build`, with the env vars set.
  */
 
-interface Env {
+import { isBot, botRefusal } from './_bot';
+import { alertOperator, type AlertEnv } from './_alert';
+
+interface Env extends AlertEnv {
   RESEND_API_KEY?: string;
   INTAKE_TO?: string;
   INTAKE_FROM?: string;
@@ -63,8 +66,14 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     return new Response('Forbidden', { status: 403 });
   }
 
+  // Crawlers and scripted clients stop here, as they do on the buy links.
+  if (isBot(request.headers.get('user-agent') ?? '')) return botRefusal();
+
   // Fail loud (clear redirect) if the mailer isn't configured.
-  if (!env.RESEND_API_KEY) return back(referer, 'not-configured');
+  if (!env.RESEND_API_KEY) {
+    context.waitUntil(alertOperator(env, 'consulting intake', 'the mail key is not set'));
+    return back(referer, 'not-configured');
+  }
 
   let form: FormData;
   try {
@@ -76,7 +85,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const get = (k: string) => String(form.get(k) ?? '').trim();
 
   // Honeypot — bots fill a hidden field; silently treat as success, send nothing.
-  if (get('company_website') !== '') {
+  if (get('hp_ref') !== '') {
     return Response.redirect(new URL('/consulting-intake-received', request.url).toString(), 303);
   }
 
@@ -108,6 +117,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       body: JSON.stringify({ from, to: [to], reply_to: email, subject, text }),
     });
   } catch {
+    context.waitUntil(alertOperator(env, 'consulting intake', 'the mail service could not be reached'));
     return back(referer, 'network');
   }
 
@@ -115,6 +125,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     return Response.redirect(new URL('/consulting-intake-received', request.url).toString(), 303);
   }
 
+  context.waitUntil(alertOperator(env, 'consulting intake', `the mail service answered ${resp.status}`));
   let code = 'unknown';
   if (resp.status === 401 || resp.status === 403) code = 'auth';
   else if (resp.status === 422) code = 'invalid-email';

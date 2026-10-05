@@ -224,7 +224,7 @@ import '../styles/pages.css';
   </section>
 
   <!-- Contact form -->
-  <section class="section section-deep">
+  <section class="section section-deep" id="contact">
     <div class="container">
     <div class="contact-layout">
       <div class="contact-left">
@@ -239,20 +239,21 @@ import '../styles/pages.css';
           </ul>
         </div>
       </div>
-      <form class="contact-form" action="https://formsubmit.co/info@purpledirective.com" method="POST">
-        <input type="hidden" name="_subject" value="New inquiry from purpledirective.com">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://purpledirective.com/thank-you">
-        <input type="text" name="_honey" style="display:none">
+      <div class="contact-cell">
+      <p class="contact-ok" data-contact-ok role="status" hidden>Your message is in. We reply within one business day.</p>
+      <p class="contact-err" data-contact-err role="alert" hidden></p>
+      <form class="contact-form" action="/api/contact" method="POST" data-contact-form>
+        <!-- honeypot: bots fill this; people never see it -->
+        <input type="text" name="hp_ref" class="contact-trap" tabindex="-1" autocomplete="off" aria-hidden="true">
 
         <div class="form-row">
           <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" id="name" name="name" required placeholder="Your name">
+            <input type="text" id="name" name="name" required maxlength="120" placeholder="Your name">
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" required placeholder="you@company.com">
+            <input type="email" id="email" name="email" required maxlength="200" placeholder="you@company.com">
           </div>
         </div>
 
@@ -268,6 +269,25 @@ import '../styles/pages.css';
 
         <button type="submit" class="form-submit">Send Inquiry</button>
       </form>
+      <script is:inline>
+        (function () {
+          var p = new URLSearchParams(window.location.search);
+          var err = p.get('contact_error');
+          if (p.get('contact') === 'sent') {
+            var f = document.querySelector('[data-contact-form]'); if (f) f.hidden = true;
+            var o = document.querySelector('[data-contact-ok]'); if (o) o.hidden = false;
+          } else if (err) {
+            var msgs = {
+              'invalid': 'Add your name, a valid email and a message, then send again.',
+              'rate-limited': 'Too many attempts. Wait a moment and send again.',
+              'bad-request': 'The form did not go through. Send it again.',
+              'unavailable': 'The form did not go through. Email info@purpledirective.com and we will pick it up.'
+            };
+            var e = document.querySelector('[data-contact-err]'); if (e) { e.textContent = msgs[err] || msgs.unavailable; e.hidden = false; }
+          }
+        })();
+      </script>
+      </div>
     </div>
     </div>
   </section>
@@ -935,6 +955,11 @@ import '../styles/pages.css';
     background: #a78bfa;
   }
 
+  .contact-cell { min-width: 0; }
+  .contact-trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .contact-form[hidden], .contact-ok[hidden], .contact-err[hidden] { display: none; }
+  .contact-ok { font-size: 0.95rem; color: #166534; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 0.8rem 1rem; line-height: 1.55; }
+  .contact-err { font-size: 0.9rem; color: #8a1f1f; background: #fdecec; border: 1px solid #e7a3a3; border-radius: 8px; padding: 0.7rem 0.9rem; margin-bottom: 1rem; }
   .contact-form {
     background: var(--bg-card);
     border: 1px solid var(--border);

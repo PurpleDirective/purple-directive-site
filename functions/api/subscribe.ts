@@ -18,6 +18,8 @@
  * after a `npm run build`.
  */
 
+import { isBot, botRefusal } from './_bot';
+
 interface Env {
   BEEHIIV_API_KEY?: string;
   BEEHIIV_PUBLICATION_ID?: string;
@@ -59,6 +61,9 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   if (sourceHost && !SAME_ORIGIN_HOSTS.has(sourceHost)) {
     return new Response('Forbidden', { status: 403 });
   }
+
+  // Crawlers and scripted clients stop here, as they do on the buy links.
+  if (isBot(request.headers.get('user-agent') ?? '')) return botRefusal();
 
   // Config sanity check — if the env vars aren't set, fail loud with a
   // clear redirect back to the form so the visitor sees a real message
