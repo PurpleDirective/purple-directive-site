@@ -239,11 +239,12 @@ import '../styles/pages.css';
           </ul>
         </div>
       </div>
+      <div class="contact-cell">
       <p class="contact-ok" data-contact-ok role="status" hidden>Your message is in. We reply within one business day.</p>
       <p class="contact-err" data-contact-err role="alert" hidden></p>
       <form class="contact-form" action="/api/contact" method="POST" data-contact-form>
         <!-- honeypot: bots fill this; people never see it -->
-        <input type="text" name="company_website" class="contact-trap" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="text" name="hp_ref" class="contact-trap" tabindex="-1" autocomplete="off" aria-hidden="true">
 
         <div class="form-row">
           <div class="form-group">
@@ -286,6 +287,7 @@ import '../styles/pages.css';
           }
         })();
       </script>
+      </div>
     </div>
     </div>
   </section>
@@ -953,6 +955,7 @@ import '../styles/pages.css';
     background: #a78bfa;
   }
 
+  .contact-cell { min-width: 0; }
   .contact-trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
   .contact-form[hidden], .contact-ok[hidden], .contact-err[hidden] { display: none; }
   .contact-ok { font-size: 0.95rem; color: #166534; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 0.8rem 1rem; line-height: 1.55; }

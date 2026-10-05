@@ -85,7 +85,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const get = (k: string) => String(form.get(k) ?? '').trim();
 
   // Honeypot — bots fill a hidden field; silently treat as success, send nothing.
-  if (get('company_website') !== '') {
+  if (get('hp_ref') !== '') {
     return Response.redirect(new URL('/consulting-intake-received', request.url).toString(), 303);
   }
 

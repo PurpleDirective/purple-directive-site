@@ -45,7 +45,12 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const referer = request.headers.get('referer') ?? '';
   const origin = request.headers.get('origin') ?? '';
   const reqHost = new URL(request.url).host;
-  const srcHost = referer ? new URL(referer).host : (origin ? new URL(origin).host : '');
+  let srcHost = '';
+  try {
+    srcHost = referer ? new URL(referer).host : (origin ? new URL(origin).host : '');
+  } catch {
+    return new Response('Forbidden', { status: 403 });
+  }
   if (srcHost && srcHost !== reqHost && !srcHost.endsWith('.pages.dev')) {
     return new Response('Forbidden', { status: 403 });
   }
@@ -67,8 +72,9 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   // The browser's maxlength is not a control; cap here too.
   const get = (k: string, max = 300) => String(form.get(k) ?? '').trim().slice(0, max);
 
-  // Honeypot: bots fill a hidden field; treat as success, send nothing.
-  if (get('company_website') !== '') return back(referer, 'contact', 'sent');
+  // Honeypot: bots fill a hidden field; treat as success, send nothing. The
+  // field is named so a browser's autofill has no reason to touch it.
+  if (get('hp_ref') !== '') return back(referer, 'contact', 'sent');
 
   const name = get('name', 120);
   const email = get('email', 200).toLowerCase();

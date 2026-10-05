@@ -89,7 +89,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     ctx = String(form.get('context') ?? '').trim();
     message = String(form.get('message') ?? '').trim();
     source = String(form.get('source') ?? '').trim();
-    trap = String(form.get('company_url') ?? '').trim(); // honeypot
+    trap = String(form.get('hp_ref') ?? '').trim(); // honeypot
   } catch {
     return redirectBack(referer, 'bad-request', true);
   }
