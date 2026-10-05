@@ -26,6 +26,8 @@
  * `npx wrangler pages dev ./dist` (bind D1 + set vars).
  */
 
+import { isBot, botRefusal } from './_bot';
+
 interface Env {
   FEEDBACK_DB?: D1Database;
   FEEDBACK_ADMIN_KEY?: string;
@@ -67,6 +69,9 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   if (srcHost && srcHost !== reqHost && !srcHost.endsWith('.pages.dev')) {
     return new Response('Forbidden', { status: 403 });
   }
+
+  // Crawlers and scripted clients stop here, as they do on the buy links.
+  if (isBot(request.headers.get('user-agent') ?? '')) return botRefusal();
 
   let form: FormData;
   try {
